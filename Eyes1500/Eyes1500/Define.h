@@ -25,7 +25,7 @@
 
 #include <DxLib.h>
 
-//*
+/*
 #define LOG_ENABLED 0
 /*/
 #define LOG_ENABLED 1
@@ -46,6 +46,8 @@ typedef unsigned __int64 uint64;
 #define SCREEN_CENTER_Y (SCREEN_H / 2)
 #define SCREEN_W_MAX (SCREEN_W * 5)
 #define SCREEN_H_MAX (SCREEN_H * 5)
+
+#define MONITOR_MAX 10
 
 /*
 	‰¹Šy‚ÆŒø‰Ê‰¹‚Ì‰Šúƒ{ƒŠƒ…[ƒ€
@@ -149,6 +151,15 @@ typedef struct i2D_st
 	int Y;
 }
 i2D_t;
+
+typedef struct iRect_st
+{
+	int L;
+	int T;
+	int W;
+	int H;
+}
+iRect_t;
 
 typedef struct d2D_st
 {

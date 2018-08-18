@@ -13,7 +13,7 @@ static void LeaveTitleMenu(void)
 }
 static void ReturnTitleMenu(void)
 {
-	MusicPlay(MUS_TITLE);
+//	MusicPlay(MUS_TITLE);
 }
 
 static void SM_BGMVolumeChanged(double volume)
@@ -28,7 +28,7 @@ static void SM_SEVolumeChanged(double volume)
 }
 static void SM_SEVolumePulse(void)
 {
-	SEPlay(rndPct(50) ? SE_PAUSE_IN : SE_PAUSE_OUT);
+//	SEPlay(rndPct(50) ? SE_PAUSE_IN : SE_PAUSE_OUT);
 }
 static void SettingMenu(void)
 {
@@ -82,7 +82,7 @@ void TitleMenu(void)
 	SetCurtain();
 	FreezeInput();
 
-	MusicPlay(MUS_TITLE);
+//	MusicPlay(MUS_TITLE);
 
 	char *MENU_ITEMS[] =
 	{

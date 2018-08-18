@@ -3,7 +3,7 @@
 void ProcMain(void)
 {
 #if !LOG_ENABLED
-TitleMenu(); // test
+	TitleMenu(); // test
 	//error(); // TODO
 #elif 0 // test
 	GameInit();

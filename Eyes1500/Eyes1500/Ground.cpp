@@ -9,6 +9,13 @@ void Gnd_INIT(void)
 	Gnd.EL = new taskList();
 	Gnd.PrimaryPadId = -1;
 
+	{
+//		int index;
+
+		Gnd.MonitorNum = GetDisplayModeNum();
+		DISPLAY_DEVICE;
+	}
+
 	// app >
 
 	// < app

@@ -243,6 +243,7 @@ void SmplWindowSizeConfig(void)
 		"1600 x 1200",
 		"1700 x 1275",
 		"1800 x 1350",
+		"フルスクリーン",
 		"戻る",
 	};
 
@@ -267,6 +268,13 @@ void SmplWindowSizeConfig(void)
 		case 10: SetScreenSize(1800, 1350); break;
 
 		case 11:
+			SetScreenSize(
+				GetSystemMetrics(SM_CXSCREEN),
+				GetSystemMetrics(SM_CYSCREEN)
+				);
+			break;
+
+		case 12:
 			goto endLoop;
 
 		default:

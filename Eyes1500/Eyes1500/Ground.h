@@ -4,6 +4,9 @@ typedef struct Gnd_st
 	int PrimaryPadId; // -1 == –¢Ý’è
 	SubScreen_t *MainScreen; // NULL == •sŽg—p
 
+	iRect_t Monitors[MONITOR_MAX];
+	int MonitorNum;
+
 	// app >
 
 	// < app
