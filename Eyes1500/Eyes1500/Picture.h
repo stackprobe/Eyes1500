@@ -6,6 +6,18 @@ enum
 
 	// app >
 
+	P_CG_CONTROLLER,
+	P_CG_CREDIT,
+	P_CG_END,
+	P_CG_FRAME,
+	P_CG_MESSAGE,
+	P_CG_ORDER,
+	P_CG_PAUSE,
+	P_CG_SCORE,
+	P_CG_SCREEN,
+	P_CG_STAGE,
+	P_CG_START,
+
 	// < app
 
 	P_MAX, // num of member

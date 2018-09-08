@@ -130,6 +130,7 @@
     <ClCompile Include="Stopwatch.cpp" />
     <ClCompile Include="System.cpp" />
     <ClCompile Include="Tools.cpp" />
+    <ClCompile Include="_E15TitleMenu.cpp" />
     <ClCompile Include="_Game.cpp" />
     <ClCompile Include="_GameMain.cpp" />
     <ClCompile Include="_Main.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="taskList.h" />
     <ClInclude Include="Tools.h" />
     <ClInclude Include="_Define.h" />
+    <ClInclude Include="_E15TitleMenu.h" />
     <ClInclude Include="_Game.h" />
     <ClInclude Include="_GameMain.h" />
     <ClInclude Include="_Main.h" />

@@ -1,3 +1,14 @@
 C:\Dat\Dummy.png
 C:\Dat\WhiteBox_8x8.png
 C:\Dat\WhiteCircle.png
+Resource\cg\cg_controller.png
+Resource\cg\cg_credit.png
+Resource\cg\cg_end.png
+Resource\cg\cg_frame.png
+Resource\cg\cg_message.png
+Resource\cg\cg_order.png
+Resource\cg\cg_pause.png
+Resource\cg\cg_score.png
+Resource\cg\cg_screen.png
+Resource\cg\cg_stage.png
+Resource\cg\cg_start.png

@@ -4,6 +4,11 @@ enum
 
 	// app >
 
+	MUS_MAIN,
+	MUS_BATTLE_1,
+	MUS_BATTLE_2,
+	MUS_END,
+
 	// < app
 
 	MUS_MAX, // num of member

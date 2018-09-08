@@ -244,6 +244,7 @@ void SmplWindowSizeConfig(void)
 		"1700 x 1275",
 		"1800 x 1350",
 		"フルスクリーン",
+		"フルスクリーン (縦横比を維持する)",
 		"戻る",
 	};
 
@@ -275,6 +276,23 @@ void SmplWindowSizeConfig(void)
 			break;
 
 		case 12:
+			{
+				int w = GetSystemMetrics(SM_CXSCREEN);
+				int h = GetSystemMetrics(SM_CYSCREEN);
+
+				if(w * SCREEN_H < h * SCREEN_W) // 縦長モニタ -> 横幅に合わせる
+				{
+					h = d2i(((double)w * SCREEN_H) / SCREEN_W);
+				}
+				else // 横長モニタ -> 縦幅に合わせる
+				{
+					w = d2i(((double)h * SCREEN_W) / SCREEN_H);
+				}
+				SetScreenSize(w, h);
+			}
+			break;
+
+		case 13:
 			goto endLoop;
 
 		default:
