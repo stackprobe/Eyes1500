@@ -42,6 +42,38 @@ static void ControllerMenu(void)
 		496,
 	};
 
+	double a = 0.0;
+
+	int *varTable[2][11] = // [KEY, PAD][]
+	{
+		{
+			&Gnd.KbdKeyId.Dir_2,
+			&Gnd.KbdKeyId.Dir_4,
+			&Gnd.KbdKeyId.Dir_6,
+			&Gnd.KbdKeyId.Dir_8,
+			&Gnd.KbdKeyId.A,
+			&Gnd.KbdKeyId.B,
+			&Gnd.KbdKeyId.C,
+			&Gnd.KbdKeyId.D,
+			&Gnd.KbdKeyId.E,
+			&Gnd.KbdKeyId.F,
+			&Gnd.KbdKeyId.Pause,
+		},
+		{
+			&Gnd.PadBtnId.Dir_2,
+			&Gnd.PadBtnId.Dir_4,
+			&Gnd.PadBtnId.Dir_6,
+			&Gnd.PadBtnId.Dir_8,
+			&Gnd.PadBtnId.A,
+			&Gnd.PadBtnId.B,
+			&Gnd.PadBtnId.C,
+			&Gnd.PadBtnId.D,
+			&Gnd.PadBtnId.E,
+			&Gnd.PadBtnId.F,
+			&Gnd.PadBtnId.Pause,
+		},
+	};
+
 	FreezeInput();
 
 	StartZ = 0.9;
@@ -104,7 +136,25 @@ static void ControllerMenu(void)
 		DrawZoom(StartZ);
 		DrawEnd();
 
-		// TODO キー・ボタン値
+		int kbCodeIro = d2i(a * 255.0);
+		double va = 1.0 - a;
+		int kbCodeFar = d2i(va * va * 20.0);
+
+		for(int x = 0; x < 2; x++)
+		for(int y = 0; y < 11; y++)
+		{
+			char *str = xcout("%03d", *varTable[x][y]);
+
+			DrawStringByFont(
+				FRAME_XS[x + 1] + 47 + kbCodeFar, FRAME_YS[y] + 7 + kbCodeFar,
+				str,
+				GetFontHandle(APP_COMMON_FONT, 18, 6),
+				0,
+				GetColor(kbCodeIro, kbCodeIro, kbCodeIro)
+				);
+
+			memFree(str);
+		}
 
 		if(!FreezeInputFrame)
 		{
@@ -114,6 +164,8 @@ static void ControllerMenu(void)
 		// EachFrame
 
 		EachFrame();
+
+		m_approach(a, 1.0, 0.9);
 	}
 endLoop:
 	FreezeInput();
