@@ -38,7 +38,28 @@ void EachFrame(void)
 	if(Gnd.MainScreen && CurrDrawScreenHandle == GetHandle(Gnd.MainScreen))
 	{
 		ChangeDrawScreen(DX_SCREEN_BACK);
-		errorCase(DrawExtendGraph(0, 0, Gnd.RealScreen_W, Gnd.RealScreen_H, GetHandle(Gnd.MainScreen), 0)); // ? Ž¸”s
+
+		SetDrawBright(0, 0, 0);
+		DrawExtendGraph(0, 0, Gnd.RealScreen_W, Gnd.RealScreen_H, Pic(P_WHITEBOX), 0);
+		SetDrawBright(255, 255, 255);
+
+		int w = Gnd.RealScreen_W;
+		int h = d2i(SCREEN_H * (double)w / SCREEN_W);
+
+		if(Gnd.RealScreen_H < h)
+		{
+			h = Gnd.RealScreen_H;
+			w = d2i(SCREEN_W * (double)h / SCREEN_H);
+
+			errorCase(Gnd.RealScreen_W < w);
+		}
+		int l = (Gnd.RealScreen_W - w) / 2;
+		int t = (Gnd.RealScreen_H - h) / 2;
+
+		DrawExtendGraph(l, t, l + w, t + h, GetHandle(Gnd.MainScreen), 0);
+
+		// orig
+		//errorCase(DrawExtendGraph(0, 0, Gnd.RealScreen_W, Gnd.RealScreen_H, GetHandle(Gnd.MainScreen), 0)); // ? Ž¸”s
 	}
 
 	// DxLib >

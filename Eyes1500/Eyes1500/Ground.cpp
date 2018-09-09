@@ -9,13 +9,6 @@ void Gnd_INIT(void)
 	Gnd.EL = new taskList();
 	Gnd.PrimaryPadId = -1;
 
-	{
-//		int index;
-
-		Gnd.MonitorNum = GetDisplayModeNum();
-		DISPLAY_DEVICE;
-	}
-
 	// app >
 
 	// < app
@@ -42,6 +35,8 @@ void Gnd_INIT(void)
 	Gnd.PadBtnId.R = SNWPB_R;
 	Gnd.PadBtnId.Pause = SNWPB_DSTART;
 	Gnd.PadBtnId.Start = SNWPB_USTART;
+
+	Gnd.RO_MouseDispMode = 1;
 
 	// app >
 
@@ -231,8 +226,10 @@ void UnassignAllPadBtnId(void)
 void ImportSaveData(void)
 {
 	if(!accessible(SAVE_FILE))
+	{
+		LOG("セーブデータファイル無し\n");
 		return;
-
+	}
 	SaveData = readFile(SAVE_FILE);
 
 #if LOG_ENABLED == 0
@@ -246,6 +243,7 @@ void ImportSaveData(void)
 
 	if(strcmp(SD_ReadLine(), SAVEDATA_SIGNATURE) != 0) // ? セーブデータ破損
 	{
+		LOG("セーブデータファイル_Signature不一致\n");
 		delete SaveData;
 		return;
 	}
