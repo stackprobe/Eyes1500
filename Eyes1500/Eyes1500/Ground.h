@@ -29,7 +29,7 @@ typedef struct Gnd_st
 		0 - (PAD_BUTTON_MAX - 1) == Š„‚è“–‚Äƒ{ƒ^ƒ“ID
 		def: SNWPB_*
 	*/
-	struct
+	struct PadBtnId_st
 	{
 		int Dir_2;
 		int Dir_4;
@@ -47,6 +47,8 @@ typedef struct Gnd_st
 		int Start;
 	}
 	PadBtnId;
+
+	struct PadBtnId_st KbdKeyId;
 
 	int RO_MouseDispMode;
 

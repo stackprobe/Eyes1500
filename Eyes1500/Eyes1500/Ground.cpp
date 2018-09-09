@@ -36,6 +36,21 @@ void Gnd_INIT(void)
 	Gnd.PadBtnId.Pause = SNWPB_DSTART;
 	Gnd.PadBtnId.Start = SNWPB_USTART;
 
+	Gnd.KbdKeyId.Dir_2 = KEY_INPUT_DOWN;
+	Gnd.KbdKeyId.Dir_4 = KEY_INPUT_LEFT;
+	Gnd.KbdKeyId.Dir_6 = KEY_INPUT_RIGHT;
+	Gnd.KbdKeyId.Dir_8 = KEY_INPUT_UP;
+	Gnd.KbdKeyId.A = KEY_INPUT_Z;
+	Gnd.KbdKeyId.B = KEY_INPUT_X;
+	Gnd.KbdKeyId.C = KEY_INPUT_C;
+	Gnd.KbdKeyId.D = KEY_INPUT_V;
+	Gnd.KbdKeyId.E = KEY_INPUT_A;
+	Gnd.KbdKeyId.F = KEY_INPUT_S;
+	Gnd.KbdKeyId.L = KEY_INPUT_D;
+	Gnd.KbdKeyId.R = KEY_INPUT_F;
+	Gnd.KbdKeyId.Pause = KEY_INPUT_SPACE;
+	Gnd.KbdKeyId.Start = KEY_INPUT_RETURN;
+
 	Gnd.RO_MouseDispMode = 1;
 
 	// app >

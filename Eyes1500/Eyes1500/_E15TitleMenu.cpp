@@ -18,6 +18,106 @@ static void CommonApproach(void)
 	m_approach(StartZ, 1.0, 0.86);
 	m_approach(StartR, 0.0, 0.7);
 }
+static void ControllerMenu(void)
+{
+	const int FRAME_XS[] =
+	{
+		16,
+		208,
+		336,
+	};
+	const int FRAME_YS[] =
+	{
+		144,
+		176,
+		208,
+		240,
+		272,
+		304,
+		336,
+		368,
+		400,
+		432,
+		464,
+		496,
+	};
+
+	FreezeInput();
+
+	StartZ = 0.9;
+
+	const int SELECT_MAX = 12;
+	int selectIndex = 0;
+
+	for(; ; )
+	{
+		if(!FreezeInputFrame)
+		{
+			if(GetPound(INP_A))
+			{
+				/*
+					0	UP
+					1	DOWN
+					2	RIGHT
+					3	LEFT
+					4	HIGH SPEED
+					5	SHOT
+					6	LASER BEAM
+					7	BLIND LASER LIGHT
+					8	GUIDED MISSILE
+					9	SUICIDE
+					10	DECISION PAUSE
+				*/
+				if(m_isRange(selectIndex, 0, 10))
+				{
+					// TODO
+				}
+				else if(selectIndex == 11)
+				{
+					goto endLoop;
+				}
+				else
+				{
+					error(); // never
+				}
+			}
+			if(GetPound(INP_DIR_8))
+			{
+				selectIndex--;
+			}
+			if(GetPound(INP_DIR_2))
+			{
+				selectIndex++;
+			}
+		}
+
+		m_range(selectIndex, 0, SELECT_MAX - 1);
+
+		CommonApproach();
+
+		// ここから描画
+
+		DrawWall();
+
+		DrawBegin(P_CG_CONTROLLER, SCREEN_W / 2, SCREEN_H / 2);
+		DrawRotate(StartR);
+		DrawZoom(StartZ);
+		DrawEnd();
+
+		// TODO キー・ボタン値
+
+		if(!FreezeInputFrame)
+		{
+			DrawSimple(P_CG_FRAME, FRAME_XS[0], FRAME_YS[selectIndex]);
+		}
+
+		// EachFrame
+
+		EachFrame();
+	}
+endLoop:
+	FreezeInput();
+}
 static void ResolutionMenu(void)
 {
 	int monitor_w = GetSystemMetrics(SM_CXSCREEN);
@@ -66,7 +166,7 @@ static void ResolutionMenu(void)
 				default:
 					error(); // never
 				}
-				FreezeInput(20);
+				FreezeInput(20); // スクリーンサイズを連続して変更出来ないように、少し待つ。
 			}
 			if(GetPound(INP_DIR_8))
 			{
@@ -138,13 +238,35 @@ void E15TitleMenu(void)
 				{
 				case 0:
 					{
-						// TODO
+						MusicFade();
+
+						forscene(40)
+						{
+							m_approach(WallZ, 1.0, 0.85);
+
+							DrawWall();
+							EachFrame();
+						}
+						sceneLeave();
+
+						// TODO ゲームスタート
+
+						SetCurtain();
+						FreezeInput();
+						MusicPlay(MUS_MAIN);
+#if 0
+						StartZ = 2.0;
+						StartR = 10.0;
+#else
+						StartZ = 0.9;
+#endif
 					}
 					break;
 
 				case 1:
 					{
-						// TODO
+						ControllerMenu();
+						StartZ = 0.9;
 					}
 					break;
 
