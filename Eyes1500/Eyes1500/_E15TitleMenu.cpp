@@ -18,6 +18,70 @@ static void CommonApproach(void)
 	m_approach(StartZ, 1.0, 0.86);
 	m_approach(StartR, 0.0, 0.7);
 }
+static void SetOrSwapKbId(int kbIdIndex, int kbIdMax, int *pKbIds[], int id_new)
+{
+	int id_old = *pKbIds[kbIdIndex];
+
+	for(int index = 0; index < kbIdMax; index++)
+		if(*pKbIds[index] == id_new)
+			*pKbIds[index] = id_old;
+
+	*pKbIds[kbIdIndex] = id_new;
+}
+static void WaitInputMain(int kbIdIndex, int kbIdMax, int *pKbdKeyIds[], int *pPadBtnIds[])
+{
+	FreezeInput(20);
+	SetCurtain(20, -0.9);
+
+	for(; ; )
+	{
+		for(int keyId = 0; keyId < KEY_MAX; keyId++)
+		{
+			if(GetKeyInput(keyId) == 1)
+			{
+				SetOrSwapKbId(kbIdIndex, kbIdMax, pKbdKeyIds, keyId);
+				goto endLoop;
+			}
+		}
+		for(int btnId = 0; btnId < PAD_BUTTON_MAX; btnId++)
+		{
+			if(GetPadInput(Gnd.PrimaryPadId, btnId) == 1)
+			{
+				SetOrSwapKbId(kbIdIndex, kbIdMax, pPadBtnIds, btnId);
+				goto endLoop;
+			}
+		}
+
+		CommonApproach();
+
+		// ここから描画
+
+		DrawWall();
+
+		DrawBegin(P_CG_CONTROLLER, SCREEN_W / 2, SCREEN_H / 2);
+		DrawRotate(StartR);
+		DrawZoom(StartZ);
+		DrawEnd();
+
+		CurtainEachFrame();
+
+		if(!FreezeInputFrame)
+		{
+			DrawStringByFont(
+				SCREEN_W / 2 - 160, SCREEN_H / 2 - 16,
+				"キーボードのキー又は\nゲームパッドのボタンを押して下さい。",
+				APP_COMMON_FONT_HANDLE
+				);
+		}
+
+		// EachFrame
+
+		EachFrame();
+	}
+endLoop:
+	FreezeInput(20);
+	SetCurtain();
+}
 static void ControllerMenu(void)
 {
 	const int FRAME_XS[] =
@@ -47,10 +111,10 @@ static void ControllerMenu(void)
 	int *varTable[2][11] = // [KEY, PAD][]
 	{
 		{
-			&Gnd.KbdKeyId.Dir_2,
-			&Gnd.KbdKeyId.Dir_4,
-			&Gnd.KbdKeyId.Dir_6,
 			&Gnd.KbdKeyId.Dir_8,
+			&Gnd.KbdKeyId.Dir_2,
+			&Gnd.KbdKeyId.Dir_6,
+			&Gnd.KbdKeyId.Dir_4,
 			&Gnd.KbdKeyId.A,
 			&Gnd.KbdKeyId.B,
 			&Gnd.KbdKeyId.C,
@@ -60,10 +124,10 @@ static void ControllerMenu(void)
 			&Gnd.KbdKeyId.Pause,
 		},
 		{
-			&Gnd.PadBtnId.Dir_2,
-			&Gnd.PadBtnId.Dir_4,
-			&Gnd.PadBtnId.Dir_6,
 			&Gnd.PadBtnId.Dir_8,
+			&Gnd.PadBtnId.Dir_2,
+			&Gnd.PadBtnId.Dir_6,
+			&Gnd.PadBtnId.Dir_4,
 			&Gnd.PadBtnId.A,
 			&Gnd.PadBtnId.B,
 			&Gnd.PadBtnId.C,
@@ -83,44 +147,41 @@ static void ControllerMenu(void)
 
 	for(; ; )
 	{
-		if(!FreezeInputFrame)
+		if(GetInput(INP_A) == 1 || GetInput(INP_PAUSE) == 1) // ? 決定 <--- INP_A と INP_PAUSE
 		{
-			if(GetPound(INP_A))
+			/*
+				0	UP
+				1	DOWN
+				2	RIGHT
+				3	LEFT
+				4	HIGH SPEED
+				5	SHOT
+				6	LASER BEAM
+				7	BLIND LASER LIGHT
+				8	GUIDED MISSILE
+				9	SUICIDE
+				10	DECISION PAUSE
+			*/
+			if(m_isRange(selectIndex, 0, 10))
 			{
-				/*
-					0	UP
-					1	DOWN
-					2	RIGHT
-					3	LEFT
-					4	HIGH SPEED
-					5	SHOT
-					6	LASER BEAM
-					7	BLIND LASER LIGHT
-					8	GUIDED MISSILE
-					9	SUICIDE
-					10	DECISION PAUSE
-				*/
-				if(m_isRange(selectIndex, 0, 10))
-				{
-					// TODO
-				}
-				else if(selectIndex == 11)
-				{
-					goto endLoop;
-				}
-				else
-				{
-					error(); // never
-				}
+				WaitInputMain(selectIndex, lengthof(varTable[0]), varTable[0], varTable[1]);
 			}
-			if(GetPound(INP_DIR_8))
+			else if(selectIndex == 11)
 			{
-				selectIndex--;
+				goto endLoop;
 			}
-			if(GetPound(INP_DIR_2))
+			else
 			{
-				selectIndex++;
+				error(); // never
 			}
+		}
+		if(GetPound(INP_DIR_8))
+		{
+			selectIndex--;
+		}
+		if(GetPound(INP_DIR_2))
+		{
+			selectIndex++;
 		}
 
 		m_range(selectIndex, 0, SELECT_MAX - 1);
@@ -148,7 +209,7 @@ static void ControllerMenu(void)
 			DrawStringByFont(
 				FRAME_XS[x + 1] + 47 + kbCodeFar, FRAME_YS[y] + 7 + kbCodeFar,
 				str,
-				GetFontHandle(APP_COMMON_FONT, 18, 6),
+				APP_COMMON_FONT_HANDLE,
 				0,
 				GetColor(kbCodeIro, kbCodeIro, kbCodeIro)
 				);
@@ -194,40 +255,37 @@ static void ResolutionMenu(void)
 
 	for(; ; )
 	{
-		if(!FreezeInputFrame)
+		if(GetInput(INP_A) == 1 || GetInput(INP_PAUSE) == 1) // ? 決定 <--- INP_A と INP_PAUSE
 		{
-			if(GetPound(INP_A))
+			switch(selectIndex)
 			{
-				switch(selectIndex)
-				{
-				case 0:
-					if(Gnd.RealScreen_W == monitor_w && Gnd.RealScreen_H == monitor_h)
-						SetScreenSize(480, 640);
-					else
-						SetScreenSize(monitor_w, monitor_h);
+			case 0:
+				if(Gnd.RealScreen_W == monitor_w && Gnd.RealScreen_H == monitor_h)
+					SetScreenSize(480, 640);
+				else
+					SetScreenSize(monitor_w, monitor_h);
 
-					break;
+				break;
 
-				case 1: SetScreenSize(480, 640); break;
-				case 2: SetScreenSize(600, 800); break;
-				case 3: SetScreenSize(768, 1024); break;
+			case 1: SetScreenSize(480, 640); break;
+			case 2: SetScreenSize(600, 800); break;
+			case 3: SetScreenSize(768, 1024); break;
 
-				case 4:
-					goto endLoop;
+			case 4:
+				goto endLoop;
 
-				default:
-					error(); // never
-				}
-				FreezeInput(20); // スクリーンサイズを連続して変更出来ないように、少し待つ。
+			default:
+				error(); // never
 			}
-			if(GetPound(INP_DIR_8))
-			{
-				selectIndex--;
-			}
-			if(GetPound(INP_DIR_2))
-			{
-				selectIndex++;
-			}
+			FreezeInput(20); // スクリーンサイズを連続して変更出来ないように、少し待つ。
+		}
+		if(GetPound(INP_DIR_8))
+		{
+			selectIndex--;
+		}
+		if(GetPound(INP_DIR_2))
+		{
+			selectIndex++;
 		}
 
 		m_range(selectIndex, 0, SELECT_MAX - 1);
@@ -279,71 +337,76 @@ void E15TitleMenu(void)
 
 	int frameCnt = 0;
 //	const int SELECTABLE_FRAME = 25;
+	int hideHiScoreFrame = 40;
+	double hiScoreA = 0.0;
 
 	for(; ; )
 	{
-		if(!FreezeInputFrame)
+		if(GetInput(INP_A) == 1 || GetInput(INP_PAUSE) == 1) // ? 決定 <--- INP_A と INP_PAUSE
 		{
-			if(GetPound(INP_A))
+			switch(selectIndex)
 			{
-				switch(selectIndex)
+			case 0:
 				{
-				case 0:
+					MusicFade();
+
+					forscene(40)
 					{
-						MusicFade();
+						m_approach(WallZ, 1.0, 0.85);
 
-						forscene(40)
-						{
-							m_approach(WallZ, 1.0, 0.85);
+						DrawWall();
+						EachFrame();
+					}
+					sceneLeave();
 
-							DrawWall();
-							EachFrame();
-						}
-						sceneLeave();
+					// TODO ゲームスタート
 
-						// TODO ゲームスタート
-
-						SetCurtain();
-						FreezeInput();
-						MusicPlay(MUS_MAIN);
+					SetCurtain();
+					FreezeInput();
+					MusicPlay(MUS_MAIN);
 #if 0
-						StartZ = 2.0;
-						StartR = 10.0;
+					StartZ = 2.0;
+					StartR = 10.0;
 #else
-						StartZ = 0.9;
+					StartZ = 0.9;
 #endif
-					}
-					break;
-
-				case 1:
-					{
-						ControllerMenu();
-						StartZ = 0.9;
-					}
-					break;
-
-				case 2:
-					{
-						ResolutionMenu();
-						StartZ = 0.9;
-					}
-					break;
-
-				case 3:
-					goto endLoop;
-
-				default:
-					error(); // never
+					hideHiScoreFrame = 20;
+					hiScoreA = 0.0;
 				}
+				break;
+
+			case 1:
+				{
+					ControllerMenu();
+					StartZ = 0.9;
+					hideHiScoreFrame = 20;
+					hiScoreA = 0.0;
+				}
+				break;
+
+			case 2:
+				{
+					ResolutionMenu();
+					StartZ = 0.9;
+					hideHiScoreFrame = 20;
+					hiScoreA = 0.0;
+				}
+				break;
+
+			case 3:
+				goto endLoop;
+
+			default:
+				error(); // never
 			}
-			if(GetPound(INP_DIR_8))
-			{
-				selectIndex--;
-			}
-			if(GetPound(INP_DIR_2))
-			{
-				selectIndex++;
-			}
+		}
+		if(GetPound(INP_DIR_8))
+		{
+			selectIndex--;
+		}
+		if(GetPound(INP_DIR_2))
+		{
+			selectIndex++;
 		}
 
 		m_range(selectIndex, 0, SELECT_MAX - 1);
@@ -364,11 +427,33 @@ void E15TitleMenu(void)
 			DrawSimple(P_CG_FRAME, FRAME_X, FRAME_YS[selectIndex]);
 		}
 
+		if(!hideHiScoreFrame)
+		{
+			int hiScoreIro = d2i(hiScoreA * 255.0);
+			char *str = xcout("%020I64d", Gnd.HiScore);
+
+			// TODO strの書式 "\\999,999,999"
+
+			DrawStringByFont(
+				139,
+				163,
+				str,
+				APP_COMMON_FONT_HANDLE,
+				0,
+				GetColor(hiScoreIro, hiScoreIro, hiScoreIro)
+				);
+
+			memFree(str);
+
+			m_approach(hiScoreA, 1.0, 0.9);
+		}
+
 		// EachFrame
 
 		EachFrame();
 
 		frameCnt++;
+		m_countDown(hideHiScoreFrame);
 	}
 endLoop:
 	FreezeInput();

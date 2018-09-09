@@ -37,6 +37,7 @@ typedef unsigned __int32 uint;
 typedef unsigned __int64 uint64;
 
 #define IMAX 1000000000
+#define IMAX_64 1000000000000000000i64
 #define PI     3.141592653589793
 #define ROOT_2 1.414213562373095
 

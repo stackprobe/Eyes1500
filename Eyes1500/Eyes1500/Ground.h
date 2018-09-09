@@ -54,6 +54,8 @@ typedef struct Gnd_st
 
 	// app >
 
+	__int64 HiScore;
+
 	// < app
 
 	// }

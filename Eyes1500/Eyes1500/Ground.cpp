@@ -102,6 +102,12 @@ static int SD_ReadInt(int minval, int maxval)
 	m_range(value, minval, maxval);
 	return value;
 }
+static __int64 SD_ReadInt64(__int64 minval, __int64 maxval)
+{
+	__int64 value = _atoi64(SD_ReadLine());
+	m_range(value, minval, maxval);
+	return value;
+}
 static double SD_ReadDouble(double minval, double maxval, int denom)
 {
 	errorCase(denom < 1);
@@ -159,6 +165,10 @@ static void SD_WriteLine_x(char *line)
 static void SD_WriteInt(int value)
 {
 	SD_WriteLine_x(xcout("%d", value));
+}
+static void SD_WriteInt64(__int64 value)
+{
+	SD_WriteLine_x(xcout("%I64d", value));
 }
 static void SD_WriteDouble(double value, int denom)
 {
@@ -286,9 +296,26 @@ void ImportSaveData(void)
 	Gnd.PadBtnId.Pause = SD_ReadInt(-1, PAD_BUTTON_MAX - 1);
 	Gnd.PadBtnId.Start = SD_ReadInt(-1, PAD_BUTTON_MAX - 1);
 
+	Gnd.KbdKeyId.Dir_2 = SD_ReadInt(-1, KEY_MAX - 1);
+	Gnd.KbdKeyId.Dir_4 = SD_ReadInt(-1, KEY_MAX - 1);
+	Gnd.KbdKeyId.Dir_6 = SD_ReadInt(-1, KEY_MAX - 1);
+	Gnd.KbdKeyId.Dir_8 = SD_ReadInt(-1, KEY_MAX - 1);
+	Gnd.KbdKeyId.A = SD_ReadInt(-1, KEY_MAX - 1);
+	Gnd.KbdKeyId.B = SD_ReadInt(-1, KEY_MAX - 1);
+	Gnd.KbdKeyId.C = SD_ReadInt(-1, KEY_MAX - 1);
+	Gnd.KbdKeyId.D = SD_ReadInt(-1, KEY_MAX - 1);
+	Gnd.KbdKeyId.E = SD_ReadInt(-1, KEY_MAX - 1);
+	Gnd.KbdKeyId.F = SD_ReadInt(-1, KEY_MAX - 1);
+	Gnd.KbdKeyId.L = SD_ReadInt(-1, KEY_MAX - 1);
+	Gnd.KbdKeyId.R = SD_ReadInt(-1, KEY_MAX - 1);
+	Gnd.KbdKeyId.Pause = SD_ReadInt(-1, KEY_MAX - 1);
+	Gnd.KbdKeyId.Start = SD_ReadInt(-1, KEY_MAX - 1);
+
 	Gnd.RO_MouseDispMode = SD_ReadBoolean();
 
 	// app >
+
+	Gnd.HiScore = SD_ReadInt64(0, IMAX_64);
 
 	// < app
 
@@ -296,7 +323,7 @@ void ImportSaveData(void)
 
 	delete SaveData;
 
-	AntiPadBtnIdConflict();
+//	AntiPadBtnIdConflict();
 }
 void ExportSaveData(void)
 {
@@ -327,9 +354,26 @@ void ExportSaveData(void)
 	SD_WriteInt(Gnd.PadBtnId.Pause);
 	SD_WriteInt(Gnd.PadBtnId.Start);
 
+	SD_WriteInt(Gnd.KbdKeyId.Dir_2);
+	SD_WriteInt(Gnd.KbdKeyId.Dir_4);
+	SD_WriteInt(Gnd.KbdKeyId.Dir_6);
+	SD_WriteInt(Gnd.KbdKeyId.Dir_8);
+	SD_WriteInt(Gnd.KbdKeyId.A);
+	SD_WriteInt(Gnd.KbdKeyId.B);
+	SD_WriteInt(Gnd.KbdKeyId.C);
+	SD_WriteInt(Gnd.KbdKeyId.D);
+	SD_WriteInt(Gnd.KbdKeyId.E);
+	SD_WriteInt(Gnd.KbdKeyId.F);
+	SD_WriteInt(Gnd.KbdKeyId.L);
+	SD_WriteInt(Gnd.KbdKeyId.R);
+	SD_WriteInt(Gnd.KbdKeyId.Pause);
+	SD_WriteInt(Gnd.KbdKeyId.Start);
+
 	SD_WriteInt(GetMouseDispMode());
 
 	// app >
+
+	SD_WriteInt64(Gnd.HiScore);
 
 	// < app
 
