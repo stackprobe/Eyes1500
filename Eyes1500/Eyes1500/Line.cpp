@@ -24,6 +24,14 @@ char *xcout(char *format, ...)
 
 	return buffer;
 }
+char *strrm(char *line, size_t extend)
+{
+	return (char *)memRealloc(line, strlen(line) + 1 + extend);
+}
+char *strr(char *line)
+{
+	return strrm(line, 0);
+}
 char *strx(char *line)
 {
 	return (char *)memClone(line, strlen(line) + 1);
@@ -121,4 +129,78 @@ char *combine(char *path1, char *path2)
 	replaceChar(path, '/', '\\');
 
 	return path;
+}
+
+char *addLine(char *line, char *addPtn)
+{
+	line = strrm(line, strlen(addPtn));
+	strcat(line, addPtn);
+	return line;
+}
+char *addChar(char *line, int chr)
+{
+	char chrLine[2];
+
+	chrLine[0] = chr;
+	chrLine[1] = '\0';
+
+	return addLine(line, chrLine);
+}
+char *insertLine(char *line, int index, char *insPtn)
+{
+	char *trailer;
+
+	errorCase(index < 0 || (int)strlen(line) < index);
+
+	trailer = strx(line + index);
+
+	line = strrm(line, strlen(insPtn));
+	strcpy(line + index, insPtn);
+	strcat(line, trailer);
+
+	memFree(trailer);
+	return line;
+}
+char *insertChar(char *line, int index, int chr)
+{
+	char insPtn[2];
+
+	insPtn[0] = chr;
+	insPtn[1] = '\0';
+
+	return insertLine(line, index, insPtn);
+}
+void reverseLine(char *line)
+{
+	char *l = line;
+	char *r = strchr(line, '\0');
+
+	if(l < r)
+	{
+		r--;
+
+		while(l < r)
+		{
+			int tmp = *l;
+
+			*l = *r;
+			*r = tmp;
+
+			l++;
+			r--;
+		}
+	}
+}
+char *thousandComma(char *line) // ret: strr(line)
+{
+	uint index;
+
+	reverseLine(line);
+
+	for(index = 3; index < strlen(line); index += 4)
+	{
+		line = insertChar(line, index, ',');
+	}
+	reverseLine(line); // •œŒ³
+	return line;
 }

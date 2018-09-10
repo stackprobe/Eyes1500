@@ -138,3 +138,16 @@ void DrawStringByFont(int x, int y, char *str, FontHandle_t *fh, int tategakiFla
 
 	DrawStringToHandle(x, y, str, color, fh->Handle, edgeColor, tategakiFlag);
 }
+int GetDrawStringByFontWidth(char *str, FontHandle_t *fh, int tategakiFlag)
+{
+	errorCase(!str);
+	errorCase(!fh);
+
+	return GetDrawStringWidthToHandle(str, strlen(str), fh->Handle, tategakiFlag);
+}
+void DrawStringByFont_XCenter(int x, int y, char *str, FontHandle_t *fh, int tategakiFlag, int color, int edgeColor)
+{
+	x -= GetDrawStringByFontWidth(str, fh, tategakiFlag) / 2;
+
+	DrawStringByFont(x, y, str, fh, tategakiFlag, color, edgeColor);
+}

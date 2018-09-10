@@ -31,7 +31,7 @@ static void SetOrSwapKbId(int kbIdIndex, int kbIdMax, int *pKbIds[], int id_new)
 static void WaitInputMain(int kbIdIndex, int kbIdMax, int *pKbdKeyIds[], int *pPadBtnIds[])
 {
 	FreezeInput(20);
-	SetCurtain(20, -0.9);
+	SetCurtain(20, -0.8);
 
 	for(; ; )
 	{
@@ -68,7 +68,7 @@ static void WaitInputMain(int kbIdIndex, int kbIdMax, int *pKbdKeyIds[], int *pP
 		if(!FreezeInputFrame)
 		{
 			DrawStringByFont(
-				SCREEN_W / 2 - 160, SCREEN_H / 2 - 16,
+				SCREEN_W / 2 - 150, SCREEN_H / 2 - 16,
 				"キーボードのキー又は\nゲームパッドのボタンを押して下さい。",
 				APP_COMMON_FONT_HANDLE
 				);
@@ -430,12 +430,13 @@ void E15TitleMenu(void)
 		if(!hideHiScoreFrame)
 		{
 			int hiScoreIro = d2i(hiScoreA * 255.0);
-			char *str = xcout("%020I64d", Gnd.HiScore);
+			char *str = xcout("%09I64d", Gnd.HiScore);
 
-			// TODO strの書式 "\\999,999,999"
+			str = thousandComma(str);
+			str = insertChar(str, 0, '\\');
 
-			DrawStringByFont(
-				139,
+			DrawStringByFont_XCenter(
+				SCREEN_W / 2,
 				163,
 				str,
 				APP_COMMON_FONT_HANDLE,
