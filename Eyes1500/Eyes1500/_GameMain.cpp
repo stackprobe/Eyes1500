@@ -2,15 +2,14 @@
 
 static void DrawWall(void)
 {
-	DrawCurtain();
-	DrawRect(P_WHITEBOX, 100, 100, SCREEN_W - 200, SCREEN_H - 200);
+	DrawRect(P_CG_STAGE, 0, 0, SCREEN_W, SCREEN_H);
 }
 void GameMain(void)
 {
 	SetCurtain();
 	FreezeInput();
 
-//	MusicPlay(MUS_FIELD_01);
+	MusicPlay(MUS_BATTLE_1);
 
 	for(; ; )
 	{
@@ -27,7 +26,6 @@ void GameMain(void)
 	}
 	FreezeInput();
 	MusicFade();
-	SetCurtain(30, -1.0);
 
 	forscene(40)
 	{
@@ -36,5 +34,5 @@ void GameMain(void)
 	}
 	sceneLeave();
 
-	Gnd.EL->Clear();
+	FreezeInput();
 }

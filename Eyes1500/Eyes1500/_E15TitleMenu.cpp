@@ -359,7 +359,13 @@ void E15TitleMenu(void)
 					}
 					sceneLeave();
 
-					// TODO ゲームスタート
+					// ゲームここから
+
+					GameInit();
+					GameMain();
+					GameFnlz();
+
+					// ゲームここまで
 
 					SetCurtain();
 					FreezeInput();
