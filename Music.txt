@@ -1,5 +1,4 @@
 C:\Dat\–³‰¹.wav
-Resource\bgm\bgm_main.ogg
 Resource\bgm\bgm_battle_1.ogg
 Resource\bgm\bgm_battle_2.ogg
 Resource\bgm\bgm_end.ogg

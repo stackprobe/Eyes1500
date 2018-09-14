@@ -9,6 +9,16 @@ void GameMain(void)
 	SetCurtain();
 	FreezeInput();
 
+	for(; ; )
+	{
+		if(GetInput(INP_A) | GetInput(INP_PAUSE))
+			break;
+
+		DrawWall();
+		DrawCenter(D_CG_MESSAGE_00 | DTP, SCREEN_W / 2, SCREEN_H / 2);
+		EachFrame();
+	}
+
 	MusicPlay(MUS_BATTLE_1);
 
 	for(; ; )
@@ -18,16 +28,16 @@ void GameMain(void)
 			break;
 		}
 
-		if(ProcFrame % 10 == 0)
-			AddCommonEffect(Gnd.EL, 0, P_DUMMY, 400.0, 300.0, 0.0, 0.5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, cos(ProcFrame / 100.0) * 0.1, sin(ProcFrame / 100.0) * 0.1);
+		// TODO
 
 		DrawWall();
 		EachFrame();
 	}
 	FreezeInput();
-	MusicFade();
+//	MusicFade(); // “¯‚¶‹È‚È‚Ì‚Å
 
-	forscene(40)
+	forscene(20)
+//	forscene(40)
 	{
 		DrawWall();
 		EachFrame();

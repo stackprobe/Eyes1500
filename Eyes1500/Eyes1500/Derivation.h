@@ -4,6 +4,8 @@ enum
 
 	// app >
 
+	ENUM_RANGE(D_CG_MESSAGE_00, 2)
+
 	// < app
 
 	D_MAX, // num of member

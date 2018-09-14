@@ -4,7 +4,7 @@ enum
 
 	// app >
 
-	MUS_MAIN,
+//	MUS_MAIN,
 	MUS_BATTLE_1,
 	MUS_BATTLE_2,
 	MUS_END,
@@ -13,6 +13,8 @@ enum
 
 	MUS_MAX, // num of member
 };
+
+#define MUS_MAIN MUS_BATTLE_1 // ìØÇ∂ã»ÇégÇ§ÅB
 
 typedef struct MusicInfo_st
 {

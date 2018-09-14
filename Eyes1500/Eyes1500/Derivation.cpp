@@ -33,6 +33,8 @@ static void CreateDerList(void)
 
 	// app >
 
+	AddAnimation(P_CG_MESSAGE, 0, 0, 480, 128, 1, 2); // D_CG_MESSAGE_00
+
 	// < app
 
 	errorCase(DerList->GetCount() != D_MAX);
