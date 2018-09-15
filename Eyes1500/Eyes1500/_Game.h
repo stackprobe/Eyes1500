@@ -6,7 +6,12 @@ typedef struct GDc_st
 	// Return {
 	// }
 
-	int Dummy;
+	struct
+	{
+		double X;
+		double Y;
+	}
+	Player;
 }
 GDc_t;
 
