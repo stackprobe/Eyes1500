@@ -5,6 +5,8 @@ enum
 	// app >
 
 	ENUM_RANGE(D_CG_MESSAGE_00, 2)
+	ENUM_RANGE(D_CHARA_PLAYER_00, 6)
+	ENUM_RANGE(D_WEAPON_SHOT_00, 4)
 
 	// < app
 

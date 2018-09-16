@@ -6,12 +6,19 @@ typedef struct GDc_st
 	// Return {
 	// }
 
+	__int64 Score;
+
 	struct
 	{
+		int BornFrame; // 0 == ñ≥å¯, 1Å`
 		double X;
 		double Y;
+		double RealX;
+		double RealY;
 	}
 	Player;
+
+	autoList<PlayerTama_t *> *PlayerTamaList;
 }
 GDc_t;
 

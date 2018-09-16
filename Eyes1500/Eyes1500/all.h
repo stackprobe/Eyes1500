@@ -50,6 +50,7 @@
 #include "System2.h"
 #include "Config.h"
 
+#include "_PlayerTama.h"
 #include "_Main.h"
 #include "_Game.h"
 #include "_GameMain.h"
