@@ -131,9 +131,11 @@
     <ClCompile Include="System.cpp" />
     <ClCompile Include="Tools.cpp" />
     <ClCompile Include="_E15TitleMenu.cpp" />
+    <ClCompile Include="_Enemy.cpp" />
     <ClCompile Include="_Game.cpp" />
     <ClCompile Include="_GameMain.cpp" />
     <ClCompile Include="_Main.cpp" />
+    <ClCompile Include="_PlayerMissile.cpp" />
     <ClCompile Include="_PlayerTama.cpp" />
     <ClCompile Include="_TitleMenu.cpp" />
   </ItemGroup>
@@ -190,9 +192,11 @@
     <ClInclude Include="Tools.h" />
     <ClInclude Include="_Define.h" />
     <ClInclude Include="_E15TitleMenu.h" />
+    <ClInclude Include="_Enemy.h" />
     <ClInclude Include="_Game.h" />
     <ClInclude Include="_GameMain.h" />
     <ClInclude Include="_Main.h" />
+    <ClInclude Include="_PlayerMissile.h" />
     <ClInclude Include="_PlayerTama.h" />
     <ClInclude Include="_TitleMenu.h" />
   </ItemGroup>

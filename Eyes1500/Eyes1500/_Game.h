@@ -18,7 +18,12 @@ typedef struct GDc_st
 	}
 	Player;
 
+	int LaserFrame; // 0 == –³Œø, 1` == ÆË’†, -1 == ÆËI—¹’¼Œã
+	int FlashFrame; // 0 == –³Œø, 1` == ÆË’†
+
 	autoList<PlayerTama_t *> *PlayerTamaList;
+	autoList<PlayerMissile_t *> *PlayerMissileList;
+	autoList<Enemy_t *> *EnemyList;
 }
 GDc_t;
 

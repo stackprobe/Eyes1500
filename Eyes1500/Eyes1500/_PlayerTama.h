@@ -1,6 +1,6 @@
 typedef struct PlayerTama_st
 {
-	int Frame; // -1 == ‰Šú‰»’¼Œã, 0`
+	int Frame; // 0`
 	double X;
 	double Y;
 }

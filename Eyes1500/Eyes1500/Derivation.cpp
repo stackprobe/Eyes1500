@@ -36,7 +36,9 @@ static void CreateDerList(void)
 	AddAnimation(P_CG_MESSAGE, 0, 0, 480, 128, 1, 2); // D_CG_MESSAGE_00
 	AddAnimation(P_CHARA_PLAYER, 0, 0, 32, 32, 2, 3); // D_CHARA_PLAYER_00
 	AddAnimation(P_WEAPON_SHOT, 0, 0, 4, 8, 4, 1); // D_WEAPON_SHOT_00
-
+	AddAnimation(P_WEAPON_MISSILE, 0, 0, 8, 16, 4, 1); // D_WEAPON_MISSILE_00
+	AddAnimation(P_WEAPON_LASER, 0, 0, 2, 600, 2, 1); // D_WEAPON_LASER_00
+	
 	// < app
 
 	errorCase(DerList->GetCount() != D_MAX);

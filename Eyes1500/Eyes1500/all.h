@@ -51,6 +51,8 @@
 #include "Config.h"
 
 #include "_PlayerTama.h"
+#include "_PlayerMissile.h"
+#include "_Enemy.h"
 #include "_Main.h"
 #include "_Game.h"
 #include "_GameMain.h"
