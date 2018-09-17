@@ -4,6 +4,18 @@ enum
 
 	// app >
 
+	SE_BOMB,
+	SE_BREAK,
+	SE_DAMAGE,
+	SE_DAMAGE_E,
+	SE_DESTRUCT,
+	SE_EXPLOSION_E,
+	SE_LASER,
+	SE_LASER_B,
+	SE_MISSILE,
+	SE_SHOT,
+	SE_SIREN,
+
 	// < app
 
 	SE_MAX, // num of member

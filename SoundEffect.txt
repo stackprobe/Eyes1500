@@ -1,1 +1,12 @@
 C:\Dat\–³‰¹.wav
+Resource\se\se_bomb.ogg
+Resource\se\se_break.ogg
+Resource\se\se_damage.ogg
+Resource\se\se_damage_e.ogg
+Resource\se\se_destruct.ogg
+Resource\se\se_explosion_e.ogg
+Resource\se\se_laser.ogg
+Resource\se\se_laser_b.ogg
+Resource\se\se_missile.ogg
+Resource\se\se_shot.ogg
+Resource\se\se_siren.ogg

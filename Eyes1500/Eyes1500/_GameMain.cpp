@@ -175,6 +175,7 @@ endBornPlayer:
 		if(GetInput(INP_B) == 1) // Shot
 		{
 			GDc.PlayerTamaList->AddElement(CreatePlayerTama(GDc.Player.X, GDc.Player.Y - 16.0));
+			SEPlay(SE_SHOT);
 		}
 
 		// ‚±‚±‚©‚ç•`‰æ

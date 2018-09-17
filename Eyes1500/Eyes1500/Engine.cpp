@@ -62,6 +62,14 @@ void EachFrame(void)
 		//errorCase(DrawExtendGraph(0, 0, Gnd.RealScreen_W, Gnd.RealScreen_H, GetHandle(Gnd.MainScreen), 0)); // ? Ž¸”s
 	}
 
+	// zantei zantei zantei zantei zantei
+	{
+#if !LOG_ENABLED
+		clsDx();
+		printfDx("ŠJ”­’†ver.");
+#endif
+	}
+
 	// DxLib >
 
 	ScreenFlip();
