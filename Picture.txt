@@ -32,3 +32,16 @@ Resource\weapon\weapon_laser.png
 Resource\weapon\weapon_laser_b.png
 Resource\weapon\weapon_missile.png
 Resource\weapon\weapon_shot.png
+Resource\enemy\enemy1.png
+Resource\enemy\enemy2.png
+Resource\enemy\enemy3.png
+Resource\enemy\enemy4.png
+Resource\enemy\enemy5.png
+Resource\enemy\enemy6.png
+Resource\enemy\enemy7.png
+Resource\enemy\enemy8.png
+Resource\enemy\enemy9.png
+Resource\enemy\enemy10.png
+Resource\enemy\enemy20.png
+Resource\enemy\enemy50.png
+Resource\enemy\enemy100.png

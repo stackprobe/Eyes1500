@@ -40,6 +40,20 @@ enum
 	P_WEAPON_MISSILE,
 	P_WEAPON_SHOT,
 
+	P_EYE_1,
+	P_EYE_2,
+	P_EYE_3,
+	P_EYE_4,
+	P_EYE_5,
+	P_EYE_6,
+	P_EYE_7,
+	P_EYE_8,
+	P_EYE_9,
+	P_EYE_10,
+	P_EYE_20,
+	P_EYE_50,
+	P_EYE_100,
+
 	// < app
 
 	P_MAX, // num of member
