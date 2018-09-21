@@ -53,5 +53,5 @@ void PlayerMissile_Move(PlayerMissile_t *i)
 		}
 	}
 
-	makeXY(i->Dir, 3.0, i->X, i->Y, i->X, i->Y); // ˆÚ“®
+	angleMoveXY(i->Dir, 3.0, i->X, i->Y); // ˆÚ“®
 }

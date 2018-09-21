@@ -15,6 +15,7 @@ typedef struct GDc_st
 		double Y;
 		double RealX;
 		double RealY;
+		int HiSpeed;
 	}
 	Player;
 

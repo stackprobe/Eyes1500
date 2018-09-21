@@ -26,6 +26,14 @@ static void PauseMain(void)
 }
 static void RebornPlayer(void)
 {
+	// clear
+	{
+		zeroclear(&GDc.Player);
+
+		GDc.LaserFrame = 0;
+		GDc.FlashFrame = 0;
+	}
+
 	GDc.Player.BornFrame = 1;
 	GDc.Player.X = SCREEN_W / 2;
 	GDc.Player.Y = SCREEN_H - 50;
@@ -132,7 +140,10 @@ void GameMain(void)
 endBornPlayer:
 
 		{
-			double speed = 4.0;
+			double speed = 2.0;
+
+			if(GDc.Player.HiSpeed)
+				speed *= 3.0;
 
 			if(1 <= GetInput(INP_DIR_2))
 			{
@@ -258,6 +269,11 @@ endBornPlayer:
 
 				SEPlay(SE_LASER_B);
 			}
+		}
+
+		if(GetInput(INP_A) == 1) // ‚‘¬ˆÚ“®
+		{
+			GDc.Player.HiSpeed = m_10(GDc.Player.HiSpeed);
 		}
 
 		// “G_ˆ—

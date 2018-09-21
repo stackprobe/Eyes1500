@@ -157,7 +157,7 @@ int isSame(autoList<uchar> *binData1, autoList<uchar> *binData2)
 	return 1;
 }
 
-// Šp“x‚©‚ç•ûŒü ... MakeXYSpeed, makeXY
+// Šp“x‚©‚ç•ûŒü ... MakeXYSpeed, angleToXY
 
 /*
 	ret: 0.0 ` PI * 2.0
@@ -215,15 +215,19 @@ void rotatePos(double angle, double &x, double &y, double originX, double origin
 	x += originX;
 	y += originY;
 }
-void makeXY(double angle, double distance, double &x, double &y)
+void angleToXY(double angle, double distance, double &x, double &y)
 {
 	x = distance * cos(angle);
 	y = distance * sin(angle);
 }
-void makeXY(double angle, double distance, double &x, double &y, double originX, double originY)
+void angleToXY(double angle, double distance, double &x, double &y, double originX, double originY)
 {
-	makeXY(angle, distance, x, y);
+	angleToXY(angle, distance, x, y);
 
 	x += originX;
 	y += originY;
+}
+void angleMoveXY(double angle, double distance, double &x, double &y)
+{
+	angleToXY(angle, distance, x, y, x, y);
 }
