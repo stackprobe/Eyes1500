@@ -20,4 +20,40 @@ void ReleaseEnemy(Enemy_t *i)
 
 // <-- cdtor
 
+int EnemyEachFrame(Enemy_t *i) // ret: ? Á–Å
+{
+	i->Frame++;
+
+	// zantei
+
+	i->Y += 2.0;
+
+	return SCREEN_H + 10.0 < i->Y;
+}
+void DrawEnemy(Enemy_t *i)
+{
+	// zantei
+
+	DrawCenter(D_EYE_1_00 + i->Frame / 6 % 2 | DTP, d2i(i->X), d2i(i->Y));
+}
+
 // <-- accessor
+
+Enemy_t *GetNearestEnemy(double x, double y)
+{
+	Enemy_t *ret = NULL;
+	double ret_distance = -1.0;
+
+	for(int index = 0; index < GDc.EnemyList->GetCount(); index++)
+	{
+		Enemy_t *i = GDc.EnemyList->GetElement(index);
+		double distance = GetDistance(x, y, i->X, i->Y);
+
+		if(!ret || distance < ret_distance)
+		{
+			ret = i;
+			ret_distance = distance;
+		}
+	}
+	return ret;
+}

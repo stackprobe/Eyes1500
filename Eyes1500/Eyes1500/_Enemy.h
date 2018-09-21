@@ -12,4 +12,9 @@ void ReleaseEnemy(Enemy_t *i);
 
 // <-- cdtor
 
+int EnemyEachFrame(Enemy_t *i);
+void DrawEnemy(Enemy_t *i);
+
 // <-- accessor
+
+Enemy_t *GetNearestEnemy(double x, double y);

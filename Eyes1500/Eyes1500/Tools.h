@@ -66,3 +66,5 @@ double getAngle(double x, double y);
 double getAngle(double x, double y, double originX, double originY);
 void rotatePos(double angle, double &x, double &y);
 void rotatePos(double angle, double &x, double &y, double originX, double originY);
+void makeXY(double angle, double distance, double &x, double &y);
+void makeXY(double angle, double distance, double &x, double &y, double originX, double originY);

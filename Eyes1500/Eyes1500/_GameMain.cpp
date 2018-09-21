@@ -183,11 +183,12 @@ endBornPlayer:
 			PlayerMissile_t *plMissile = GDc.PlayerMissileList->GetElement(index);
 
 			plMissile->Frame++;
-			plMissile->Y -= 5.0;
-			
-			// TODO 誘導
 
-			if(IsOutOfScreen(plMissile->X, plMissile->Y)) // ? 画面外に出た。-> 開放
+			PlayerMissile_Move(plMissile);
+			//plMissile->Y -= 5.0; // test
+
+//			if(IsOutOfScreen(plMissile->X, plMissile->Y)) // ? 画面外に出た。-> 開放
+			if(plMissile->Y < 0.0 || SCREEN_H < plMissile->Y) // ? 画面上下から外に出た。-> 開放
 			{
 				ReleasePlayerMissile(plMissile);
 				GDc.PlayerMissileList->FastDesertElement(index);
@@ -259,6 +260,26 @@ endBornPlayer:
 			}
 		}
 
+		// 敵_処理
+
+		for(int index = 0; index < GDc.EnemyList->GetCount(); index++) // 敵_移動
+		{
+			Enemy_t *i = GDc.EnemyList->GetElement(index);
+
+			if(EnemyEachFrame(i)) // ? 消滅
+			{
+				ReleaseEnemy(i);
+				GDc.EnemyList->SetElement(index, NULL);
+			}
+		}
+		GDc.EnemyList->MultiDiscard(isPointNull);
+
+		// zantei
+		if(dRnd() < 0.01)
+		{
+			GDc.EnemyList->AddElement(CreateEnemy(EK_EYE_1, dRnd() * SCREEN_W, -10.0));
+		}
+
 		// ★★★ ここから描画 ★★★
 
 		DrawWall();
@@ -275,7 +296,9 @@ endBornPlayer:
 		{
 			PlayerMissile_t *plMissile = GDc.PlayerMissileList->GetElement(index);
 
-			DrawCenter(D_WEAPON_MISSILE_00 + plMissile->Frame / 6 % 4 | DTP, plMissile->X, plMissile->Y);
+			DrawBegin(D_WEAPON_MISSILE_00 + plMissile->Frame / 6 % 4 | DTP, plMissile->X, plMissile->Y);
+			DrawRotate(plMissile->Dir + PI / 2.0);
+			DrawEnd();
 		}
 		if(1 <= GDc.LaserFrame)
 		{
@@ -287,13 +310,6 @@ endBornPlayer:
 
 			DrawRect(D_WEAPON_LASER_00 + ProcFrame / 6 % 2 | DTP, iX - 1, iY -  600, 2, 600);
 			DrawRect(D_WEAPON_LASER_00 + ProcFrame / 6 % 2 | DTP, iX - 1, iY - 1200, 2, 600);
-		}
-
-		// 敵
-
-		for(int index = 0; index < GDc.EnemyList->GetCount(); index++)
-		{
-			// TODO
 		}
 
 		// Player
@@ -309,6 +325,13 @@ endBornPlayer:
 
 			DrawCenter((D_CHARA_PLAYER_00 + (ProcFrame / 6) % 2) | DTP, iX, iY);
 			DPE_Reset();
+		}
+
+		// 敵
+
+		for(int index = 0; index < GDc.EnemyList->GetCount(); index++)
+		{
+			DrawEnemy(GDc.EnemyList->GetElement(index));
 		}
 
 		// ★★★ EachFrame ★★★
