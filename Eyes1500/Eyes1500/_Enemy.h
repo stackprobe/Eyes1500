@@ -4,6 +4,8 @@ typedef struct Enemy_st
 	double X;
 	double Y;
 	int Frame;
+	int HP;
+	int DamagedFrame; // 0 == ñ≥å¯, 1 Å` ENEMY_DAMAGED_FRAME_MAX
 }
 Enemy_t;
 

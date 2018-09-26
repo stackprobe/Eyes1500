@@ -8,6 +8,8 @@ Enemy_t *CreateEnemy(EnemyKind_t kind, double x, double y)
 	i->X = x;
 	i->Y = y;
 
+	i->HP = 100; // zantei
+
 	return i;
 }
 void ReleaseEnemy(Enemy_t *i)
@@ -24,9 +26,16 @@ int EnemyEachFrame(Enemy_t *i) // ret: ? Á–Å
 {
 	i->Frame++;
 
+
 	// zantei
 
-	i->Y += 2.0;
+	if(i->DamagedFrame == 0 && GDc.FlashFrame == 0)
+	{
+		i->Y += 2.0;
+	}
+
+
+	m_countDown(i->DamagedFrame);
 
 	return SCREEN_H + 10.0 < i->Y;
 }
@@ -34,7 +43,14 @@ void DrawEnemy(Enemy_t *i)
 {
 	// zantei
 
-	DrawCenter(D_EYE_1_00 + i->Frame / 6 % 2 | DTP, d2i(i->X), d2i(i->Y));
+	if(i->DamagedFrame)
+	{
+		DrawCenter(D_EYE_1_00 + 2 + i->Frame / 3 % 2 | DTP, d2i(i->X), d2i(i->Y));
+	}
+	else
+	{
+		DrawCenter(D_EYE_1_00 + i->Frame / 6 % 2 | DTP, d2i(i->X), d2i(i->Y));
+	}
 }
 
 // <-- accessor

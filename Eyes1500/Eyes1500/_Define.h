@@ -21,3 +21,5 @@ typedef enum EnemyKind_et
 	EK_EYE_100,
 }
 EnemyKind_t;
+
+#define ENEMY_DAMAGED_FRAME_MAX 10

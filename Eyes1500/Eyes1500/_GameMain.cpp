@@ -6,6 +6,7 @@ static void DrawWall(void)
 }
 static void PauseMain(void)
 {
+	Gnd.EL->Clear();
 	FreezeInput();
 
 	for(; ; )
@@ -236,7 +237,7 @@ endBornPlayer:
 			SEStop(SE_LASER);
 		}
 
-		if(1 <= GDc.FlashFrame) // Flash
+		if(1 <= GDc.FlashFrame) // Flash(Laser_B)
 		{
 			int frm = GDc.FlashFrame++ - 1; // 0`
 
@@ -290,11 +291,129 @@ endBornPlayer:
 		}
 		GDc.EnemyList->MultiDiscard(isPointNull);
 
-		// zantei
+		// zantei “G_oŒ»
 		if(dRnd() < 0.01)
 		{
 			GDc.EnemyList->AddElement(CreateEnemy(EK_EYE_1, dRnd() * SCREEN_W, -10.0));
 		}
+
+		// Crash ‚±‚±‚©‚ç
+
+		for(int enemyIndex = 0; enemyIndex < GDc.EnemyList->GetCount(); enemyIndex++)
+		{
+			Enemy_t *enemy = GDc.EnemyList->GetElement(enemyIndex);
+			int enemyDamaged = 0;
+
+			// Crash -- Shot / “G
+
+			for(int index = 0; index < GDc.PlayerTamaList->GetCount(); index++)
+			{
+				PlayerTama_t *plTama = GDc.PlayerTamaList->GetElement(index);
+
+				if(IsCrashed_Circle_Point(plTama->X, plTama->Y, 15.0, enemy->X, enemy->Y)) // “–‚è”¼Œazantei
+				{
+					enemy->HP -= 10;
+					enemyDamaged = 1;
+
+					ReleasePlayerTama(plTama);
+					GDc.PlayerTamaList->FastDesertElement(index);
+					index--;
+				}
+			}
+
+			// Crash -- Missile / “G
+
+			for(int index = 0; index < GDc.PlayerMissileList->GetCount(); index++)
+			{
+				PlayerMissile_t *plMissile = GDc.PlayerMissileList->GetElement(index);
+
+				if(IsCrashed_Circle_Point(plMissile->X, plMissile->Y, 15.0, enemy->X, enemy->Y)) // “–‚è”¼Œazantei
+				{
+					enemy->HP -= 50;
+					enemyDamaged = 1;
+
+					ReleasePlayerMissile(plMissile);
+					GDc.PlayerMissileList->FastDesertElement(index);
+					index--;
+				}
+			}
+
+			// Crash -- Laser / “G
+
+			if(1 <= GDc.LaserFrame)
+			{
+				double l = GDc.Player.X - 1.0;
+				double r = GDc.Player.X + 1.0;
+				double t = 0.0; // -1000.0;
+				double b = GDc.Player.Y - 16.0;
+
+				if(IsCrashed_Circle_Rect(enemy->X, enemy->Y, 15.0, l, t, r, b)) // “–‚è”¼Œazantei
+				{
+					enemy->HP -= 3 + GDc.LaserFrame % 3 / 2;
+					enemyDamaged = 1;
+				}
+			}
+
+			// Crash -- Flash(Laser_B) / “G
+
+			if(1 <= GDc.FlashFrame)
+			{
+				// noop
+			}
+
+			// Crash -- ©‹@ / “G
+
+			if(IsCrashed_Circle_Point(GDc.Player.X, GDc.Player.Y, 15.0 + 15.0, enemy->X, enemy->Y)) // “–‚è”¼Œazantei
+			{
+				double eToPlX;
+				double eToPlY;
+
+				MakeXYSpeed(enemy->X, enemy->Y, GDc.Player.X, GDc.Player.Y, 15.0 + 15.0, eToPlX, eToPlY); // “–‚è”¼Œazantei
+
+				GDc.Player.X = enemy->X + eToPlX;
+				GDc.Player.Y = enemy->Y + eToPlY;
+			}
+
+			// ---- ƒ‹[ƒv“à Crash ‚±‚±‚Ü‚Å ----
+
+			// EnemyEachFrame ???
+
+			if(enemyDamaged && enemy->DamagedFrame == 0)
+			{
+				// zantei
+
+				enemy->Y -= 16.0;
+				enemy->DamagedFrame = ENEMY_DAMAGED_FRAME_MAX;
+			}
+
+			if(enemy->HP <= 0) // “G_€–S
+			{
+				CEE.ModPicId = 2;
+				CEE.PicIdFrmPerInc = 6;
+
+				AddCommonEffect(
+					Gnd.EL,
+					1,
+					D_EYE_1_00 + 4 | DTP, // ‰æ‘œzantei
+					enemy->X,
+					enemy->Y,
+					0.0, 1.0, 1.0,
+					0.0, 0.0, 0.0, 0.0, -0.02
+					);
+
+				CEE_Reset();
+
+				ReleaseEnemy(enemy);
+				GDc.EnemyList->FastDesertElement(enemyIndex);
+				enemyIndex--;
+			}
+		}
+
+		// Crash -- ©‹@ / “G’e
+
+		// todo
+
+		// Crash ‚±‚±‚Ü‚Å
 
 		// ššš ‚±‚±‚©‚ç•`‰æ ššš
 
