@@ -233,8 +233,28 @@ endLoop:
 }
 static void ResolutionMenu(void)
 {
+#if 0 // old
 	int monitor_w = GetSystemMetrics(SM_CXSCREEN);
 	int monitor_h = GetSystemMetrics(SM_CYSCREEN);
+#else
+	int monitor_w;
+	int monitor_h;
+	int monitor_l;
+	int monitor_t;
+
+	{
+		int dummy;
+
+		GetDefaultState(&monitor_w, &monitor_h, &dummy, NULL, &monitor_l, &monitor_t);
+	}
+
+	LOG("monitor_wh(lt): %d, %d, (%d, %d)\n", monitor_w, monitor_h, monitor_l, monitor_t);
+
+	errorCase(!m_isRange(monitor_w, 1, IMAX));
+	errorCase(!m_isRange(monitor_h, 1, IMAX));
+	errorCase(!m_isRange(monitor_l, -IMAX, IMAX));
+	errorCase(!m_isRange(monitor_t, -IMAX, IMAX));
+#endif
 
 	const int FRAME_X = 216;
 	const int FRAME_YS[] =
@@ -261,10 +281,14 @@ static void ResolutionMenu(void)
 			{
 			case 0:
 				if(Gnd.RealScreen_W == monitor_w && Gnd.RealScreen_H == monitor_h)
+				{
 					SetScreenSize(480, 640);
+				}
 				else
+				{
 					SetScreenSize(monitor_w, monitor_h);
-
+					SetScreenPosition(monitor_l, monitor_t);
+				}
 				break;
 
 			case 1: SetScreenSize(480, 640); break;

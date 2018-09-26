@@ -7,3 +7,4 @@ int GetMouseDispMode(void);
 void SetMouseDispMode(int mode);
 void ApplyScreenSize(void);
 void SetScreenSize(int w, int h);
+void SetScreenPosition(int l, int t);

@@ -107,6 +107,31 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		PE_Reset();
 	}
 
+	// 暫定？フルスクリーン向け、ウィンドウ位置調整
+	{
+		int monitor_w;
+		int monitor_h;
+		int monitor_l;
+		int monitor_t;
+		int dummy;
+
+		GetDefaultState(&monitor_w, &monitor_h, &dummy, NULL, &monitor_l, &monitor_t);
+
+		errorCase(!m_isRange(monitor_w, 1, IMAX));
+		errorCase(!m_isRange(monitor_h, 1, IMAX));
+		errorCase(!m_isRange(monitor_l, -IMAX, IMAX));
+		errorCase(!m_isRange(monitor_t, -IMAX, IMAX));
+
+		LOGPOS();
+		if(Gnd.RealScreen_W == monitor_w && Gnd.RealScreen_H == monitor_h)
+		{
+			LOGPOS();
+			SetScreenPosition(monitor_l, monitor_t);
+			LOGPOS();
+		}
+		LOGPOS();
+	}
+
 	// app >
 
 //	AddFontFile(ETC_FONT_RIIT, "RiiT_F.otf");
@@ -191,4 +216,20 @@ void SetScreenSize(int w, int h)
 
 		ApplyScreenSize();
 	}
+}
+void SetScreenPosition(int l, int t)
+{
+	SetWindowPosition(l, t);
+
+	POINT p;
+
+	p.x = 0;
+	p.y = 0;
+
+	ClientToScreen(GetMainWindowHandle(), &p);
+
+	int pToTrgX = l - (int)p.x;
+	int pToTrgY = t - (int)p.y;
+
+	SetWindowPosition(l + pToTrgX, t + pToTrgY);
 }
