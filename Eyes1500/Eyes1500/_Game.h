@@ -16,6 +16,9 @@ typedef struct GDc_st
 		double RealX;
 		double RealY;
 		int HiSpeed;
+		int HP;
+		int DamagedFrame; // 0 == –³Œø, 1`
+		int DeadFrame;    // 0 == –³Œø, 1`
 	}
 	Player;
 
@@ -25,6 +28,7 @@ typedef struct GDc_st
 	autoList<PlayerTama_t *> *PlayerTamaList;
 	autoList<PlayerMissile_t *> *PlayerMissileList;
 	autoList<Enemy_t *> *EnemyList;
+	autoList<EnemyTama_t *> *EnemyTamaList;
 }
 GDc_t;
 

@@ -132,6 +132,7 @@
     <ClCompile Include="Tools.cpp" />
     <ClCompile Include="_E15TitleMenu.cpp" />
     <ClCompile Include="_Enemy.cpp" />
+    <ClCompile Include="_EnemyTama.cpp" />
     <ClCompile Include="_Game.cpp" />
     <ClCompile Include="_GameMain.cpp" />
     <ClCompile Include="_Main.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="_Define.h" />
     <ClInclude Include="_E15TitleMenu.h" />
     <ClInclude Include="_Enemy.h" />
+    <ClInclude Include="_EnemyTama.h" />
     <ClInclude Include="_Game.h" />
     <ClInclude Include="_GameMain.h" />
     <ClInclude Include="_Main.h" />

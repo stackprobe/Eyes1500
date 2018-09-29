@@ -40,6 +40,7 @@ static void RebornPlayer(void)
 	GDc.Player.Y = SCREEN_H - 50;
 	GDc.Player.RealX = SCREEN_W / 2;
 	GDc.Player.RealY = SCREEN_H;
+	GDc.Player.HP = PLAYER_HP_MAX;
 }
 void GameMain(void)
 {
@@ -113,6 +114,7 @@ void GameMain(void)
 	MusicPlay(MUS_BATTLE_1);
 	FreezeInput();
 
+restart:
 	RebornPlayer();
 
 	for(; ; )
@@ -140,6 +142,46 @@ void GameMain(void)
 		}
 endBornPlayer:
 
+		if(GDc.Player.DamagedFrame)
+		{
+			int frm = GDc.Player.DamagedFrame++ - 1; // 0Å`
+			const int FRM_MAX = 120;
+			double frmRate = (double)frm / FRM_MAX;
+			double frmRevRate = 1.0 - frmRate;
+
+			if(frm == FRM_MAX)
+			{
+				GDc.Player.DamagedFrame = 0;
+				goto endDamagedPlayer;
+			}
+			// todo ???
+		}
+endDamagedPlayer:
+
+		double playerDeadRate = 0.0;
+		double playerDeadRevRate = 0.0;
+
+		if(GDc.Player.DeadFrame)
+		{
+			int frm = GDc.Player.DeadFrame++ - 1; // 0Å`
+			const int FRM_MAX = 120;
+			double frmRate = (double)frm / FRM_MAX;
+			double frmRevRate = 1.0 - frmRate;
+
+			playerDeadRate = frmRate;
+			playerDeadRevRate = frmRevRate;
+
+			if(frm == FRM_MAX)
+			{
+				GDc.Player.DeadFrame = 0;
+				goto restart;
+			}
+			// todo ???
+		}
+
+		int uncontrollable = GDc.Player.DamagedFrame || GDc.Player.DeadFrame;
+
+		if(!uncontrollable)
 		{
 			double speed = 2.0;
 
@@ -184,7 +226,7 @@ endBornPlayer:
 				index--;
 			}
 		}
-		if(GetInput(INP_B) == 1) // Shot
+		if(!uncontrollable && GetInput(INP_B) == 1) // Shot
 		{
 			GDc.PlayerTamaList->AddElement(CreatePlayerTama(GDc.Player.X, GDc.Player.Y - 16.0));
 			SEPlay(SE_SHOT);
@@ -207,13 +249,13 @@ endBornPlayer:
 				index--;
 			}
 		}
-		if(GetInput(INP_E) == 1) // Missile
+		if(!uncontrollable && GetInput(INP_E) == 1) // Missile
 		{
 			GDc.PlayerMissileList->AddElement(CreatePlayerMissile(GDc.Player.X, GDc.Player.Y - 16.0));
 			SEPlay(SE_MISSILE);
 		}
 
-		if(GetInput(INP_C)) // Laser
+		if(!uncontrollable && 1 <= GetInput(INP_C)) // Laser
 		{
 			m_maxim(GDc.LaserFrame, 0);
 			GDc.LaserFrame++;
@@ -248,7 +290,7 @@ endBornPlayer:
 		}
 		else
 		{
-			if(GetInput(INP_D) == 1) // è∆éÀäJén
+			if(!uncontrollable && GetInput(INP_D) == 1) // è∆éÀäJén
 			{
 				GDc.FlashFrame = 1;
 
@@ -272,7 +314,7 @@ endBornPlayer:
 			}
 		}
 
-		if(GetInput(INP_A) == 1) // çÇë¨à⁄ìÆ
+		if(!uncontrollable && GetInput(INP_A) == 1) // çÇë¨à⁄ìÆ
 		{
 			GDc.Player.HiSpeed = m_10(GDc.Player.HiSpeed);
 		}
@@ -297,6 +339,20 @@ endBornPlayer:
 			GDc.EnemyList->AddElement(CreateEnemy(EK_EYE_1, dRnd() * SCREEN_W, -10.0));
 		}
 
+		// ìGíe_èàóù
+
+		for(int index = 0; index < GDc.EnemyTamaList->GetCount(); index++)
+		{
+			EnemyTama_t *i = GDc.EnemyTamaList->GetElement(index);
+
+			if(EnemyTamaEachFrame(i)) // ? è¡ñ≈
+			{
+				ReleaseEnemyTama(i);
+				GDc.EnemyTamaList->SetElement(index, NULL);
+			}
+		}
+		GDc.EnemyTamaList->MultiDiscard(isPointNull);
+
 		// Crash Ç±Ç±Ç©ÇÁ
 
 		for(int enemyIndex = 0; enemyIndex < GDc.EnemyList->GetCount(); enemyIndex++)
@@ -312,6 +368,8 @@ endBornPlayer:
 
 				if(IsCrashed_Circle_Point(plTama->X, plTama->Y, 15.0, enemy->X, enemy->Y)) // ìñÇËîºåazantei
 				{
+					SEPlay(SE_DAMAGE_E);
+
 					enemy->HP -= 10;
 					enemyDamaged = 1;
 
@@ -329,6 +387,8 @@ endBornPlayer:
 
 				if(IsCrashed_Circle_Point(plMissile->X, plMissile->Y, 15.0, enemy->X, enemy->Y)) // ìñÇËîºåazantei
 				{
+					SEPlay(SE_BOMB);
+
 					enemy->HP -= 50;
 					enemyDamaged = 1;
 
@@ -388,6 +448,8 @@ endBornPlayer:
 
 			if(enemy->HP <= 0) // ìG_éÄñS
 			{
+				SEPlay(SE_EXPLOSION_E);
+
 				CEE.ModPicId = 2;
 				CEE.PicIdFrmPerInc = 6;
 
@@ -411,7 +473,32 @@ endBornPlayer:
 
 		// Crash -- é©ã@ / ìGíe
 
-		// todo
+		if(GDc.Player.DamagedFrame || GDc.Player.DeadFrame)
+			goto endCrash_Player_EnemyTama;
+
+		for(int index = 0; index < GDc.EnemyTamaList->GetCount(); index++)
+		{
+			EnemyTama_t *i = GDc.EnemyTamaList->GetElement(index);
+
+			if(IsCrashed_Circle_Point(GDc.Player.X, GDc.Player.Y, 10.0, i->X, i->Y)) // ìñÇËîºåazantei // é©ã@_îÌíe
+			{
+				GDc.Player.HP--;
+
+				if(0 < GDc.Player.HP)
+				{
+					SEPlay(SE_DAMAGE);
+
+					GDc.Player.DamagedFrame = 1;
+				}
+				else
+				{
+					SEPlay(SE_DAMAGE); // Ç†Ç¡ÇƒÇÈÅH
+
+					GDc.Player.DeadFrame = 1;
+				}
+			}
+		}
+endCrash_Player_EnemyTama:
 
 		// Crash Ç±Ç±Ç‹Ç≈
 
@@ -419,7 +506,7 @@ endBornPlayer:
 
 		DrawWall();
 
-		// é©íe
+		// é©íe_ï`âÊ
 
 		for(int index = 0; index < GDc.PlayerTamaList->GetCount(); index++)
 		{
@@ -447,7 +534,7 @@ endBornPlayer:
 			DrawRect(D_WEAPON_LASER_00 + ProcFrame / 6 % 2 | DTP, iX - 1, iY - 1200, 2, 600);
 		}
 
-		// Player
+		// Player_ï`âÊ
 		{
 			double x = GDc.Player.RealX;
 			double y = GDc.Player.RealY;
@@ -455,18 +542,38 @@ endBornPlayer:
 			int iX = d2i(x);
 			int iY = d2i(y);
 
-			if(GDc.Player.BornFrame)
-				DPE_SetAlpha(0.5);
+			if(GDc.Player.DeadFrame)
+			{
+				DPE_SetAlpha(playerDeadRevRate);
+				DrawCenter((D_CHARA_PLAYER_00 + 4 + (ProcFrame / 6) % 2) | DTP, iX, iY);
+				DPE_Reset();
+			}
+			else if(GDc.Player.DamagedFrame)
+			{
+				DrawCenter((D_CHARA_PLAYER_00 + 2 + (ProcFrame / 6) % 2) | DTP, iX, iY);
+			}
+			else
+			{
+				if(GDc.Player.BornFrame)
+					DPE_SetAlpha(0.5);
 
-			DrawCenter((D_CHARA_PLAYER_00 + (ProcFrame / 6) % 2) | DTP, iX, iY);
-			DPE_Reset();
+				DrawCenter((D_CHARA_PLAYER_00 + (ProcFrame / 6) % 2) | DTP, iX, iY);
+				DPE_Reset();
+			}
 		}
 
-		// ìG
+		// ìG_ï`âÊ
 
 		for(int index = 0; index < GDc.EnemyList->GetCount(); index++)
 		{
 			DrawEnemy(GDc.EnemyList->GetElement(index));
+		}
+
+		// ìGíe_ï`âÊ
+
+		for(int index = 0; index < GDc.EnemyTamaList->GetCount(); index++)
+		{
+			DrawEnemyTama(GDc.EnemyTamaList->GetElement(index));
 		}
 
 		// ÅöÅöÅö EachFrame ÅöÅöÅö

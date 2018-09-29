@@ -51,6 +51,7 @@ static void CreateDerList(void)
 	AddAnimation(P_EYE_20, 0, 0, 64, 96, 2, 4); // D_EYE_20_00
 	AddAnimation(P_EYE_50, 0, 0, 72, 192, 2, 4); // D_EYE_50_00
 	AddAnimation(P_EYE_100, 0, 0, 144, 180, 2, 4); // D_EYE_100_00
+	AddAnimation(P_ENEMY_SHOT, 0, 0, 8, 8, 4, 1); // D_ENEMY_TAMA_00
 	
 	// < app
 

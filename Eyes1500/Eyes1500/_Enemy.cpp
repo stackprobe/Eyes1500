@@ -34,6 +34,11 @@ int EnemyEachFrame(Enemy_t *i) // ret: ? Á–Å
 		i->Y += 2.0;
 	}
 
+	if(dRnd() < 0.003)
+	{
+		Enemy_Shot(i);
+	}
+
 
 	m_countDown(i->DamagedFrame);
 

@@ -66,7 +66,7 @@ void EachFrame(void)
 	{
 #if !LOG_ENABLED
 		clsDx();
-		printfDx("ŠJ”­’†ver.");
+		printfDx("ŠJ”­’†");
 #endif
 	}
 

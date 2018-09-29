@@ -23,3 +23,4 @@ typedef enum EnemyKind_et
 EnemyKind_t;
 
 #define ENEMY_DAMAGED_FRAME_MAX 10
+#define PLAYER_HP_MAX 3
