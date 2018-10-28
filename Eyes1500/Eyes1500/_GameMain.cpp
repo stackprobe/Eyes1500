@@ -66,52 +66,13 @@ void GameMain(void)
 	}
 	sceneLeave();
 
-	FreezeInput();
-
-	for(; ; )
+	// “G_”z’u zantei
 	{
-		if(
-			GetInput(INP_PAUSE) == 1 ||
-			GetInput(INP_A) == 1 ||
-			GetInput(INP_B) == 1 ||
-			GetInput(INP_C) == 1 ||
-			GetInput(INP_D) == 1 ||
-			GetInput(INP_E) == 1 ||
-			GetInput(INP_F) == 1
-			)
-			break;
-
-		// ‚±‚±‚©‚ç•`‰æ
-
-		DrawWall();
-		DrawCenter(D_CG_MESSAGE_00 | DTP, SCREEN_W / 2, SCREEN_H / 2);
-
-		// EachFrame
-
-		EachFrame();
+		GDc.EnemyList->AddElement(CreateEnemy(EK_EYE_1, 100, 100));
+		GDc.EnemyList->AddElement(CreateEnemy(EK_EYE_1, 240, 200));
+		GDc.EnemyList->AddElement(CreateEnemy(EK_EYE_1, 380, 100));
 	}
 
-	for(int xSft = -1; xSft <= 1; xSft += 2)
-	for(int ySft = -1; ySft <= 1; ySft += 2)
-	{
-		AddCommonEffect(
-			Gnd.EL,
-			1,
-			D_CG_MESSAGE_00 | DTP,
-			SCREEN_W / 2.0,
-			SCREEN_H / 2.0,
-			0.0,
-			1.0,
-			0.5,
-			xSft * 4.0,
-			ySft * 4.0,
-			0.0,
-			0.0,
-			-0.05
-			);
-	}
-
-	MusicPlay(MUS_BATTLE_1);
 	FreezeInput();
 
 restart:
@@ -119,9 +80,50 @@ restart:
 
 	for(; ; )
 	{
-		if(GetInput(INP_PAUSE) == 1)
+		if(!GDc.BattleStarted)
 		{
-			PauseMain();
+			if(
+				GetInput(INP_PAUSE) == 1 ||
+//				GetInput(INP_A) == 1 || // ‚‘¬ˆÚ“®‚Í”½‰‚³‚¹‚È‚¢B
+				GetInput(INP_B) == 1 ||
+				GetInput(INP_C) == 1 ||
+				GetInput(INP_D) == 1 ||
+				GetInput(INP_E) == 1 ||
+				GetInput(INP_F) == 1
+				)
+			{
+				GDc.BattleStarted = 1;
+
+				for(int xSft = -1; xSft <= 1; xSft += 2)
+				for(int ySft = -1; ySft <= 1; ySft += 2)
+				{
+					AddCommonEffect(
+						Gnd.EL,
+						1,
+						D_CG_MESSAGE_00 | DTP,
+						SCREEN_W / 2.0,
+						SCREEN_H / 2.0,
+						0.0,
+						1.0,
+						0.5,
+						xSft * 4.0,
+						ySft * 4.0,
+						0.0,
+						0.0,
+						-0.05
+						);
+				}
+
+				MusicPlay(MUS_BATTLE_1);
+				FreezeInput();
+			}
+		}
+		else
+		{
+			if(GetInput(INP_PAUSE) == 1)
+			{
+				PauseMain();
+			}
 		}
 
 		double playerRealXYApproachRate = 0.0;
@@ -226,7 +228,7 @@ endDamagedPlayer:
 				index--;
 			}
 		}
-		if(!uncontrollable && GetInput(INP_B) == 1) // Shot
+		if(!uncontrollable && GDc.BattleStarted && GetInput(INP_B) == 1) // Shot
 		{
 			GDc.PlayerTamaList->AddElement(CreatePlayerTama(GDc.Player.X, GDc.Player.Y - 16.0));
 			SEPlay(SE_SHOT);
@@ -249,13 +251,13 @@ endDamagedPlayer:
 				index--;
 			}
 		}
-		if(!uncontrollable && GetInput(INP_E) == 1) // Missile
+		if(!uncontrollable && GDc.BattleStarted && GetInput(INP_E) == 1) // Missile
 		{
 			GDc.PlayerMissileList->AddElement(CreatePlayerMissile(GDc.Player.X, GDc.Player.Y - 16.0));
 			SEPlay(SE_MISSILE);
 		}
 
-		if(!uncontrollable && 1 <= GetInput(INP_C)) // Laser
+		if(!uncontrollable && GDc.BattleStarted && 1 <= GetInput(INP_C)) // Laser
 		{
 			m_maxim(GDc.LaserFrame, 0);
 			GDc.LaserFrame++;
@@ -290,7 +292,7 @@ endDamagedPlayer:
 		}
 		else
 		{
-			if(!uncontrollable && GetInput(INP_D) == 1) // ÆËŠJn
+			if(!uncontrollable && GDc.BattleStarted && GetInput(INP_D) == 1) // ÆËŠJn
 			{
 				GDc.FlashFrame = 1;
 
@@ -319,6 +321,9 @@ endDamagedPlayer:
 			GDc.Player.HiSpeed = m_10(GDc.Player.HiSpeed);
 		}
 
+		if(!GDc.BattleStarted)
+			goto startDraw;
+
 		// “G_ˆ—
 
 		for(int index = 0; index < GDc.EnemyList->GetCount(); index++) // “G_ˆÚ“®
@@ -333,11 +338,12 @@ endDamagedPlayer:
 		}
 		GDc.EnemyList->MultiDiscard(isPointNull);
 
-		// zantei “G_oŒ»
+#if 0 // “G_oŒ»
 		if(dRnd() < 0.01)
 		{
 			GDc.EnemyList->AddElement(CreateEnemy(EK_EYE_1, dRnd() * SCREEN_W, -10.0));
 		}
+#endif
 
 		// “G’e_ˆ—
 
@@ -502,9 +508,15 @@ endCrash_Player_EnemyTama:
 
 		// Crash ‚±‚±‚Ü‚Å
 
+startDraw:
 		// ššš ‚±‚±‚©‚ç•`‰æ ššš
 
 		DrawWall();
+
+		if(!GDc.BattleStarted)
+		{
+			DrawCenter(D_CG_MESSAGE_00 | DTP, SCREEN_W / 2, SCREEN_H / 2);
+		}
 
 		// ©’e_•`‰æ
 

@@ -22,6 +22,7 @@ typedef struct GDc_st
 	}
 	Player;
 
+	int BattleStarted;
 	int LaserFrame; // 0 == –³Œø, 1` == ÆË’†, -1 == ÆËI—¹’¼Œã
 	int FlashFrame; // 0 == –³Œø, 1` == ÆË’†
 

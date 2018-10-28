@@ -1,2 +1,5 @@
 Etcetera\DatStrings.txt
 Etcetera\JChar.bin
+Resource\csv\各波.csv
+Resource\csv\種類・能力.csv
+Resource\csv\弾発射座標.csv

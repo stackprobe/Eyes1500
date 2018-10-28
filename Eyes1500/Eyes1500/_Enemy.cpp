@@ -48,7 +48,15 @@ void DrawEnemy(Enemy_t *i)
 {
 	// zantei
 
-	if(i->DamagedFrame)
+	if(!GDc.BattleStarted)
+	{
+		// i->Frame == 0 ŒÅ’è ’ˆÓI
+
+		DPE_SetAlpha(0.5);
+		DrawCenter(D_EYE_1_00 + ProcFrame / 6 % 2 | DTP, d2i(i->X), d2i(i->Y));
+		DPE_Reset();
+	}
+	else if(i->DamagedFrame)
 	{
 		DrawCenter(D_EYE_1_00 + 2 + i->Frame / 3 % 2 | DTP, d2i(i->X), d2i(i->Y));
 	}
