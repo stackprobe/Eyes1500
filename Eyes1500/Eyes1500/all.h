@@ -59,3 +59,5 @@
 #include "_GameMain.h"
 #include "_TitleMenu.h"
 #include "_E15TitleMenu.h"
+#include "_EnemyInfo.h"
+#include "_StageInfo.h"
