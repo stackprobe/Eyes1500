@@ -44,6 +44,12 @@ static void RebornPlayer(void)
 }
 void GameMain(void)
 {
+LOGPOS();
+GetEnemyInfo(EK_EYE_1); // test
+LOGPOS();
+GetStageCount(); // test
+LOGPOS();
+
 	SetCurtain();
 	FreezeInput();
 

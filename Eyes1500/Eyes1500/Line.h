@@ -28,3 +28,7 @@ char *insertLine(char *line, int index, char *insPtn);
 char *insertChar(char *line, int index, int chr);
 void reverseLine(char *line);
 char *thousandComma(char *line);
+
+void tokinit(char *str, char *delims);
+char *toknext(char *str, char *delims);
+char *ne_toknext(char *str, char *delims);

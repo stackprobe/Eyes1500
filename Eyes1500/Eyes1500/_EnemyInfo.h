@@ -1,7 +1,7 @@
 typedef struct EnemyShotInfo_st
 {
-	int X;
-	int Y;
+	double X;
+	double Y;
 }
 EnemyShotInfo_t;
 
@@ -11,7 +11,7 @@ typedef struct
 	int Score;
 	double MoveSpeed;
 	double TamaSpeed;
-	autoList<EnemyShotInfo_t *> *ShotInfos;
+	autoList<EnemyShotInfo_t> *ShotInfos;
 }
 EnemyInfo_t;
 

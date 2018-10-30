@@ -6,7 +6,7 @@
 
 typedef enum EnemyKind_et
 {
-	EK_EYE_1 = 1,
+	EK_EYE_1,
 	EK_EYE_2,
 	EK_EYE_3,
 	EK_EYE_4,
@@ -19,6 +19,8 @@ typedef enum EnemyKind_et
 	EK_EYE_20,
 	EK_EYE_50,
 	EK_EYE_100,
+
+	EK_MAX, // num of EK_*
 }
 EnemyKind_t;
 
