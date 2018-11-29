@@ -5,7 +5,7 @@ void ProcMain(void)
 #if !LOG_ENABLED
 	E15TitleMenu(); // test
 	//error(); // TODO
-#elif 1 // test
+#elif 0 // test
 	GameInit();
 	GameMain();
 	GameFnlz();
