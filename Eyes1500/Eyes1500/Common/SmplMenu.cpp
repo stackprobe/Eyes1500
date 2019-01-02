@@ -244,7 +244,7 @@ void SmplWindowSizeConfig(void)
 		"1700 x 1275",
 		"1800 x 1350",
 		"フルスクリーン",
-		"フルスクリーン (縦横比を維持する)",
+		"フルスクリーン (縦横比維持)",
 		"戻る",
 	};
 
@@ -267,26 +267,18 @@ void SmplWindowSizeConfig(void)
 		case 8: SetScreenSize(1600, 1200); break;
 		case 9: SetScreenSize(1700, 1275); break;
 		case 10: SetScreenSize(1800, 1350); break;
-
-		case 11:
-			SetScreenSize(
-				GetSystemMetrics(SM_CXSCREEN),
-				GetSystemMetrics(SM_CYSCREEN)
-				);
-			break;
-
+		case 11: SetScreenSize(Monitor_W, Monitor_H); break;
 		case 12:
 			{
-				int w = GetSystemMetrics(SM_CXSCREEN);
-				int h = GetSystemMetrics(SM_CYSCREEN);
+				int w = Monitor_W;
+				int h = (SCREEN_H * Monitor_W) / SCREEN_W;
 
-				if(w * SCREEN_H < h * SCREEN_W) // 縦長モニタ -> 横幅に合わせる
+				if(Monitor_H < h)
 				{
-					h = d2i(((double)w * SCREEN_H) / SCREEN_W);
-				}
-				else // 横長モニタ -> 縦幅に合わせる
-				{
-					w = d2i(((double)h * SCREEN_W) / SCREEN_H);
+					h = Monitor_H;
+					w = (SCREEN_W * Monitor_H) / SCREEN_H;
+
+					errorCase(Monitor_W < w);
 				}
 				SetScreenSize(w, h);
 			}
@@ -321,9 +313,9 @@ endLoop:;
 		SEPlay(rndPct(50) ? SE_PAUSE_IN : SE_PAUSE_OUT);
 	}
 
-	SmplVolumeConfig("ＢＧＭ音量", Gnd.MusicVolume, 0, 100, 1, 10, XXX_BGMVolumeChanged); 
+	SmplVolumeConfig("ＢＧＭ音量", Gnd.MusicVolume, 0, 100, 1, 10, XXX_BGMVolumeChanged);
 
-	SmplVolumeConfig("ＳＥ音量", Gnd.SEVolume, 0, 100, 1, 10, XXX_SEVolumeChanged, XXX_SEVolumePulse); 
+	SmplVolumeConfig("ＳＥ音量", Gnd.SEVolume, 0, 100, 1, 10, XXX_SEVolumeChanged, XXX_SEVolumePulse);
 */
 
 static double SVC_ValueToRate(double value, double minval, double valRange)
