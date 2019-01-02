@@ -1471,6 +1471,8 @@ FUNC_STATIC void AES128_Decrypt_rcbc(void *block, int size)
 	uchar rawKey[16];
 	u32 ctx[44];
 
+	// app >
+
 #if 1
 
 	// $_git:secretBegin
@@ -1560,6 +1562,8 @@ FUNC_STATIC void AES128_Decrypt_rcbc(void *block, int size)
 #undef COMPLEX
 
 #endif
+
+	// < app
 
 	for(int index = 0; index < 2; index++)
 	for(int n = 0; n < 8; n++)

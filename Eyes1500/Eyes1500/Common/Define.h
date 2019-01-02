@@ -41,8 +41,13 @@ typedef unsigned __int64 uint64;
 #define PI     3.141592653589793
 #define ROOT_2 1.414213562373095
 
+// app >
+
 #define SCREEN_W 480
 #define SCREEN_H 640
+
+// < app
+
 #define SCREEN_CENTER_X (SCREEN_W / 2)
 #define SCREEN_CENTER_Y (SCREEN_H / 2)
 #define SCREEN_W_MAX (SCREEN_W * 5)

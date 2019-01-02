@@ -39,6 +39,8 @@ void EachFrame(void)
 	{
 		ChangeDrawScreen(DX_SCREEN_BACK);
 
+		// app >
+
 		SetDrawBright(0, 0, 0);
 		DrawExtendGraph(0, 0, Gnd.RealScreen_W, Gnd.RealScreen_H, Pic(P_WHITEBOX), 0);
 		SetDrawBright(255, 255, 255);
@@ -58,9 +60,10 @@ void EachFrame(void)
 
 		DrawExtendGraph(l, t, l + w, t + h, GetHandle(Gnd.MainScreen), 0);
 
-		// orig
-		//errorCase(DrawExtendGraph(0, 0, Gnd.RealScreen_W, Gnd.RealScreen_H, GetHandle(Gnd.MainScreen), 0)); // ? Ž¸”s
+		// < app
 	}
+
+	// app >
 
 	// zantei zantei zantei zantei zantei
 	{
@@ -69,6 +72,8 @@ void EachFrame(void)
 		printfDx("ŠJ”­’†");
 #endif
 	}
+
+	// < app
 
 	// DxLib >
 

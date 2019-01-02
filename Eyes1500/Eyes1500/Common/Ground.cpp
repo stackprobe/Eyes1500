@@ -75,7 +75,7 @@ void Gnd_FNLZ(void)
 // ---- SaveData ----
 
 #define SAVE_FILE "SaveData.dat"
-#define SAVEDATA_SIGNATURE "Eyes1500_SaveData " __DATE__ " " __TIME__
+#define SAVEDATA_SIGNATURE "__Codevil__SaveData " __DATE__ " " __TIME__
 
 static autoList<uchar> *SaveData;
 static int SDIndex;
@@ -323,7 +323,11 @@ void ImportSaveData(void)
 
 	delete SaveData;
 
+	// app >
+
 //	AntiPadBtnIdConflict();
+
+	// < app
 }
 void ExportSaveData(void)
 {

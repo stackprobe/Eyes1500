@@ -4,8 +4,8 @@ enum
 
 	// app >
 
-//	MUS_MAIN,
-	MUS_BATTLE_1,
+	MUS_MAIN,
+	MUS_BATTLE_1 = MUS_MAIN, // 同じ曲を使う。
 	MUS_BATTLE_2,
 	MUS_END,
 
@@ -13,8 +13,6 @@ enum
 
 	MUS_MAX, // num of member
 };
-
-#define MUS_MAIN MUS_BATTLE_1 // 同じ曲を使う。
 
 typedef struct MusicInfo_st
 {

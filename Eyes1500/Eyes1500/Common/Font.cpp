@@ -58,7 +58,7 @@ FontHandle_t *CreateFontHandle(char *fontName, int fontSize, int fontThick, int 
 	// antiAliasing
 	errorCase(!m_isRange(edgeSize, 0, IMAX));
 	// italicFlag
-	
+
 	int h = CreateFontToHandle(
 		fontName,
 		fontSize,

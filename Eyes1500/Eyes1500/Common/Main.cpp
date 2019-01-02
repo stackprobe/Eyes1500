@@ -9,10 +9,22 @@ static char *GetVersionString(void)
 int ProcMtxHdl;
 int DxLibInited;
 
+int Monitor_L;
+int Monitor_T;
+int Monitor_W;
+int Monitor_H;
+
 static void ReleaseProcMtxHdl(void)
 {
 	mutexRelease(ProcMtxHdl);
 	handleClose(ProcMtxHdl);
+}
+static void PostSetScreenSize(int w, int h)
+{
+	if(Monitor_W == w && Monitor_H == h)
+	{
+		SetScreenPosition(Monitor_L, Monitor_T);
+	}
 }
 void EndProc(void)
 {
@@ -107,6 +119,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		PE_Reset();
 	}
 
+#if 1
+	GetDefaultState(&Monitor_W, &Monitor_H, NULL, NULL, &Monitor_L, &Monitor_T);
+
+	errorCase(!m_isRange(Monitor_W, 1, IMAX));
+	errorCase(!m_isRange(Monitor_H, 1, IMAX));
+	errorCase(!m_isRange(Monitor_L, -IMAX, IMAX));
+	errorCase(!m_isRange(Monitor_T, -IMAX, IMAX));
+
+	PostSetScreenSize(Gnd.RealScreen_W, Gnd.RealScreen_H);
+#else // del
 	// 暫定？フルスクリーン向け、ウィンドウ位置調整
 	{
 		int monitor_w;
@@ -131,6 +153,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		}
 		LOGPOS();
 	}
+#endif
 
 	// app >
 
@@ -215,6 +238,8 @@ void SetScreenSize(int w, int h)
 		Gnd.RealScreen_H = h;
 
 		ApplyScreenSize();
+
+		PostSetScreenSize(w, h);
 	}
 }
 void SetScreenPosition(int l, int t)
