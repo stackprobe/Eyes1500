@@ -54,6 +54,9 @@
 
 #include "cryptlib.h"
 
+//
+// copied the source file by CopyLib.exe
+//
 const char SHA512_version[]="SHA-512" OPENSSL_VERSION_PTEXT;
 */
 
@@ -64,10 +67,9 @@ const char SHA512_version[]="SHA-512" OPENSSL_VERSION_PTEXT;
 #define SHA512_BLOCK_CAN_MANAGE_UNALIGNED_DATA
 #endif
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA384_Init (SHA512_CTX *c)
 	{
 #if defined(SHA512_ASM) && (defined(__arm__) || defined(__arm))
@@ -97,10 +99,9 @@ int SHA384_Init (SHA512_CTX *c)
         return 1;
 	}
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA512_Init (SHA512_CTX *c)
 	{
 #if defined(SHA512_ASM) && (defined(__arm__) || defined(__arm))
@@ -131,22 +132,19 @@ int SHA512_Init (SHA512_CTX *c)
 	}
 
 #ifndef SHA512_ASM
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static
 #endif
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void sha512_block_data_order (SHA512_CTX *ctx, const void *in, size_t num);
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA512_Final (unsigned char *md, SHA512_CTX *c)
 	{
 	unsigned char *p=(unsigned char *)c->u.p;
@@ -243,17 +241,15 @@ int SHA512_Final (unsigned char *md, SHA512_CTX *c)
 	return 1;
 	}
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA384_Final (unsigned char *md,SHA512_CTX *c)
 {   return SHA512_Final (md,c);   }
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA512_Update (SHA512_CTX *c, const void *_data, size_t len)
 	{
 	SHA_LONG64	l;
@@ -305,26 +301,23 @@ int SHA512_Update (SHA512_CTX *c, const void *_data, size_t len)
 	return 1;
 	}
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA384_Update (SHA512_CTX *c, const void *data, size_t len)
 {   return SHA512_Update (c,data,len);   }
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void SHA512_Transform (SHA512_CTX *c, const unsigned char *data)
 {   sha512_block_data_order (c,data,1);  }
 
 #define OPENSSL_cleanse(c, s) 1 // noop
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 unsigned char *SHA384(const unsigned char *d, size_t n, unsigned char *md)
 	{
 	SHA512_CTX c;
@@ -338,10 +331,9 @@ unsigned char *SHA384(const unsigned char *d, size_t n, unsigned char *md)
 	return(md);
 	}
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 unsigned char *SHA512(const unsigned char *d, size_t n, unsigned char *md)
 	{
 	SHA512_CTX c;
@@ -356,10 +348,9 @@ unsigned char *SHA512(const unsigned char *d, size_t n, unsigned char *md)
 	}
 
 #ifndef SHA512_ASM
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static const SHA_LONG64 K512[80] = {
         SHA_U64(0x428a2f98d728ae22),SHA_U64(0x7137449123ef65cd),
         SHA_U64(0xb5c0fbcfec4d3b2f),SHA_U64(0xe9b5dba58189dbbc),
@@ -496,10 +487,9 @@ static const SHA_LONG64 K512[80] = {
  * This code should give better results on 32-bit CPU with less than
  * ~24 registers, both size and performance wise...
  */
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static void sha512_block_data_order (SHA512_CTX *ctx, const void *in, size_t num)
 	{
 	const SHA_LONG64 *W=(const SHA_LONG64 *)in;
@@ -555,10 +545,9 @@ static void sha512_block_data_order (SHA512_CTX *ctx, const void *in, size_t num
 
 #elif defined(OPENSSL_SMALL_FOOTPRINT)
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static void sha512_block_data_order (SHA512_CTX *ctx, const void *in, size_t num)
 	{
 	const SHA_LONG64 *W=in;
@@ -616,10 +605,9 @@ static void sha512_block_data_order (SHA512_CTX *ctx, const void *in, size_t num
 	T1 = X[(j)&0x0f] += s0 + s1 + X[(j+9)&0x0f];	\
 	ROUND_00_15(i+j,a,b,c,d,e,f,g,h);		} while (0)
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static void sha512_block_data_order (SHA512_CTX *ctx, const void *in, size_t num)
 	{
 	const SHA_LONG64 *W=in;
@@ -702,10 +690,9 @@ static void sha512_block_data_order (SHA512_CTX *ctx, const void *in, size_t num
 #else /* !OPENSSL_NO_SHA512 */
 
 #if defined(PEDANTIC) || defined(__DECC) || defined(OPENSSL_SYS_MACOSX)
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static void *dummy=&dummy;
 #endif
 
@@ -713,10 +700,9 @@ static void *dummy=&dummy;
 
 // <-- original code
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 autoList<uchar> *sha512_block(uchar *block, int size)
 {
 	uchar *hash = (uchar *)memAlloc(64);
@@ -728,10 +714,9 @@ autoList<uchar> *sha512_block(uchar *block, int size)
 
 	return new autoList<uchar>(hash, 64);
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 autoList<uchar> *sha512_block(autoList<uchar> *block)
 {
 	return sha512_block(block->ElementAt(0), block->GetCount());
@@ -749,10 +734,9 @@ autoList<uchar> *sha512_block(autoList<uchar> *block)
 		...
 		sha512(b[0] ... b[n + 64 * (exnum - 1)])[0] ... [63]
 */
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void sha512_expand(autoList<uchar> *block, int exnum) // exnum: 0- (0 as noop)
 {
 	uchar *hash = (uchar *)memAlloc(64);
@@ -778,10 +762,9 @@ void sha512_expand(autoList<uchar> *block, int exnum) // exnum: 0- (0 as noop)
 	}
 	memFree(hash);
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 autoList<uchar> *sha512_expand(char *line, int exnum)
 {
 	autoList<uchar> *block = new autoList<uchar>(strlen(line));
@@ -793,10 +776,9 @@ autoList<uchar> *sha512_expand(char *line, int exnum)
 	sha512_expand(block, exnum);
 	return block;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 autoList<uchar> *sha512_expand(int value, int exnum)
 {
 	autoList<uchar> *block = new autoList<uchar>(4);

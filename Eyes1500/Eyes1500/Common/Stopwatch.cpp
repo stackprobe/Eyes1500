@@ -16,10 +16,9 @@
 #define TIMETABLE_MAX 5
 #define LAPTIME_MAX 10000
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 typedef struct LapTime_st
 {
 	__int64 LapTime;
@@ -27,32 +26,27 @@ typedef struct LapTime_st
 	int LineNo;
 	char *Function;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 LapTime_t;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static LapTime_t TimeTable[TIMETABLE_MAX][LAPTIME_MAX];
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static int LapIndex[TIMETABLE_MAX];
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static int TimeIndex = -1;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void SW_Start2(void)
 {
 	errorCase(TIMETABLE_MAX - 1 <= TimeIndex);
@@ -61,10 +55,9 @@ void SW_Start2(void)
 	TimeTable[TimeIndex][0].LapTime = GetPerformanceCounter();
 	LapIndex[TimeIndex] = 0;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void SW_Lap2(char *source, int lineNo, char *function)
 {
 	errorCase(TimeIndex < 0);
@@ -82,10 +75,9 @@ void SW_Lap2(char *source, int lineNo, char *function)
 	LapIndex[TimeIndex]++;
 	TimeTable[TimeIndex][LapIndex[TimeIndex]].LapTime = currTime;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void SW_End2(char *source, int lineNo, char *function)
 {
 	errorCase(TimeIndex < 0);

@@ -1,20 +1,17 @@
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 class bitList
 {
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 private:
 	autoList<uint> *List;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 public:
 	bitList()
 	{

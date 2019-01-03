@@ -1,18 +1,15 @@
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 template <class Element_t>
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 class autoList
 {
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 private:
 	int Count;
 	int ListSize;
@@ -25,10 +22,9 @@ private:
 		this->List = list;
 	}
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 public:
 	autoList()
 	{
@@ -386,15 +382,13 @@ public:
 	}
 };
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 template <class Element_t>
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void releaseList(autoList<Element_t> *list, void (*func)(Element_t e))
 {
 	errorCase(!func);

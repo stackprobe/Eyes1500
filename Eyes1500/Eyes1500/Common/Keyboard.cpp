@@ -1,15 +1,13 @@
 #include "all.h"
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static int KeyStatus[KEY_MAX];
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void KeyEachFrame(void)
 {
 	if(WindowIsActive)
@@ -31,10 +29,9 @@ void KeyEachFrame(void)
 		}
 	}
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int GetKeyInput(int keyId)
 {
 	KEY_INPUT_BACK; // keyId, 他のキーは F12 で飛んでっって確認してね。
@@ -43,10 +40,9 @@ int GetKeyInput(int keyId)
 
 	return FreezeInputFrame ? 0 : KeyStatus[keyId];
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int GetKeyPound(int keyId)
 {
 	return isPound(GetKeyInput(keyId));

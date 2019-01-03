@@ -1,21 +1,18 @@
 #include "all.h"
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int MouseRot;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static int MouseStatus[MOUBTN_MAX];
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void MouseEachFrame(void)
 {
 	int status;
@@ -36,40 +33,35 @@ void MouseEachFrame(void)
 	updateInput(MouseStatus[MOUBTN_M], status & MOUSE_INPUT_MIDDLE);
 	updateInput(MouseStatus[MOUBTN_R], status & MOUSE_INPUT_RIGHT);
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int GetMouInput(int mouBtnId)
 {
 	errorCase(mouBtnId < 0 || MOUBTN_MAX <= mouBtnId);
 
 	return FreezeInputFrame ? 0 : MouseStatus[mouBtnId];
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int GetMouPound(int mouBtnId)
 {
 	return isPound(GetMouInput(mouBtnId));
 }
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int MouseX = SCREEN_CENTER_X;
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int MouseY = SCREEN_CENTER_Y;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void UpdateMousePos(void)
 {
 	errorCase(GetMousePoint(&MouseX, &MouseY)); // ? Ž¸”s
@@ -79,10 +71,9 @@ void UpdateMousePos(void)
 	MouseY *= SCREEN_H;
 	MouseY /= Gnd.RealScreen_H;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void ApplyMousePos(void)
 {
 	int mx = MouseX;
@@ -96,21 +87,18 @@ void ApplyMousePos(void)
 	errorCase(SetMousePoint(mx, my)); // ? Ž¸”s
 }
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int MouseMoveX;
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int MouseMoveY;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void UpdateMouseMove(void)
 {
 	static int lastFrame = -IMAX;

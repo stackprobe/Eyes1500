@@ -1,9 +1,8 @@
 #include "all.h"
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 typedef struct CommonEffect_st
 {
 	/*
@@ -30,27 +29,23 @@ typedef struct CommonEffect_st
 	double AAdd2;
 	int OutOfScreenFrame;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 CommonEffect_t;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 double CameraX; // px
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 double CameraY; // px
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static int CommonEffectFunc(CommonEffect_t *i)
 {
 	int picId = i->PicId;
@@ -133,24 +128,21 @@ static int CommonEffectFunc(CommonEffect_t *i)
 	}
 	return 0.0 < i->A;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static void CommonEffectReleaseParam(CommonEffect_t *i)
 {
 	memFree(i);
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 CommonEffectExtra_t CEE;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void AddCommonEffect(
 	taskList *tl,
 	int topMode,
@@ -189,10 +181,9 @@ void AddCommonEffect(
 	AddTask(tl, topMode, CommonEffectFunc, i, CommonEffectReleaseParam);
 }
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void CEE_SetBright(double r, double g, double b)
 {
 	CEE.BrightOn = 1;
@@ -200,19 +191,17 @@ void CEE_SetBright(double r, double g, double b)
 	CEE.Bright_G = g;
 	CEE.Bright_B = b;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void CEE_SetGraphicSize(i2D_t size)
 {
 	CEE.GrphHdlFlag = 1;
 	CEE.GrphSize = size;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void CEE_Reset(void)
 {
 	memset(&CEE, 0x00, sizeof(CommonEffectExtra_t));
@@ -224,10 +213,9 @@ void CEE_Reset(void)
 
 // ---- tools ----
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int IsInCamera(double x, double y, double margin)
 {
 	errorCase(margin < 0.0);

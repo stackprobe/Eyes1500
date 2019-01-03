@@ -2,10 +2,9 @@
 
 // Pic_ >
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int Pic_FileData2SoftImage(autoList<uchar> *fileData) // fileData: unbind
 {
 	int hdl = LoadSoftImageToMem(fileData->ElementAt(0), fileData->GetCount());
@@ -33,10 +32,9 @@ int Pic_FileData2SoftImage(autoList<uchar> *fileData) // fileData: unbind
 
 	return hdl;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int Pic_SoftImage2GraphicHandle(int si_h) // si_h: bind
 {
 	int h = CreateGraphFromSoftImage(si_h);
@@ -46,10 +44,9 @@ int Pic_SoftImage2GraphicHandle(int si_h) // si_h: bind
 
 	return h;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 PicInfo_t *Pic_GraphicHandle2PicInfo(int handle) // handle: bind
 {
 	PicInfo_t *i = nb(PicInfo_t);
@@ -64,20 +61,18 @@ PicInfo_t *Pic_GraphicHandle2PicInfo(int handle) // handle: bind
 
 	return i;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void Pic_ReleasePicInfo(PicInfo_t *i)
 {
 	errorCase(DeleteGraph(i->Handle)); // ? 失敗
 	memFree(i);
 }
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void Pic_GetSoftImageSize(int si_h, int &w, int &h)
 {
 	errorCase(GetSoftImageSize(si_h, &w, &h)); // ? 失敗
@@ -85,10 +80,9 @@ void Pic_GetSoftImageSize(int si_h, int &w, int &h)
 	errorCase(w < 1 || IMAX < w);
 	errorCase(h < 1 || IMAX < h);
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void Pic_GetGraphicHandleSize(int handle, int &w, int &h)
 {
 	errorCase(GetGraphSize(handle, &w, &h)); // ? 失敗
@@ -97,31 +91,26 @@ void Pic_GetGraphicHandleSize(int handle, int &w, int &h)
 	errorCase(h < 1 || IMAX < h);
 }
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SI_R;
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SI_G;
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SI_B;
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SI_A;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void Pic_GetSIPixel(int si_h, int x, int y)
 {
 	errorCase(GetPixelSoftImage(si_h, x, y, &SI_R, &SI_G, &SI_B, &SI_A)); // ? 失敗
@@ -131,10 +120,9 @@ void Pic_GetSIPixel(int si_h, int x, int y)
 	errorCase(SI_B < 0 || 255 < SI_B);
 	errorCase(SI_A < 0 || 255 < SI_A);
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void Pic_SetSIPixel(int si_h, int x, int y)
 {
 	m_range(SI_R, 0, 255);
@@ -145,10 +133,9 @@ void Pic_SetSIPixel(int si_h, int x, int y)
 	errorCase(DrawPixelSoftImage(si_h, x, y, SI_R, SI_G, SI_B, SI_A)); // ? 失敗
 }
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int Pic_CreateSoftImage(int w, int h)
 {
 	errorCase(w < 1 || IMAX < w);
@@ -158,18 +145,16 @@ int Pic_CreateSoftImage(int w, int h)
 	errorCase(hdl == -1); // ? 失敗
 	return hdl;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void Pic_ReleaseSoftImage(int si_h)
 {
 	errorCase(DeleteSoftImage(si_h) == -1); // ? 失敗
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void Pic_ReleaseGraphicHandle(int handle)
 {
 	errorCase(DeleteGraph(handle)); // ? 失敗
@@ -177,16 +162,14 @@ void Pic_ReleaseGraphicHandle(int handle)
 
 // < Pic_
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static oneObject(autoList<resCluster<PicInfo_t *> *>, new autoList<resCluster<PicInfo_t *> *>(), GetPicResList);
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 resCluster<PicInfo_t *> *CreatePicRes(PicInfo_t *(*picLoader)(autoList<uchar> *), void (*picUnloader)(PicInfo_t *))
 {
 	resCluster<PicInfo_t *> *res = new resCluster<PicInfo_t *>("Picture.dat", "..\\..\\Picture.txt", P_MAX, 110000000, picLoader, picUnloader);
@@ -194,10 +177,9 @@ resCluster<PicInfo_t *> *CreatePicRes(PicInfo_t *(*picLoader)(autoList<uchar> *)
 	GetPicResList()->AddElement(res);
 	return res;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void UnloadAllPicResHandle(void) // スクリーンモード切り替え直前に呼ぶこと。
 {
 	for(int index = 0; index < GetPicResList()->GetCount(); index++)
@@ -206,24 +188,21 @@ void UnloadAllPicResHandle(void) // スクリーンモード切り替え直前に呼ぶこと。
 	}
 }
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static resCluster<PicInfo_t *> *CurrPicRes;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void SetPicRes(resCluster<PicInfo_t *> *resclu) // resclu: NULL == reset
 {
 	CurrPicRes = resclu;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 resCluster<PicInfo_t *> *GetPicRes(void)
 {
 	if(!CurrPicRes)
@@ -231,19 +210,17 @@ resCluster<PicInfo_t *> *GetPicRes(void)
 
 	return CurrPicRes;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void ResetPicRes(void)
 {
 	CurrPicRes = NULL;
 }
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int Pic(int picId)
 {
 	if(picId & DTP)
@@ -251,10 +228,9 @@ int Pic(int picId)
 
 	return GetPicRes()->GetHandle(picId)->Handle;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int Pic_W(int picId)
 {
 	if(picId & DTP)
@@ -262,10 +238,9 @@ int Pic_W(int picId)
 
 	return GetPicRes()->GetHandle(picId)->W;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int Pic_H(int picId)
 {
 	if(picId & DTP)

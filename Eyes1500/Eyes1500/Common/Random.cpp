@@ -51,27 +51,23 @@
 #define UPPER_MASK 0x80000000UL /* most significant w-r bits */
 #define LOWER_MASK 0x7fffffffUL /* least significant r bits */
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static unsigned long mt2[N];
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static unsigned long *mt = mt2; // mt[N]; /* the array for the state vector  */
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static int mti=N+1; /* mti==N+1 means mt[N] is not initialized */
 
 /* initializes mt[N] with a seed */
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static __inline void MT19937_init_genrand(unsigned long s)
 {
     mt[0]= s & 0xffffffffUL;
@@ -91,10 +87,9 @@ static __inline void MT19937_init_genrand(unsigned long s)
 /* init_key is the array for initializing keys */
 /* key_length is its length */
 /* slight change for C++, 2004/2/26 */
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static __inline void MT19937_init_by_array(unsigned long init_key[], int key_length)
 {
     int i, j, k;
@@ -121,10 +116,9 @@ static __inline void MT19937_init_by_array(unsigned long init_key[], int key_len
 }
 
 /* generates a random number on [0,0xffffffff]-interval */
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static __inline unsigned long MT19937_genrand_int32(void)
 {
     unsigned long y;
@@ -164,20 +158,18 @@ static __inline unsigned long MT19937_genrand_int32(void)
 
 #if 0
 /* generates a random number on [0,0x7fffffff]-interval */
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static __inline long MT19937_genrand_int31(void)
 {
     return (long)(MT19937_genrand_int32()>>1);
 }
 
 /* generates a random number on [0,1]-real-interval */
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static __inline double MT19937_genrand_real1(void)
 {
     return MT19937_genrand_int32()*(1.0/4294967295.0);
@@ -185,10 +177,9 @@ static __inline double MT19937_genrand_real1(void)
 }
 
 /* generates a random number on [0,1)-real-interval */
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static __inline double MT19937_genrand_real2(void)
 {
     return MT19937_genrand_int32()*(1.0/4294967296.0);
@@ -196,10 +187,9 @@ static __inline double MT19937_genrand_real2(void)
 }
 
 /* generates a random number on (0,1)-real-interval */
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static __inline double MT19937_genrand_real3(void)
 {
     return (((double)MT19937_genrand_int32()) + 0.5)*(1.0/4294967296.0);
@@ -207,10 +197,9 @@ static __inline double MT19937_genrand_real3(void)
 }
 
 /* generates a random number on [0,1) with 53-bit resolution*/
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static __inline double MT19937_genrand_res53(void)
 {
     unsigned long a=MT19937_genrand_int32()>>5, b=MT19937_genrand_int32()>>6;
@@ -218,10 +207,9 @@ static __inline double MT19937_genrand_res53(void)
 }
 /* These real versions are due to Isaku Wada, 2002/01/09 added */
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static __inline int MT19937_main(void)
 {
     int i;
@@ -243,10 +231,9 @@ static __inline int MT19937_main(void)
 
 // <-- original code
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void initRnd(int seed)
 {
 	autoList<uchar> *initKey = sha512_expand(seed, 39); // (SEED_SIZE + (SHA512_SIZE * 39)) / ULONG_SIZE == (4 + (64 * 39)) / 4 == 625 == N + 1
@@ -255,16 +242,14 @@ void initRnd(int seed)
 	delete initKey;
 }
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static int Back_mti;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void enterRnd(unsigned long *lmt, int lmti)
 {
 	Back_mti = mti;
@@ -272,10 +257,9 @@ void enterRnd(unsigned long *lmt, int lmti)
 	mt = lmt;
 	mti = lmti;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void leaveRnd(int *p_lmti)
 {
 	*p_lmti = mti;
@@ -284,10 +268,9 @@ void leaveRnd(int *p_lmti)
 	mti = Back_mti;
 }
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int rnd(int modulo) // ret: 0 - (modulo - 1)
 {
 	errorCase(modulo < 1 || IMAX < modulo);
@@ -314,10 +297,9 @@ int rnd(int modulo) // ret: 0 - (modulo - 1)
 
 	return r;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int bRnd(int minval, int maxval) // ret: minval - maxval
 {
 	errorCase(minval < -IMAX);
@@ -326,42 +308,37 @@ int bRnd(int minval, int maxval) // ret: minval - maxval
 
 	return rnd(maxval - minval + 1) + minval;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int sRnd(void) // ret: -1 or 1
 {
 	return rnd(2) ? -1 : 1;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 double dRnd(void) // ret: 0.0 - 1.0
 {
 	return rnd(IMAX) / (double)(IMAX - 1);
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 double eRnd(void) // ret: -1.0 - 1.0
 {
 	return dRnd() * 2.0 - 1.0;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int rndPct(int pct) // pct: 0 - 100
 {
 	return rnd(IMAX) < pct * (IMAX / 100);
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int rndPermil(int permil) // permil: 0 - 1000
 {
 	return rnd(IMAX) < permil * (IMAX / 1000);

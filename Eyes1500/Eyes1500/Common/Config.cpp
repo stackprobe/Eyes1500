@@ -9,18 +9,16 @@
 	2  == 3”Ô–Ú‚Ìƒ‚ƒjƒ^
 	...
 */
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int Conf_DisplayIndex = 1;
 
 // < Conf_*
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void ImportConfig(void)
 {
 	char *confFile = "Config.conf";
@@ -44,10 +42,9 @@ void ImportConfig(void)
 		}
 	}
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 char *neReadCfgLine(autoList<uchar> *fileData, int &rIndex)
 {
 	for(; ; )

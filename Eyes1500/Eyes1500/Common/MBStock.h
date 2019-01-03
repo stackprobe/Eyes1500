@@ -1,15 +1,13 @@
 #define CLUSTER_SIZE 0x400000
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 class MBStock
 {
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 private:
 	uchar *Cluster;
 	uchar **StockList;
@@ -43,17 +41,15 @@ private:
 		return block;
 	}
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 public:
 	MBStock(int blockSize)
 	{
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 LOG("[MBS.ctor] %d\n", blockSize);
 		errorCase(blockSize < 1);
 		errorCase(CLUSTER_SIZE < blockSize);
@@ -125,10 +121,9 @@ LOG("[MBS.ctor] %d\n", blockSize);
 		}
 		return 1;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 notGiven:
 		if(this->Next)
 			return this->Next->IsGivenBlock(v_block, tryTake);

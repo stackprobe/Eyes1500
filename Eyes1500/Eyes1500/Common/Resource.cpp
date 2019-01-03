@@ -1,15 +1,13 @@
 #include "all.h"
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int RC_ResId;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static int Res_ReadInt(FILE *fp)
 {
 	int c1 = fgetc(fp);
@@ -34,28 +32,25 @@ static int Res_ReadInt(FILE *fp)
 	errorCase(!m_isRange(value, 0, IMAX));
 	return value;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static void Res_FSeek(FILE *fp, __int64 pos)
 {
 	errorCase(_fseeki64(fp, pos, SEEK_SET) != 0); // ? Ž¸”s
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static void *Res_FRead(FILE *fp, int size)
 {
 	void *buff = memAlloc(size);
 	errorCase(fread(buff, 1, size, fp) != size); // ? Ž¸”s
 	return buff;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 autoList<uchar> *LoadFileDataFromCluster(char *clusterFile, int resId, int tweek)
 {
 	errorCase(m_isEmpty(clusterFile));

@@ -1,9 +1,8 @@
 #include "all.h"
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 typedef struct PlayInfo_st
 {
 	int Command; // "PVS"
@@ -12,16 +11,14 @@ typedef struct PlayInfo_st
 	int ResumeMode;
 	double VolumeRate;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 PlayInfo_t;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static PlayInfo_t *CreatePI(int command, MusicInfo_t *music, int once_mode, int resume_mode, double volume_rate)
 {
 	PlayInfo_t *i = nb(PlayInfo_t);
@@ -34,35 +31,30 @@ static PlayInfo_t *CreatePI(int command, MusicInfo_t *music, int once_mode, int 
 
 	return i;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static void ReleasePI(PlayInfo_t *i)
 {
 	memFree(i);
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static oneObject(autoQueue<PlayInfo_t *>, new autoQueue<PlayInfo_t *>(), GetPlayList);
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 MusicInfo_t *CurrDestMusic;
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 double CurrDestMusicVolumeRate;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static MusicInfo_t *LoadMusic(autoList<uchar> *fileData)
 {
 	MusicInfo_t *i = nb(MusicInfo_t);
@@ -89,10 +81,9 @@ static MusicInfo_t *LoadMusic(autoList<uchar> *fileData)
 	SetVolume(i->Handle, 0.0); // ! ミュートしておく。
 	return i;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static void UnloadMusic(MusicInfo_t *i)
 {
 	// reset {
@@ -105,20 +96,18 @@ static void UnloadMusic(MusicInfo_t *i)
 	UnloadSound(i->Handle);
 	memFree(i);
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static oneObject(
 	resCluster<MusicInfo_t *>,
 	new resCluster<MusicInfo_t *>("Music.dat", "..\\..\\Music.txt", MUS_MAX, 120000000, LoadMusic, UnloadMusic),
 	GetMusRes
 	);
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void MusicEachFrame(void)
 {
 	PlayInfo_t *i = GetPlayList()->Dequeue(NULL);
@@ -145,10 +134,9 @@ void MusicEachFrame(void)
 		memFree(i);
 	}
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void MusicPlay(int musId, int once_mode, int resume_mode, double volumeRate, int fadeFrameMax)
 {
 	errorCase(musId < 0 || MUS_MAX <= musId);
@@ -173,10 +161,9 @@ void MusicPlay(int musId, int once_mode, int resume_mode, double volumeRate, int
 	CurrDestMusic = i;
 	CurrDestMusicVolumeRate = volumeRate;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void MusicFade(int frameMax, double destVRate, double startVRate)
 {
 	if(!CurrDestMusic)
@@ -206,10 +193,9 @@ void MusicFade(int frameMax, double destVRate, double startVRate)
 		MusicStop();
 	}
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void MusicStop(void)
 {
 	if(!CurrDestMusic)
@@ -223,18 +209,16 @@ void MusicStop(void)
 	CurrDestMusic = NULL;
 	CurrDestMusicVolumeRate = 0.0;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void MusicTouch(int musId)
 {
 	GetMusRes()->GetHandle(musId);
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void UpdateMusicVolume(void)
 {
 	MusicFade(0, 1.0);

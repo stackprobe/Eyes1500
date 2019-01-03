@@ -63,10 +63,9 @@
 #include <stddef.h>
 
 #ifdef  __cplusplus
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 extern "C" {
 #endif
 
@@ -101,10 +100,9 @@ extern "C" {
 #define SHA_LAST_BLOCK  (SHA_CBLOCK-8)
 #define SHA_DIGEST_LENGTH 20
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 typedef struct SHAstate_st
 	{
 	SHA_LONG h0,h1,h2,h3,h4;
@@ -114,57 +112,47 @@ typedef struct SHAstate_st
 	} SHA_CTX;
 
 #ifndef OPENSSL_NO_SHA0
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA_Init(SHA_CTX *c);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA_Update(SHA_CTX *c, const void *data, size_t len);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA_Final(unsigned char *md, SHA_CTX *c);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 unsigned char *SHA(const unsigned char *d, size_t n, unsigned char *md);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void SHA_Transform(SHA_CTX *c, const unsigned char *data);
 #endif
 #ifndef OPENSSL_NO_SHA1
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA1_Init(SHA_CTX *c);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA1_Update(SHA_CTX *c, const void *data, size_t len);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA1_Final(unsigned char *md, SHA_CTX *c);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 unsigned char *SHA1(const unsigned char *d, size_t n, unsigned char *md);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void SHA1_Transform(SHA_CTX *c, const unsigned char *data);
 #endif
 
@@ -174,10 +162,9 @@ void SHA1_Transform(SHA_CTX *c, const unsigned char *data);
 #define SHA224_DIGEST_LENGTH	28
 #define SHA256_DIGEST_LENGTH	32
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 typedef struct SHA256state_st
 	{
 	SHA_LONG h[8];
@@ -187,50 +174,41 @@ typedef struct SHA256state_st
 	} SHA256_CTX;
 
 #ifndef OPENSSL_NO_SHA256
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA224_Init(SHA256_CTX *c);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA224_Update(SHA256_CTX *c, const void *data, size_t len);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA224_Final(unsigned char *md, SHA256_CTX *c);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 unsigned char *SHA224(const unsigned char *d, size_t n,unsigned char *md);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA256_Init(SHA256_CTX *c);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA256_Update(SHA256_CTX *c, const void *data, size_t len);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA256_Final(unsigned char *md, SHA256_CTX *c);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 unsigned char *SHA256(const unsigned char *d, size_t n,unsigned char *md);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void SHA256_Transform(SHA256_CTX *c, const unsigned char *data);
 #endif
 
@@ -257,10 +235,9 @@ void SHA256_Transform(SHA256_CTX *c, const unsigned char *data);
 #define SHA_U64(C) C##ULL
 #endif
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 typedef struct SHA512state_st
 	{
 	SHA_LONG64 h[8];
@@ -274,50 +251,41 @@ typedef struct SHA512state_st
 #endif
 
 #ifndef OPENSSL_NO_SHA512
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA384_Init(SHA512_CTX *c);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA384_Update(SHA512_CTX *c, const void *data, size_t len);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA384_Final(unsigned char *md, SHA512_CTX *c);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 unsigned char *SHA384(const unsigned char *d, size_t n,unsigned char *md);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA512_Init(SHA512_CTX *c);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA512_Update(SHA512_CTX *c, const void *data, size_t len);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int SHA512_Final(unsigned char *md, SHA512_CTX *c);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 unsigned char *SHA512(const unsigned char *d, size_t n,unsigned char *md);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void SHA512_Transform(SHA512_CTX *c, const unsigned char *data);
 #endif
 
@@ -329,28 +297,23 @@ void SHA512_Transform(SHA512_CTX *c, const unsigned char *data);
 
 // <-- original code
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 autoList<uchar> *sha512_block(uchar *block, int size);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 autoList<uchar> *sha512_block(autoList<uchar> *block);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void sha512_expand(autoList<uchar> *block, int exnum);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 autoList<uchar> *sha512_expand(char *line, int exnum);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 autoList<uchar> *sha512_expand(int value, int exnum);

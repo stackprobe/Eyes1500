@@ -1,9 +1,8 @@
 #include "all.h"
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 char *xcout(char *format, ...)
 {
 	char *buffer;
@@ -28,52 +27,46 @@ char *xcout(char *format, ...)
 
 	return buffer;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 char *strrm(char *line, size_t extend)
 {
 	return (char *)memRealloc(line, strlen(line) + 1 + extend);
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 char *strr(char *line)
 {
 	return strrm(line, 0);
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 char *strx(char *line)
 {
 	return (char *)memClone(line, strlen(line) + 1);
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void strz(char *&buffer, char *line)
 {
 	memFree(buffer);
 	buffer = strx(line);
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void strz_x(char *&buffer, char *line)
 {
 	memFree(buffer);
 	buffer = line;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int atoi_x(char *line)
 {
 	int value = atoi(line);
@@ -87,10 +80,9 @@ __int64 atoi64_x(char *line)
 	return value;
 }
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 char *mbs_strrchr(char *str, int chr)
 {
 	char *ret = NULL;
@@ -102,26 +94,23 @@ char *mbs_strrchr(char *str, int chr)
 	return ret;
 }
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static int ReplacedFlag;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void replaceChar(char *str, int srcChr, int destChr) // mbs_
 {
 	for(char *p = str; *p; p = mbsNext(p))
 		if(*p == srcChr)
 			*p = destChr;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 char *replace(char *str, char *srcPtn, char *destPtn) // ret: strr()
 {
 	autoList<char> *buff = new autoList<char>();
@@ -152,10 +141,9 @@ char *replace(char *str, char *srcPtn, char *destPtn) // ret: strr()
 	delete buff;
 	return ret;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 char *replaceLoop(char *str, char *srcPtn, char *destPtn, int max) // ret: strr()
 {
 	for(int c = 0; c < max; c++)
@@ -168,10 +156,9 @@ char *replaceLoop(char *str, char *srcPtn, char *destPtn, int max) // ret: strr(
 	return str;
 }
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 char *combine(char *path1, char *path2)
 {
 	char *path = xcout("%s\\%s", path1, path2);
@@ -183,20 +170,18 @@ char *combine(char *path1, char *path2)
 	return path;
 }
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 char *addLine(char *line, char *addPtn)
 {
 	line = strrm(line, strlen(addPtn));
 	strcat(line, addPtn);
 	return line;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 char *addChar(char *line, int chr)
 {
 	char chrLine[2];
@@ -206,10 +191,9 @@ char *addChar(char *line, int chr)
 
 	return addLine(line, chrLine);
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 char *insertLine(char *line, int index, char *insPtn)
 {
 	char *trailer;
@@ -225,10 +209,9 @@ char *insertLine(char *line, int index, char *insPtn)
 	memFree(trailer);
 	return line;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 char *insertChar(char *line, int index, int chr)
 {
 	char insPtn[2];
@@ -238,10 +221,9 @@ char *insertChar(char *line, int index, int chr)
 
 	return insertLine(line, index, insPtn);
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void reverseLine(char *line)
 {
 	char *l = line;
@@ -263,10 +245,9 @@ void reverseLine(char *line)
 		}
 	}
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 char *thousandComma(char *line) // ret: strr(line)
 {
 	uint index;
@@ -281,21 +262,18 @@ char *thousandComma(char *line) // ret: strr(line)
 	return line;
 }
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static char *TokPtr;
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static uchar *TokDelims;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void tokinit(char *str, char *delims)
 {
 	if(str)
@@ -332,10 +310,9 @@ void tokinit(char *str, char *delims)
 		}
 	}
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 char *toknext(char *str, char *delims)
 {
 	char *ret;
@@ -374,10 +351,9 @@ char *toknext(char *str, char *delims)
 
 	return ret;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 char *ne_toknext(char *str, char *delims)
 {
 	char *ret = toknext(str, delims);

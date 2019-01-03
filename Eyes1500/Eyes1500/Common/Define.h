@@ -31,9 +31,21 @@
 #define LOG_ENABLED 1
 //*/
 
+//
+// copied the source file by CopyLib.exe
+//
 typedef unsigned char uchar;
+//
+// copied the source file by CopyLib.exe
+//
 typedef unsigned __int16 uint16;
+//
+// copied the source file by CopyLib.exe
+//
 typedef unsigned __int32 uint;
+//
+// copied the source file by CopyLib.exe
+//
 typedef unsigned __int64 uint64;
 
 #define IMAX 1000000000
@@ -151,25 +163,22 @@ typedef unsigned __int64 uint64;
 	(var) += (dest); \
 	} while(0)
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 typedef struct i2D_st
 {
 	int X;
 	int Y;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 i2D_t;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 typedef struct iRect_st
 {
 	int L;
@@ -177,25 +186,22 @@ typedef struct iRect_st
 	int W;
 	int H;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 iRect_t;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 typedef struct d2D_st
 {
 	double X;
 	double Y;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 d2D_t;
 
 #define m_swap(var1, var2, TYPE_T) \

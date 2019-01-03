@@ -1,7 +1,6 @@
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 enum // as ResMode
 {
 	RC_RESMD_NONE, // –¢’è‹` as 0
@@ -9,33 +8,28 @@ enum // as ResMode
 	RC_RESMD_FILELIST,
 };
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 extern int RC_ResId;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 autoList<uchar> *LoadFileDataFromCluster(char *clusterFile, int resId, int tweek);
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 template <class Handle_t>
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 class resCluster
 {
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 private:
 	char *ClusterFile;
 	char *FileListFile;
@@ -90,10 +84,9 @@ private:
 
 	autoList<int> *DerHandleList; // for Derivation.cpp
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 public:
 
 	resCluster(char *clusterFile, char *fileListFile, int resCount, int firstTweek, Handle_t (*resLoader)(autoList<uchar> *), void (*resUnloader)(Handle_t))

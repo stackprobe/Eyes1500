@@ -1,43 +1,37 @@
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 typedef struct taskInfo_st
 {
 	int (*Func)(void *);
 	void *Param;
 	void (*ReleaseParam)(void *);
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 taskInfo_t;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int IsDeadTaskInfo(taskInfo_t *i);
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 class taskList
 {
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 private:
 	autoList<taskInfo_t> *List;
 	int LastFrame;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 public:
 	taskList()
 	{
@@ -108,15 +102,13 @@ public:
 	}
 };
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 template <class Param_t>
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void AddTask(taskList *tl, int topMode, int (*tf)(Param_t *), Param_t *tp = NULL, void (*tr)(Param_t *) = NULL)
 {
 	errorCase(!tl);

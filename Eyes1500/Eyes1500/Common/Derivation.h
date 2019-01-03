@@ -1,7 +1,6 @@
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 enum
 {
 	ENUM_RANGE(D_DUMMY_00, 4)
@@ -33,10 +32,9 @@ enum
 	D_MAX, // num of member
 };
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 typedef struct DerInfo_st
 {
 	int ParentPicId;
@@ -45,30 +43,25 @@ typedef struct DerInfo_st
 	int W;
 	int H;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 DerInfo_t;
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int Der(resCluster<PicInfo_t *> *resclu, int derId);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int Der_W(int derId);
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int Der_H(int derId);
 
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 void UnloadAllDer(autoList<int> *derHandleList);

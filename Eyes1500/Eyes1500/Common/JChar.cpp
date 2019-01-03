@@ -5,10 +5,9 @@
 		CP932
 		但し、半角スペースを含まない。(ASCII・半角カナを含む)
 */
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 static bitList *GetBitList(void)
 {
 	static bitList *list;
@@ -39,18 +38,16 @@ static bitList *GetBitList(void)
 	}
 	return list;
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int isJChar(int chr)
 {
 	return m_isRange(chr, 1, 0xffff) && GetBitList()->RefBit(chr);
 }
-/*
- * copied the source file by CopyLib.exe
- *
- */
+//
+// copied the source file by CopyLib.exe
+//
 int isJChar(char *pChr) // ret: 0 == not JChar, 1-2 == バイト数
 {
 	if(isJChar(*pChr))
