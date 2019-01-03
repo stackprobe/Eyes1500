@@ -1,3 +1,7 @@
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 enum
 {
 	INP_DIR_2,
@@ -18,6 +22,18 @@ enum
 	INP_MAX, // num of member
 };
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void InputEachFrame(void);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int GetInput(int inpId);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int GetPound(int inpId);

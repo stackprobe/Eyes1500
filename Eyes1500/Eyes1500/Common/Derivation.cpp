@@ -1,7 +1,15 @@
 #include "all.h"
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static autoList<DerInfo_t *> *DerList;
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static void AddDer(int parentPicId, int x, int y, int w, int h)
 {
 	DerInfo_t *i = nb(DerInfo_t);
@@ -14,6 +22,10 @@ static void AddDer(int parentPicId, int x, int y, int w, int h)
 
 	DerList->AddElement(i);
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static void AddAnimation(int parentPicId, int x, int y, int w, int h, int xNum, int yNum, int xStep = -1, int yStep = -1)
 {
 	if(xStep == -1) xStep = w;
@@ -25,6 +37,10 @@ static void AddAnimation(int parentPicId, int x, int y, int w, int h, int xNum, 
 		AddDer(parentPicId, x + xc * xStep, y + yc * yStep, w, h);
 	}
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static void CreateDerList(void)
 {
 	DerList = new autoList<DerInfo_t *>();
@@ -57,6 +73,10 @@ static void CreateDerList(void)
 
 	errorCase(DerList->GetCount() != D_MAX);
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static autoList<DerInfo_t *> *GetDerList(void)
 {
 	if(!DerList)
@@ -65,6 +85,10 @@ static autoList<DerInfo_t *> *GetDerList(void)
 	return DerList;
 }
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static int LoadDer(PicInfo_t *parent, int x, int y, int w, int h)
 {
 	int der_h;
@@ -93,6 +117,10 @@ static int LoadDer(PicInfo_t *parent, int x, int y, int w, int h)
 	errorCase(der_h == -1); // ? é∏îs
 	return der_h;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static void UnloadDer(int h)
 {
 	if(h == -1) // ? ñ¢ÉIÅ[ÉvÉì
@@ -101,6 +129,10 @@ static void UnloadDer(int h)
 	errorCase(DeleteGraph(h)); // ? é∏îs
 }
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int Der(resCluster<PicInfo_t *> *resclu, int derId)
 {
 	errorCase(derId < 0 || D_MAX <= derId);
@@ -123,15 +155,27 @@ int Der(resCluster<PicInfo_t *> *resclu, int derId)
 	}
 	return h;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int Der_W(int derId)
 {
 	return GetDerList()->GetElement(derId)->W;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int Der_H(int derId)
 {
 	return GetDerList()->GetElement(derId)->H;
 }
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void UnloadAllDer(autoList<int> *derHandleList)
 {
 	for(int derId = 0; derId < derHandleList->GetCount(); derId++)

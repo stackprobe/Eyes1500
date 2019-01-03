@@ -1,5 +1,17 @@
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void SW_Start2(void);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void SW_Lap2(char *source, int lineno, char *function);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void SW_End2(char *source, int lineno, char *function);
 
 __int64 GetPerformanceCounter(void);

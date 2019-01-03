@@ -1,20 +1,68 @@
 #define MT19937_N 624
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void initRnd(int seed);
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void enterRnd(unsigned long *lmt, int lmti);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void leaveRnd(int *p_lmti);
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int rnd(int modulo);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int bRnd(int minval, int maxval);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int sRnd(void);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 double dRnd(void);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 double eRnd(void);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int rndPct(int pct);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int rndPermil(int permil);
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 class Random
 {
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 private:
 	unsigned long *mt;
 	int mti;
@@ -28,6 +76,10 @@ private:
 		leaveRnd(&this->mti);
 	}
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 public:
 	Random(int seed)
 	{

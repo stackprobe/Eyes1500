@@ -1,6 +1,18 @@
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 template <class Element_t>
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 class endlessQueue
 {
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 private:
 	autoList<Element_t> *List;
 	int RIndex;
@@ -11,6 +23,10 @@ private:
 		this->RIndex = 0;
 	}
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 public:
 	endlessQueue()
 	{
@@ -46,7 +62,15 @@ public:
 	}
 };
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 template <class Element_t>
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void releaseQueue(endlessQueue<Element_t> *queue, void (*func)(Element_t e))
 {
 	errorCase(!queue);

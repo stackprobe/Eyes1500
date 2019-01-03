@@ -1,8 +1,28 @@
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 extern int sc_numer; // 0 - sc_denom
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 extern int sc_denom; // 1 - *
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 extern double sc_rate; // 0.0 - 1.0
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void sceneEnter(void);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void sceneLeave(void);
 
 /*
@@ -86,13 +106,29 @@ ex.
 
 // ---- Curtain ----
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 extern double CurrCurtainWhiteLevel;
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void CurtainEachFrame(int oncePerFrame = 1);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void SetCurtain(int frameMax = 30, double destWhiteLevel = 0.0, double startWhiteLevel = CurrCurtainWhiteLevel);
 
 // ---- Print ----
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 typedef struct PrintExtra_st
 {
 	taskList *TL;
@@ -103,24 +139,72 @@ typedef struct PrintExtra_st
 	int Border; // 0 == –³Œø
 	int BorderColor;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 PrintExtra_t;
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 extern PrintExtra_t PE;
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void PE_Border(int color = GetColor(0, 0, 0));
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void PE_Reset(void);
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void SetPrint(int x = 0, int y = 0, int yStep = 16);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void PrintRet(void);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void Print(char *token);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void Print_x(char *token);
 
 // ---- ui tools ----
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void DrawCurtain(double whiteLevel = -1.0);
 
 // ----
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int RotDir(int dir, int rot);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int IsOut(double x, double y, double l, double t, double r, double b, double margin = 0.0);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int IsOutOfScreen(double x, double y, double margin = 0.0);

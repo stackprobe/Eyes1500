@@ -1,9 +1,21 @@
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 class bitTable
 {
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 private:
 	bitList *List;
 	int Width;
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 public:
 	bitTable(int w)
 	{

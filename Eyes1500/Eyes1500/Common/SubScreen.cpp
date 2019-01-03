@@ -1,7 +1,15 @@
 #include "all.h"
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static oneObject(autoList<SubScreen_t *>, new autoList<SubScreen_t *>(), GetSubScreenList);
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 SubScreen_t *CreateSubScreen(int w, int h, int aFlag)
 {
 	errorCase(w < 1 || IMAX < w);
@@ -17,6 +25,10 @@ SubScreen_t *CreateSubScreen(int w, int h, int aFlag)
 	GetSubScreenList()->AddElement(i);
 	return i;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void ReleaseSubScreen(SubScreen_t *i)
 {
 	if(i == NULL)
@@ -31,6 +43,10 @@ void ReleaseSubScreen(SubScreen_t *i)
 		}
 	}
 	error(); // not found
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 endDesert:
 
 	if(i->Handle != -1)
@@ -41,6 +57,10 @@ endDesert:
 
 // <-- cdtor
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int GetHandle(SubScreen_t *i)
 {
 	errorCase(i == NULL);
@@ -55,22 +75,42 @@ int GetHandle(SubScreen_t *i)
 
 // <-- accessor
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int CurrDrawScreenHandle = DX_SCREEN_BACK;
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void ChangeDrawScreen(int handle)
 {
 	errorCase(SetDrawScreen(handle)); // ? 失敗
 	CurrDrawScreenHandle = handle;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void ChangeDrawScreen(SubScreen_t *screen)
 {
 	ChangeDrawScreen(GetHandle(screen));
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void RestoreDrawScreen(void)
 {
 	ChangeDrawScreen(Gnd.MainScreen ? GetHandle(Gnd.MainScreen) : DX_SCREEN_BACK);
 }
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 i2D_t GetSubScreenSize(SubScreen_t *screen)
 {
 	i2D_t size;
@@ -80,6 +120,10 @@ i2D_t GetSubScreenSize(SubScreen_t *screen)
 
 	return size;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 i2D_t GetDrawScreenSize(void) // 描画領域のサイズ？
 {
 	int w;
@@ -97,6 +141,10 @@ i2D_t GetDrawScreenSize(void) // 描画領域のサイズ？
 
 	return size;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void UnloadAllSubScreenHandle(void)
 {
 	ChangeDrawScreen(DX_SCREEN_BACK); // これから開放するハンドルであるとマズいので...

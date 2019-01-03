@@ -1,3 +1,7 @@
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 enum // SANWA Pad Btnno
 {
 	SNWPB_DIR_2,
@@ -19,7 +23,23 @@ enum // SANWA Pad Btnno
 #define PAD_MAX 16
 #define PAD_BUTTON_MAX 32
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int GetPadCount(void);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void PadEachFrame(void);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int GetPadInput(int padId, int btnId);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int GetPadPound(int padId, int btnId);

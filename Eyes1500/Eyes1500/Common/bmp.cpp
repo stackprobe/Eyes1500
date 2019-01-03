@@ -1,5 +1,9 @@
 #include "all.h"
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static struct
 {
 	uint16 Type;
@@ -8,8 +12,16 @@ static struct
 	uint16 Reserved_02;
 	uint OffBits;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 Bfh;
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static struct
 {
 	uint Size;
@@ -24,8 +36,16 @@ static struct
 	uint ClrUsed;
 	uint ClrImportant;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 Bfi;
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 autoTable<uint> *readBmpFile(autoList<uchar> *fileData)
 {
 	autoTable<uint> *table = new autoTable<uint>(getUIZero, noop_ui);
@@ -145,6 +165,10 @@ autoTable<uint> *readBmpFile(autoList<uchar> *fileData)
 	delete colorPallet;
 	return table;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 autoTable<uint> *readBmpFile_x(autoList<uchar> *fileData)
 {
 	autoTable<uint> *out = readBmpFile_x(fileData);
@@ -152,10 +176,18 @@ autoTable<uint> *readBmpFile_x(autoList<uchar> *fileData)
 	return out;
 }
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static uint GetSizeImage(uint xSize, uint ySize)
 {
 	return ((xSize * 3 + 3) / 4) * 4 * ySize;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void writeBmpFile(autoList<uchar> *fileData, autoTable<uint> *bmp)
 {
 	fileData->Clear();
@@ -206,22 +238,38 @@ void writeBmpFile(autoList<uchar> *fileData, autoTable<uint> *bmp)
 		}
 	}
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void writeBmpFile_x(autoList<uchar> *fileData, autoTable<uint> *bmp)
 {
 	writeBmpFile(fileData, bmp);
 	delete bmp;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void writeBmpFile(char *file, autoTable<uint> *bmp)
 {
 	autoList<uchar> *fileData = new autoList<uchar>();
 	writeBmpFile(fileData, bmp);
 	writeFile_cx(file, fileData);
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void writeBmpFile_cx(char *file, autoTable<uint> *bmp)
 {
 	writeBmpFile(file, bmp);
 	delete bmp;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void writeBmpFile_xx(char *file, autoTable<uint> *bmp)
 {
 	writeBmpFile_cx(file, bmp);

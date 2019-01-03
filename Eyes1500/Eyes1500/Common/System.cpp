@@ -1,10 +1,18 @@
 #include "all.h"
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void termination(int errorLevel)
 {
 	GetFinalizers()->Flush();
 	exit(errorLevel);
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void error2(char *file, int lineno, char *function)
 {
 	{
@@ -42,6 +50,10 @@ void error2(char *file, int lineno, char *function)
 #define LOG_DIR "C:\\tmp"
 #define LOG_FILE LOG_DIR "\\Game.log"
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 FILE *GetLogFp(void)
 {
 	static FILE *fp;
@@ -58,12 +70,24 @@ FILE *GetLogFp(void)
 
 // arg >
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static int ArgIndex = 1;
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int hasArgs(int count)
 {
 	return count <= __argc - ArgIndex;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int argIs(char *spell)
 {
 	if(ArgIndex < __argc)
@@ -76,11 +100,19 @@ int argIs(char *spell)
 	}
 	return 0;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 char *getArg(int index)
 {
 	errorCase(index < 0 || __argc - ArgIndex <= index);
 	return __argv[ArgIndex + index];
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 char *nextArg(void)
 {
 	char *arg = getArg(0);
@@ -90,6 +122,10 @@ char *nextArg(void)
 
 // < arg
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int IsWindowActive(void) // ret: ? このウィンドウはアクティブ
 {
 	return GetActiveFlag() ? 1 : 0;

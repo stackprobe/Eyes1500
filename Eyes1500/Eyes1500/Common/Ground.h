@@ -1,3 +1,7 @@
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 typedef struct Gnd_st
 {
 	taskList *EL; // EffectList
@@ -60,14 +64,42 @@ typedef struct Gnd_st
 
 	// }
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 Gnd_t;
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 extern Gnd_t Gnd;
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void Gnd_INIT(void);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void Gnd_FNLZ(void);
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void ImportSaveData(void);
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void ExportSaveData(void);
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void UnassignAllPadBtnId(void);

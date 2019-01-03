@@ -1,3 +1,7 @@
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 enum
 {
 	DATSTR_APPNAME,
@@ -8,4 +12,8 @@ enum
 	DATSTR_MAX, // num of member
 };
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 char *GetDatString(int datStrId);

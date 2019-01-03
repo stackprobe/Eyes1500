@@ -1,3 +1,7 @@
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 enum
 {
 	ETC_DATSTRINGS,
@@ -14,4 +18,8 @@ enum
 	ETC_MAX, // num of member
 };
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 oneObjectProto(resCluster<autoList<uchar> *>, GetEtcRes);

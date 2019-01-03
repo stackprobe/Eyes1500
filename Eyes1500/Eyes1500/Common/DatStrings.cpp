@@ -1,5 +1,9 @@
 #include "all.h"
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static autoList<char *> *GetDatStrings(void)
 {
 	static autoList<char *> *datStrings;
@@ -24,6 +28,10 @@ static autoList<char *> *GetDatStrings(void)
 	}
 	return datStrings;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 char *GetDatString(int datStrId)
 {
 	errorCase(datStrId < 0 || DATSTR_MAX <= datStrId);

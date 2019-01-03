@@ -1,12 +1,28 @@
 #define DEAD_COUNT_MAX 1024
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 template <class Element_t>
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 class autoQueue
 {
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 private:
 	autoList<Element_t> *List;
 	int TopIndex;
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 public:
 	autoQueue()
 	{
@@ -90,7 +106,15 @@ public:
 	}
 };
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 template <class Element_t>
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void releaseQueue(autoQueue<Element_t> *queue, void (*func)(Element_t e))
 {
 	errorCase(!queue);

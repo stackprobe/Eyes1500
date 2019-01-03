@@ -1,16 +1,44 @@
 #include "all.h"
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int IgnoreEscapeKey;
 
 // 他のファイルからは read only {
 __int64 FrameStartTime;
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int ProcFrame;
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int FreezeInputFrame;
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int WindowIsActive;
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int FrameRateDropCount;
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int NoFrameRateDropCount;
 // }
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static void CheckHz(void)
 {
 	__int64 currTime = GetCurrTime();
@@ -24,8 +52,16 @@ static void CheckHz(void)
 	FrameStartTime = currTime;
 }
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 int InnerDrawScrHdl = -1;
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void EachFrame(void)
 {
 	if(!SEEachFrame())
@@ -106,6 +142,10 @@ void EachFrame(void)
 		ChangeDrawScreen(Gnd.MainScreen);
 	}
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void FreezeInput(int frame) // frame: 1 == このフレームのみ, 2 == このフレームと次のフレーム ...
 {
 	errorCase(frame < 1 || IMAX < frame);

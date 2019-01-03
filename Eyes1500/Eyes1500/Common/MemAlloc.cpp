@@ -1,5 +1,9 @@
 #include "all.h"
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void *REAL_memAlloc(int size)
 {
 	void *block;
@@ -10,6 +14,10 @@ void *REAL_memAlloc(int size)
 
 	return block;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void *REAL_memRealloc(void *block, int size)
 {
 	errorCase(size < 0 || IMAX < size);
@@ -18,6 +26,10 @@ void *REAL_memRealloc(void *block, int size)
 
 	return block;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void REAL_memFree(void *block)
 {
 	free(block);
@@ -25,9 +37,21 @@ void REAL_memFree(void *block)
 
 #define HUGEBLOCK_NUMMAX 1024
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static void *HugeBlocks[HUGEBLOCK_NUMMAX];
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static int HugeBlockCount;
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static int GetHugeBlockIndex(void *block)
 {
 	for(int index = 0; index < HugeBlockCount; index++)
@@ -46,16 +70,56 @@ static int GetHugeBlockIndex(void *block)
 #define K64 65536
 #define K256 262144
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static MBStock *Stock4;
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static MBStock *Stock16;
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static MBStock *Stock64;
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static MBStock *Stock256;
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static MBStock *Stock1K;
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static MBStock *Stock4K;
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static MBStock *Stock16K;
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static MBStock *Stock64K;
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static MBStock *Stock256K;
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void memAlloc_INIT(void)
 {
 	Stock4    = new MBStock(4);
@@ -70,19 +134,35 @@ void memAlloc_INIT(void)
 }
 
 #if 0 // test
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void *memAlloc(int size)
 {
 	return REAL_memAlloc(size);
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void *memRealloc(void *block, int size)
 {
 	return REAL_memRealloc(block, size);
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void memFree(void *block)
 {
 	return REAL_memFree(block);
 }
 #else
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void *memAlloc_NC(int size)
 {
 	if(size < 4)    return Stock4->GetBlock();
@@ -104,6 +184,10 @@ void *memAlloc_NC(int size)
 
 	return block;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void *memRealloc(void *block, int size)
 {
 	if(!block)
@@ -140,6 +224,10 @@ void *memRealloc(void *block, int size)
 	}
 	return block;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void memFree(void *block)
 {
 	if(!block)
@@ -165,6 +253,10 @@ void memFree(void *block)
 }
 #endif
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void *memAlloc(int size)
 {
 	void *block = memAlloc_NC(size);
@@ -172,6 +264,10 @@ void *memAlloc(int size)
 	memset(block, 0x00, size);
 	return block;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void *memClone(void *block, int size)
 {
 	void *newBlock = memAlloc_NC(size);

@@ -1,7 +1,15 @@
 #include "all.h"
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 Gnd_t Gnd;
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void Gnd_INIT(void)
 {
 	memset(&Gnd, 0x00, sizeof(Gnd_t));
@@ -57,6 +65,10 @@ void Gnd_INIT(void)
 
 	// < app
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void Gnd_FNLZ(void)
 {
 	delete Gnd.EL;
@@ -77,9 +89,21 @@ void Gnd_FNLZ(void)
 #define SAVE_FILE "SaveData.dat"
 #define SAVEDATA_SIGNATURE "__Codevil__SaveData " __DATE__ " " __TIME__
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static autoList<uchar> *SaveData;
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static int SDIndex;
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static char *SD_ReadLine(void) // ret: bind
 {
 	static char *line;
@@ -92,22 +116,38 @@ static char *SD_ReadLine(void) // ret: bind
 
 	return line;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static int SD_ReadBoolean(void)
 {
 	return atoi(SD_ReadLine()) ? 1 : 0;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static int SD_ReadInt(int minval, int maxval)
 {
 	int value = atoi(SD_ReadLine());
 	m_range(value, minval, maxval);
 	return value;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static __int64 SD_ReadInt64(__int64 minval, __int64 maxval)
 {
 	__int64 value = _atoi64(SD_ReadLine());
 	m_range(value, minval, maxval);
 	return value;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static double SD_ReadDouble(double minval, double maxval, int denom)
 {
 	errorCase(denom < 1);
@@ -116,6 +156,10 @@ static double SD_ReadDouble(double minval, double maxval, int denom)
 	m_range(value, minval, maxval);
 	return value;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static void SD_ReadBitList(bitList *dest)
 {
 	dest->Clear();
@@ -139,6 +183,10 @@ static void SD_ReadBitList(bitList *dest)
 		}
 	}
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static void SD_ReadLines(autoList<char *> *lines)
 {
 	errorCase(!lines);
@@ -153,27 +201,51 @@ static void SD_ReadLines(autoList<char *> *lines)
 	}
 }
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static void SD_WriteLine(char *line)
 {
 	writeLine(SaveData, line);
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static void SD_WriteLine_x(char *line)
 {
 	SD_WriteLine(line);
 	memFree(line);
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static void SD_WriteInt(int value)
 {
 	SD_WriteLine_x(xcout("%d", value));
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static void SD_WriteInt64(__int64 value)
 {
 	SD_WriteLine_x(xcout("%I64d", value));
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static void SD_WriteDouble(double value, int denom)
 {
 	SD_WriteInt(d2i(value * denom));
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static void SD_WriteBitList(bitList *src)
 {
 	autoList<char> *buff = new autoList<char>();
@@ -187,6 +259,10 @@ static void SD_WriteBitList(bitList *src)
 	SD_WriteLine_x(buff->UnbindBuffer());
 	delete buff;
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static void SD_WriteLines(autoList<char *> *lines)
 {
 	SD_WriteInt(lines->GetCount());
@@ -196,12 +272,20 @@ static void SD_WriteLines(autoList<char *> *lines)
 		SD_WriteLine(lines->GetElement(index));
 	}
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static void SD_WriteLines_x(autoList<char *> *lines)
 {
 	SD_WriteLines(lines);
 	releaseList(lines, (void (*)(char *))memFree);
 }
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static int *PPadBtns[] =
 {
 	&Gnd.PadBtnId.Dir_8,
@@ -219,6 +303,10 @@ static int *PPadBtns[] =
 	&Gnd.PadBtnId.Pause,
 	&Gnd.PadBtnId.Start,
 };
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 static void AntiPadBtnIdConflict(void)
 {
 	/*
@@ -237,6 +325,10 @@ static void AntiPadBtnIdConflict(void)
 		}
 	}
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void UnassignAllPadBtnId(void)
 {
 	/*
@@ -248,6 +340,10 @@ void UnassignAllPadBtnId(void)
 	}
 }
 
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void ImportSaveData(void)
 {
 	if(!accessible(SAVE_FILE))
@@ -329,6 +425,10 @@ void ImportSaveData(void)
 
 	// < app
 }
+/*
+ * copied the source file by CopyLib.exe
+ *
+ */
 void ExportSaveData(void)
 {
 	SaveData = new autoList<uchar>();
