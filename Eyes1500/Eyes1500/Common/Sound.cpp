@@ -1,8 +1,11 @@
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 #include "all.h"
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int LoadSound(autoList<uchar> *fileData)
 {
 	int h = LoadSoundMemByMemImage(fileData->ElementAt(0), fileData->GetCount());
@@ -10,9 +13,9 @@ int LoadSound(autoList<uchar> *fileData)
 	errorCase(h == -1); // ? Ž¸”s
 	return h;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int DuplSound(int h)
 {
 	int dupl_h = DuplicateSoundMem(h);
@@ -20,17 +23,17 @@ int DuplSound(int h)
 	errorCase(dupl_h == -1); // ? Ž¸”s
 	return dupl_h;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void UnloadSound(int h)
 {
 	errorCase(DeleteSoundMem(h)); // ? Ž¸”s
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void SoundPlay(int h, int once_mode, int resume_mode)
 {
 	switch(CheckSoundMem(h))
@@ -49,9 +52,9 @@ void SoundPlay(int h, int once_mode, int resume_mode)
 	}
 	errorCase(PlaySoundMem(h, once_mode ? DX_PLAYTYPE_BACK : DX_PLAYTYPE_LOOP, resume_mode ? 0 : 1)); // ? Ž¸”s
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void SetVolume(int h, double volume)
 {
 	m_range(volume, 0.0, 1.0);
@@ -61,17 +64,17 @@ void SetVolume(int h, double volume)
 	errorCase(pal < 0 || 255 < pal);
 	errorCase(ChangeVolumeSoundMem(pal, h)); // ? Ž¸”s
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void SoundStop(int h)
 {
 	errorCase(StopSoundMem(h)); // ? Ž¸”s
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 double MixVolume(double volume1, double volume2) // (volume1, volume2): 0.0 - 1.0, ret: 0.0 - 1.0
 {
 	m_range(volume1, 0.0, 1.0);

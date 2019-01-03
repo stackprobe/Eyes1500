@@ -1,6 +1,6 @@
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 enum
 {
 	INP_DIR_2,
@@ -21,15 +21,15 @@ enum
 	INP_MAX, // num of member
 };
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void InputEachFrame(void);
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int GetInput(int inpId);
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int GetPound(int inpId);

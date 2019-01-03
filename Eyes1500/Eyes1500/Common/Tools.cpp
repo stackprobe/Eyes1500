@@ -1,15 +1,18 @@
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 #include "all.h"
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int d2i(double value)
 {
 	return (int)(value + (value < 0.0 ? -0.5 : 0.5));
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int s2i(char *line, int minval, int maxval, int defval)
 {
 	if(m_isEmpty(line) || !strchr("-0123456789", *line))
@@ -20,9 +23,9 @@ int s2i(char *line, int minval, int maxval, int defval)
 	m_range(value, minval, maxval);
 	return value;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int s2i_x(char *line, int minval, int maxval, int defval)
 {
 	int value = s2i(line, minval, maxval, defval);
@@ -33,16 +36,16 @@ int s2i_x(char *line, int minval, int maxval, int defval)
 #define POUND_FIRST_DELAY 17
 #define POUND_DELAY 4
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int isPound(int counter)
 {
 	return (counter) == 1 || POUND_FIRST_DELAY < (counter) && ((counter) - POUND_FIRST_DELAY) % POUND_DELAY == 1;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 autoList<char *> *tokenize(char *line, char *delimiters)
 {
 	autoList<char *> *tokens = new autoList<char *>();
@@ -70,9 +73,9 @@ autoList<char *> *tokenize(char *line, char *delimiters)
 	delete token;
 	return tokens;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 char *untokenize(autoList<char *> *tokens, char *separator)
 {
 	autoList<char> *buffer = new autoList<char>();
@@ -91,56 +94,59 @@ char *untokenize(autoList<char *> *tokens, char *separator)
 	return ret;
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int getZero(void)
 {
 	return 0;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 uint getUIZero(void)
 {
 	return 0;
 }
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 __int64 getI64Zero(void)
 {
 	return 0;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void noop(void)
 {
 	1; // noop
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void noop_i(int dummy)
 {
 	1; // noop
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void noop_ui(uint dummy)
 {
 	1; // noop
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void noop_i64(__int64 dummy)
 {
 	1; // noop
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 i2D_t makeI2D(int x, int y)
 {
 	i2D_t pos;
@@ -150,9 +156,9 @@ i2D_t makeI2D(int x, int y)
 
 	return pos;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 d2D_t makeD2D(double x, double y)
 {
 	d2D_t pos;
@@ -163,24 +169,24 @@ d2D_t makeD2D(double x, double y)
 	return pos;
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 bitList *createBitList(void)
 {
 	return new bitList();
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void releaseBitList(bitList *bl)
 {
 	delete bl;
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void my_memset(void *block, int fillValue, int size)
 {
 	for(int index = 0; index < size; index++)
@@ -188,9 +194,9 @@ void my_memset(void *block, int fillValue, int size)
 		((uchar *)block)[index] = fillValue;
 	}
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int isfilled(void *block, int fillValue, int size)
 {
 	for(int index = 0; index < size; index++)
@@ -199,9 +205,9 @@ int isfilled(void *block, int fillValue, int size)
 
 	return 1;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int isSame(autoList<uchar> *binData1, autoList<uchar> *binData2)
 {
 	if(binData1->GetCount() != binData2->GetCount())
@@ -221,9 +227,6 @@ int isSame(autoList<uchar> *binData1, autoList<uchar> *binData2)
 		右真横(0,0 -> 1,0方向)を0.0として、時計回り。(但し、X軸プラス方向を右、Y軸プラス方向を下)
 		1周は PI * 2.0
 */
-//
-// copied the source file by CopyLib.exe
-//
 double getAngle(double x, double y)
 {
 	if(y < 0.0) return PI * 2.0 - getAngle(x, -y);
@@ -253,16 +256,16 @@ double getAngle(double x, double y)
 	}
 	return rm;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 double getAngle(double x, double y, double originX, double originY)
 {
 	return getAngle(x - originX, y - originY);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void rotatePos(double angle, double &x, double &y)
 {
 	double w;
@@ -271,9 +274,9 @@ void rotatePos(double angle, double &x, double &y)
 	y = x * sin(angle) + y * cos(angle);
 	x = w;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void rotatePos(double angle, double &x, double &y, double originX, double originY)
 {
 	x -= originX;
@@ -284,17 +287,17 @@ void rotatePos(double angle, double &x, double &y, double originX, double origin
 	x += originX;
 	y += originY;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void angleToXY(double angle, double distance, double &x, double &y)
 {
 	x = distance * cos(angle);
 	y = distance * sin(angle);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void angleToXY(double angle, double distance, double &x, double &y, double originX, double originY)
 {
 	angleToXY(angle, distance, x, y);
@@ -302,9 +305,9 @@ void angleToXY(double angle, double distance, double &x, double &y, double origi
 	x += originX;
 	y += originY;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void angleMoveXY(double angle, double distance, double &x, double &y)
 {
 	angleToXY(angle, distance, x, y, x, y);

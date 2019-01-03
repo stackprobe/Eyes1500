@@ -1,37 +1,40 @@
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 #include "all.h"
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int SmplMenu_Color = -1;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int SmplMenu_BorderColor = -1;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int SmplMenu_WallPicId = -1;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 double SmplMenu_WallCurtain = 0.0;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int SmplMenu_X = 16;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int SmplMenu_Y = 16;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int SmplMenu_YStep = 32;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int SmplMenu(char *menuTitle, char **menuItems, int selectMax, int selectIndex)
 {
 	SetCurtain();
@@ -97,21 +100,21 @@ int SmplMenu(char *menuTitle, char **menuItems, int selectMax, int selectIndex)
 
 // ---- ボタン設定 ----
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static void *PadBtnIdBkup;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static void RestorePadBtnId(void)
 {
 	memcpy(&Gnd.PadBtnId, PadBtnIdBkup, sizeof(Gnd.PadBtnId));
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void SmplPadConfig(void)
 {
 	int *BtnPList[INP_MAX] =
@@ -202,9 +205,9 @@ void SmplPadConfig(void)
 			*BtnPList[currBtnIndex] = pressBtnId;
 			currBtnIndex++;
 		}
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 endInput:
 
 		DrawCurtain();
@@ -264,9 +267,9 @@ endInput:
 
 // ---- 画面サイズ ----
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void SmplWindowSizeConfig(void)
 {
 	char *MENU_ITEMS[] =
@@ -330,9 +333,9 @@ void SmplWindowSizeConfig(void)
 			error();
 		}
 	}
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 endLoop:;
 }
 
@@ -360,9 +363,9 @@ endLoop:;
 	SmplVolumeConfig("ＳＥ音量", Gnd.SEVolume, 0, 100, 1, 10, XXX_SEVolumeChanged, XXX_SEVolumePulse);
 */
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static double SVC_ValueToRate(double value, double minval, double valRange)
 {
 	return (double)(value - minval) / valRange;
@@ -372,9 +375,6 @@ static double SVC_ValueToRate(double value, double minval, double valRange)
 	(ret, rate): 0.0 - 1.0
 	pulse: NULL == 無効
 */
-//
-// copied the source file by CopyLib.exe
-//
 double SmplVolumeConfig(char *menuTitle, double rate, int minval, int maxval, int valStep, int valFastStep, void (*valChanged)(double), void (*pulse)(void))
 {
 	const int PULSE_FRM = 60;

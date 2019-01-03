@@ -1,17 +1,23 @@
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void SW_Start2(void);
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void SW_Lap2(char *source, int lineno, char *function);
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void SW_End2(char *source, int lineno, char *function);
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 __int64 GetPerformanceCounter(void);
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 __int64 GetPerformanceFrequency(void);
 
 #if LOG_ENABLED

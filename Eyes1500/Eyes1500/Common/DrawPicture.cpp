@@ -1,13 +1,16 @@
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 #include "all.h"
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 DrawPicExtra_t DPE;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 typedef struct Layout_st
 {
 	int Mode; // "FRS"
@@ -45,28 +48,22 @@ typedef struct Layout_st
 	}
 	u;
 }
-//
-// copied the source file by CopyLib.exe
-//
 Layout_t;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 typedef struct Param_st
 {
 	int PicId;
 	Layout_t *Layout;
 	DrawPicExtra_t Extra;
 }
-//
-// copied the source file by CopyLib.exe
-//
 Param_t;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static void SetBlend(int mode, double a)
 {
 	m_range(a, 0.0, 1.0);
@@ -76,16 +73,16 @@ static void SetBlend(int mode, double a)
 	errorCase(pal < 0 || 255 < pal);
 	errorCase(SetDrawBlendMode(mode, pal)); // ? Ž¸”s
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static void ResetBlend(void)
 {
 	errorCase(SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0)); // ? Ž¸”s
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static void SetBright(double cR, double cG, double cB) // (cR, cG, cB): 0.0 - 1.0 == ˆÃ`–¾
 {
 	/*
@@ -109,16 +106,16 @@ static void SetBright(double cR, double cG, double cB) // (cR, cG, cB): 0.0 - 1.
 
 	errorCase(SetDrawBright(palR, palG, palB)); // ? Ž¸”s
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static void ResetBright(void)
 {
 	errorCase(SetDrawBright(255, 255, 255)); // ? Ž¸”s
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static int DrawPicFunc(Param_t *i)
 {
 	if(i->Extra.PicRes)
@@ -307,17 +304,17 @@ static int DrawPicFunc(Param_t *i)
 
 	return 0;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static void DrawPicReleaseParam(Param_t *i)
 {
 	memFree(i->Layout);
 	memFree(i);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static void DrawPic(int picId, Layout_t *layout_bind)
 {
 	Param_t *i = nb(Param_t);
@@ -334,9 +331,9 @@ static void DrawPic(int picId, Layout_t *layout_bind)
 	else
 		AddTask(i->Extra.TL, 0, DrawPicFunc, i, DrawPicReleaseParam);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DrawFree(int picId, double ltx, double lty, double rtx, double rty, double rbx, double rby, double lbx, double lby)
 {
 	// layout no-check
@@ -355,9 +352,9 @@ void DrawFree(int picId, double ltx, double lty, double rtx, double rty, double 
 
 	DrawPic(picId, i);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DrawRect_LTRB(int picId, double l, double t, double r, double b)
 {
 	// layout check {
@@ -377,16 +374,16 @@ void DrawRect_LTRB(int picId, double l, double t, double r, double b)
 
 	DrawPic(picId, i);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DrawRect(int picId, double l, double t, double w, double h)
 {
 	DrawRect_LTRB(picId, l, t, l + w, t + h);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DrawSimple(int picId, double x, double y)
 {
 	// layout check {
@@ -402,9 +399,9 @@ void DrawSimple(int picId, double x, double y)
 
 	DrawPic(picId, i);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DrawCenter(int picId, double x, double y)
 {
 	// layout check {
@@ -416,26 +413,26 @@ void DrawCenter(int picId, double x, double y)
 	DrawEnd();
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static int DB_PicId;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static double DB_X;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static double DB_Y;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static Layout_t *DB_L;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DrawBegin(int picId, double x, double y)
 {
 	errorCase(DB_L);
@@ -476,9 +473,9 @@ void DrawBegin(int picId, double x, double y)
 	DB_Y = y;
 	DB_L = i;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DrawSlide(double x, double y)
 {
 	errorCase(!DB_L);
@@ -494,9 +491,9 @@ void DrawSlide(double x, double y)
 	i->u.Free.LBX += x;
 	i->u.Free.LBY += y;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DrawRotate(double rot)
 {
 	errorCase(!DB_L);
@@ -517,9 +514,9 @@ void DrawRotate(double rot)
 
 #undef ROTATE
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DrawZoom_X(double z)
 {
 	errorCase(!DB_L);
@@ -531,9 +528,9 @@ void DrawZoom_X(double z)
 	i->u.Free.RBX *= z;
 	i->u.Free.LBX *= z;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DrawZoom_Y(double z)
 {
 	errorCase(!DB_L);
@@ -545,17 +542,17 @@ void DrawZoom_Y(double z)
 	i->u.Free.RBY *= z;
 	i->u.Free.LBY *= z;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DrawZoom(double z)
 {
 	DrawZoom_X(z);
 	DrawZoom_Y(z);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DrawEnd(void)
 {
 	errorCase(!DB_L);
@@ -575,25 +572,25 @@ void DrawEnd(void)
 	DB_L = NULL;
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DPE_SetAlpha(double a)
 {
 	DPE.A = a;
 	DPE.AlphaOn = 1;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DPE_SetBlendAdd(double a)
 {
 	DPE.A = a;
 	DPE.BlendAddOn = 1;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DPE_SetBright(double cR, double cG, double cB)
 {
 	DPE.R = cR;
@@ -601,9 +598,9 @@ void DPE_SetBright(double cR, double cG, double cB)
 	DPE.B = cB;
 	DPE.BrightOn = 1;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DPE_SetBright(int color)
 {
 	int r = color >> 16 & 0xff;
@@ -612,17 +609,17 @@ void DPE_SetBright(int color)
 
 	DPE_SetBright((double)r / 0xff, (double)g / 0xff, (double)b / 0xff);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DPE_SetGraphicSize(i2D_t size)
 {
 	DPE.GraphicHandleFlag = 1;
 	DPE.GraphicSize = size;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DPE_Reset(void)
 {
 	memset(&DPE, 0x00, sizeof(DrawPicExtra_t));

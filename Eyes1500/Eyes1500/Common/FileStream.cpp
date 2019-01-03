@@ -1,8 +1,11 @@
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 #include "all.h"
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 FILE *fileOpen(char *file, char *mode)
 {
 	errorCase(m_isEmpty(file));
@@ -29,17 +32,17 @@ FILE *fileOpen(char *file, char *mode)
 	}
 	return fp;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void fileClose(FILE *fp)
 {
 	errorCase(fclose(fp)); // ? Ž¸”s
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static int GetFileSize(FILE *fp)
 {
 	errorCase(_fseeki64(fp, 0I64, SEEK_END)); // ? Ž¸”s
@@ -51,9 +54,9 @@ static int GetFileSize(FILE *fp)
 
 	return (int)size;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 autoList<uchar> *readFile(char *file)
 {
 	FILE *fp = fileOpen(file, "rb");
@@ -67,18 +70,18 @@ autoList<uchar> *readFile(char *file)
 	fileClose(fp);
 	return new autoList<uchar>(fileData, size);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 autoList<uchar> *readFile_x(char *file)
 {
 	autoList<uchar> *out = readFile(file);
 	memFree(file);
 	return out;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int readChar(autoList<uchar> *fileData, int &rIndex)
 {
 	if(rIndex < fileData->GetCount())
@@ -87,9 +90,9 @@ int readChar(autoList<uchar> *fileData, int &rIndex)
 	}
 	return EOF;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 char *readLine(autoList<uchar> *fileData, int &rIndex)
 {
 	autoList<char> *line = new autoList<char>();
@@ -122,18 +125,18 @@ char *readLine(autoList<uchar> *fileData, int &rIndex)
 	delete line;
 	return result;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 char *neReadLine(autoList<uchar> *fileData, int &rIndex)
 {
 	char *line = readLine(fileData, rIndex);
 	errorCase(!line);
 	return line;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 char *nnReadLine(autoList<uchar> *fileData, int &rIndex, char *defaultLine)
 {
 	char *line = readLine(fileData, rIndex);
@@ -143,9 +146,9 @@ char *nnReadLine(autoList<uchar> *fileData, int &rIndex, char *defaultLine)
 
 	return line;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 autoList<char *> *readLines(autoList<uchar> *fileData)
 {
 	autoList<char *> *lines = new autoList<char *>();
@@ -162,9 +165,9 @@ autoList<char *> *readLines(autoList<uchar> *fileData)
 	}
 	return lines;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 autoList<char *> *readLines_x(autoList<uchar> *fileData)
 {
 	autoList<char *> *lines = readLines(fileData);
@@ -172,9 +175,9 @@ autoList<char *> *readLines_x(autoList<uchar> *fileData)
 	return lines;
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void writeFile(char *file, autoList<uchar> *fileData)
 {
 	FILE *fp = fileOpen(file, "wb");
@@ -183,17 +186,17 @@ void writeFile(char *file, autoList<uchar> *fileData)
 
 	fileClose(fp);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void writeFile_cx(char *file, autoList<uchar> *fileData)
 {
 	writeFile(file, fileData);
 	delete fileData;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void writeToken(autoList<uchar> *fileData, char *token)
 {
 	for(char *p = token; *p; p++)
@@ -201,26 +204,26 @@ void writeToken(autoList<uchar> *fileData, char *token)
 		fileData->AddElement(*p);
 	}
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void writeLine(autoList<uchar> *fileData, char *line)
 {
 	writeToken(fileData, line);
 	fileData->AddElement('\n');
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void writeLine_x(autoList<uchar> *fileData, char *line)
 {
 	writeLine(fileData, line);
 	memFree(line);
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 uint64 readUI64(autoList<uchar> *fileData, int &rIndex, int width)
 {
 	uint64 value = 0;
@@ -231,17 +234,17 @@ uint64 readUI64(autoList<uchar> *fileData, int &rIndex, int width)
 	}
 	return value;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 uint readUI32(autoList<uchar> *fileData, int &rIndex, int width)
 {
 	return (uint)readUI64(fileData, rIndex, width);
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void writeUI64(autoList<uchar> *fileData, uint64 value, int width)
 {
 	for(int c = 0; c < width; c++)
@@ -249,17 +252,17 @@ void writeUI64(autoList<uchar> *fileData, uint64 value, int width)
 		fileData->AddElement((uchar)(value >> c * 8 & 0xff));
 	}
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void writeUI32(autoList<uchar> *fileData, uint value, int width)
 {
 	writeUI64(fileData, (uint64)value, width);
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 autoList<uchar> *readBlock(autoList<uchar> *fileData, int &rIndex, int width)
 {
 	autoList<uchar> *retBlock = new autoList<uchar>();

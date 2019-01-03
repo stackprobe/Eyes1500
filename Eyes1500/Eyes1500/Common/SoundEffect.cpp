@@ -1,13 +1,16 @@
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 #include "all.h"
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static oneObject(autoQueue<SEInfo_t *>, new autoQueue<SEInfo_t *>(), GetPlayList);
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static void UpdateSEVolumeFunc(SEInfo_t *i)
 {
 	for(int index = 0; index < SE_HANDLE_MAX; index++)
@@ -15,9 +18,9 @@ static void UpdateSEVolumeFunc(SEInfo_t *i)
 		SetVolume(i->HandleList[index], MixVolume(Gnd.SEVolume, i->Volume));
 	}
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static SEInfo_t *LoadSE(autoList<uchar> *fileData)
 {
 	SEInfo_t *i = nb(SEInfo_t);
@@ -49,9 +52,9 @@ static SEInfo_t *LoadSE(autoList<uchar> *fileData)
 	UpdateSEVolumeFunc(i);
 	return i;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static void UnloadSE(SEInfo_t *i)
 {
 	GetPlayList()->Clear();
@@ -62,18 +65,18 @@ static void UnloadSE(SEInfo_t *i)
 	}
 	memFree(i);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static oneObject(
 	resCluster<SEInfo_t *>,
 	new resCluster<SEInfo_t *>("SoundEffect.dat", "..\\..\\SoundEffect.txt", SE_MAX, 130000000, LoadSE, UnloadSE),
 	GetSERes
 	);
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int SEEachFrame(void) // ret: å¯â âπÇèàóùÇµÇΩÅB
 {
 	SEInfo_t *i = GetPlayList()->Dequeue(NULL);
@@ -101,9 +104,9 @@ int SEEachFrame(void) // ret: å¯â âπÇèàóùÇµÇΩÅB
 	}
 	return 0;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void SEPlay(int seId)
 {
 	errorCase(seId < 0 || SE_MAX <= seId);
@@ -118,9 +121,9 @@ void SEPlay(int seId)
 	GetPlayList()->Enqueue(i);
 	GetPlayList()->Enqueue(NULL);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void SEStop(int seId)
 {
 	errorCase(seId < 0 || SE_MAX <= seId);
@@ -132,9 +135,9 @@ void SEStop(int seId)
 	GetPlayList()->Enqueue(i);
 	GetPlayList()->Enqueue(NULL);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void UpdateSEVolume(void)
 {
 	GetSERes()->CallAllLoadedHandle(UpdateSEVolumeFunc);

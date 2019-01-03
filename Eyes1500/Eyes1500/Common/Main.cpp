@@ -1,51 +1,54 @@
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 #include "all.h"
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static char *GetVersionString(void)
 {
 	const char *CONCERT_PTN = "{a9a54906-791d-4e1a-8a71-a4c69359cf68}:0.00"; // shared_uuid@g
 	return (char *)strchr(CONCERT_PTN, ':') + 1;
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int ProcMtxHdl;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int DxLibInited;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int Monitor_L;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int Monitor_T;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int Monitor_W;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int Monitor_H;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static void ReleaseProcMtxHdl(void)
 {
 	mutexRelease(ProcMtxHdl);
 	handleClose(ProcMtxHdl);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static void PostSetScreenSize(int w, int h)
 {
 	if(Monitor_W == w && Monitor_H == h)
@@ -53,9 +56,9 @@ static void PostSetScreenSize(int w, int h)
 		SetScreenPosition(Monitor_L, Monitor_T);
 	}
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void EndProc(void)
 {
 	GetEndProcFinalizers()->Flush();
@@ -71,9 +74,9 @@ void EndProc(void)
 	}
 	termination();
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 	memAlloc_INIT();
@@ -214,23 +217,23 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 // DxPrv_ >
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static int DxPrv_GetMouseDispMode(void)
 {
 	return GetMouseDispFlag() ? 1 : 0;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static void DxPrv_SetMouseDispMode(int mode)
 {
 	SetMouseDispFlag(mode ? 1 : 0);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static void UnloadGraph(int &hdl)
 {
 	if(hdl != -1)
@@ -239,9 +242,9 @@ static void UnloadGraph(int &hdl)
 		hdl = -1;
 	}
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static void DxPrv_SetScreenSize(int w, int h)
 {
 	int mdm = GetMouseDispMode();
@@ -260,30 +263,30 @@ static void DxPrv_SetScreenSize(int w, int h)
 
 // < DxPrv_
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int GetMouseDispMode(void)
 {
 	return DxPrv_GetMouseDispMode();
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void SetMouseDispMode(int mode)
 {
 	DxPrv_SetMouseDispMode(mode);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void ApplyScreenSize(void)
 {
 	DxPrv_SetScreenSize(Gnd.RealScreen_W, Gnd.RealScreen_H);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void SetScreenSize(int w, int h)
 {
 	m_range(w, SCREEN_W, SCREEN_W_MAX);
@@ -299,9 +302,9 @@ void SetScreenSize(int w, int h)
 		PostSetScreenSize(w, h);
 	}
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void SetScreenPosition(int l, int t)
 {
 	SetWindowPosition(l, t);

@@ -1,6 +1,6 @@
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 enum
 {
 	ENUM_RANGE(D_DUMMY_00, 4)
@@ -32,9 +32,9 @@ enum
 	D_MAX, // num of member
 };
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 typedef struct DerInfo_st
 {
 	int ParentPicId;
@@ -43,25 +43,22 @@ typedef struct DerInfo_st
 	int W;
 	int H;
 }
-//
-// copied the source file by CopyLib.exe
-//
 DerInfo_t;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int Der(resCluster<PicInfo_t *> *resclu, int derId);
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int Der_W(int derId);
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int Der_H(int derId);
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void UnloadAllDer(autoList<int> *derHandleList);

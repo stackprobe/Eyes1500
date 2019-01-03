@@ -1,10 +1,13 @@
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 #include "all.h"
 
 // Pic_ >
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int Pic_FileData2SoftImage(autoList<uchar> *fileData) // fileData: unbind
 {
 	int hdl = LoadSoftImageToMem(fileData->ElementAt(0), fileData->GetCount());
@@ -32,9 +35,9 @@ int Pic_FileData2SoftImage(autoList<uchar> *fileData) // fileData: unbind
 
 	return hdl;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int Pic_SoftImage2GraphicHandle(int si_h) // si_h: bind
 {
 	int h = CreateGraphFromSoftImage(si_h);
@@ -44,9 +47,9 @@ int Pic_SoftImage2GraphicHandle(int si_h) // si_h: bind
 
 	return h;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 PicInfo_t *Pic_GraphicHandle2PicInfo(int handle) // handle: bind
 {
 	PicInfo_t *i = nb(PicInfo_t);
@@ -61,18 +64,18 @@ PicInfo_t *Pic_GraphicHandle2PicInfo(int handle) // handle: bind
 
 	return i;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void Pic_ReleasePicInfo(PicInfo_t *i)
 {
 	errorCase(DeleteGraph(i->Handle)); // ? é∏îs
 	memFree(i);
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void Pic_GetSoftImageSize(int si_h, int &w, int &h)
 {
 	errorCase(GetSoftImageSize(si_h, &w, &h)); // ? é∏îs
@@ -80,9 +83,9 @@ void Pic_GetSoftImageSize(int si_h, int &w, int &h)
 	errorCase(w < 1 || IMAX < w);
 	errorCase(h < 1 || IMAX < h);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void Pic_GetGraphicHandleSize(int handle, int &w, int &h)
 {
 	errorCase(GetGraphSize(handle, &w, &h)); // ? é∏îs
@@ -91,26 +94,26 @@ void Pic_GetGraphicHandleSize(int handle, int &w, int &h)
 	errorCase(h < 1 || IMAX < h);
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int SI_R;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int SI_G;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int SI_B;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int SI_A;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void Pic_GetSIPixel(int si_h, int x, int y)
 {
 	errorCase(GetPixelSoftImage(si_h, x, y, &SI_R, &SI_G, &SI_B, &SI_A)); // ? é∏îs
@@ -120,9 +123,9 @@ void Pic_GetSIPixel(int si_h, int x, int y)
 	errorCase(SI_B < 0 || 255 < SI_B);
 	errorCase(SI_A < 0 || 255 < SI_A);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void Pic_SetSIPixel(int si_h, int x, int y)
 {
 	m_range(SI_R, 0, 255);
@@ -133,9 +136,9 @@ void Pic_SetSIPixel(int si_h, int x, int y)
 	errorCase(DrawPixelSoftImage(si_h, x, y, SI_R, SI_G, SI_B, SI_A)); // ? é∏îs
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int Pic_CreateSoftImage(int w, int h)
 {
 	errorCase(w < 1 || IMAX < w);
@@ -145,16 +148,16 @@ int Pic_CreateSoftImage(int w, int h)
 	errorCase(hdl == -1); // ? é∏îs
 	return hdl;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void Pic_ReleaseSoftImage(int si_h)
 {
 	errorCase(DeleteSoftImage(si_h) == -1); // ? é∏îs
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void Pic_ReleaseGraphicHandle(int handle)
 {
 	errorCase(DeleteGraph(handle)); // ? é∏îs
@@ -162,14 +165,14 @@ void Pic_ReleaseGraphicHandle(int handle)
 
 // < Pic_
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static oneObject(autoList<resCluster<PicInfo_t *> *>, new autoList<resCluster<PicInfo_t *> *>(), GetPicResList);
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 resCluster<PicInfo_t *> *CreatePicRes(PicInfo_t *(*picLoader)(autoList<uchar> *), void (*picUnloader)(PicInfo_t *))
 {
 	resCluster<PicInfo_t *> *res = new resCluster<PicInfo_t *>("Picture.dat", "..\\..\\Picture.txt", P_MAX, 110000000, picLoader, picUnloader);
@@ -177,9 +180,9 @@ resCluster<PicInfo_t *> *CreatePicRes(PicInfo_t *(*picLoader)(autoList<uchar> *)
 	GetPicResList()->AddElement(res);
 	return res;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void UnloadAllPicResHandle(void) // ÉXÉNÉäÅ[ÉìÉÇÅ[ÉhêÿÇËë÷Ç¶íºëOÇ…åƒÇ‘Ç±Ç∆ÅB
 {
 	for(int index = 0; index < GetPicResList()->GetCount(); index++)
@@ -188,21 +191,21 @@ void UnloadAllPicResHandle(void) // ÉXÉNÉäÅ[ÉìÉÇÅ[ÉhêÿÇËë÷Ç¶íºëOÇ…åƒÇ‘Ç±Ç∆ÅB
 	}
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static resCluster<PicInfo_t *> *CurrPicRes;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void SetPicRes(resCluster<PicInfo_t *> *resclu) // resclu: NULL == reset
 {
 	CurrPicRes = resclu;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 resCluster<PicInfo_t *> *GetPicRes(void)
 {
 	if(!CurrPicRes)
@@ -210,17 +213,17 @@ resCluster<PicInfo_t *> *GetPicRes(void)
 
 	return CurrPicRes;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void ResetPicRes(void)
 {
 	CurrPicRes = NULL;
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int Pic(int picId)
 {
 	if(picId & DTP)
@@ -228,9 +231,9 @@ int Pic(int picId)
 
 	return GetPicRes()->GetHandle(picId)->Handle;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int Pic_W(int picId)
 {
 	if(picId & DTP)
@@ -238,9 +241,9 @@ int Pic_W(int picId)
 
 	return GetPicRes()->GetHandle(picId)->W;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int Pic_H(int picId)
 {
 	if(picId & DTP)

@@ -1,34 +1,37 @@
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 #include "all.h"
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static oneObject(autoList<int>, new autoList<int>(), GetSceneStack);
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int sc_numer;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int sc_denom;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 double sc_rate;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void sceneEnter(void)
 {
 	GetSceneStack()->AddElement(sc_numer);
 	GetSceneStack()->AddElement(sc_denom);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void sceneLeave(void)
 {
 	sc_denom = GetSceneStack()->UnaddElement();
@@ -38,23 +41,23 @@ void sceneLeave(void)
 
 // ---- Curtain ----
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static oneObject(autoQueue<double>, new autoQueue<double>(), GetCurtainQueue);
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 double CurrCurtainWhiteLevel;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int LastCurtainFrame = -1;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void CurtainEachFrame(int oncePerFrame) // EachFrame()前に呼び出しても可
 {
 	if(oncePerFrame)
@@ -91,9 +94,9 @@ void CurtainEachFrame(int oncePerFrame) // EachFrame()前に呼び出しても可
 	DrawRect(P_WHITEBOX, 0.0, 0.0, (double)SCREEN_W, (double)SCREEN_H);
 	DPE_Reset();
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void SetCurtain(int frameMax, double destWhiteLevel, double startWhiteLevel)
 {
 	m_range(frameMax, 0, 3600); // 0 frame - 1 min
@@ -124,14 +127,14 @@ void SetCurtain(int frameMax, double destWhiteLevel, double startWhiteLevel)
 
 // ---- Print ----
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 PrintExtra_t PE;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 typedef struct PrintInfo_st
 {
 	int X;
@@ -139,31 +142,28 @@ typedef struct PrintInfo_st
 	char *Token;
 	PrintExtra_t Extra;
 }
-//
-// copied the source file by CopyLib.exe
-//
 PrintInfo_t;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void PE_Border(int color)
 {
 	PE.Border = 1;
 	PE.BorderColor = color;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void PE_Reset(void)
 {
 	memset(&PE, 0x00, sizeof(PrintExtra_t));
 	PE.Color = GetColor(255, 255, 255);
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static int PrintFunc(PrintInfo_t *i)
 {
 	if(i->Extra.Border)
@@ -177,39 +177,39 @@ static int PrintFunc(PrintInfo_t *i)
 	DrawString(i->X, i->Y, i->Token, i->Extra.Color);
 	return 0;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static void ReleasePrintInfo(PrintInfo_t *i)
 {
 	memFree(i->Token);
 	memFree(i);
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static int P_BaseX;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static int P_BaseY;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static int P_YStep;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static int P_X;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static int P_Y;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void SetPrint(int x, int y, int yStep)
 {
 	errorCase(x < -IMAX || IMAX < x);
@@ -222,24 +222,24 @@ void SetPrint(int x, int y, int yStep)
 	P_X = 0;
 	P_Y = 0;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void PrintRet(void)
 {
 	P_X = 0;
 	P_Y += P_YStep;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void Print(char *token)
 {
 	Print_x(strx(token));
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void Print_x(char *token)
 {
 	PrintInfo_t *i = nb(PrintInfo_t);
@@ -264,9 +264,9 @@ void Print_x(char *token)
 
 // ---- UI tools ----
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void DrawCurtain(double whiteLevel)
 {
 	m_range(whiteLevel, -1.0, 1.0);
@@ -285,9 +285,9 @@ void DrawCurtain(double whiteLevel)
 
 // ----
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int RotDir(int dir, int rot) // dir: 2468-1379-5, rot: -n == 反時計周りに n*45°, n == 時計周りに n*45°
 {
 	errorCase(dir < 1 || 9 < dir);
@@ -310,18 +310,18 @@ int RotDir(int dir, int rot) // dir: 2468-1379-5, rot: -n == 反時計周りに n*45°
 	}
 	return dir;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int IsOut(double x, double y, double l, double t, double r, double b, double margin)
 {
 	return
 		x < l - margin || r + margin < x ||
 		y < t - margin || b + margin < y;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int IsOutOfScreen(double x, double y, double margin)
 {
 	return IsOut(x, y, 0, 0, SCREEN_W, SCREEN_H, margin);

@@ -1,6 +1,6 @@
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 enum
 {
 	SE_DUMMY,
@@ -26,9 +26,9 @@ enum
 
 #define SE_HANDLE_MAX 64
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 typedef struct SEInfo_st
 {
 	int HandleList[SE_HANDLE_MAX];
@@ -36,24 +36,21 @@ typedef struct SEInfo_st
 	double Volume; // 0.0 - 1.0, def: 0.5
 	int AlterCommand;
 }
-//
-// copied the source file by CopyLib.exe
-//
 SEInfo_t;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int SEEachFrame(void);
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void SEPlay(int seId);
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void SEStop(int seId);
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void UpdateSEVolume(void);

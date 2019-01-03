@@ -1,6 +1,6 @@
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 typedef struct CommonEffectExtra_st
 {
 	int EndPicId; // PicId Ç©ÇÁ EndPicId Ç‹Ç≈ï\é¶ÇµÇƒèIóπÇ∑ÇÈ, 0 == ñ≥å¯, PicIdFrmPerIncÇ∆òAìÆ
@@ -29,28 +29,25 @@ typedef struct CommonEffectExtra_st
 	int GrphHdlFlag;
 	i2D_t GrphSize;
 }
-//
-// copied the source file by CopyLib.exe
-//
 CommonEffectExtra_t;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 extern CommonEffectExtra_t CEE;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 extern double CameraX;
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 extern double CameraY;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void AddCommonEffect(
 	taskList *tl,
 	int topMode,
@@ -60,24 +57,24 @@ void AddCommonEffect(
 	double x_add2 = 0.0, double y_add2 = 0.0, double r_add2 = 0.0, double z_add2 = 0.0, double a_add2 = 0.0
 	);
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void CEE_SetBright(double r, double g, double b);
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void CEE_SetGraphicSize(i2D_t size);
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void CEE_Reset(void);
 
 // ---- tools ----
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int IsInCamera(double x, double y, double margin);
 
 // ----

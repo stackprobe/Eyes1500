@@ -1,3 +1,6 @@
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 #include "all.h"
 
 /*
@@ -15,9 +18,6 @@
 	_fsize_t size;
 	char name[_MAX_PATH];
 */
-//
-// copied the source file by CopyLib.exe
-//
 struct _finddata_t lastFindData;
 
 /*
@@ -27,9 +27,6 @@ struct _finddata_t lastFindData;
 	subDirs: NULL == 出力しない。
 	files: NULL == 出力しない。
 */
-//
-// copied the source file by CopyLib.exe
-//
 void getFileList(char *dir, autoList<char *> *subDirs, autoList<char *> *files)
 {
 	errorCase(m_isEmpty(dir));
@@ -66,9 +63,9 @@ void getFileList(char *dir, autoList<char *> *subDirs, autoList<char *> *files)
 		_findclose(h);
 	}
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void updateFindData(char *path)
 {
 	errorCase(m_isEmpty(path));
@@ -80,16 +77,16 @@ void updateFindData(char *path)
 
 // ----
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int accessible(char *path)
 {
 	return !_access(path, 0);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 char *refLocalPath(char *path)
 {
 	char *p = mbs_strrchr(path, '\\');
@@ -99,17 +96,17 @@ char *refLocalPath(char *path)
 
 	return path;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void createDir(char *dir)
 {
 	errorCase(m_isEmpty(dir));
 	errorCase(_mkdir(dir)); // ? 失敗
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void deleteDir(char *dir)
 {
 	errorCase(m_isEmpty(dir));
@@ -133,14 +130,14 @@ void deleteDir(char *dir)
 	releaseList(files, (void (*)(char *))memFree);
 }
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static oneObject(autoList<char *>, new autoList<char *>(), GetCwdStack);
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 char *getCwd(void)
 {
 	char *tmp = _getcwd(NULL, 0);
@@ -151,25 +148,25 @@ char *getCwd(void)
 	free(tmp);
 	return dir;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void changeCwd(char *dir)
 {
 	errorCase(m_isEmpty(dir));
 	errorCase(_chdir(dir)); // ? 失敗
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void addCwd(char *dir)
 {
 	GetCwdStack()->AddElement(getCwd());
 	changeCwd(dir);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void unaddCwd(void)
 {
 	char *dir = GetCwdStack()->UnaddElement();
@@ -180,9 +177,9 @@ void unaddCwd(void)
 
 #define APP_TEMP_DIR_UUID "{8f8ce7a6-fea3-455c-8d7a-a6ebfd9b9944}" // shared_uuid@g -- このソースを使い回すので、global指定
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static char *GetSystemTempDir(void)
 {
 	static char *dir;
@@ -199,16 +196,16 @@ static char *GetSystemTempDir(void)
 	}
 	return dir;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static void DeleteAppTempDir(void)
 {
 	deleteDir(getAppTempDir());
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 char *getAppTempDir(void)
 {
 	static char *dir;

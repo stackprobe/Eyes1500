@@ -1,3 +1,6 @@
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 #include "all.h"
 
 /*
@@ -6,18 +9,18 @@
 #define PadId2InputType(padId) \
 	((padId) + 1)
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static int ButtonStatus[PAD_MAX][PAD_BUTTON_MAX];
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static uint PadStatus[PAD_MAX];
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int GetPadCount(void)
 {
 	static int num = -1;
@@ -29,9 +32,9 @@ int GetPadCount(void)
 	}
 	return num;
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void PadEachFrame(void)
 {
 	for(int padId = 0; padId < GetPadCount(); padId++)
@@ -67,9 +70,9 @@ void PadEachFrame(void)
 		PadStatus[padId] = status;
 	}
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int GetPadInput(int padId, int btnId)
 {
 	if(padId == -1) // ? –¢Š„‚è“–‚Ä
@@ -83,9 +86,9 @@ int GetPadInput(int padId, int btnId)
 
 	return FreezeInputFrame ? 0 : ButtonStatus[padId][btnId];
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int GetPadPound(int padId, int btnId)
 {
 	return isPound(GetPadInput(padId, btnId));

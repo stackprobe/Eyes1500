@@ -1,37 +1,34 @@
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 typedef struct taskInfo_st
 {
 	int (*Func)(void *);
 	void *Param;
 	void (*ReleaseParam)(void *);
 }
-//
-// copied the source file by CopyLib.exe
-//
 taskInfo_t;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int IsDeadTaskInfo(taskInfo_t *i);
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 class taskList
 {
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 private:
 	autoList<taskInfo_t> *List;
 	int LastFrame;
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 public:
 	taskList()
 	{
@@ -102,13 +99,13 @@ public:
 	}
 };
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 template <class Param_t>
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void AddTask(taskList *tl, int topMode, int (*tf)(Param_t *), Param_t *tp = NULL, void (*tr)(Param_t *) = NULL)
 {
 	errorCase(!tl);

@@ -1,4 +1,7 @@
 /*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+/*
 	nフレーム間ボタンを押すと ... 0, 0, 0... 0, 1, 2... (n-2), (n-1), n, -1, 0, 0, 0... となる。
 
 	FreezeInput()により途中スキップすることがあるので、
@@ -19,14 +22,14 @@
 
 #include "all.h"
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static int InputStatus[INP_MAX];
 
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 static void MixInput(int inpId, int keyId, int btnId)
 {
 	int freezeInputFrame_BKUP = FreezeInputFrame;
@@ -39,9 +42,9 @@ static void MixInput(int inpId, int keyId, int btnId)
 
 	updateInput(InputStatus[inpId], keyDown || btnDown);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 void InputEachFrame(void)
 {
 	MixInput(INP_DIR_2, Gnd.KbdKeyId.Dir_2, Gnd.PadBtnId.Dir_2);
@@ -59,18 +62,18 @@ void InputEachFrame(void)
 	MixInput(INP_PAUSE, Gnd.KbdKeyId.Pause, Gnd.PadBtnId.Pause);
 	MixInput(INP_START, Gnd.KbdKeyId.Start, Gnd.PadBtnId.Start);
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int GetInput(int inpId)
 {
 	errorCase(inpId < 0 || INP_MAX <= inpId);
 
 	return FreezeInputFrame ? 0 : InputStatus[inpId];
 }
-//
-// copied the source file by CopyLib.exe
-//
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 int GetPound(int inpId)
 {
 	errorCase(inpId < 0 || INP_MAX <= inpId);
