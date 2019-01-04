@@ -7,9 +7,6 @@ template <class Element_t>
 */
 class autoList
 {
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 private:
 	int Count;
 	int ListSize;
@@ -22,9 +19,6 @@ private:
 		this->List = list;
 	}
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 public:
 	autoList()
 	{

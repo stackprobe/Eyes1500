@@ -7,9 +7,6 @@ template <class Element_t>
 */
 class endlessQueue
 {
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 private:
 	autoList<Element_t> *List;
 	int RIndex;
@@ -20,9 +17,6 @@ private:
 		this->RIndex = 0;
 	}
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 public:
 	endlessQueue()
 	{

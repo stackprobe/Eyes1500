@@ -205,9 +205,6 @@ void SmplPadConfig(void)
 			*BtnPList[currBtnIndex] = pressBtnId;
 			currBtnIndex++;
 		}
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 endInput:
 
 		DrawCurtain();

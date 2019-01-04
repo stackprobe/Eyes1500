@@ -142,9 +142,6 @@ FontHandle_t *GetFontHandle(char *fontName, int fontSize, int fontThick, int ant
 	}
 	fh = CreateFontHandle(fontName, fontSize, fontThick, antiAliasing, edgeSize, italicFlag);
 	GetFontHandleList()->AddElement(fh);
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 found:
 	return fh;
 }

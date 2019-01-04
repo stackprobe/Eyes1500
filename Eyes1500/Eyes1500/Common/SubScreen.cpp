@@ -43,9 +43,6 @@ void ReleaseSubScreen(SubScreen_t *i)
 		}
 	}
 	error(); // not found
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 endDesert:
 
 	if(i->Handle != -1)

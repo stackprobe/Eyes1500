@@ -27,9 +27,6 @@ template <class Handle_t>
 */
 class resCluster
 {
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 private:
 	char *ClusterFile;
 	char *FileListFile;
@@ -84,9 +81,6 @@ private:
 
 	autoList<int> *DerHandleList; // for Derivation.cpp
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 public:
 
 	resCluster(char *clusterFile, char *fileListFile, int resCount, int firstTweek, Handle_t (*resLoader)(autoList<uchar> *), void (*resUnloader)(Handle_t))

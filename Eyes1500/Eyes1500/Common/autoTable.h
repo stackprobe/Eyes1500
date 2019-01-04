@@ -7,17 +7,11 @@ template <class Element_t>
 */
 class autoTable
 {
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 private:
 	autoList<autoList<Element_t> *> *Rows;
 	Element_t (*CreateCellFunc)(void);
 	void (*ReleaseCellFunc)(Element_t);
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 public:
 	autoTable(Element_t (*createCellFunc)(void), void (*releaseCellFunc)(Element_t), int w = 1, int h = 1)
 	{

@@ -3,15 +3,9 @@
 */
 class finalizers
 {
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 private:
 	autoList<void (*)(void)> *Finalizers;
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 public:
 	finalizers()
 	{

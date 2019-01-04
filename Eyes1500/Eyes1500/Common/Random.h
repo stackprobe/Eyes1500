@@ -51,9 +51,6 @@ int rndPermil(int permil);
 */
 class Random
 {
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 private:
 	unsigned long *mt;
 	int mti;
@@ -67,9 +64,6 @@ private:
 		leaveRnd(&this->mti);
 	}
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 public:
 	Random(int seed)
 	{

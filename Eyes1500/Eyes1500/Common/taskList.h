@@ -19,16 +19,10 @@ int IsDeadTaskInfo(taskInfo_t *i);
 */
 class taskList
 {
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 private:
 	autoList<taskInfo_t> *List;
 	int LastFrame;
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 public:
 	taskList()
 	{
