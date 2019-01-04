@@ -72,7 +72,7 @@ void EachFrame(void)
 	{
 		ChangeDrawScreen(DX_SCREEN_BACK);
 
-		// app >
+		// app > @ draw screen
 
 		SetDrawBright(0, 0, 0);
 		DrawExtendGraph(0, 0, Gnd.RealScreen_W, Gnd.RealScreen_H, Pic(P_WHITEBOX), 0);
@@ -96,7 +96,7 @@ void EachFrame(void)
 		// < app
 	}
 
-	// app >
+	// app > @ post draw screen
 
 	// zantei zantei zantei zantei zantei
 	{

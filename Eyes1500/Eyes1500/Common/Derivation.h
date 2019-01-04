@@ -5,7 +5,7 @@ enum
 {
 	ENUM_RANGE(D_DUMMY_00, 4)
 
-	// app >
+	// app > @ D_
 
 	ENUM_RANGE(D_CG_MESSAGE_00, 2)
 	ENUM_RANGE(D_CHARA_PLAYER_00, 6)

@@ -4,6 +4,9 @@
 #include "all.h"
 
 /*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+/*
 	JChar.bin
 		CP932
 		但し、半角スペースを含まない。(ASCII・半角カナを含む)

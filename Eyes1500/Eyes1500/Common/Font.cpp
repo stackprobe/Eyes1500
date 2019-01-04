@@ -63,6 +63,9 @@ void AddFontFile(int etcId, char *localFile)
 // ---- FontHandle ----
 
 /*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+/*
 	fontThick: 1 - 9, def == 6   -- 多分 DxLib のソースの SetFontThickness() を見てデフォが 6 だったんだと思う。
 */
 FontHandle_t *CreateFontHandle(char *fontName, int fontSize, int fontThick, int antiAliasing, int edgeSize, int italicFlag)

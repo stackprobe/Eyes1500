@@ -135,12 +135,15 @@ void SmplPadConfig(void)
 		&Gnd.PadBtnId.Start,
 	};
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 	/*
 		NULL == 使用していない。
 	*/
 	char *BTN_LIST[INP_MAX] =
 	{
-		// app >
+		// app > @ BTN_LIST
 
 		"下", // INP_DIR_2
 		"左", // INP_DIR_4
@@ -338,6 +341,9 @@ endLoop:;
 
 // ---- ボリューム ----
 /*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+/*
 	-- e.g.
 
 	static void XXX_BGMVolumeChanged(double volume)
@@ -368,6 +374,9 @@ static double SVC_ValueToRate(double value, double minval, double valRange)
 	return (double)(value - minval) / valRange;
 }
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 /*
 	(ret, rate): 0.0 - 1.0
 	pulse: NULL == 無効

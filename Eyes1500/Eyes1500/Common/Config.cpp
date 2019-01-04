@@ -6,6 +6,9 @@
 // Conf_* >
 
 /*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+/*
 	-1 == デフォルト
 	0  == 最初のモニタ
 	1  == 2番目のモニタ

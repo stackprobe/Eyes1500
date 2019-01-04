@@ -81,6 +81,9 @@ extern "C" {
 #endif
 
 /*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+/*
  * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  * ! SHA_LONG has to be at least 32 bits wide. If it's wider, then !
  * ! SHA_LONG_LOG2 has to be defined along.                        !
@@ -219,6 +222,9 @@ void SHA256_Transform(SHA256_CTX *c, const unsigned char *data);
 #define SHA512_DIGEST_LENGTH	64
 
 #ifndef OPENSSL_NO_SHA512
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 /*
  * Unlike 32-bit digest algorithms, SHA-512 *relies* on SHA_LONG64
  * being exactly 64-bit wide. See Implementation Notes in sha512.c

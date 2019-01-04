@@ -6,7 +6,7 @@ enum
 	ETC_DATSTRINGS,
 	ETC_JCHAR,
 
-	// app >
+	// app > @ ETC_
 
 	ETC_STAGE_INFO,
 	ETC_ENEMY_INFO,

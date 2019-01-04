@@ -4,6 +4,9 @@
 #include "all.h"
 
 /*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+/*
 	unsigned attrib;
 		_A_ARCH
 		_A_HIDDEN
@@ -20,6 +23,9 @@
 */
 struct _finddata_t lastFindData;
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 /*
 	dir 直下のサブディレクトリ・ファイルのリストを返す。
 	返すサブディレクトリ・ファイルは「ローカル名」なので注意！

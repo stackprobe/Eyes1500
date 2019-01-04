@@ -13,6 +13,9 @@
 // #include <openssl/opensslconf.h>
 #if !defined(OPENSSL_NO_SHA) && !defined(OPENSSL_NO_SHA512)
 /*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+/*
  * IMPLEMENTATION NOTES.
  *
  * As you might have noticed 32-bit hash algorithms:
@@ -47,6 +50,9 @@
  * 16-bit platforms.
  *					<appro@fy.chalmers.se>
  */
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 /*
 #include <stdlib.h>
 #include <string.h>
@@ -484,6 +490,9 @@ static const SHA_LONG64 K512[80] = {
 
 #if defined(__i386) || defined(__i386__) || defined(_M_IX86)
 /*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+/*
  * This code should give better results on 32-bit CPU with less than
  * ~24 registers, both size and performance wise...
  */
@@ -721,6 +730,9 @@ autoList<uchar> *sha512_block(autoList<uchar> *block)
 {
 	return sha512_block(block->ElementAt(0), block->GetCount());
 }
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 /*
 	block:
 		b[0] ... [n]

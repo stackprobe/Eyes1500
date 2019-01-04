@@ -21,6 +21,9 @@ void sceneEnter(void);
 void sceneLeave(void);
 
 /*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+/*
 ex.
 	forscene(100)
 	{
@@ -49,6 +52,9 @@ ex.
 #define forscene(frameMax) \
 	for(sceneEnter(), sc_denom = (frameMax), sc_numer = 0; sc_numer <= (frameMax) && (sc_rate = (double)sc_numer / sc_denom, 1); sc_numer++)
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 /*
 ex.
 	ifsceneBegin(60, count)

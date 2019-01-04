@@ -8,6 +8,9 @@
 */
 typedef struct CommonEffect_st
 {
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 	/*
 		memAlloc_NC()‚È‚Ì‚Åƒƒ“ƒo[’Ç‰Á‚µ‚½‚Æ‚«’ˆÓI
 	*/

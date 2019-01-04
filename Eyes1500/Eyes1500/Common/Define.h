@@ -28,13 +28,15 @@
 
 #include <DxLib.h>
 
-// app >
+// app > @ define LOG_ENABLED
+
 /*
-// < app
 #define LOG_ENABLED 0
 /*/
 #define LOG_ENABLED 1
 //*/
+
+// < app
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -58,7 +60,7 @@ typedef unsigned __int64 uint64;
 #define PI     3.141592653589793
 #define ROOT_2 1.414213562373095
 
-// app >
+// app > @ define SCREEN_WH
 
 #define SCREEN_W 480
 #define SCREEN_H 640
@@ -72,6 +74,9 @@ typedef unsigned __int64 uint64;
 
 #define MONITOR_MAX 10
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 /*
 	音楽と効果音の初期ボリューム
 	0.0 - 1.0
@@ -113,6 +118,9 @@ typedef unsigned __int64 uint64;
 	enum_member##_END = enum_member + (num) - 1,
 
 /*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+/*
 	ex.
 		oneObject(int, (int *)na(int, 100), GetIntList);         ... プロトタイプ宣言は oneObjectProto(int, GetIntList);
 		static oneObject(ClassABC, new ClassABC(), GetClassABC); ... static の場合
@@ -129,6 +137,9 @@ typedef unsigned __int64 uint64;
 #define oneObjectProto(type_t, getter) \
 	type_t *(getter)(void)
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 /*
 	終了時の counter ... (-1): 放した, 0: 放している, 1: 押した, 2-: 押している
 */

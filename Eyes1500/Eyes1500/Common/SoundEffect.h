@@ -5,7 +5,7 @@ enum
 {
 	SE_DUMMY,
 
-	// app >
+	// app > @ SE_
 
 	SE_BOMB,
 	SE_BREAK,

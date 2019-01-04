@@ -104,6 +104,9 @@ void rijndaelDecryptRound(const u32 rk[/*4*(Nr + 1)*/], int Nr, u8 block[16], in
 //#include "rijndael-alg-fst.h"
 
 /*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+/*
 Te0[x] = S [x].[02, 01, 01, 03];
 Te1[x] = S [x].[03, 02, 01, 01];
 Te2[x] = S [x].[01, 03, 02, 01];
@@ -974,6 +977,9 @@ FUNC_STATIC void rijndaelEncrypt(const u32 rk[/*4*(Nr + 1)*/], int Nr, const u8 
     int r;
 #endif /* ?FULL_UNROLL */
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
     /*
 	 * map byte array block to cipher state
 	 * and add initial round key:
@@ -1054,6 +1060,9 @@ FUNC_STATIC void rijndaelEncrypt(const u32 rk[/*4*(Nr + 1)*/], int Nr, const u8 
     }
     rk += Nr << 2;
 #else  /* !FULL_UNROLL */
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
     /*
 	 * Nr - 1 full rounds:
 	 */
@@ -1115,6 +1124,9 @@ FUNC_STATIC void rijndaelEncrypt(const u32 rk[/*4*(Nr + 1)*/], int Nr, const u8 
             rk[3];
     }
 #endif /* ?FULL_UNROLL */
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
     /*
 	 * apply last round and
 	 * map cipher state to byte array block:
@@ -1158,6 +1170,9 @@ FUNC_STATIC void rijndaelDecrypt(const u32 rk[/*4*(Nr + 1)*/], int Nr, const u8 
     int r;
 #endif /* ?FULL_UNROLL */
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
     /*
 	 * map byte array block to cipher state
 	 * and add initial round key:
@@ -1238,6 +1253,9 @@ FUNC_STATIC void rijndaelDecrypt(const u32 rk[/*4*(Nr + 1)*/], int Nr, const u8 
     }
 	rk += Nr << 2;
 #else  /* !FULL_UNROLL */
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
     /*
      * Nr - 1 full rounds:
      */
@@ -1299,6 +1317,9 @@ FUNC_STATIC void rijndaelDecrypt(const u32 rk[/*4*(Nr + 1)*/], int Nr, const u8 
             rk[3];
     }
 #endif /* ?FULL_UNROLL */
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
     /*
 	 * apply last round and
 	 * map cipher state to byte array block:
@@ -1342,6 +1363,9 @@ void rijndaelEncryptRound(const u32 rk[/*4*(Nr + 1)*/], int Nr, u8 block[16], in
 	int r;
 	u32 s0, s1, s2, s3, t0, t1, t2, t3;
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
     /*
 	 * map byte array block to cipher state
 	 * and add initial round key:
@@ -1352,6 +1376,9 @@ void rijndaelEncryptRound(const u32 rk[/*4*(Nr + 1)*/], int Nr, u8 block[16], in
 	s3 = GETU32(block + 12) ^ rk[3];
     rk += 4;
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
     /*
 	 * Nr - 1 full rounds:
 	 */
@@ -1389,6 +1416,9 @@ void rijndaelEncryptRound(const u32 rk[/*4*(Nr + 1)*/], int Nr, u8 block[16], in
 
     }
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
     /*
 	 * apply last round and
 	 * map cipher state to byte array block:
@@ -1438,6 +1468,9 @@ void rijndaelDecryptRound(const u32 rk[/*4*(Nr + 1)*/], int Nr, u8 block[16], in
 	int r;
 	u32 s0, s1, s2, s3, t0, t1, t2, t3;
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
     /*
 	 * map byte array block to cipher state
 	 * and add initial round key:
@@ -1448,6 +1481,9 @@ void rijndaelDecryptRound(const u32 rk[/*4*(Nr + 1)*/], int Nr, u8 block[16], in
 	s3 = GETU32(block + 12) ^ rk[3];
     rk += 4;
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
     /*
 	 * Nr - 1 full rounds:
 	 */
@@ -1485,6 +1521,9 @@ void rijndaelDecryptRound(const u32 rk[/*4*(Nr + 1)*/], int Nr, u8 block[16], in
 
     }
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
     /*
 	 * complete the last round and
 	 * map cipher state to byte array block:
@@ -1546,7 +1585,7 @@ FUNC_STATIC void AES128_Decrypt_rcbc(void *block, int size)
 	uchar rawKey[16];
 	u32 ctx[44];
 
-	// app >
+	// app > @ gen_rk
 
 #if 1
 

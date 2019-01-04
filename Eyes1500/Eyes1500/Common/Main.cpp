@@ -81,6 +81,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 {
 	memAlloc_INIT();
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 	/*
 		APP_TEMP_DIR_UUID ‚Í shared_uuid
 	*/
@@ -191,7 +194,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	}
 #endif
 
-	// app >
+	// app > @ INIT
 
 //	AddFontFile(ETC_FONT_RIIT, "RiiT_F.otf");
 //	AddFontFile(ETC_FONT_GENKAI_MINCHO, "genkai-mincho.ttf");

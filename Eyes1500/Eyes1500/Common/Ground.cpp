@@ -18,7 +18,7 @@ void Gnd_INIT(void)
 	Gnd.EL = new taskList();
 	Gnd.PrimaryPadId = -1;
 
-	// app >
+	// app > @ Gnd_INIT
 
 	// < app
 
@@ -60,9 +60,9 @@ void Gnd_INIT(void)
 	Gnd.KbdKeyId.Pause = KEY_INPUT_SPACE;
 	Gnd.KbdKeyId.Start = KEY_INPUT_RETURN;
 
-	Gnd.RO_MouseDispMode = 1;
+	Gnd.RO_MouseDispMode = 0;
 
-	// app >
+	// app > @ Gnd_INIT SaveData
 
 	// < app
 }
@@ -73,13 +73,13 @@ void Gnd_FNLZ(void)
 {
 	delete Gnd.EL;
 
-	// app >
+	// app > @ Gnd_FNLZ
 
 	// < app
 
 	// SaveData -->
 
-	// app >
+	// app > @ Gnd_FNLZ SaveData
 
 	// < app
 }
@@ -290,6 +290,9 @@ static int *PPadBtns[] =
 */
 static void AntiPadBtnIdConflict(void)
 {
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 	/*
 		重複して割り当てられていた場合、両方 -1 にする。
 	*/
@@ -311,6 +314,9 @@ static void AntiPadBtnIdConflict(void)
 */
 void UnassignAllPadBtnId(void)
 {
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 	/*
 		全て割り当てナシにする。
 	*/
@@ -388,7 +394,7 @@ void ImportSaveData(void)
 
 	Gnd.RO_MouseDispMode = SD_ReadBoolean();
 
-	// app >
+	// app > @ ImportSaveData
 
 	Gnd.HiScore = SD_ReadInt64(0, IMAX_64);
 
@@ -398,7 +404,7 @@ void ImportSaveData(void)
 
 	delete SaveData;
 
-	// app >
+	// app > @ post ImportSaveData
 
 //	AntiPadBtnIdConflict();
 
@@ -453,7 +459,7 @@ void ExportSaveData(void)
 
 	SD_WriteInt(GetMouseDispMode());
 
-	// app >
+	// app > @ ExportSaveData
 
 	SD_WriteInt64(Gnd.HiScore);
 

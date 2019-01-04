@@ -85,6 +85,9 @@ static void ResetBlend(void)
 */
 static void SetBright(double cR, double cG, double cB) // (cR, cG, cB): 0.0 - 1.0 == à√Å`ñæ
 {
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 	/*
 		0 - 255 Ç∆ä‘à·Ç¶ÇƒÇ¢ÇÈ etc.
 	*/

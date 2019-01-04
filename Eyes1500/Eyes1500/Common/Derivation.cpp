@@ -46,7 +46,7 @@ static void CreateDerList(void)
 
 	AddAnimation(P_DUMMY, 0, 0, 25, 25, 2, 2); // D_DUMMY_00
 
-	// app >
+	// app > @ AddDer
 
 	AddAnimation(P_CG_MESSAGE, 0, 0, 480, 128, 1, 2); // D_CG_MESSAGE_00
 	AddAnimation(P_CHARA_PLAYER, 0, 0, 32, 32, 2, 3); // D_CHARA_PLAYER_00

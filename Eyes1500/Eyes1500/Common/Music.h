@@ -5,7 +5,7 @@ enum
 {
 	MUS_DUMMY,
 
-	// app >
+	// app > @ MUS_
 
 	MUS_MAIN,
 	MUS_BATTLE_1 = MUS_MAIN, // “¯‚¶‹È‚ðŽg‚¤B

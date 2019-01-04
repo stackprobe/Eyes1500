@@ -4,6 +4,9 @@
 #include "all.h"
 
 /*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+/*
 	padId: 0 - (PAD_MAX - 1) -> DX_INPUT_PAD1 ...
 */
 #define PadId2InputType(padId) \

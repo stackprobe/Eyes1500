@@ -223,6 +223,9 @@ int isSame(autoList<uchar> *binData1, autoList<uchar> *binData2)
 // 角度から方向 ... MakeXYSpeed, angleToXY
 
 /*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+/*
 	ret: 0.0 ～ PI * 2.0
 		右真横(0,0 -> 1,0方向)を0.0として、時計回り。(但し、X軸プラス方向を右、Y軸プラス方向を下)
 		1周は PI * 2.0

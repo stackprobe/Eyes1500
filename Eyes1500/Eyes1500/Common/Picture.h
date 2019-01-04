@@ -7,7 +7,7 @@ enum
 	P_WHITEBOX,
 	P_WHITECIRCLE,
 
-	// app >
+	// app > @ P_
 
 	P_CG_CONTROLLER,
 	P_CG_CREDIT,

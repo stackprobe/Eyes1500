@@ -117,6 +117,9 @@ public:
 		return this->List[index];
 	}
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 	/*
 		今から count 回 AddElement() してもバッファの拡張が起こらないようにバッファを拡張する。
 	*/
