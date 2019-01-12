@@ -130,7 +130,7 @@
     <ClCompile Include="Common\Stopwatch.cpp" />
     <ClCompile Include="Common\System.cpp" />
     <ClCompile Include="Common\Tools.cpp" />
-    <ClCompile Include="E15TitleMenu.cpp" />
+    <ClCompile Include="TitleMenu.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyInfo.cpp" />
     <ClCompile Include="EnemyTama.cpp" />
@@ -140,7 +140,6 @@
     <ClCompile Include="PlayerMissile.cpp" />
     <ClCompile Include="PlayerTama.cpp" />
     <ClCompile Include="StageInfo.cpp" />
-    <ClCompile Include="TitleMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\aes128.h" />
@@ -195,7 +194,7 @@
     <ClInclude Include="Common\taskList.h" />
     <ClInclude Include="Common\Tools.h" />
     <ClInclude Include="Define.h" />
-    <ClInclude Include="E15TitleMenu.h" />
+    <ClInclude Include="TitleMenu.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyInfo.h" />
     <ClInclude Include="EnemyTama.h" />
@@ -205,7 +204,6 @@
     <ClInclude Include="PlayerMissile.h" />
     <ClInclude Include="PlayerTama.h" />
     <ClInclude Include="StageInfo.h" />
-    <ClInclude Include="TitleMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />

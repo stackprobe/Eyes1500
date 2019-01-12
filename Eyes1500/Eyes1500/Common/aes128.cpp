@@ -1587,8 +1587,6 @@ FUNC_STATIC void AES128_Decrypt_rcbc(void *block, int size)
 
 	// app > @ gen_rk
 
-#if 1
-
 	// $_git:secretBegin
 
 /////// ///////// /
@@ -1632,50 +1630,6 @@ FUNC_STATIC void AES128_Decrypt_rcbc(void *block, int size)
 ////// ///////
 
 	// $_git:secretEnd
-
-#else
-
-#define INIT_RK() \
-	my_memset(&rk, 0x80, 16)
-
-#define COMPLEX(a) \
-	rk[0] = rk[0] / (255 - a) ^ (rk[0] ^ a) << 56; \
-	rk[0] ^= _UI64_MAX / a; \
-	rk[1] ^= rk[0]; \
-	LOG("rk: %016I64x, %016I64x, [%c]\n", rk[0], rk[1], a)
-
-#if LOG_ENABLED
-	LOG("[TEST_1]\n");
-	INIT_RK();
-	COMPLEX('A');
-	COMPLEX('B');
-	COMPLEX('C');
-	COMPLEX('D');
-	COMPLEX('E');
-	COMPLEX('F');
-	LOG("[TEST_2]\n");
-	INIT_RK();
-	COMPLEX('@');
-	COMPLEX('B');
-	COMPLEX('C');
-	COMPLEX('D');
-	COMPLEX('E');
-	COMPLEX('F');
-	LOG("[TEST_END]\n");
-#endif
-
-	INIT_RK();
-	COMPLEX('C');
-	COMPLEX('O');
-	COMPLEX('D');
-	COMPLEX('E');
-	COMPLEX('V');
-	COMPLEX('I');
-	COMPLEX('L');
-
-#undef COMPLEX
-
-#endif
 
 	// < app
 
