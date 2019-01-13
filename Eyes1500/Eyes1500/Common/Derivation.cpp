@@ -31,7 +31,13 @@ static void AddAnimation(int parentPicId, int x, int y, int w, int h, int xNum, 
 	if(xStep == -1) xStep = w;
 	if(yStep == -1) yStep = h;
 
+	/*
+		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+	*/
 	for(int yc = 0; yc < yNum; yc++)
+	/*
+		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+	*/
 	for(int xc = 0; xc < xNum; xc++)
 	{
 		AddDer(parentPicId, x + xc * xStep, y + yc * yStep, w, h);
@@ -77,6 +83,9 @@ static void CreateDerList(void)
 */
 static autoList<DerInfo_t *> *GetDerList(void)
 {
+	/*
+		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+	*/
 	if(!DerList)
 		CreateDerList();
 
@@ -119,6 +128,9 @@ static int LoadDer(PicInfo_t *parent, int x, int y, int w, int h)
 */
 static void UnloadDer(int h)
 {
+	/*
+		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+	*/
 	if(h == -1) // ? ñ¢ÉIÅ[ÉvÉì
 		return;
 
@@ -134,6 +146,9 @@ int Der(resCluster<PicInfo_t *> *resclu, int derId)
 
 	int h = resclu->GetDerHandleList()->RefElement(derId, -1);
 
+	/*
+		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+	*/
 	if(h == -1)
 	{
 		DerInfo_t *i = GetDerList()->GetElement(derId);
@@ -170,6 +185,9 @@ int Der_H(int derId)
 */
 void UnloadAllDer(autoList<int> *derHandleList)
 {
+	/*
+		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+	*/
 	for(int derId = 0; derId < derHandleList->GetCount(); derId++)
 	{
 		UnloadDer(derHandleList->GetElement(derId));
