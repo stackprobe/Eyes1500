@@ -24,6 +24,9 @@ enum
 	SE_MAX, // num of member
 };
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 #define SE_HANDLE_MAX 64
 
 /*

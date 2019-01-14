@@ -151,6 +151,9 @@ resCluster<PicInfo_t *> *GetPicRes(void);
 */
 void ResetPicRes(void);
 
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
 #define DTP 0x40000000
 
 /*
