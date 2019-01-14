@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Common\all.h"
-#include "Game\all.h"
 
 #include "Define.h"
 #include "PlayerTama.h"
