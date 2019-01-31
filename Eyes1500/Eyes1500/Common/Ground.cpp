@@ -64,6 +64,8 @@ void Gnd_INIT(void)
 
 	// app > @ Gnd_INIT SaveData
 
+	Gnd.RO_MouseDispMode = 1;
+
 	// < app
 }
 /*
