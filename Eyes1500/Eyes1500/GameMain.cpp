@@ -224,7 +224,7 @@ endDamagedPlayer:
 		{
 			PlayerTama_t *plTama = GDc.PlayerTamaList->GetElement(index);
 
-			plTama->Frame++; // ‚±‚±‚Å 1`, ‰º‚Ìif‚Ì‚Æ‚±‚ë‚Å‚Í Frame == 0, ‚æ‚Á‚Ä 0`
+			int frm = plTama->Frame++; // frm == 0`
 			plTama->Y -= 10.0;
 
 			if(plTama->Y < 0.0) // ? ‰æ–ÊŠO‚Éo‚½B-> ŠJ•ú
@@ -244,7 +244,7 @@ endDamagedPlayer:
 		{
 			PlayerMissile_t *plMissile = GDc.PlayerMissileList->GetElement(index);
 
-			plMissile->Frame++;
+			int frm = plMissile->Frame++; // frm == 0`
 
 			PlayerMissile_Move(plMissile);
 			//plMissile->Y -= 5.0; // test
@@ -275,7 +275,7 @@ endDamagedPlayer:
 
 		if(1 <= GDc.LaserFrame)
 		{
-			int frm = GDc.LaserFrame - 1; // 0`
+			int frm = GDc.LaserFrame - 1; // frm == 0`
 
 			if(frm % 65 == 0)
 			{
@@ -289,7 +289,7 @@ endDamagedPlayer:
 
 		if(1 <= GDc.FlashFrame) // Flash(Laser_B)
 		{
-			int frm = GDc.FlashFrame++ - 1; // 0`
+			int frm = GDc.FlashFrame++ - 1; // frm == 0`
 
 			if(frm == 300) // ÆŽËI—¹
 			{

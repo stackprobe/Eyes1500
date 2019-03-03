@@ -22,7 +22,7 @@ void ReleaseEnemyTama(EnemyTama_t *i)
 
 int EnemyTamaEachFrame(EnemyTama_t *i) // ret: ? Á–Å
 {
-	i->Frame++;
+	int frm = i->Frame++; // frm == 0`
 	
 
 	// zantei
@@ -34,7 +34,9 @@ int EnemyTamaEachFrame(EnemyTama_t *i) // ret: ? Á–Å
 }
 void DrawEnemyTama(EnemyTama_t *i)
 {
-	DrawCenter(D_ENEMY_SHOT_00 + i->Frame / 6 % 4 | DTP, i->X, i->Y);
+	int frm = i->Frame - 1; // frm == 0`
+
+	DrawCenter(D_ENEMY_SHOT_00 + frm / 6 % 4 | DTP, i->X, i->Y);
 }
 
 // <-- accessor

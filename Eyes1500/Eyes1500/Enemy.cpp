@@ -24,7 +24,7 @@ void ReleaseEnemy(Enemy_t *i)
 
 int EnemyEachFrame(Enemy_t *i) // ret: ? Á–Å
 {
-	i->Frame++;
+	int frm = i->Frame++; // frm == 0`
 
 
 	// zantei
@@ -50,19 +50,24 @@ void DrawEnemy(Enemy_t *i)
 
 	if(!GDc.BattleStarted)
 	{
-		// i->Frame == 0 ŒÅ’è ’ˆÓI
+		// i->Frame == 0 ŒÅ’è
 
 		DPE_SetAlpha(0.5);
 		DrawCenter(D_EYE_1_00 + ProcFrame / 6 % 2 | DTP, d2i(i->X), d2i(i->Y));
 		DPE_Reset();
 	}
-	else if(i->DamagedFrame)
-	{
-		DrawCenter(D_EYE_1_00 + 2 + i->Frame / 3 % 2 | DTP, d2i(i->X), d2i(i->Y));
-	}
 	else
 	{
-		DrawCenter(D_EYE_1_00 + i->Frame / 6 % 2 | DTP, d2i(i->X), d2i(i->Y));
+		int frm = i->Frame - 1; // frm == 0`
+
+		if(i->DamagedFrame)
+		{
+			DrawCenter(D_EYE_1_00 + 2 + frm / 3 % 2 | DTP, d2i(i->X), d2i(i->Y));
+		}
+		else
+		{
+			DrawCenter(D_EYE_1_00 + frm / 6 % 2 | DTP, d2i(i->X), d2i(i->Y));
+		}
 	}
 }
 
