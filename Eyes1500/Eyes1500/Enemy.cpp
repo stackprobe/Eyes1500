@@ -46,14 +46,12 @@ int EnemyEachFrame(Enemy_t *i) // ret: ? Á–Å
 }
 void DrawEnemy(Enemy_t *i)
 {
-	// zantei
-
 	if(!GDc.BattleStarted)
 	{
 		// i->Frame == 0 ŒÅ’è
 
 		DPE_SetAlpha(0.5);
-		DrawCenter(D_EYE_1_00 + ProcFrame / 6 % 2 | DTP, d2i(i->X), d2i(i->Y));
+		DrawCenter(GetEnemyPicId(i->Kind) + ProcFrame / 6 % 2, d2i(i->X), d2i(i->Y));
 		DPE_Reset();
 	}
 	else
@@ -62,11 +60,11 @@ void DrawEnemy(Enemy_t *i)
 
 		if(i->DamagedFrame)
 		{
-			DrawCenter(D_EYE_1_00 + 2 + frm / 3 % 2 | DTP, d2i(i->X), d2i(i->Y));
+			DrawCenter(GetEnemyDamagedPicId(i->Kind) + frm / 3 % 2, d2i(i->X), d2i(i->Y));
 		}
 		else
 		{
-			DrawCenter(D_EYE_1_00 + frm / 6 % 2 | DTP, d2i(i->X), d2i(i->Y));
+			DrawCenter(GetEnemyPicId(i->Kind) + frm / 6 % 2, d2i(i->X), d2i(i->Y));
 		}
 	}
 }
@@ -90,4 +88,35 @@ Enemy_t *GetNearestEnemy(double x, double y)
 		}
 	}
 	return ret;
+}
+
+int GetEnemyPicId(int kind)
+{
+	switch(kind)
+	{
+	case EK_EYE_1: return D_EYE_1_00 | DTP;
+	case EK_EYE_2: return D_EYE_2_00 | DTP;
+	case EK_EYE_3: return D_EYE_3_00 | DTP;
+	case EK_EYE_4: return D_EYE_4_00 | DTP;
+	case EK_EYE_5: return D_EYE_5_00 | DTP;
+	case EK_EYE_6: return D_EYE_6_00 | DTP;
+	case EK_EYE_7: return D_EYE_7_00 | DTP;
+	case EK_EYE_8: return D_EYE_8_00 | DTP;
+	case EK_EYE_9: return D_EYE_9_00 | DTP;
+	case EK_EYE_10: return D_EYE_10_00 | DTP;
+	case EK_EYE_20: return D_EYE_20_00 | DTP;
+	case EK_EYE_50: return D_EYE_50_00 | DTP;
+	case EK_EYE_100: return D_EYE_100_00 | DTP;
+
+	default:
+		error();
+	}
+}
+int GetEnemyDamagedPicId(int kind)
+{
+	return GetEnemyPicId(kind) + 2;
+}
+int GetEnemyDeadPicId(int kind)
+{
+	return GetEnemyPicId(kind) + 4;
 }

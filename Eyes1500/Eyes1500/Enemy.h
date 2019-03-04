@@ -20,3 +20,7 @@ void DrawEnemy(Enemy_t *i);
 // <-- accessor
 
 Enemy_t *GetNearestEnemy(double x, double y);
+
+int GetEnemyPicId(int kind);
+int GetEnemyDamagedPicId(int kind);
+int GetEnemyDeadPicId(int kind);

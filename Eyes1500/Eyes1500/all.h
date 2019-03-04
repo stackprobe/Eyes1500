@@ -10,6 +10,7 @@
 #include "ProcMain.h"
 #include "Game.h"
 #include "GameMain.h"
+#include "GameMgr.h"
 #include "TitleMenu.h"
 #include "EnemyInfo.h"
 #include "StageInfo.h"

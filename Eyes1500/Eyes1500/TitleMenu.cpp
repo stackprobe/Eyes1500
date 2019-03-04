@@ -385,9 +385,7 @@ void TitleMenu(void)
 
 					// ÉQÅ[ÉÄÇ±Ç±Ç©ÇÁ
 
-					GameInit();
-					GameMain();
-					GameFnlz();
+					GameMgrMain();
 
 					// ÉQÅ[ÉÄÇ±Ç±Ç‹Ç≈
 

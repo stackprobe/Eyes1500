@@ -88,5 +88,14 @@ int GetStageCount(void)
 void AddEnemyByStageIndex(int stageIndex) // GameMain()“à‚©‚çŒÄ‚Ô‚±‚ÆB
 {
 	INIT();
-	error(); // TODO
+
+	for(int index = 0; index < StageInfos->GetElement(stageIndex).EnemyInfos->GetCount(); index++)
+	{
+		StageEnemyInfo_t info = StageInfos->GetElement(stageIndex).EnemyInfos->GetElement(index);
+
+		double x = info.X + Pic_W(GetEnemyPicId(info.Kind)) / 2;
+		double y = info.Y + Pic_H(GetEnemyPicId(info.Kind)) / 2;
+
+		GDc.EnemyList->AddElement(CreateEnemy(info.Kind, x, y));
+	}
 }

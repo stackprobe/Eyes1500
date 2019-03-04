@@ -1,6 +1,7 @@
 typedef struct GDc_st
 {
 	// Params {
+	int StageIndex; // 0 ` GetStageCount() - 1
 	// }
 
 	// Return {
@@ -30,6 +31,10 @@ typedef struct GDc_st
 	autoList<PlayerMissile_t *> *PlayerMissileList;
 	autoList<Enemy_t *> *EnemyList;
 	autoList<EnemyTama_t *> *EnemyTamaList;
+
+	int BattleNotStartedFrame;
+	int NoEnemyFrame; // 0 == –³Œø, 1` == “G–³‚µó‘Ô
+	int WillNextWave; // ? Ÿ”g‚ÉŒü‚©‚¤B
 }
 GDc_t;
 

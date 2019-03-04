@@ -72,12 +72,15 @@ LOGPOS();
 	}
 	sceneLeave();
 
-	// 敵_配置 zantei
+#if 1
+	AddEnemyByStageIndex(GDc.StageIndex);
+#else // 敵の配置テスト
 	{
 		GDc.EnemyList->AddElement(CreateEnemy(EK_EYE_1, 100, 100));
 		GDc.EnemyList->AddElement(CreateEnemy(EK_EYE_1, 240, 200));
 		GDc.EnemyList->AddElement(CreateEnemy(EK_EYE_1, 380, 100));
 	}
+#endif
 
 	FreezeInput();
 
@@ -88,6 +91,9 @@ restart:
 	{
 		if(!GDc.BattleStarted)
 		{
+			GDc.BattleNotStartedFrame++;
+
+			if(30 < GDc.BattleNotStartedFrame) // いきなりスタートしてしまわないように。
 			if(
 				GetInput(INP_PAUSE) == 1 ||
 //				GetInput(INP_A) == 1 || // 高速移動は反応させない。
@@ -330,6 +336,17 @@ endDamagedPlayer:
 		if(!GDc.BattleStarted)
 			goto startDraw;
 
+		if(GDc.EnemyList->GetCount())
+			GDc.NoEnemyFrame = 0; // 2bs
+		else
+			GDc.NoEnemyFrame++;
+
+		if(90 < GDc.NoEnemyFrame)
+		{
+			GDc.WillNextWave = 1;
+			break;
+		}
+
 		// 敵_処理
 
 		for(int index = 0; index < GDc.EnemyList->GetCount(); index++) // 敵_移動
@@ -468,7 +485,7 @@ endDamagedPlayer:
 				AddCommonEffect(
 					Gnd.EL,
 					1,
-					D_EYE_1_00 + 4 | DTP, // 画像zantei
+					GetEnemyDeadPicId(enemy->Kind), // 画像zantei
 					enemy->X,
 					enemy->Y,
 					0.0, 1.0, 1.0,
@@ -598,15 +615,21 @@ startDraw:
 
 		EachFrame();
 	}
-	FreezeInput();
-//	MusicFade(); // 同じ曲なので
 
-	forscene(20)
+	if(GDc.WillNextWave)
 	{
-		DrawWall();
-		EachFrame();
+		MusicFade();
 	}
-	sceneLeave();
+	else
+	{
+//		MusicFade(); // 同じ曲なので
 
+		forscene(20)
+		{
+			DrawWall();
+			EachFrame();
+		}
+		sceneLeave();
+	}
 	FreezeInput();
 }

@@ -105,6 +105,7 @@
     <ClCompile Include="Common\Etcetera.cpp" />
     <ClCompile Include="Common\File.cpp" />
     <ClCompile Include="Common\FileStream.cpp" />
+    <ClCompile Include="Common\FileStreamData.cpp" />
     <ClCompile Include="Common\Font.cpp" />
     <ClCompile Include="Common\GameTools.cpp" />
     <ClCompile Include="Common\GameTools2.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="Common\System.cpp" />
     <ClCompile Include="Common\System2.cpp" />
     <ClCompile Include="Common\taskList.cpp" />
+    <ClCompile Include="GameMgr.cpp" />
     <ClCompile Include="TitleMenu.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyInfo.cpp" />
@@ -148,6 +150,7 @@
   <ItemGroup>
     <ClInclude Include="all.h" />
     <ClInclude Include="Common\endlessQueue.h" />
+    <ClInclude Include="Common\FileStreamData.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="Common\aes128.h" />
     <ClInclude Include="Common\all.h" />
@@ -201,6 +204,7 @@
     <ClInclude Include="Common\System.h" />
     <ClInclude Include="Common\System2.h" />
     <ClInclude Include="Common\taskList.h" />
+    <ClInclude Include="GameMgr.h" />
     <ClInclude Include="TitleMenu.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyInfo.h" />

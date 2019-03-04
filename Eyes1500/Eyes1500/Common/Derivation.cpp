@@ -56,16 +56,16 @@ static void CreateDerList(void)
 	AddAnimation(P_EYE_1, 0, 0, 32, 32, 2, 4); // D_EYE_1_00
 	AddAnimation(P_EYE_2, 0, 0, 64, 32, 2, 4); // D_EYE_2_00
 	AddAnimation(P_EYE_3, 0, 0, 64, 48, 2, 4); // D_EYE_3_00
-	AddAnimation(P_EYE_4, 0, 0, 48, 32, 2, 4); // D_EYE_4_00
-	AddAnimation(P_EYE_5, 0, 0, 48, 48, 2, 4); // D_EYE_5_00
-	AddAnimation(P_EYE_6, 0, 0, 40, 80, 2, 4); // D_EYE_6_00
-	AddAnimation(P_EYE_7, 0, 0, 48, 64, 2, 4); // D_EYE_7_00
-	AddAnimation(P_EYE_8, 0, 0, 56, 64, 2, 4); // D_EYE_8_00
-	AddAnimation(P_EYE_9, 0, 0, 48, 80, 2, 4); // D_EYE_9_00
-	AddAnimation(P_EYE_10, 0, 0, 56, 80, 2, 4); // D_EYE_10_00
-	AddAnimation(P_EYE_20, 0, 0, 64, 96, 2, 4); // D_EYE_20_00
-	AddAnimation(P_EYE_50, 0, 0, 72, 192, 2, 4); // D_EYE_50_00
-	AddAnimation(P_EYE_100, 0, 0, 144, 180, 2, 4); // D_EYE_100_00
+	AddAnimation(P_EYE_4, 0, 0, 96, 32, 2, 4); // D_EYE_4_00
+	AddAnimation(P_EYE_5, 0, 0, 96, 48, 2, 4); // D_EYE_5_00
+	AddAnimation(P_EYE_6, 0, 0, 80, 80, 2, 4); // D_EYE_6_00
+	AddAnimation(P_EYE_7, 0, 0, 96, 64, 2, 4); // D_EYE_7_00
+	AddAnimation(P_EYE_8, 0, 0, 112, 64, 2, 4); // D_EYE_8_00
+	AddAnimation(P_EYE_9, 0, 0,  96, 80, 2, 4); // D_EYE_9_00
+	AddAnimation(P_EYE_10, 0, 0, 112, 80, 2, 4); // D_EYE_10_00
+	AddAnimation(P_EYE_20, 0, 0, 128, 96, 2, 4); // D_EYE_20_00
+	AddAnimation(P_EYE_50, 0, 0, 144, 192, 2, 4); // D_EYE_50_00
+	AddAnimation(P_EYE_100, 0, 0, 288, 160, 2, 4); // D_EYE_100_00
 	AddAnimation(P_ENEMY_SHOT, 0, 0, 8, 8, 4, 1); // D_ENEMY_TAMA_00
 	
 	// < app
