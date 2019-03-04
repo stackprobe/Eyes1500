@@ -5,6 +5,7 @@ typedef struct GDc_st
 	// }
 
 	// Return {
+	int WillNextStage; // ? Ÿ”g‚ÉŒü‚©‚¤B
 	// }
 
 	__int64 Score;
@@ -34,7 +35,7 @@ typedef struct GDc_st
 
 	int BattleNotStartedFrame;
 	int NoEnemyFrame; // 0 == –³Œø, 1` == “G–³‚µó‘Ô
-	int WillNextWave; // ? Ÿ”g‚ÉŒü‚©‚¤B
+	int GameOver;
 }
 GDc_t;
 

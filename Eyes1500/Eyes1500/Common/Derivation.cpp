@@ -48,6 +48,7 @@ static void CreateDerList(void)
 
 	// app > @ AddDer
 
+	AddAnimation(P_CG_END, 0, 0, 480, 128, 1, 7); // D_CG_END_00
 	AddAnimation(P_CG_MESSAGE, 0, 0, 480, 128, 1, 2); // D_CG_MESSAGE_00
 	AddAnimation(P_CHARA_PLAYER, 0, 0, 32, 32, 2, 3); // D_CHARA_PLAYER_00
 	AddAnimation(P_WEAPON_SHOT, 0, 0, 4, 8, 4, 1); // D_WEAPON_SHOT_00

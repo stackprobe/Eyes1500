@@ -53,6 +53,8 @@ LOGPOS();
 	SetCurtain();
 	FreezeInput();
 
+	int messagePicId = D_CG_MESSAGE_00 + m_01(GDc.StageIndex) | DTP;
+
 	forscene(10)
 	{
 		DrawWall();
@@ -64,7 +66,7 @@ LOGPOS();
 			double y = SCREEN_H / 2.0 + ySft * 40.0 * (1.0 - sc_rate);
 
 			DPE_SetAlpha(0.5);
-			DrawCenter(D_CG_MESSAGE_00 | DTP, x, y);
+			DrawCenter(messagePicId, x, y);
 			DPE_Reset();
 		}
 
@@ -112,7 +114,7 @@ restart:
 					AddCommonEffect(
 						Gnd.EL,
 						1,
-						D_CG_MESSAGE_00 | DTP,
+						messagePicId,
 						SCREEN_W / 2.0,
 						SCREEN_H / 2.0,
 						0.0,
@@ -168,7 +170,7 @@ endBornPlayer:
 				GDc.Player.DamagedFrame = 0;
 				goto endDamagedPlayer;
 			}
-			// todo ???
+			// É_ÉÅÅ[ÉWíÜÇÃèàóùÇ±Ç±Ç÷í«â¡
 		}
 endDamagedPlayer:
 
@@ -188,9 +190,13 @@ endDamagedPlayer:
 			if(frm == FRM_MAX)
 			{
 				GDc.Player.DeadFrame = 0;
+
+				if(GDc.GameOver)
+					break;
+
 				goto restart;
 			}
-			// todo ???
+			// îÌíeíÜÇÃèàóùÇ±Ç±Ç÷í«â¡
 		}
 
 		int uncontrollable = GDc.Player.DamagedFrame || GDc.Player.DeadFrame;
@@ -217,6 +223,13 @@ endDamagedPlayer:
 			if(1 <= GetInput(INP_DIR_8))
 			{
 				GDc.Player.Y -= speed;
+			}
+			if(1 <= GetInput(INP_F)) // é©îö
+			{
+				SEPlay(SE_DAMAGE);
+
+				GDc.Player.DeadFrame = 1;
+				GDc.GameOver = 1;
 			}
 		}
 
@@ -343,7 +356,7 @@ endDamagedPlayer:
 
 		if(90 < GDc.NoEnemyFrame)
 		{
-			GDc.WillNextWave = 1;
+			GDc.WillNextStage = 1;
 			break;
 		}
 
@@ -521,7 +534,7 @@ endDamagedPlayer:
 				}
 				else
 				{
-					SEPlay(SE_DAMAGE); // Ç†Ç¡ÇƒÇÈÅH
+					SEPlay(SE_DAMAGE);
 
 					GDc.Player.DeadFrame = 1;
 				}
@@ -538,7 +551,7 @@ startDraw:
 
 		if(!GDc.BattleStarted)
 		{
-			DrawCenter(D_CG_MESSAGE_00 | DTP, SCREEN_W / 2, SCREEN_H / 2);
+			DrawCenter(messagePicId, SCREEN_W / 2, SCREEN_H / 2);
 		}
 
 		// é©íe_ï`âÊ
@@ -616,7 +629,7 @@ startDraw:
 		EachFrame();
 	}
 
-	if(GDc.WillNextWave)
+	if(GDc.WillNextStage)
 	{
 		MusicFade();
 	}

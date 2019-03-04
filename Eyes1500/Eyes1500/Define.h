@@ -26,3 +26,16 @@ EnemyKind_t;
 
 #define ENEMY_DAMAGED_FRAME_MAX 10
 #define PLAYER_HP_MAX 3
+
+enum
+{
+	END_NORMAL,
+	END_SENMETSU,
+	END_KANPEKI,
+	END_AKAJI,
+	END_ZENCLEAR,
+	END_KAMICLEAR,
+	END_JIBAKU,
+
+	END_MAX, // num of END_*
+};
