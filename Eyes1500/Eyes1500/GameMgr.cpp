@@ -71,7 +71,7 @@ void GameMgrMain(void)
 		int wns = GDc.WillNextStage;
 		GameFnlz();
 
-		//break; // test
+		break; // test
 
 		if(!wns)
 			return;
