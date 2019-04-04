@@ -56,19 +56,23 @@ static void RebornPlayer(void)
 }
 static void DrawScore(int onBattle)
 {
+	m_approach(GDcNV.ScoreDisp, GDcNV.Score, 0.666);
+
+	__int64 iScoreDisp = (__int64)d2i(GDcNV.ScoreDisp); // XXX d2i64 ???
+
 	// Score
 	{
-		char *str = xcout("%09I64d", abs(GDcNV.Score));
+		char *str = xcout("%09I64d", abs(iScoreDisp));
 		int iro;
 
 		str = thousandComma(str);
 
-		if(GDcNV.Score < 0)
+		if(iScoreDisp < 0)
 			str = insertChar(str, 0, '-');
 
 		str = insertChar(str, 0, '\\');
 
-		if(GDcNV.Score < 0)
+		if(iScoreDisp < 0)
 		{
 			if(onBattle)
 				iro = GetColor(255, 0, 0);
@@ -169,10 +173,22 @@ LOGPOS();
 
 	FreezeInput();
 
+	// start...
+
+	RebornPlayer();
 	GDc.Player.HiSpeed = GDcNV.HiSpeed;
+
+	errorCase(!m_isRange(GDcNV.HP, 0, PLAYER_HP_MAX));
+	LOG("GDcNV.HP=%d\n", GDcNV.HP);
+	if(GDcNV.HP != 0)
+		GDc.Player.HP = GDcNV.HP;
+
+	goto start;
+
 restart:
 	RebornPlayer();
 
+start:
 	for(; ; )
 	{
 		if(!GDc.BattleStarted)
@@ -221,6 +237,14 @@ restart:
 			if(GetInput(INP_PAUSE) == 1)
 			{
 				PauseMain();
+			}
+		}
+
+		// デバッグ用
+		{
+			if(GetKeyInput(KEY_INPUT_ADD) == 1)
+			{
+				GDcNV.Score += 10000000;
 			}
 		}
 
@@ -400,7 +424,7 @@ endDamagedPlayer:
 			{
 				SEPlay(SE_LASER);
 			}
-			GDcNV.Score -= 5000000 / 60; // 経費_レーザー光線
+			GDcNV.Score -= 500000 / 60; // 経費_レーザー光線
 		}
 		else if(GDc.LaserFrame == -1)
 		{
@@ -513,7 +537,11 @@ endDamagedPlayer:
 			{
 				PlayerTama_t *plTama = GDc.PlayerTamaList->GetElement(index);
 
-				if(IsCrashed_Circle_Point(plTama->X, plTama->Y, PLAYER_SHOT_CRASH_R, enemy->X, enemy->Y))
+				if(IsCrashed_Circle_Rect(
+					plTama->X, plTama->Y, PLAYER_SHOT_CRASH_R,
+					GetEnemyAtari_L(enemy), GetEnemyAtari_T(enemy), GetEnemyAtari_R(enemy), GetEnemyAtari_B(enemy)
+					))
+//				if(IsCrashed_Circle_Point(plTama->X, plTama->Y, PLAYER_SHOT_CRASH_R, enemy->X, enemy->Y)) // old_zantei
 				{
 					SEPlay(SE_DAMAGE_E);
 
@@ -532,7 +560,11 @@ endDamagedPlayer:
 			{
 				PlayerMissile_t *plMissile = GDc.PlayerMissileList->GetElement(index);
 
-				if(IsCrashed_Circle_Point(plMissile->X, plMissile->Y, PLAYER_MISSILE_CRASH_R, enemy->X, enemy->Y))
+				if(IsCrashed_Circle_Rect(
+					plMissile->X, plMissile->Y, PLAYER_MISSILE_CRASH_R,
+					GetEnemyAtari_L(enemy), GetEnemyAtari_T(enemy), GetEnemyAtari_R(enemy), GetEnemyAtari_B(enemy)
+					))
+//				if(IsCrashed_Circle_Point(plMissile->X, plMissile->Y, PLAYER_MISSILE_CRASH_R, enemy->X, enemy->Y)) // old_zantei
 				{
 					SEPlay(SE_BOMB);
 
@@ -558,7 +590,7 @@ endDamagedPlayer:
 					l, t, r, b,
 					GetEnemyAtari_L(enemy), GetEnemyAtari_T(enemy), GetEnemyAtari_R(enemy), GetEnemyAtari_B(enemy)
 					))
-//				if(IsCrashed_Circle_Rect(enemy->X, enemy->Y, 15.0, l, t, r, b)) // 当り半径zantei
+//				if(IsCrashed_Circle_Rect(enemy->X, enemy->Y, 15.0, l, t, r, b)) // old_zantei
 				{
 					enemy->HP -= 3 + GDc.LaserFrame % 3 / 2;
 					enemyDamaged = 1;
@@ -578,7 +610,7 @@ endDamagedPlayer:
 				GDc.Player.X, GDc.Player.Y, PLAYER_CRASH_R,
 					GetEnemyAtari_L(enemy), GetEnemyAtari_T(enemy), GetEnemyAtari_R(enemy), GetEnemyAtari_B(enemy)
 				))
-//			if(IsCrashed_Circle_Point(GDc.Player.X, GDc.Player.Y, 15.0 + 15.0, enemy->X, enemy->Y)) // 当り半径zantei
+//			if(IsCrashed_Circle_Point(GDc.Player.X, GDc.Player.Y, 15.0 + 15.0, enemy->X, enemy->Y)) // old_zantei
 			{
 				double MOVE_SPAN = 0.25;
 				double eToPlX;
@@ -599,6 +631,8 @@ endDamagedPlayer:
 			if(enemyDamaged && enemy->DamagedFrame == 0)
 			{
 				enemy->Y -= 16.0; // 敵_ヒットバック
+				m_maxim(enemy->Y, 0.0); // 画面上部に引っ込まないように、
+
 				enemy->DamagedFrame = ENEMY_DAMAGED_FRAME_MAX;
 			}
 
@@ -638,7 +672,7 @@ endDamagedPlayer:
 		{
 			EnemyTama_t *i = GDc.EnemyTamaList->GetElement(index);
 
-			if(IsCrashed_Circle_Point(GDc.Player.X, GDc.Player.Y, 10.0, i->X, i->Y)) // 当り半径zantei // 自機_被弾
+			if(IsCrashed_Circle_Point(GDc.Player.X, GDc.Player.Y, PLAYER_CRASH_R, i->X, i->Y)) // 自機_被弾
 			{
 				GDc.Player.HP--;
 
@@ -786,4 +820,5 @@ startDraw:
 	GDcNV.HiSpeed = GDc.Player.HiSpeed;
 	GDcNV.X = d2i(GDc.Player.X);
 	GDcNV.Y = d2i(GDc.Player.Y);
+	GDcNV.HP = GDc.Player.HP;
 }

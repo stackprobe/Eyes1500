@@ -8,7 +8,7 @@ Enemy_t *CreateEnemy(EnemyKind_t kind, double x, double y)
 	i->X = x;
 	i->Y = y;
 
-	i->HP = 100; // zantei
+	i->HP = GetEnemyInfo(kind)->HP;
 
 	return i;
 }
@@ -26,15 +26,20 @@ int EnemyEachFrame(Enemy_t *i) // ret: ? Á–Å
 {
 	int frm = i->Frame++; // frm == 0`
 
+
+	// zantei
+
 	if(i->DamagedFrame == 0 && GDc.FlashFrame == 0)
 	{
-		i->Y += GetEnemyInfo(i->Kind)->MoveSpeed * ENEMY_MOVE_SPEED_RATE;
+		// TODO “G‚É‚æ‚è“®‚«‚ªˆá‚¤‚Í‚¸B
+
+		i->Y += ENEMY_MOVE_SPEED_CONV(GetEnemyInfo(i->Kind)->MoveSpeed);
 	}
 
 
 	// zantei
 
-	if(dRnd() < 0.003)
+	if(dRnd() < 0.01 && GDc.Player.DamagedFrame == 0 && GDc.Player.DeadFrame == 0)
 	{
 		Enemy_Shot(i);
 	}
@@ -125,13 +130,21 @@ int GetEnemyDeadPicId(int kind)
 {
 	return GetEnemyPicId(kind) + 4;
 }
+double GetEnemy_W(int kind)
+{
+	return Pic_W(GetEnemyPicId(kind));
+}
+double GetEnemy_H(int kind)
+{
+	return Pic_H(GetEnemyPicId(kind));
+}
 double GetEnemyAtari_W(int kind)
 {
-	return Pic_W(GetEnemyPicId(kind)) * 0.9;
+	return GetEnemy_W(kind) * 0.9;
 }
 double GetEnemyAtari_H(int kind)
 {
-	return Pic_H(GetEnemyPicId(kind)) * 0.9;
+	return GetEnemy_H(kind) * 0.9;
 }
 double GetEnemyMoveSpeed(int kind)
 {

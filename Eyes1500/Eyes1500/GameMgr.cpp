@@ -6,6 +6,10 @@ static void DrawWall(void)
 }
 static void Ending(int endingIndex)
 {
+	Gnd.HiScore = m_max(Gnd.HiScore, GDcNV.Score);
+
+	// ----
+
 	MusicFade();
 
 	forscene(60)

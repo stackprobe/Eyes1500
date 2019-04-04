@@ -3,8 +3,10 @@ typedef struct GDcNV_st // GDc ‚Ì Non-volatile
 	int HiSpeed;
 	int X;
 	int Y;
+	int HP; // 0 == –³Œø, 1` ˆø‚«Œp‚®HP
 
 	__int64 Score;
+	double ScoreDisp;
 	int DeficitFrame; // 0 == –³Œø, 1` == Ôšó‘Ô
 }
 GDcNV_t;

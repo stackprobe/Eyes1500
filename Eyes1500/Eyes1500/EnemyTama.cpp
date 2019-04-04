@@ -27,7 +27,7 @@ int EnemyTamaEachFrame(EnemyTama_t *i) // ret: ? Á–Å
 	
 	angleMoveXY(i->Dir, i->Speed, i->X, i->Y);
 
-	return IsOutOfScreen(i->X, i->Y);
+	return IsOutOfScreen(i->X, i->Y, 100.0); // ‰æ–Êã•”‚©‚ç‚Í‚Ýo‚µ‚½ó‘Ô‚ÅŒ‚‚Â‚±‚Æ‚à‚ ‚é‚½‚ßAmargin
 }
 void DrawEnemyTama(EnemyTama_t *i)
 {
@@ -40,10 +40,20 @@ void DrawEnemyTama(EnemyTama_t *i)
 
 void Enemy_Shot(Enemy_t *enemy)
 {
-	GDc.EnemyTamaList->AddElement(CreateEnemyTama(
-		enemy->X,
-		enemy->Y,
-		getAngle(GDc.Player.X, GDc.Player.Y, enemy->X, enemy->Y),
-		GetEnemyInfo(enemy->Kind)->TamaSpeed * ENEMY_TAMA_SPEED_RATE
-		));
+	EnemyInfo_t *ei = GetEnemyInfo(enemy->Kind);
+
+	for(int index = 0; index < ei->ShotInfos->GetCount(); index++)
+	{
+		EnemyShotInfo_t esi = ei->ShotInfos->GetElement(index);
+
+		double eye_x = enemy->X - GetEnemy_W(enemy->Kind) / 2.0 + esi.X;
+		double eye_y = enemy->Y - GetEnemy_H(enemy->Kind) / 2.0 + esi.Y;
+
+		GDc.EnemyTamaList->AddElement(CreateEnemyTama(
+			eye_x,
+			eye_y,
+			getAngle(GDc.Player.X, GDc.Player.Y, enemy->X, enemy->Y),
+			ENEMY_TAMA_SPEED_CONV(GetEnemyInfo(enemy->Kind)->TamaSpeed)
+			));
+	}
 }

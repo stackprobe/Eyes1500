@@ -24,6 +24,8 @@ Enemy_t *GetNearestEnemy(double x, double y);
 int GetEnemyPicId(int kind);
 int GetEnemyDamagedPicId(int kind);
 int GetEnemyDeadPicId(int kind);
+double GetEnemy_W(int kind);
+double GetEnemy_H(int kind);
 double GetEnemyAtari_W(int kind);
 double GetEnemyAtari_H(int kind);
 
