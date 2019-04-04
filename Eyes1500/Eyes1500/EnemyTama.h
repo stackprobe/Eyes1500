@@ -4,10 +4,11 @@ typedef struct EnemyTama_st
 	double X;
 	double Y;
 	double Dir; // 0.0 Å` PI * 2
+	double Speed; // dot per frame
 }
 EnemyTama_t;
 
-EnemyTama_t *CreateEnemyTama(void);
+EnemyTama_t *CreateEnemyTama(double x, double y, double dir, double speed);
 void ReleaseEnemyTama(EnemyTama_t *i);
 
 // <-- cdtor

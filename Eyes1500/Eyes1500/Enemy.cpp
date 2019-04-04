@@ -26,13 +26,13 @@ int EnemyEachFrame(Enemy_t *i) // ret: ? Á–Å
 {
 	int frm = i->Frame++; // frm == 0`
 
-
-	// zantei
-
 	if(i->DamagedFrame == 0 && GDc.FlashFrame == 0)
 	{
-		i->Y += 2.0;
+		i->Y += GetEnemyInfo(i->Kind)->MoveSpeed * ENEMY_MOVE_SPEED_RATE;
 	}
+
+
+	// zantei
 
 	if(dRnd() < 0.003)
 	{
@@ -42,7 +42,12 @@ int EnemyEachFrame(Enemy_t *i) // ret: ? Á–Å
 
 	m_countDown(i->DamagedFrame);
 
-	return SCREEN_H + 10.0 < i->Y;
+	if(SCREEN_H + 10.0 < i->Y) // “Ë”j‚µ‚½B
+	{
+		GDcNV.Score -= 1000000; // Œo”ï_“Ë”j(”±‹à)
+		return 1;
+	}
+	return 0;
 }
 void DrawEnemy(Enemy_t *i)
 {
@@ -119,4 +124,20 @@ int GetEnemyDamagedPicId(int kind)
 int GetEnemyDeadPicId(int kind)
 {
 	return GetEnemyPicId(kind) + 4;
+}
+double GetEnemyAtari_W(int kind)
+{
+	return Pic_W(GetEnemyPicId(kind)) * 0.9;
+}
+double GetEnemyAtari_H(int kind)
+{
+	return Pic_H(GetEnemyPicId(kind)) * 0.9;
+}
+double GetEnemyMoveSpeed(int kind)
+{
+	return GetEnemyInfo((EnemyKind_t)kind)->MoveSpeed;
+}
+double GetEnemyTamaSpeed(int kind)
+{
+	return GetEnemyInfo((EnemyKind_t)kind)->TamaSpeed;
 }

@@ -1,3 +1,19 @@
+typedef struct GDcNV_st // GDc ‚Ì Non-volatile
+{
+	int HiSpeed;
+	int X;
+	int Y;
+
+	__int64 Score;
+	int DeficitFrame; // 0 == –³Œø, 1` == Ôšó‘Ô
+}
+GDcNV_t;
+
+extern GDcNV_t GDcNV;
+
+void GameInitNonvola(void);
+void GameFnlzNonvola(void);
+
 typedef struct GDc_st
 {
 	// Params {
@@ -7,8 +23,6 @@ typedef struct GDc_st
 	// Return {
 	int WillNextStage; // ? Ÿ”g‚ÉŒü‚©‚¤B
 	// }
-
-	__int64 Score;
 
 	struct
 	{
@@ -33,6 +47,7 @@ typedef struct GDc_st
 	autoList<Enemy_t *> *EnemyList;
 	autoList<EnemyTama_t *> *EnemyTamaList;
 
+	int StageToStageFlag;
 	int BattleNotStartedFrame;
 	int NoEnemyFrame; // 0 == –³Œø, 1` == “G–³‚µó‘Ô
 	int GameOver;

@@ -39,3 +39,15 @@ enum
 
 	END_MAX, // num of END_*
 };
+
+#define BATTLE_START_FRAME 30
+
+#define PLAYER_CRASH_R 15.0 // é©ã@ìñÇËîºåa
+#define PLAYER_SHOT_CRASH_R 15.0
+#define PLAYER_MISSILE_CRASH_R 15.0
+
+#define DEFICIT_SEC_MAX 20
+#define DEFICIT_FRAME_MAX ((DEFICIT_SEC_MAX + 1) * 60 - 1) // 20 Å` 0 ÇÃ 21 ïbä‘
+
+#define ENEMY_MOVE_SPEED_RATE 0.2
+#define ENEMY_TAMA_SPEED_RATE 0.3

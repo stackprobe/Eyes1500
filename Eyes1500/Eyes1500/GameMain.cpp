@@ -27,6 +27,8 @@ static void PauseMain(void)
 }
 static void RebornPlayer(void)
 {
+	int hs = GDc.Player.HiSpeed;
+
 	// clear
 	{
 		zeroclear(&GDc.Player);
@@ -40,7 +42,79 @@ static void RebornPlayer(void)
 	GDc.Player.Y = SCREEN_H - 50;
 	GDc.Player.RealX = SCREEN_W / 2;
 	GDc.Player.RealY = SCREEN_H;
+	GDc.Player.HiSpeed = hs;
 	GDc.Player.HP = PLAYER_HP_MAX;
+
+	if(!GDc.BattleStarted && GDc.StageIndex) // ? 前のステージからこのステージへ来たところ。
+	{
+		GDc.Player.BornFrame = 0;
+		GDc.Player.X = GDcNV.X;
+		GDc.Player.Y = GDcNV.Y;
+		GDc.Player.RealX = GDcNV.X;
+		GDc.Player.RealY = GDcNV.Y;
+	}
+}
+static void DrawScore(int onBattle)
+{
+	// Score
+	{
+		char *str = xcout("%09I64d", abs(GDcNV.Score));
+		int iro;
+
+		str = thousandComma(str);
+
+		if(GDcNV.Score < 0)
+			str = insertChar(str, 0, '-');
+
+		str = insertChar(str, 0, '\\');
+
+		if(GDcNV.Score < 0)
+		{
+			if(onBattle)
+				iro = GetColor(255, 0, 0);
+			else
+				iro = GetColor(255, 255, 0);
+		}
+		else
+			iro = GetColor(255, 255, 255);
+
+		DrawStringByFont_XCenter(
+			SCREEN_W / 2,
+			1,
+			str,
+			APP_COMMON_FONT_HANDLE,
+			0,
+			iro
+			);
+
+		memFree(str);
+	}
+
+	if(1 <= GDcNV.DeficitFrame) // 赤字カウンタ
+	{
+		int frm = GDcNV.DeficitFrame; // 1～
+		int counter = DEFICIT_SEC_MAX - frm / 60;
+		m_range(counter, 0, DEFICIT_SEC_MAX);
+
+		char *str = xcout("%d", counter);
+		int iro;
+
+		if(onBattle)
+			iro = GetColor(255, 0, 0);
+		else
+			iro = GetColor(255, 255, 0);
+
+		DrawStringByFont_XCenter(
+			SCREEN_W / 2,
+			30,
+			str,
+			GetFontHandle(APP_COMMON_FONT, 48, 6),
+			0,
+			iro
+			);
+
+		memFree(str);
+	}
 }
 void GameMain(void)
 {
@@ -70,6 +144,15 @@ LOGPOS();
 			DPE_Reset();
 		}
 
+		if(GDc.StageIndex) // ? 前のステージからこのステージへ来た。
+		{
+			DrawBegin(D_CHARA_PLAYER_00 | DTP, GDcNV.X, GDcNV.Y);
+			DrawRotate(sc_rate * PI * 2.0);
+			DrawEnd();
+		}
+
+		DrawScore(0);
+
 		EachFrame();
 	}
 	sceneLeave();
@@ -86,6 +169,7 @@ LOGPOS();
 
 	FreezeInput();
 
+	GDc.Player.HiSpeed = GDcNV.HiSpeed;
 restart:
 	RebornPlayer();
 
@@ -95,7 +179,7 @@ restart:
 		{
 			GDc.BattleNotStartedFrame++;
 
-			if(30 < GDc.BattleNotStartedFrame) // いきなりスタートしてしまわないように。
+			if(BATTLE_START_FRAME < GDc.BattleNotStartedFrame) // いきなりスタートしてしまわないように。
 			if(
 				GetInput(INP_PAUSE) == 1 ||
 //				GetInput(INP_A) == 1 || // 高速移動は反応させない。
@@ -194,6 +278,7 @@ endDamagedPlayer:
 				if(GDc.GameOver)
 					break;
 
+				GDcNV.Score -= 2000000; // 経費_再戦
 				goto restart;
 			}
 			// 被弾中の処理ここへ追加
@@ -204,6 +289,7 @@ endDamagedPlayer:
 		if(!uncontrollable)
 		{
 			double speed = 2.0;
+			int moved = 0;
 
 			if(GDc.Player.HiSpeed)
 				speed *= 3.0;
@@ -211,18 +297,22 @@ endDamagedPlayer:
 			if(1 <= GetInput(INP_DIR_2))
 			{
 				GDc.Player.Y += speed;
+				moved = 1;
 			}
 			if(1 <= GetInput(INP_DIR_4))
 			{
 				GDc.Player.X -= speed;
+				moved = 1;
 			}
 			if(1 <= GetInput(INP_DIR_6))
 			{
 				GDc.Player.X += speed;
+				moved = 1;
 			}
 			if(1 <= GetInput(INP_DIR_8))
 			{
 				GDc.Player.Y -= speed;
+				moved = 1;
 			}
 			if(1 <= GetInput(INP_F)) // 自爆
 			{
@@ -230,6 +320,14 @@ endDamagedPlayer:
 
 				GDc.Player.DeadFrame = 1;
 				GDc.GameOver = 1;
+			}
+
+			if(moved)
+			{
+				if(GDc.Player.HiSpeed)
+					GDcNV.Score -= 10000 / 60; // 経費_移動
+				else
+					GDcNV.Score -= 50000 / 60; // 経費_高速移動
 			}
 		}
 
@@ -257,6 +355,7 @@ endDamagedPlayer:
 		{
 			GDc.PlayerTamaList->AddElement(CreatePlayerTama(GDc.Player.X, GDc.Player.Y - 16.0));
 			SEPlay(SE_SHOT);
+			GDcNV.Score -= 20000; // 経費_弾丸
 		}
 
 		for(int index = 0; index < GDc.PlayerMissileList->GetCount(); index++)
@@ -280,6 +379,7 @@ endDamagedPlayer:
 		{
 			GDc.PlayerMissileList->AddElement(CreatePlayerMissile(GDc.Player.X, GDc.Player.Y - 16.0));
 			SEPlay(SE_MISSILE);
+			GDcNV.Score -= 100000; // 経費_誘導ミサイル
 		}
 
 		if(!uncontrollable && GDc.BattleStarted && 1 <= GetInput(INP_C)) // Laser
@@ -300,6 +400,7 @@ endDamagedPlayer:
 			{
 				SEPlay(SE_LASER);
 			}
+			GDcNV.Score -= 5000000 / 60; // 経費_レーザー光線
 		}
 		else if(GDc.LaserFrame == -1)
 		{
@@ -310,6 +411,10 @@ endDamagedPlayer:
 		{
 			int frm = GDc.FlashFrame++ - 1; // frm == 0～
 
+			if(frm == 0) // 照射開始
+			{
+				GDcNV.Score -= 500000; // 経費_目潰しレーザー
+			}
 			if(frm == 300) // 照射終了
 			{
 				GDc.FlashFrame = 0;
@@ -349,8 +454,8 @@ endDamagedPlayer:
 		if(!GDc.BattleStarted)
 			goto startDraw;
 
-		if(GDc.EnemyList->GetCount())
-			GDc.NoEnemyFrame = 0; // 2bs
+		if(GDc.EnemyList->GetCount() || GDc.Player.DeadFrame)
+			GDc.NoEnemyFrame = 0;
 		else
 			GDc.NoEnemyFrame++;
 
@@ -408,7 +513,7 @@ endDamagedPlayer:
 			{
 				PlayerTama_t *plTama = GDc.PlayerTamaList->GetElement(index);
 
-				if(IsCrashed_Circle_Point(plTama->X, plTama->Y, 15.0, enemy->X, enemy->Y)) // 当り半径zantei
+				if(IsCrashed_Circle_Point(plTama->X, plTama->Y, PLAYER_SHOT_CRASH_R, enemy->X, enemy->Y))
 				{
 					SEPlay(SE_DAMAGE_E);
 
@@ -427,7 +532,7 @@ endDamagedPlayer:
 			{
 				PlayerMissile_t *plMissile = GDc.PlayerMissileList->GetElement(index);
 
-				if(IsCrashed_Circle_Point(plMissile->X, plMissile->Y, 15.0, enemy->X, enemy->Y)) // 当り半径zantei
+				if(IsCrashed_Circle_Point(plMissile->X, plMissile->Y, PLAYER_MISSILE_CRASH_R, enemy->X, enemy->Y))
 				{
 					SEPlay(SE_BOMB);
 
@@ -449,7 +554,11 @@ endDamagedPlayer:
 				double t = 0.0; // -1000.0;
 				double b = GDc.Player.Y - 16.0;
 
-				if(IsCrashed_Circle_Rect(enemy->X, enemy->Y, 15.0, l, t, r, b)) // 当り半径zantei
+				if(IsCrashed_Rect_Rect(
+					l, t, r, b,
+					GetEnemyAtari_L(enemy), GetEnemyAtari_T(enemy), GetEnemyAtari_R(enemy), GetEnemyAtari_B(enemy)
+					))
+//				if(IsCrashed_Circle_Rect(enemy->X, enemy->Y, 15.0, l, t, r, b)) // 当り半径zantei
 				{
 					enemy->HP -= 3 + GDc.LaserFrame % 3 / 2;
 					enemyDamaged = 1;
@@ -465,16 +574,23 @@ endDamagedPlayer:
 
 			// Crash -- 自機 / 敵
 
-			if(IsCrashed_Circle_Point(GDc.Player.X, GDc.Player.Y, 15.0 + 15.0, enemy->X, enemy->Y)) // 当り半径zantei
+			while(IsCrashed_Circle_Rect(
+				GDc.Player.X, GDc.Player.Y, PLAYER_CRASH_R,
+					GetEnemyAtari_L(enemy), GetEnemyAtari_T(enemy), GetEnemyAtari_R(enemy), GetEnemyAtari_B(enemy)
+				))
+//			if(IsCrashed_Circle_Point(GDc.Player.X, GDc.Player.Y, 15.0 + 15.0, enemy->X, enemy->Y)) // 当り半径zantei
 			{
+				double MOVE_SPAN = 0.25;
 				double eToPlX;
 				double eToPlY;
 
-				MakeXYSpeed(enemy->X, enemy->Y, GDc.Player.X, GDc.Player.Y, 15.0 + 15.0, eToPlX, eToPlY); // 当り半径zantei
+				MakeXYSpeed(enemy->X, enemy->Y, GDc.Player.X, GDc.Player.Y, MOVE_SPAN, eToPlX, eToPlY);
 
-				GDc.Player.X = enemy->X + eToPlX;
-				GDc.Player.Y = enemy->Y + eToPlY;
+				GDc.Player.X += eToPlX;
+				GDc.Player.Y += eToPlY;
 			}
+			m_range(GDc.Player.X, 0, SCREEN_W);
+			m_range(GDc.Player.Y, 0, SCREEN_H);
 
 			// ---- ループ内 Crash ここまで ----
 
@@ -482,9 +598,7 @@ endDamagedPlayer:
 
 			if(enemyDamaged && enemy->DamagedFrame == 0)
 			{
-				// zantei
-
-				enemy->Y -= 16.0;
+				enemy->Y -= 16.0; // 敵_ヒットバック
 				enemy->DamagedFrame = ENEMY_DAMAGED_FRAME_MAX;
 			}
 
@@ -492,13 +606,15 @@ endDamagedPlayer:
 			{
 				SEPlay(SE_EXPLOSION_E);
 
+				GDcNV.Score += GetEnemyInfo(enemy->Kind)->Score;
+
 				CEE.ModPicId = 2;
 				CEE.PicIdFrmPerInc = 6;
 
 				AddCommonEffect(
 					Gnd.EL,
 					1,
-					GetEnemyDeadPicId(enemy->Kind), // 画像zantei
+					GetEnemyDeadPicId(enemy->Kind),
 					enemy->X,
 					enemy->Y,
 					0.0, 1.0, 1.0,
@@ -543,6 +659,23 @@ endDamagedPlayer:
 endCrash_Player_EnemyTama:
 
 		// Crash ここまで
+
+		if(GDcNV.Score < 0)
+		{
+			int frm = GDcNV.DeficitFrame++ - 1; // 0～
+
+			if(frm == DEFICIT_FRAME_MAX) // 破産
+			{
+				// FIXME 自爆と同じでいいか。
+
+				SEPlay(SE_DAMAGE);
+
+				GDc.Player.DeadFrame = 1;
+				GDc.GameOver = 1;
+			}
+		}
+		else
+			GDcNV.DeficitFrame = 0;
 
 startDraw:
 		// ★★★ ここから描画 ★★★
@@ -624,10 +757,14 @@ startDraw:
 			DrawEnemyTama(GDc.EnemyTamaList->GetElement(index));
 		}
 
+		DrawScore(m_01(GDc.BattleStarted));
+
 		// ★★★ EachFrame ★★★
 
 		EachFrame();
 	}
+
+	SEStop(SE_LASER);
 
 	if(GDc.WillNextStage)
 	{
@@ -645,4 +782,8 @@ startDraw:
 		sceneLeave();
 	}
 	FreezeInput();
+
+	GDcNV.HiSpeed = GDc.Player.HiSpeed;
+	GDcNV.X = d2i(GDc.Player.X);
+	GDcNV.Y = d2i(GDc.Player.Y);
 }

@@ -1,5 +1,22 @@
 #include "all.h"
 
+GDcNV_t GDcNV;
+
+void GameInitNonvola(void)
+{
+	zeroclear(&GDcNV);
+
+	GDcNV.X = SCREEN_CENTER_X; // 2bs
+	GDcNV.Y = SCREEN_CENTER_Y; // 2bs
+
+	// ‰ŠúŠŽ‹à
+	GDcNV.Score = 100000;
+}
+void GameFnlzNonvola(void)
+{
+	zeroclear(&GDcNV);
+}
+
 GDc_t GDc;
 
 void GameInit(void)
@@ -18,6 +35,7 @@ void GameFnlz(void)
 	{
 		ReleasePlayerTama(GDc.PlayerTamaList->UnaddElement());
 	}
+	delete GDc.PlayerTamaList;
 #elif 0 // old same
 	GDc.PlayerTamaList->CallAllElement(ReleasePlayerTama);
 	delete GDc.PlayerTamaList;

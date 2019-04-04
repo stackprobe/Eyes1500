@@ -63,6 +63,8 @@ void GameMgrMain(void)
 {
 	int stgIndex = 0;
 
+	GameInitNonvola();
+
 	for(stgIndex = 0; stgIndex < GetStageCount(); stgIndex++)
 	{
 		GameInit();
@@ -77,4 +79,6 @@ void GameMgrMain(void)
 			return;
 	}
 	Ending(END_NORMAL);
+
+	GameFnlzNonvola();
 }
