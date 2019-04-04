@@ -58,7 +58,7 @@ static void DrawScore(int onBattle)
 {
 	m_approach(GDcNV.ScoreDisp, GDcNV.Score, 0.666);
 
-	__int64 iScoreDisp = (__int64)d2i(GDcNV.ScoreDisp); // XXX d2i64 ???
+	__int64 iScoreDisp = d2i64(GDcNV.ScoreDisp);
 
 	// Score
 	{
