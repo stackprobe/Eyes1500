@@ -195,7 +195,9 @@ start:
 		{
 			GDc.BattleNotStartedFrame++;
 
-			if(BATTLE_START_FRAME < GDc.BattleNotStartedFrame) // いきなりスタートしてしまわないように。
+			if(BATTLE_START_FRAME < GDc.BattleNotStartedFrame)
+			/*
+			if(BATTLE_STARTABLE_FRAME < GDc.BattleNotStartedFrame) // いきなりスタートしてしまわないように。
 			if(
 				GetInput(INP_PAUSE) == 1 ||
 //				GetInput(INP_A) == 1 || // 高速移動は反応させない。
@@ -205,6 +207,7 @@ start:
 				GetInput(INP_E) == 1 ||
 				GetInput(INP_F) == 1
 				)
+				*/
 			{
 				GDc.BattleStarted = 1;
 
@@ -630,6 +633,8 @@ endDamagedPlayer:
 
 			if(enemyDamaged && enemy->DamagedFrame == 0)
 			{
+				SEPlay(SE_VOICE_00 + rnd(8));
+
 				enemy->Y -= 16.0; // 敵_ヒットバック
 				m_maxim(enemy->Y, 0.0); // 画面上部に引っ込まないように、
 
@@ -719,6 +724,28 @@ startDraw:
 		if(!GDc.BattleStarted)
 		{
 			DrawCenter(messagePicId, SCREEN_W / 2, SCREEN_H / 2);
+
+			{
+				int frm = GDc.BattleNotStartedFrame;
+				double remaining = (BATTLE_START_FRAME - frm) / 60.0;
+				m_range(remaining, 0.0, (double)IMAX);
+
+				char *str = xcout("%.2f", remaining);
+				int iro;
+
+				iro = GetColor(255, 255, 255);
+
+				DrawStringByFont_XCenter(
+					SCREEN_W / 2,
+					390,
+					str,
+					GetFontHandle(APP_COMMON_FONT, 55, 9),
+					0,
+					iro
+					);
+
+				memFree(str);
+			}
 		}
 
 		// 自弾_描画
@@ -802,7 +829,7 @@ startDraw:
 
 	if(GDc.WillNextStage)
 	{
-		MusicFade();
+		//MusicFade(); // ステージ間で音楽を止めない。
 	}
 	else
 	{

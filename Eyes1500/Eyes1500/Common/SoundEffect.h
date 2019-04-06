@@ -19,6 +19,8 @@ enum
 	SE_SHOT,
 	SE_SIREN,
 
+	ENUM_RANGE(SE_VOICE_00, 8)
+
 	// < app
 
 	SE_MAX, // num of member

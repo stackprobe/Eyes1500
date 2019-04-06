@@ -40,7 +40,8 @@ enum
 	END_MAX, // num of END_*
 };
 
-#define BATTLE_START_FRAME 30
+//#define BATTLE_STARTABLE_FRAME 30
+#define BATTLE_START_FRAME (3 * 60)
 
 #define PLAYER_CRASH_R 15.0 // Ž©‹@“–‚è”¼Œa
 #define PLAYER_SHOT_CRASH_R 1.0
