@@ -17,6 +17,9 @@ IF ERRORLEVEL 1 START ?_LOG_ENABLED
 
 C:\Factory\Tools\xcp.exe doc out
 
+COPY /B AUTHORS out
+COPY /B C:\Dev\Game\Codevil\doc\Config.conf out
+
 C:\Factory\SubTools\zip.exe /G out Eyes1500
 C:\Factory\Tools\summd5.exe /M out
 
