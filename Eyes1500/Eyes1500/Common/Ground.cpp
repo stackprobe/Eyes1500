@@ -66,6 +66,17 @@ void Gnd_INIT(void)
 
 	// app > @ Gnd_INIT SaveData
 
+	Gnd.KbdKeyId.A = KEY_INPUT_A;
+	Gnd.KbdKeyId.B = KEY_INPUT_Z;
+	Gnd.KbdKeyId.C = KEY_INPUT_X;
+	Gnd.KbdKeyId.D = KEY_INPUT_S;
+	Gnd.KbdKeyId.E = KEY_INPUT_C;
+	Gnd.KbdKeyId.F = KEY_INPUT_D;
+	Gnd.KbdKeyId.L = KEY_INPUT_E;
+	Gnd.KbdKeyId.R = KEY_INPUT_F;
+	Gnd.KbdKeyId.Pause = KEY_INPUT_RETURN;
+	Gnd.KbdKeyId.Start = KEY_INPUT_SPACE;
+
 	Gnd.RO_MouseDispMode = 1;
 
 	// < app
