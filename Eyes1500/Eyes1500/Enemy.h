@@ -1,3 +1,11 @@
+typedef enum EnemyHaritsukiMode_et
+{
+	EHM_DISABLED = 1,   // –³Œø
+	EHM_ENABLED,        // —LŒø
+	EHM_ANTI_HARITSUKI, // —}~
+}
+EnemyHaritsukiMode_t;
+
 typedef struct Enemy_st
 {
 	EnemyKind_t Kind;
@@ -6,6 +14,9 @@ typedef struct Enemy_st
 	int Frame;
 	int HP;
 	int DamagedFrame; // 0 == –³Œø, 1 ` ENEMY_DAMAGED_FRAME_MAX
+	int ShootedFrame; // ÅŒã‚É’e‚ğŒ‚‚Á‚Ä‚©‚ç‚ÌŒo‰ßƒtƒŒ[ƒ€
+	int RenshaRemaining; // ˜AË‚Å‚ ‚Æ‰½”­‘Å‚Ä‚é‚©
+	EnemyHaritsukiMode_t HaritsukiMode;
 }
 Enemy_t;
 
@@ -36,3 +47,5 @@ double GetEnemyAtari_H(int kind);
 
 double GetEnemyMoveSpeed(int kind);
 double GetEnemyTamaSpeed(int kind);
+
+void AllEnemy_AntiHaritsuki(void);

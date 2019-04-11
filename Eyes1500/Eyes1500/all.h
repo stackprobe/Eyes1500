@@ -7,6 +7,8 @@
 #include "PlayerMissile.h"
 #include "Enemy.h"
 #include "EnemyTama.h"
+#include "EnemyTamaBlast.h"
+#include "EnemyMoveInfo.h"
 #include "ProcMain.h"
 #include "Game.h"
 #include "GameMain.h"
@@ -14,3 +16,4 @@
 #include "TitleMenu.h"
 #include "EnemyInfo.h"
 #include "StageInfo.h"
+#include "KeyUIName.h"

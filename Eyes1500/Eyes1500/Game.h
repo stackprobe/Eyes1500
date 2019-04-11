@@ -8,6 +8,10 @@ typedef struct GDcNV_st // GDc ‚Ì Non-volatile
 	__int64 Score;
 	double ScoreDisp;
 	int DeficitFrame; // 0 == –³Œø, 1` == Ôšó‘Ô
+	int GameLapCount; // 1 == 1ü–Ú, 2 == 2ü–Ú
+
+	int WipeOut;
+	int NoDamage;
 }
 GDcNV_t;
 
@@ -48,6 +52,7 @@ typedef struct GDc_st
 	autoList<PlayerMissile_t *> *PlayerMissileList;
 	autoList<Enemy_t *> *EnemyList;
 	autoList<EnemyTama_t *> *EnemyTamaList;
+	autoList<EnemyTamaBlast_t *> *EnemyTamaBlastList;
 
 	int StageToStageFlag;
 	int BattleNotStartedFrame;

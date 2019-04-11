@@ -7,8 +7,11 @@ Enemy_t *CreateEnemy(EnemyKind_t kind, double x, double y)
 	i->Kind = kind;
 	i->X = x;
 	i->Y = y;
-
 	i->HP = GetEnemyInfo(kind)->HP;
+	i->HaritsukiMode = EHM_DISABLED;
+
+	if(GDcNV.GameLapCount == 2)
+		i->HP *= 2;
 
 	return i;
 }
@@ -22,34 +25,135 @@ void ReleaseEnemy(Enemy_t *i)
 
 // <-- cdtor
 
+static void CommonMove(Enemy_t *i, double xSpeedRate, double ySpeedRate)
+{
+	double speed = ENEMY_MOVE_SPEED_CONV(GetEnemyInfo(i->Kind)->MoveSpeed);
+
+	i->X += speed * xSpeedRate;
+	i->Y += speed * ySpeedRate;
+
+	m_range(i->X, 0.0, SCREEN_W);
+}
+static void CommonApproach(Enemy_t *i, double targetX, double targetY, double speedRate)
+{
+	double speed = ENEMY_MOVE_SPEED_CONV(GetEnemyInfo(i->Kind)->MoveSpeed);
+
+	double moveX;
+	double moveY;
+
+	MakeXYSpeed(i->X, i->Y, targetX, targetY, speed * speedRate, moveX, moveY);
+
+	i->X += moveX;
+	i->Y += moveY;
+}
 int EnemyEachFrame(Enemy_t *i) // ret: ? Á–Å
 {
 	int frm = i->Frame++; // frm == 0`
 
+	double plDist = GetDistance(GDc.Player.X, GDc.Player.Y, i->X, i->Y);
+	int level;
 
-	// zantei
+	if((plDist < ENEMY_HARITSUKI_R || i->HaritsukiMode == EHM_ENABLED) && i->HaritsukiMode != EHM_ANTI_HARITSUKI)
+	{
+		level = 3;
+	}
+	else if(plDist < 176.0)
+	{
+		level = 2;
+	}
+	else
+	{
+		level = 1;
+
+		if(i->HaritsukiMode == EHM_ANTI_HARITSUKI)
+			i->HaritsukiMode = EHM_DISABLED;
+	}
 
 	if(i->DamagedFrame == 0 && GDc.FlashFrame == 0)
 	{
-		// TODO “G‚É‚æ‚è“®‚«‚ªˆá‚¤‚Í‚¸B
+		EnemyMovePtn_t emp = GetEnemyMovePtn(i->Kind, level);
 
-		i->Y += ENEMY_MOVE_SPEED_CONV(GetEnemyInfo(i->Kind)->MoveSpeed);
+		switch(emp)
+		{
+		case EMP_HOLD:        CommonMove(i,  0.0, 0.0); break;
+		case EMP_AHEAD:       CommonMove(i,  0.0, 1.0); break;
+		case EMP_SPEEDx15:    CommonMove(i,  0.0, 1.5); break;
+		case EMP_SPEEDx15_L:  CommonMove(i, -1.0, 1.5); break;
+		case EMP_SPEEDx15_R:  CommonMove(i,  1.0, 1.5); break;
+		case EMP_SPEEDx15_UL: CommonApproach(i, 0.0, 0.0, 1.5); break;
+		case EMP_SPEEDx15_UR: CommonApproach(i, 0.0, SCREEN_W, 1.5); break;
+		case EMP_SPEEDx15_A:  CommonApproach(i, GDc.Player.X, GDc.Player.Y, 1.5); break;
+		case EMP_SPEEDx20:    CommonMove(i,  0.0, 2.0); break;
+		case EMP_SPEEDx20_L:  CommonMove(i,  0.0, 2.0); break;
+		case EMP_SPEEDx20_R:  CommonMove(i,  0.0, 2.0); break;
+		case EMP_SPEEDx20_UL: CommonApproach(i, 0.0, 0.0, 2.0); break;
+		case EMP_SPEEDx20_UR: CommonApproach(i, 0.0, SCREEN_W, 2.0); break;
+		case EMP_SPEEDx20_A:  CommonApproach(i, GDc.Player.X, GDc.Player.Y, 2.0); break;
+
+		case EMP_HARITSUKI:
+			{
+				double d = GetDistance(GDc.Player.X, GDc.Player.Y, i->X, i->Y);
+
+				m_approach(d, ENEMY_HARITSUKI_R, 0.9);
+
+				double relX;
+				double relY;
+
+				MakeXYSpeed(GDc.Player.X, GDc.Player.Y, i->X, i->Y, d, relX, relY);
+
+				i->X = GDc.Player.X + relX;
+				i->Y = GDc.Player.Y + relY;
+			}
+
+			if(i->HaritsukiMode != EHM_ENABLED)
+			{
+				AllEnemy_AntiHaritsuki();
+				i->HaritsukiMode = EHM_ENABLED;
+			}
+			break;
+
+		default:
+			error();
+		}
 	}
 
-
-	// zantei
-
-	if(dRnd() < 0.01 && GDc.Player.DamagedFrame == 0 && GDc.Player.DeadFrame == 0)
+	if(GDc.Player.DamagedFrame == 0 && GDc.Player.DeadFrame == 0)
 	{
-		Enemy_Shot(i);
-	}
+		EnemyAttackPtn_t eap = GetEnemyAttackPtn(i->Kind, level);
+		int renshaCount = GetEnemyRenshaCount(i->Kind, level);
+		int shoot = 0;
 
+		if(1 <= i->RenshaRemaining)
+		{
+			if(ENEMY_SHOOT_RENSHA_FRAME < i->ShootedFrame)
+			{
+				shoot = 1;
+				i->RenshaRemaining--;
+			}
+		}
+		else
+		{
+			if(ENEMY_SHOOT_FRAME < i->ShootedFrame)
+			{
+				shoot = 1;
+				i->RenshaRemaining = renshaCount - 1;
+			}
+		}
+
+		if(shoot)
+		{
+			Enemy_Shot(i, eap == EAP_BOMB, eap == EAP_HOMING);
+			i->ShootedFrame = 0;
+		}
+	}
 
 	m_countDown(i->DamagedFrame);
+	i->ShootedFrame++;
 
-	if(SCREEN_H + 10.0 < i->Y) // “Ë”j‚µ‚½B
+	if(SCREEN_H + Pic_H(GetEnemyPicId(i->Kind)) / 2 < i->Y) // “Ë”j‚µ‚½B
 	{
 		GDcNV.Score -= 1000000; // Œo”ï_“Ë”j(”±‹à)
+		GDcNV.WipeOut = 0;
 		return 1;
 	}
 	return 0;
@@ -153,4 +257,15 @@ double GetEnemyMoveSpeed(int kind)
 double GetEnemyTamaSpeed(int kind)
 {
 	return GetEnemyInfo((EnemyKind_t)kind)->TamaSpeed;
+}
+
+void AllEnemy_AntiHaritsuki(void)
+{
+	for(int index = 0; index < GDc.EnemyList->GetCount(); index++)
+	{
+		Enemy_t *i = GDc.EnemyList->GetElement(index);
+
+		if(i->HaritsukiMode == EHM_ENABLED)
+			i->HaritsukiMode = EHM_ANTI_HARITSUKI;
+	}
 }

@@ -135,7 +135,10 @@
     <ClCompile Include="Common\System.cpp" />
     <ClCompile Include="Common\System2.cpp" />
     <ClCompile Include="Common\taskList.cpp" />
+    <ClCompile Include="EnemyMoveInfo.cpp" />
+    <ClCompile Include="EnemyTamaBlast.cpp" />
     <ClCompile Include="GameMgr.cpp" />
+    <ClCompile Include="KeyUIName.cpp" />
     <ClCompile Include="TitleMenu.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyInfo.cpp" />
@@ -204,7 +207,10 @@
     <ClInclude Include="Common\System.h" />
     <ClInclude Include="Common\System2.h" />
     <ClInclude Include="Common\taskList.h" />
+    <ClInclude Include="EnemyMoveInfo.h" />
+    <ClInclude Include="EnemyTamaBlast.h" />
     <ClInclude Include="GameMgr.h" />
+    <ClInclude Include="KeyUIName.h" />
     <ClInclude Include="TitleMenu.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyInfo.h" />

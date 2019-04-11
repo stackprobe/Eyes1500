@@ -32,10 +32,10 @@ enum
 	END_NORMAL,
 	END_SENMETSU,
 	END_KANPEKI,
-	END_AKAJI,
 	END_ZENCLEAR,
 	END_KAMICLEAR,
-	END_JIBAKU,
+	//END_AKAJI,
+	//END_JIBAKU,
 
 	END_MAX, // num of END_*
 };
@@ -43,12 +43,22 @@ enum
 //#define BATTLE_STARTABLE_FRAME 30
 #define BATTLE_START_FRAME (3 * 60)
 
-#define PLAYER_CRASH_R 15.0 // é©ã@ìñÇËîºåa
+#define PLAYER_CRASH_R 5.0 // é©ã@ìñÇËîºåa
 #define PLAYER_SHOT_CRASH_R 1.0
 #define PLAYER_MISSILE_CRASH_R 1.0
+#define ENEMY_TAMA_CRASH_R 2.0
+#define ENEMY_TAMA_BLAST_CRASH_R 15.0
 
 #define DEFICIT_SEC_MAX 20
 #define DEFICIT_FRAME_MAX ((DEFICIT_SEC_MAX + 1) * 60 - 1) // 20 Å` 0 ÇÃ 21 ïbä‘
 
 #define ENEMY_MOVE_SPEED_CONV(rawSpeedVal) ((SCREEN_H / 60.0) / (rawSpeedVal))
 #define ENEMY_TAMA_SPEED_CONV(rawSpeedVal) ((SCREEN_H / 60.0) / (rawSpeedVal))
+
+#define ENEMY_TAMA_BOMB_FRAME 20
+#define ENEMY_TAMA_BLAST_FRAME_MAX 30
+
+#define ENEMY_HARITSUKI_R 48.0
+
+#define ENEMY_SHOOT_FRAME 120
+#define ENEMY_SHOOT_RENSHA_FRAME 30

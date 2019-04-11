@@ -63,26 +63,58 @@ static void Ending(int endingIndex)
 
 	FreezeInput();
 }
+static void Ending(void)
+{
+	int endingIndex;
+
+	if(GDcNV.GameLapCount == 2)
+	{
+		if(GDcNV.NoDamage && GDcNV.WipeOut)
+			endingIndex = END_KAMICLEAR;
+		else
+			endingIndex = END_ZENCLEAR;
+	}
+	else
+	{
+		if(GDcNV.WipeOut)
+		{
+			if(GDcNV.NoDamage)
+				endingIndex = END_KANPEKI;
+			else
+				endingIndex = END_SENMETSU;
+		}
+		else
+			endingIndex = END_NORMAL;
+	}
+	Ending(endingIndex);
+}
 void GameMgrMain(void)
 {
 	int stgIndex = 0;
 
 	GameInitNonvola();
 
-	for(stgIndex = 0; stgIndex < GetStageCount(); stgIndex++)
+	for(; ; )
 	{
-		GameInit();
-		GDc.StageIndex = stgIndex;
-		GameMain();
-		int wns = GDc.WillNextStage;
-		GameFnlz();
+		for(stgIndex = 0; stgIndex < GetStageCount(); stgIndex++)
+		{
+			GameInit();
+			GDc.StageIndex = stgIndex;
+			GameMain();
+			int wns = GDc.WillNextStage;
+			GameFnlz();
 
-		//break; // test
+			//break; // test
 
-		if(!wns)
-			return;
+			if(!wns)
+				return;
+		}
+		Ending();
+
+		if(GDcNV.GameLapCount == 2)
+			break;
+
+		GDcNV.GameLapCount++;
 	}
-	Ending(END_NORMAL);
-
 	GameFnlzNonvola();
 }

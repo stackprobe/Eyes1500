@@ -98,14 +98,6 @@ void EachFrame(void)
 
 	// app > @ post draw screen
 
-	// zantei zantei zantei zantei zantei
-	{
-#if !LOG_ENABLED
-		clsDx();
-		printfDx("ŠJ”­’†");
-#endif
-	}
-
 	// < app
 
 	// DxLib >

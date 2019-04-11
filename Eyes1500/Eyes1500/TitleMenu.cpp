@@ -204,7 +204,13 @@ static void ControllerMenu(void)
 		for(int x = 0; x < 2; x++)
 		for(int y = 0; y < 11; y++)
 		{
-			char *str = xcout("%03d", *varTable[x][y]);
+			char *str = NULL;
+
+			if(x == 0)
+				str = x_KeyIdToUIName(*varTable[x][y]);
+
+			if(!str)
+				str = xcout("%03d", *varTable[x][y]);
 
 			DrawStringByFont(
 				FRAME_XS[x + 1] + 47 + kbCodeFar, FRAME_YS[y] + 7 + kbCodeFar,

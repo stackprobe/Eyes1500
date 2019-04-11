@@ -11,6 +11,11 @@ void GameInitNonvola(void)
 
 	// èâä˙èäéùã‡
 	GDcNV.Score = 100000;
+
+	GDcNV.GameLapCount = 1;
+
+	GDcNV.WipeOut = 1;
+	GDcNV.NoDamage = 1;
 }
 void GameFnlzNonvola(void)
 {
@@ -27,6 +32,7 @@ void GameInit(void)
 	GDc.PlayerMissileList = new autoList<PlayerMissile_t *>();
 	GDc.EnemyList = new autoList<Enemy_t *>();
 	GDc.EnemyTamaList = new autoList<EnemyTama_t *>();
+	GDc.EnemyTamaBlastList = new autoList<EnemyTamaBlast_t *>();
 }
 void GameFnlz(void)
 {
@@ -45,6 +51,7 @@ void GameFnlz(void)
 	releaseList(GDc.PlayerMissileList, ReleasePlayerMissile);
 	releaseList(GDc.EnemyList, ReleaseEnemy);
 	releaseList(GDc.EnemyTamaList, ReleaseEnemyTama);
+	releaseList(GDc.EnemyTamaBlastList, ReleaseEnemyTamaBlast);
 
 	memset(&GDc, 0x00, sizeof(GDc));
 }

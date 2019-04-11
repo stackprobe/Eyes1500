@@ -1,9 +1,11 @@
 #include "all.h"
 
-EnemyTama_t *CreateEnemyTama(double x, double y, double dir, double speed)
+EnemyTama_t *CreateEnemyTama(double x, double y, double dir, double speed, int bombFrame, int homing)
 {
 	EnemyTama_t *i = nb(EnemyTama_t);
 
+	i->BombFrame = bombFrame;
+	i->Homing = homing;
 	i->X = x;
 	i->Y = y;
 	i->Dir = dir;
@@ -24,9 +26,44 @@ void ReleaseEnemyTama(EnemyTama_t *i)
 int EnemyTamaEachFrame(EnemyTama_t *i) // ret: ? è¡ñ≈
 {
 	int frm = i->Frame++; // frm == 0Å`
-	
+
+	if(i->Homing)
+	{
+		double angle = getAngle(GDc.Player.X, GDc.Player.Y, i->X, i->Y);
+
+		if(PI < abs(angle - i->Dir))
+		{
+			if(angle < i->Dir)
+				angle += PI * 2.0;
+			else
+				angle -= PI * 2.0;
+		}
+		
+		{
+			double rotSpeed = 0.02;
+
+			if(rotSpeed < abs(angle - i->Dir))
+			{
+				if(angle < i->Dir)
+					i->Dir -= rotSpeed;
+				else
+					i->Dir += rotSpeed;
+			}
+			else
+				i->Dir = angle;
+		}
+	}
 	angleMoveXY(i->Dir, i->Speed, i->X, i->Y);
 
+	if(frm == i->BombFrame)
+	{
+		GDc.EnemyTamaBlastList->AddElement(CreateEnemyTamaBlast(
+			d2i(i->X),
+			d2i(i->Y)
+			));
+
+		return 1;
+	}
 	return IsOutOfScreen(i->X, i->Y, 100.0); // âÊñ è„ïîÇ©ÇÁÇÕÇ›èoÇµÇΩèÛë‘Ç≈åÇÇ¬Ç±Ç∆Ç‡Ç†ÇÈÇΩÇﬂÅAmargin
 }
 void DrawEnemyTama(EnemyTama_t *i)
@@ -38,7 +75,7 @@ void DrawEnemyTama(EnemyTama_t *i)
 
 // <-- accessor
 
-void Enemy_Shot(Enemy_t *enemy)
+void Enemy_Shot(Enemy_t *enemy, int bombFlag, int homing)
 {
 	EnemyInfo_t *ei = GetEnemyInfo(enemy->Kind);
 
@@ -53,7 +90,9 @@ void Enemy_Shot(Enemy_t *enemy)
 			eye_x,
 			eye_y,
 			getAngle(GDc.Player.X, GDc.Player.Y, enemy->X, enemy->Y),
-			ENEMY_TAMA_SPEED_CONV(GetEnemyInfo(enemy->Kind)->TamaSpeed)
+			ENEMY_TAMA_SPEED_CONV(GetEnemyInfo(enemy->Kind)->TamaSpeed),
+			bombFlag ? ENEMY_TAMA_BOMB_FRAME : -1,
+			homing
 			));
 	}
 }

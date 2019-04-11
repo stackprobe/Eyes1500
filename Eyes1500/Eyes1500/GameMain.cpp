@@ -120,13 +120,33 @@ static void DrawScore(int onBattle)
 		memFree(str);
 	}
 }
+static void PlayerDamaged(void)
+{
+	GDc.Player.HP--;
+
+	if(0 < GDc.Player.HP)
+	{
+		SEPlay(SE_DAMAGE);
+
+		GDc.Player.DamagedFrame = 1;
+	}
+	else
+	{
+		SEPlay(SE_DAMAGE);
+
+		GDc.Player.DeadFrame = 1;
+	}
+	GDcNV.NoDamage = 0;
+}
 void GameMain(void)
 {
+/*
 LOGPOS();
 GetEnemyInfo(EK_EYE_1); // test
 LOGPOS();
 GetStageCount(); // test
 LOGPOS();
+*/
 
 	SetCurtain();
 	FreezeInput();
@@ -440,6 +460,7 @@ endDamagedPlayer:
 
 			if(frm == 0) // ÆËŠJn
 			{
+				AllEnemy_AntiHaritsuki();
 				GDcNV.Score -= 500000; // Œo”ï_–Ú’×‚µƒŒ[ƒU[
 			}
 			if(frm == 300) // ÆËI—¹
@@ -527,6 +548,20 @@ endDamagedPlayer:
 		}
 		GDc.EnemyTamaList->MultiDiscard(isPointNull);
 
+		// “G’e”š•—_ˆ—
+
+		for(int index = 0; index < GDc.EnemyTamaBlastList->GetCount(); index++)
+		{
+			EnemyTamaBlast_t *i = GDc.EnemyTamaBlastList->GetElement(index);
+
+			if(EnemyTamaBlastEachFrame(i)) // ? Á–Å
+			{
+				ReleaseEnemyTamaBlast(i);
+				GDc.EnemyTamaBlastList->SetElement(index, NULL);
+			}
+		}
+		GDc.EnemyTamaBlastList->MultiDiscard(isPointNull);
+
 		// Crash ‚±‚±‚©‚ç
 
 		for(int enemyIndex = 0; enemyIndex < GDc.EnemyList->GetCount(); enemyIndex++)
@@ -544,7 +579,6 @@ endDamagedPlayer:
 					plTama->X, plTama->Y, PLAYER_SHOT_CRASH_R,
 					GetEnemyAtari_L(enemy), GetEnemyAtari_T(enemy), GetEnemyAtari_R(enemy), GetEnemyAtari_B(enemy)
 					))
-//				if(IsCrashed_Circle_Point(plTama->X, plTama->Y, PLAYER_SHOT_CRASH_R, enemy->X, enemy->Y)) // old_zantei
 				{
 					SEPlay(SE_DAMAGE_E);
 
@@ -567,7 +601,6 @@ endDamagedPlayer:
 					plMissile->X, plMissile->Y, PLAYER_MISSILE_CRASH_R,
 					GetEnemyAtari_L(enemy), GetEnemyAtari_T(enemy), GetEnemyAtari_R(enemy), GetEnemyAtari_B(enemy)
 					))
-//				if(IsCrashed_Circle_Point(plMissile->X, plMissile->Y, PLAYER_MISSILE_CRASH_R, enemy->X, enemy->Y)) // old_zantei
 				{
 					SEPlay(SE_BOMB);
 
@@ -593,7 +626,6 @@ endDamagedPlayer:
 					l, t, r, b,
 					GetEnemyAtari_L(enemy), GetEnemyAtari_T(enemy), GetEnemyAtari_R(enemy), GetEnemyAtari_B(enemy)
 					))
-//				if(IsCrashed_Circle_Rect(enemy->X, enemy->Y, 15.0, l, t, r, b)) // old_zantei
 				{
 					enemy->HP -= 3 + GDc.LaserFrame % 3 / 2;
 					enemyDamaged = 1;
@@ -613,7 +645,6 @@ endDamagedPlayer:
 				GDc.Player.X, GDc.Player.Y, PLAYER_CRASH_R,
 					GetEnemyAtari_L(enemy), GetEnemyAtari_T(enemy), GetEnemyAtari_R(enemy), GetEnemyAtari_B(enemy)
 				))
-//			if(IsCrashed_Circle_Point(GDc.Player.X, GDc.Player.Y, 15.0 + 15.0, enemy->X, enemy->Y)) // old_zantei
 			{
 				double MOVE_SPAN = 0.25;
 				double eToPlX;
@@ -677,24 +708,24 @@ endDamagedPlayer:
 		{
 			EnemyTama_t *i = GDc.EnemyTamaList->GetElement(index);
 
-			if(IsCrashed_Circle_Point(GDc.Player.X, GDc.Player.Y, PLAYER_CRASH_R, i->X, i->Y)) // ©‹@_”í’e
+			if(IsCrashed_Circle_Point(GDc.Player.X, GDc.Player.Y, PLAYER_CRASH_R + ENEMY_TAMA_CRASH_R, i->X, i->Y)) // ©‹@_”í’e
 			{
-				GDc.Player.HP--;
-
-				if(0 < GDc.Player.HP)
-				{
-					SEPlay(SE_DAMAGE);
-
-					GDc.Player.DamagedFrame = 1;
-				}
-				else
-				{
-					SEPlay(SE_DAMAGE);
-
-					GDc.Player.DeadFrame = 1;
-				}
+				PlayerDamaged();
 			}
 		}
+
+		// Crash -- ©‹@ / “G’e”š•—
+
+		for(int index = 0; index < GDc.EnemyTamaBlastList->GetCount(); index++)
+		{
+			EnemyTamaBlast_t *i = GDc.EnemyTamaBlastList->GetElement(index);
+
+			if(IsCrashed_Circle_Point(GDc.Player.X, GDc.Player.Y, PLAYER_CRASH_R + ENEMY_TAMA_BLAST_CRASH_R, i->X, i->Y)) // ©‹@_”í’e
+			{
+				PlayerDamaged();
+			}
+		}
+
 endCrash_Player_EnemyTama:
 
 		// Crash ‚±‚±‚Ü‚Å
@@ -746,6 +777,15 @@ startDraw:
 
 				memFree(str);
 			}
+		}
+
+		// “G’e”š•—_•`‰æ
+
+		for(int index = 0; index < GDc.EnemyTamaBlastList->GetCount(); index++)
+		{
+			EnemyTamaBlast_t *i = GDc.EnemyTamaBlastList->GetElement(index);
+
+			DrawEnemyTamaBlast(i);
 		}
 
 		// ©’e_•`‰æ
