@@ -77,7 +77,8 @@ static void DrawScore(int onBattle)
 			if(onBattle)
 				iro = GetColor(255, 0, 0);
 			else
-				iro = GetColor(255, 255, 0);
+				iro = GetColor(255, 0, 0);
+//				iro = GetColor(255, 255, 0); // old
 		}
 		else
 			iro = GetColor(255, 255, 255);
@@ -106,7 +107,8 @@ static void DrawScore(int onBattle)
 		if(onBattle)
 			iro = GetColor(255, 0, 0);
 		else
-			iro = GetColor(255, 255, 0);
+			iro = GetColor(255, 0, 0);
+//			iro = GetColor(255, 255, 0); // old
 
 		DrawStringByFont_XCenter(
 			SCREEN_W / 2,
@@ -138,6 +140,10 @@ static void PlayerDamaged(void)
 	}
 	GDcNV.NoDamage = 0;
 }
+static void DestroyEnemyTama(int index)
+{
+	ReleaseEnemyTama(GDc.EnemyTamaList->FastDesertElement(index));
+}
 void GameMain(void)
 {
 /*
@@ -151,35 +157,41 @@ LOGPOS();
 	SetCurtain();
 	FreezeInput();
 
-	int messagePicId = D_CG_MESSAGE_00 + m_01(GDc.StageIndex) | DTP;
+	int messagePicId = D_CG_MESSAGE_00 | DTP;
+//	int messagePicId = D_CG_MESSAGE_00 + m_01(GDc.StageIndex) | DTP; // old
 
-	forscene(10)
+	int fromPrevStage = m_01(GDc.StageIndex);
+
+	if(!fromPrevStage)
 	{
-		DrawWall();
-
-		for(int xSft = -1; xSft <= 1; xSft += 2)
-		for(int ySft = -1; ySft <= 1; ySft += 2)
+		forscene(10)
 		{
-			double x = SCREEN_W / 2.0 + xSft * 40.0 * (1.0 - sc_rate);
-			double y = SCREEN_H / 2.0 + ySft * 40.0 * (1.0 - sc_rate);
+			DrawWall();
 
-			DPE_SetAlpha(0.5);
-			DrawCenter(messagePicId, x, y);
-			DPE_Reset();
+			for(int xSft = -1; xSft <= 1; xSft += 2)
+			for(int ySft = -1; ySft <= 1; ySft += 2)
+			{
+				double x = SCREEN_W / 2.0 + xSft * 40.0 * (1.0 - sc_rate);
+				double y = SCREEN_H / 2.0 + ySft * 40.0 * (1.0 - sc_rate);
+
+				DPE_SetAlpha(0.5);
+				DrawCenter(messagePicId, x, y);
+				DPE_Reset();
+			}
+
+			if(GDc.StageIndex) // ? 前のステージからこのステージへ来た。
+			{
+				DrawBegin(D_CHARA_PLAYER_00 | DTP, GDcNV.X, GDcNV.Y);
+				DrawRotate(sc_rate * PI * 2.0);
+				DrawEnd();
+			}
+
+			DrawScore(0);
+
+			EachFrame();
 		}
-
-		if(GDc.StageIndex) // ? 前のステージからこのステージへ来た。
-		{
-			DrawBegin(D_CHARA_PLAYER_00 | DTP, GDcNV.X, GDcNV.Y);
-			DrawRotate(sc_rate * PI * 2.0);
-			DrawEnd();
-		}
-
-		DrawScore(0);
-
-		EachFrame();
+		sceneLeave();
 	}
-	sceneLeave();
 
 #if 1
 	AddEnemyByStageIndex(GDc.StageIndex);
@@ -215,44 +227,43 @@ start:
 		{
 			GDc.BattleNotStartedFrame++;
 
-			if(BATTLE_START_FRAME < GDc.BattleNotStartedFrame)
-			/*
-			if(BATTLE_STARTABLE_FRAME < GDc.BattleNotStartedFrame) // いきなりスタートしてしまわないように。
-			if(
-				GetInput(INP_PAUSE) == 1 ||
-//				GetInput(INP_A) == 1 || // 高速移動は反応させない。
-				GetInput(INP_B) == 1 ||
-				GetInput(INP_C) == 1 ||
-				GetInput(INP_D) == 1 ||
-				GetInput(INP_E) == 1 ||
-				GetInput(INP_F) == 1
-				)
-				*/
+			if(!fromPrevStage)
 			{
-				GDc.BattleStarted = 1;
-
-				for(int xSft = -1; xSft <= 1; xSft += 2)
-				for(int ySft = -1; ySft <= 1; ySft += 2)
+				if(BATTLE_START_FRAME_FIRST_STAGE < GDc.BattleNotStartedFrame)
 				{
-					AddCommonEffect(
-						Gnd.EL,
-						1,
-						messagePicId,
-						SCREEN_W / 2.0,
-						SCREEN_H / 2.0,
-						0.0,
-						1.0,
-						0.5,
-						xSft * 4.0,
-						ySft * 4.0,
-						0.0,
-						0.0,
-						-0.05
-						);
-				}
+					GDc.BattleStarted = 1;
 
-				MusicPlay(MUS_BATTLE_1);
-				FreezeInput();
+					for(int xSft = -1; xSft <= 1; xSft += 2)
+					for(int ySft = -1; ySft <= 1; ySft += 2)
+					{
+						AddCommonEffect(
+							Gnd.EL,
+							1,
+							messagePicId,
+							SCREEN_W / 2.0,
+							SCREEN_H / 2.0,
+							0.0,
+							1.0,
+							0.5,
+							xSft * 4.0,
+							ySft * 4.0,
+							0.0,
+							0.0,
+							-0.05
+							);
+					}
+
+					MusicPlay(MUS_BATTLE_1);
+					FreezeInput();
+				}
+			}
+			else // fromPrevStage
+			{
+				if(BATTLE_START_FRAME < GDc.BattleNotStartedFrame)
+				{
+					GDc.BattleStarted = 1;
+//					FreezeInput(); // 要るの？
+				}
 			}
 		}
 		else
@@ -263,11 +274,22 @@ start:
 			}
 		}
 
-		// デバッグ用
+		// デバッグ用 TODO いずれ消す。
 		{
 			if(GetKeyInput(KEY_INPUT_ADD) == 1)
 			{
 				GDcNV.Score += 10000000;
+			}
+			if(GetKeyInput(KEY_INPUT_SUBTRACT) == 1)
+			{
+				for(int x = 0; x <= 10; x++)
+				for(int y = 0; y <= 10; y++)
+				{
+					if(GDc.PlayerMissileList->GetCount() < 300)
+					{
+						GDc.PlayerMissileList->AddElement(CreatePlayerMissile(x * SCREEN_W / 10.0, y * SCREEN_H / 10.0, PI * 3.0 / 2.0));
+					}
+				}
 			}
 		}
 
@@ -335,7 +357,7 @@ endDamagedPlayer:
 
 		if(!uncontrollable)
 		{
-			double speed = 2.0;
+			double speed = ENEMY_MOVE_SPEED_CONV(GetEnemyInfo(EK_EYE_1)->MoveSpeed);
 			int moved = 0;
 
 			if(GDc.Player.HiSpeed)
@@ -367,6 +389,7 @@ endDamagedPlayer:
 
 				GDc.Player.DeadFrame = 1;
 				GDc.GameOver = 1;
+				GDcNV.EndCause = 'J';
 			}
 
 			if(moved)
@@ -575,6 +598,7 @@ endDamagedPlayer:
 			{
 				PlayerTama_t *plTama = GDc.PlayerTamaList->GetElement(index);
 
+				if(1 <= enemy->HP) // anti over-kill
 				if(IsCrashed_Circle_Rect(
 					plTama->X, plTama->Y, PLAYER_SHOT_CRASH_R,
 					GetEnemyAtari_L(enemy), GetEnemyAtari_T(enemy), GetEnemyAtari_R(enemy), GetEnemyAtari_B(enemy)
@@ -597,6 +621,7 @@ endDamagedPlayer:
 			{
 				PlayerMissile_t *plMissile = GDc.PlayerMissileList->GetElement(index);
 
+				if(1 <= enemy->HP) // anti over-kill
 				if(IsCrashed_Circle_Rect(
 					plMissile->X, plMissile->Y, PLAYER_MISSILE_CRASH_R,
 					GetEnemyAtari_L(enemy), GetEnemyAtari_T(enemy), GetEnemyAtari_R(enemy), GetEnemyAtari_B(enemy)
@@ -698,6 +723,73 @@ endDamagedPlayer:
 				enemyIndex--;
 			}
 		}
+		for(int enemyTamaIndex = 0; enemyTamaIndex < GDc.EnemyTamaList->GetCount(); enemyTamaIndex++)
+		{
+			EnemyTama_t *enemyTama = GDc.EnemyTamaList->GetElement(enemyTamaIndex);
+
+			// Crash -- Shot / 敵弾
+
+			for(int index = 0; index < GDc.PlayerTamaList->GetCount(); index++)
+			{
+				PlayerTama_t *plTama = GDc.PlayerTamaList->GetElement(index);
+
+				if(IsCrashed_Circle_Circle(
+					plTama->X, plTama->Y, PLAYER_SHOT_CRASH_R,
+					enemyTama->X, enemyTama->Y, ENEMY_TAMA_CRASH_R_BY_PLAYER_ATTACK
+					))
+				{
+					DestroyEnemyTama(enemyTamaIndex);
+					enemyTamaIndex--;
+					goto crash_enemyTamaPlayerAttack_tail;
+				}
+			}
+
+			// Crash -- Missile / 敵弾
+
+			for(int index = 0; index < GDc.PlayerMissileList->GetCount(); index++)
+			{
+				PlayerMissile_t *plMissile = GDc.PlayerMissileList->GetElement(index);
+
+				if(IsCrashed_Circle_Circle(
+					plMissile->X, plMissile->Y, PLAYER_MISSILE_CRASH_R,
+					enemyTama->X, enemyTama->Y, ENEMY_TAMA_CRASH_R_BY_PLAYER_ATTACK
+					))
+				{
+					DestroyEnemyTama(enemyTamaIndex);
+					enemyTamaIndex--;
+					goto crash_enemyTamaPlayerAttack_tail;
+				}
+			}
+
+			// Crash -- Laser / 敵弾
+
+			if(1 <= GDc.LaserFrame)
+			{
+				double l = GDc.Player.X - 1.0;
+				double r = GDc.Player.X + 1.0;
+				double t = 0.0; // -1000.0;
+				double b = GDc.Player.Y - 16.0;
+
+				if(IsCrashed_Circle_Rect(
+					enemyTama->X, enemyTama->Y, ENEMY_TAMA_CRASH_R_BY_PLAYER_ATTACK,
+					l, t, r, b
+					))
+				{
+					DestroyEnemyTama(enemyTamaIndex);
+					enemyTamaIndex--;
+					goto crash_enemyTamaPlayerAttack_tail;
+				}
+			}
+
+			// Crash -- Flash(Laser_B) / 敵弾
+
+			if(1 <= GDc.FlashFrame)
+			{
+				// noop
+			}
+
+		crash_enemyTamaPlayerAttack_tail:;
+		}
 
 		// Crash -- 自機 / 敵弾
 
@@ -711,6 +803,9 @@ endDamagedPlayer:
 			if(IsCrashed_Circle_Point(GDc.Player.X, GDc.Player.Y, PLAYER_CRASH_R + ENEMY_TAMA_CRASH_R, i->X, i->Y)) // 自機_被弾
 			{
 				PlayerDamaged();
+
+				DestroyEnemyTama(index);
+				index--;
 			}
 		}
 
@@ -723,6 +818,9 @@ endDamagedPlayer:
 			if(IsCrashed_Circle_Point(GDc.Player.X, GDc.Player.Y, PLAYER_CRASH_R + ENEMY_TAMA_BLAST_CRASH_R, i->X, i->Y)) // 自機_被弾
 			{
 				PlayerDamaged();
+
+				DestroyEnemyTama(index);
+				index--;
 			}
 		}
 
@@ -732,33 +830,45 @@ endCrash_Player_EnemyTama:
 
 		if(GDcNV.Score < 0)
 		{
-			int frm = GDcNV.DeficitFrame++ - 1; // 0～
+			int frm = GDcNV.DeficitFrame++; // 0～
 
 			if(frm == DEFICIT_FRAME_MAX) // 破産
 			{
-				// FIXME 自爆と同じでいいか。
+				// 自爆と同じ。
 
 				SEPlay(SE_DAMAGE);
 
 				GDc.Player.DeadFrame = 1;
 				GDc.GameOver = 1;
+				GDcNV.EndCause = 'A';
+			}
+			if(frm == 0)
+			{
+				SEPlayLoop(SE_SIREN);
 			}
 		}
 		else
+		{
+			if(GDcNV.DeficitFrame != 0)
+			{
+				SEStop(SE_SIREN);
+			}
 			GDcNV.DeficitFrame = 0;
+		}
 
 startDraw:
 		// ★★★ ここから描画 ★★★
 
 		DrawWall();
 
+		if(!fromPrevStage)
 		if(!GDc.BattleStarted)
 		{
 			DrawCenter(messagePicId, SCREEN_W / 2, SCREEN_H / 2);
 
 			{
 				int frm = GDc.BattleNotStartedFrame;
-				double remaining = (BATTLE_START_FRAME - frm) / 60.0;
+				double remaining = (BATTLE_START_FRAME_FIRST_STAGE - frm) / 60.0;
 				m_range(remaining, 0.0, (double)IMAX);
 
 				char *str = xcout("%.2f", remaining);

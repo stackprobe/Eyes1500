@@ -12,6 +12,7 @@ Resource\cg\cg_score.png
 Resource\cg\cg_screen.png
 Resource\cg\cg_stage.png
 Resource\cg\cg_start.png
+Resource\cg\cg_gage.png
 Resource\chara\player.png
 Resource\weapon\enemy_bomb.png
 Resource\weapon\enemy_shot.png

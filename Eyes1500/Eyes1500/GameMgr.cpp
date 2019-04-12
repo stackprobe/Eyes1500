@@ -6,10 +6,6 @@ static void DrawWall(void)
 }
 static void Ending(int endingIndex)
 {
-	Gnd.HiScore = m_max(Gnd.HiScore, GDcNV.Score);
-
-	// ----
-
 	MusicFade();
 
 	forscene(60)
@@ -67,7 +63,15 @@ static void Ending(void)
 {
 	int endingIndex;
 
-	if(GDcNV.GameLapCount == 2)
+	if(GDcNV.EndCause == 'A')
+	{
+		endingIndex = END_AKAJI;
+	}
+	else if(GDcNV.EndCause == 'J')
+	{
+		endingIndex = END_JIBAKU;
+	}
+	else if(GDcNV.GameLapCount == 2)
 	{
 		if(GDcNV.NoDamage && GDcNV.WipeOut)
 			endingIndex = END_KAMICLEAR;
@@ -107,9 +111,15 @@ void GameMgrMain(void)
 			//break; // test
 
 			if(!wns)
-				return;
+				break;
 		}
+		SEStop(SE_SIREN);
 		Ending();
+
+		if(GDcNV.EndCause != '-')
+			break;
+
+		Gnd.HiScore = m_max(Gnd.HiScore, GDcNV.Score);
 
 		if(GDcNV.GameLapCount == 2)
 			break;

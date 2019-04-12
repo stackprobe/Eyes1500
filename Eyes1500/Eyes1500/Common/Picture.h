@@ -20,6 +20,7 @@ enum
 	P_CG_SCREEN,
 	P_CG_STAGE,
 	P_CG_START,
+	P_CG_GAGE,
 
 	P_CHARA_PLAYER,
 

@@ -18,6 +18,7 @@ enum
 	SE_MISSILE,
 	SE_SHOT,
 	SE_SIREN,
+	SE_WARP,
 
 	ENUM_RANGE(SE_VOICE_00, 8)
 
@@ -55,6 +56,10 @@ void SEPlay(int seId);
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
 void SEStop(int seId);
+/*
+	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+*/
+void SEPlayLoop(int seId);
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */

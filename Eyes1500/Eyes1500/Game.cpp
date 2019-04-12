@@ -16,6 +16,7 @@ void GameInitNonvola(void)
 
 	GDcNV.WipeOut = 1;
 	GDcNV.NoDamage = 1;
+	GDcNV.EndCause = '-';
 }
 void GameFnlzNonvola(void)
 {

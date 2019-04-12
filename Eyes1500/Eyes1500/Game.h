@@ -12,6 +12,7 @@ typedef struct GDcNV_st // GDc ÇÃ Non-volatile
 
 	int WipeOut;
 	int NoDamage;
+	int EndCause; // "-AJ" == { none, ê‘éö, é©îö }
 }
 GDcNV_t;
 

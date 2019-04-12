@@ -10,6 +10,7 @@ Resource\se\se_laser_b.ogg
 Resource\se\se_missile.ogg
 Resource\se\se_shot.ogg
 Resource\se\se_siren.ogg
+Resource\se\se_warp.ogg
 Resource\vo_ogg\voice_01.ogg
 Resource\vo_ogg\voice_02.ogg
 Resource\vo_ogg\voice_03.ogg
