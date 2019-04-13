@@ -3,6 +3,7 @@ typedef struct EnemyTamaBlast_st
 	int Frame;
 	int X;
 	int Y;
+	int Effected;
 }
 EnemyTamaBlast_t;
 

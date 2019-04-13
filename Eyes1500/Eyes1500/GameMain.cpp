@@ -815,12 +815,17 @@ endDamagedPlayer:
 		{
 			EnemyTamaBlast_t *i = GDc.EnemyTamaBlastList->GetElement(index);
 
+			if(!i->Effected)
 			if(IsCrashed_Circle_Point(GDc.Player.X, GDc.Player.Y, PLAYER_CRASH_R + ENEMY_TAMA_BLAST_CRASH_R, i->X, i->Y)) // Ž©‹@_”í’e
 			{
 				PlayerDamaged();
 
-				DestroyEnemyTama(index);
+				i->Effected = 1;
+				/*
+				ReleaseEnemyTamaBlast(i);
+				GDc.EnemyTamaBlastList->FastDesertElement(index);
 				index--;
+				*/
 			}
 		}
 
