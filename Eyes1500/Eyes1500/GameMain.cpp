@@ -77,8 +77,8 @@ static void DrawScore(int onBattle)
 			if(onBattle)
 				iro = GetColor(255, 0, 0);
 			else
-				iro = GetColor(255, 0, 0);
-//				iro = GetColor(255, 255, 0); // old
+//				iro = GetColor(255, 0, 0);
+				iro = GetColor(255, 255, 0); // old
 		}
 		else
 			iro = GetColor(255, 255, 255);
@@ -107,8 +107,8 @@ static void DrawScore(int onBattle)
 		if(onBattle)
 			iro = GetColor(255, 0, 0);
 		else
-			iro = GetColor(255, 0, 0);
-//			iro = GetColor(255, 255, 0); // old
+//			iro = GetColor(255, 0, 0);
+			iro = GetColor(255, 255, 0); // old
 
 		DrawStringByFont_XCenter(
 			SCREEN_W / 2,
@@ -157,12 +157,12 @@ LOGPOS();
 	SetCurtain();
 	FreezeInput();
 
-	int messagePicId = D_CG_MESSAGE_00 | DTP;
-//	int messagePicId = D_CG_MESSAGE_00 + m_01(GDc.StageIndex) | DTP; // old
+//	int messagePicId = D_CG_MESSAGE_00 | DTP;
+	int messagePicId = D_CG_MESSAGE_00 + m_01(GDc.StageIndex) | DTP; // old
 
 	int fromPrevStage = m_01(GDc.StageIndex);
 
-	if(!fromPrevStage)
+//	if(!fromPrevStage)
 	{
 		forscene(10)
 		{
@@ -227,7 +227,7 @@ start:
 		{
 			GDc.BattleNotStartedFrame++;
 
-			if(!fromPrevStage)
+//			if(!fromPrevStage)
 			{
 				if(BATTLE_START_FRAME_FIRST_STAGE < GDc.BattleNotStartedFrame)
 				{
@@ -257,6 +257,7 @@ start:
 					FreezeInput();
 				}
 			}
+			/*
 			else // fromPrevStage
 			{
 				if(BATTLE_START_FRAME < GDc.BattleNotStartedFrame)
@@ -265,6 +266,7 @@ start:
 //					FreezeInput(); // —v‚é‚ÌH
 				}
 			}
+			*/
 		}
 		else
 		{
@@ -866,7 +868,7 @@ startDraw:
 
 		DrawWall();
 
-		if(!fromPrevStage)
+//		if(!fromPrevStage)
 		if(!GDc.BattleStarted)
 		{
 			DrawCenter(messagePicId, SCREEN_W / 2, SCREEN_H / 2);

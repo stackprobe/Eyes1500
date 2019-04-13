@@ -5,7 +5,7 @@ Resource\cg\cg_controller.png
 Resource\cg\cg_credit.png
 Resource\cg\cg_end.png
 Resource\cg\cg_frame.png
-Resource\cg\cg_message.png
+Resource\cg\cg_message_old.png
 Resource\cg\cg_order.png
 Resource\cg\cg_pause.png
 Resource\cg\cg_score.png

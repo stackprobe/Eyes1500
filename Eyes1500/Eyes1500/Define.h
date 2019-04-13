@@ -41,8 +41,8 @@ enum
 };
 
 //#define BATTLE_STARTABLE_FRAME 30
-#define BATTLE_START_FRAME_FIRST_STAGE (2 * 60)
-//#define BATTLE_START_FRAME (1 * 60) // zantei
+//#define BATTLE_START_FRAME_FIRST_STAGE (2 * 60)
+#define BATTLE_START_FRAME_FIRST_STAGE (3 * 60) // old
 #define BATTLE_START_FRAME 10
 
 #define PLAYER_CRASH_R 5.0 // é©ã@ìñÇËîºåa
@@ -65,3 +65,5 @@ enum
 
 #define ENEMY_SHOOT_FRAME 120
 #define ENEMY_SHOOT_RENSHA_FRAME 30
+
+#define INIT_SCORE 100000 // èâä˙èäéùã‡

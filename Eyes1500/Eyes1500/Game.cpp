@@ -9,8 +9,7 @@ void GameInitNonvola(void)
 	GDcNV.X = SCREEN_CENTER_X; // 2bs
 	GDcNV.Y = SCREEN_CENTER_Y; // 2bs
 
-	// ‰ŠúŠŽ‹à
-	GDcNV.Score = 100000;
+	GDcNV.Score = INIT_SCORE;
 
 	GDcNV.GameLapCount = 1;
 

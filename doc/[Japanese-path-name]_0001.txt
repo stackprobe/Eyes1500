@@ -44,6 +44,21 @@
 　Eyes1500.exe を実行して下さい。
 
 
+■操作方法
+
+　UP               （上移動）           ...   カーソル・上
+　DOWN             （下移動）           ...   カーソル・下
+　RIGHT            （右移動）           ...   カーソル・右
+　LEFT             （左移動）           ...   カーソル・左
+　HIGH SPEED       （高速移動）         ...   A
+　SHOT             （弾丸）             ...   Z
+　LASER BEAM       （レーザー光線）     ...   X
+　BLIND LASER LIGHT（目潰しレーザー）   ...   S
+　GUIDED MISSILE   （誘導ミサイル）     ...   C
+　SUICIDE          （自爆）             ...   D
+　DECISION/PAUSE   （決定/一時停止）    ...   Enter
+
+
 ■素材提供（敬称略）
 
 　ＢＧＭ

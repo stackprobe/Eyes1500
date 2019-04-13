@@ -125,6 +125,7 @@ void GameMgrMain(void)
 			break;
 
 		GDcNV.GameLapCount++;
+		m_maxim(GDcNV.Score, INIT_SCORE);
 	}
 	GameFnlzNonvola();
 }
