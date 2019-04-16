@@ -3,7 +3,7 @@
 */
 #include "all.h"
 
-// app > @ Conf_
+// Ý’è€–Ú >
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -17,7 +17,7 @@
 */
 int Conf_DisplayIndex = 1;
 
-// < app
+// < Ý’è€–Ú
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -31,11 +31,11 @@ void ImportConfig(void)
 		autoList<uchar> *fileData = readAllBytes(confFile);
 		int rIndex = 0;
 
-		// app > @ LOAD Conf_
+		// Ý’è€–Ú >
 
 		Conf_DisplayIndex = atoi_x(neReadCfgLine(fileData, rIndex));
 
-		// < app
+		// < Ý’è€–Ú
 
 		{
 			char *line = neReadCfgLine(fileData, rIndex);
