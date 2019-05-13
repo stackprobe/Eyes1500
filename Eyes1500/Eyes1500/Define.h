@@ -1,6 +1,6 @@
-//#define APP_COMMON_FONT "メイリオ"
+#define APP_COMMON_FONT "メイリオ"
 //#define APP_COMMON_FONT "ＭＳ ゴシック"
-#define APP_COMMON_FONT "MS UI Gothic"
+//#define APP_COMMON_FONT "MS UI Gothic"
 
 #define APP_COMMON_FONT_HANDLE (GetFontHandle(APP_COMMON_FONT, 18, 6))
 
@@ -41,8 +41,8 @@ enum
 };
 
 //#define BATTLE_STARTABLE_FRAME 30
-//#define BATTLE_START_FRAME_FIRST_STAGE (2 * 60)
-#define BATTLE_START_FRAME_FIRST_STAGE (3 * 60) // old
+#define BATTLE_START_FRAME_FIRST_STAGE (2 * 60)
+//#define BATTLE_START_FRAME_FIRST_STAGE (3 * 60) // old
 #define BATTLE_START_FRAME 10
 
 #define PLAYER_CRASH_R 5.0 // 自機当り半径

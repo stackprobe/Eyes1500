@@ -162,7 +162,7 @@ LOGPOS();
 
 	int fromPrevStage = m_01(GDc.StageIndex);
 
-//	if(!fromPrevStage)
+	if(!fromPrevStage)
 	{
 		forscene(10)
 		{
@@ -179,12 +179,15 @@ LOGPOS();
 				DPE_Reset();
 			}
 
+			// old
+			/*
 			if(GDc.StageIndex) // ? 前のステージからこのステージへ来た。
 			{
 				DrawBegin(D_CHARA_PLAYER_00 | DTP, GDcNV.X, GDcNV.Y);
 				DrawRotate(sc_rate * PI * 2.0);
 				DrawEnd();
 			}
+			*/
 
 			DrawScore(0);
 
@@ -204,6 +207,26 @@ LOGPOS();
 #endif
 
 	FreezeInput();
+
+	if(GDc.StageIndex + 1 == GetStageCount()) // ? ラス面
+	{
+		MusicFade(25);
+
+		forscene(30)
+		{
+			DrawWall();
+
+			DrawBegin(D_CHARA_PLAYER_00 | DTP, GDcNV.X, GDcNV.Y);
+			DrawRotate(sc_rate * PI * 2.0 * 3);
+//			DrawRotate(sc_rate * PI * 2.0);
+			DrawEnd();
+
+			EachFrame();
+		}
+		sceneLeave();
+
+		MusicPlay(MUS_BATTLE_2);
+	}
 
 	// start...
 
@@ -227,7 +250,7 @@ start:
 		{
 			GDc.BattleNotStartedFrame++;
 
-//			if(!fromPrevStage)
+			if(!fromPrevStage)
 			{
 				if(BATTLE_START_FRAME_FIRST_STAGE < GDc.BattleNotStartedFrame)
 				{
@@ -257,7 +280,6 @@ start:
 					FreezeInput();
 				}
 			}
-			/*
 			else // fromPrevStage
 			{
 				if(BATTLE_START_FRAME < GDc.BattleNotStartedFrame)
@@ -266,7 +288,6 @@ start:
 //					FreezeInput(); // 要るの？
 				}
 			}
-			*/
 		}
 		else
 		{
@@ -292,6 +313,10 @@ start:
 						GDc.PlayerMissileList->AddElement(CreatePlayerMissile(x * SCREEN_W / 10.0, y * SCREEN_H / 10.0, PI * 3.0 / 2.0));
 					}
 				}
+			}
+			if(GetKeyInput(KEY_INPUT_MULTIPLY) == 1)
+			{
+				GDc.StageIndex = 27;
 			}
 		}
 
@@ -868,7 +893,7 @@ startDraw:
 
 		DrawWall();
 
-//		if(!fromPrevStage)
+		if(!fromPrevStage)
 		if(!GDc.BattleStarted)
 		{
 			DrawCenter(messagePicId, SCREEN_W / 2, SCREEN_H / 2);
@@ -986,6 +1011,11 @@ startDraw:
 
 	if(GDc.WillNextStage)
 	{
+		if(GDc.StageIndex + 2 == GetStageCount()) // ? ラス面直前
+		{
+			// noop
+//			MusicFade(30);
+		}
 		//MusicFade(); // ステージ間で音楽を止めない。
 	}
 	else

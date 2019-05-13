@@ -105,6 +105,7 @@ void GameMgrMain(void)
 			GameInit();
 			GDc.StageIndex = stgIndex;
 			GameMain();
+			stgIndex = GDc.StageIndex; // zantei
 			int wns = GDc.WillNextStage;
 			GameFnlz();
 
