@@ -21,6 +21,7 @@ enum
 	P_CG_STAGE,
 	P_CG_START,
 	P_CG_GAGE,
+	P_CG_MISSILE,
 
 	P_CHARA_PLAYER,
 

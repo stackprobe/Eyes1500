@@ -13,6 +13,9 @@ typedef struct GDcNV_st // GDc ÇÃ Non-volatile
 	int WipeOut;
 	int NoDamage;
 	int EndCause; // "-AJ" == { none, ê‘éö, é©îö }
+
+	int MissileStockCount; // 0 Å` MISSILE_STOCK_MAX
+	int LaserStockCount;   // 0 Å` LASER_STOCK_MAX
 }
 GDcNV_t;
 

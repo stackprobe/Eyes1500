@@ -60,6 +60,8 @@ static void DrawScore(int onBattle)
 
 	__int64 iScoreDisp = d2i64(GDcNV.ScoreDisp);
 
+	const int SCORE_DRAW_CENTER_X = 60;
+
 	// Score
 	{
 		char *str = xcout("%09I64d", abs(iScoreDisp));
@@ -84,10 +86,82 @@ static void DrawScore(int onBattle)
 			iro = GetColor(255, 255, 255);
 
 		DrawStringByFont_XCenter(
-			SCREEN_W / 2,
-			1,
+			SCORE_DRAW_CENTER_X,
+//			SCREEN_W / 2,
+			5,
+//			1,
 			str,
-			APP_COMMON_FONT_HANDLE,
+			GetFontHandle("游ゴシック", 11, 9),
+//			GetFontHandle(APP_COMMON_FONT, 16, 6),
+//			APP_COMMON_FONT_HANDLE,
+			0,
+			iro
+			);
+
+		memFree(str);
+	}
+
+	// laser gage
+	{
+		const int L = 120;
+		const int T = 2;
+		const int W = 240;
+		const int H = 16;
+
+		{
+			int w = d2i((GDcNV.LaserStockCount * W) / (double)LASER_STOCK_MAX);
+
+			if(1 <= w)
+			{
+				DPE_SetBright(0.0, 1.0, 1.0);
+				DPE_SetAlpha(0.85);
+				DrawRect(P_WHITEBOX, L, T, w, H);
+				DPE_Reset();
+			}
+		}
+		DrawSimple(P_CG_GAGE, L, T);
+	}
+
+	{
+		char *str = xcout("%02d", ((LASER_STOCK_MAX - GDcNV.LaserStockCount) + 59) / 60);
+		int iro = GetColor(255, 255, 255);
+
+		DrawStringByFont(
+			368,
+			5,
+			str,
+			GetFontHandle("游ゴシック", 11, 9),
+			0,
+			iro
+			);
+
+		memFree(str);
+	}
+
+	// missile gage
+	{
+		const int L = 400;
+		const int T = 2;
+		const int W = 8;
+//		const int H = 16;
+
+		int missileCount = GDcNV.MissileStockCount / MISSILE_STOCK_COST;
+
+		for(int index = 0; index < missileCount; index++)
+		{
+			DrawSimple(P_CG_MISSILE, L + index * W, T);
+		}
+	}
+
+	{
+		char *str = xcout("%02d", ((MISSILE_STOCK_MAX - GDcNV.MissileStockCount) + 59) / 60);
+		int iro = GetColor(255, 255, 255);
+
+		DrawStringByFont(
+			448,
+			5,
+			str,
+			GetFontHandle("游ゴシック", 11, 9),
 			0,
 			iro
 			);
@@ -111,7 +185,8 @@ static void DrawScore(int onBattle)
 			iro = GetColor(255, 255, 0); // old
 
 		DrawStringByFont_XCenter(
-			SCREEN_W / 2,
+			SCORE_DRAW_CENTER_X,
+//			SCREEN_W / 2,
 			30,
 			str,
 			GetFontHandle(APP_COMMON_FONT, 48, 6),
@@ -562,6 +637,12 @@ endDamagedPlayer:
 			GDc.WillNextStage = 1;
 			break;
 		}
+
+		if(GDcNV.MissileStockCount < MISSILE_STOCK_MAX)
+			GDcNV.MissileStockCount++;
+
+		if(GDcNV.LaserStockCount < LASER_STOCK_MAX)
+			GDcNV.LaserStockCount++;
 
 		// 敵_処理
 
