@@ -153,6 +153,11 @@ void EachFrame(void)
 
 	// app > @ post draw screen
 
+#if 1 // debug debug debug debug debug
+	clsDx();
+	printfDx("\nŠJ”­’†ver.");
+#endif
+
 	// < app
 
 	// DxLib >
