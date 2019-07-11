@@ -1,5 +1,5 @@
 Etcetera\DatStrings.txt
 C:\Dat\JChar.bin
-Resource\csv\Še”g.csv
-Resource\csv\í—ŞE”\—Í.csv
-Resource\csv\’e”­ËÀ•W.csv
+Resource\csv\å„æ³¢.csv
+Resource\csv\ç¨®é¡ãƒ»èƒ½åŠ›.csv
+Resource\csv\å¼¾ç™ºå°„åº§æ¨™.csv

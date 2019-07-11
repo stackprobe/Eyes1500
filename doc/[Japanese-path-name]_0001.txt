@@ -1,84 +1,84 @@
 ===============================================================================
 
-@1500 Eyes / version $version$
+ã€€1500 Eyes / version $version$
                                                        (C) 2018-2019 kishingumi
 
 ===============================================================================
 
 
-¡ƒ\ƒtƒg‚ÌŠT—v
+â– ã‚½ãƒ•ãƒˆã®æ¦‚è¦
 
-@‘ü¡»ì’†B
-
-
-¡’ˆÓ
-
-@‚±‚Ìƒ\ƒtƒg‚ÍAƒtƒŠ[‰æ‘œ‘fÞEƒtƒŠ[‰¹ŠyiŒø‰Ê‰¹j‘fÞ‚ðŽg—p‚µ‚Ä‚Ü‚·B
-@‚±‚Ìƒ\ƒtƒg“à‚ÅŽg—p‚³‚ê‚Ä‚¢‚é‰æ‘œE‰¹ŠyiŒø‰Ê‰¹j‚ðA‚±‚ÌƒQ[ƒ€‚ð—V‚ÔˆÈŠO‚Ì—p“r‚É‚ÍŽg—p‚µ‚È‚¢‚Å‰º‚³‚¢B
+ã€€åªä»Šè£½ä½œä¸­ã€‚
 
 
-¡“®ìŠÂ‹«
+â– æ³¨æ„
 
-@Windows 10
-@Šm”F‚µ‚Ä‚¢‚Ü‚¹‚ñ‚ª Windows 7/8/8.1 ‚Å‚à“®‚­‚©‚à‚µ‚ê‚Ü‚¹‚ñB
-
-@DirectX 9.0 ˆÈ~
-@2DƒQ[ƒ€‚ª‰õ“K‚É“®ì‚·‚éCPU
-@Direct Graphic ‘Î‰ž‚ÌƒrƒfƒIƒJ[ƒh
-@Direct Sound ‘Î‰ž‚ÌƒTƒEƒ“ƒhƒJ[ƒh
+ã€€ã“ã®ã‚½ãƒ•ãƒˆã¯ã€ãƒ•ãƒªãƒ¼ç”»åƒç´ æãƒ»ãƒ•ãƒªãƒ¼éŸ³æ¥½ï¼ˆåŠ¹æžœéŸ³ï¼‰ç´ æã‚’ä½¿ç”¨ã—ã¦ã¾ã™ã€‚
+ã€€ã“ã®ã‚½ãƒ•ãƒˆå†…ã§ä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹ç”»åƒãƒ»éŸ³æ¥½ï¼ˆåŠ¹æžœéŸ³ï¼‰ã‚’ã€ã“ã®ã‚²ãƒ¼ãƒ ã‚’éŠã¶ä»¥å¤–ã®ç”¨é€”ã«ã¯ä½¿ç”¨ã—ãªã„ã§ä¸‹ã•ã„ã€‚
 
 
-¡ƒCƒ“ƒXƒg[ƒ‹•û–@
+â– å‹•ä½œç’°å¢ƒ
 
-@ƒA[ƒJƒCƒu‚Ì’†g‚ðƒ[ƒJƒ‹ƒfƒBƒXƒNã‚Ì”CˆÓ‚ÌêŠ‚ÉƒRƒs[‚µ‚Ä‰º‚³‚¢B
+ã€€Windows 10
+ã€€ç¢ºèªã—ã¦ã„ã¾ã›ã‚“ãŒ Windows 7/8/8.1 ã§ã‚‚å‹•ãã‹ã‚‚ã—ã‚Œã¾ã›ã‚“ã€‚
 
-
-¡ƒAƒ“ƒCƒ“ƒXƒg[ƒ‹•û–@
-
-@ƒŒƒWƒXƒgƒŠ‚È‚Ç‚ÍˆêØŽg‚Á‚Ä‚¢‚Ü‚¹‚ñB
-@ƒtƒ@ƒCƒ‹‚ðíœ‚·‚é‚¾‚¯‚ÅƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚Å‚«‚Ü‚·B
-
-
-¡‹N“®•û–@
-
-@Eyes1500.exe ‚ðŽÀs‚µ‚Ä‰º‚³‚¢B
+ã€€DirectX 9.0 ä»¥é™
+ã€€2Dã‚²ãƒ¼ãƒ ãŒå¿«é©ã«å‹•ä½œã™ã‚‹CPU
+ã€€Direct Graphic å¯¾å¿œã®ãƒ“ãƒ‡ã‚ªã‚«ãƒ¼ãƒ‰
+ã€€Direct Sound å¯¾å¿œã®ã‚µã‚¦ãƒ³ãƒ‰ã‚«ãƒ¼ãƒ‰
 
 
-¡‘€ì•û–@
+â– ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ–¹æ³•
 
-@UP               iãˆÚ“®j           ...   ƒJ[ƒ\ƒ‹Eã
-@DOWN             i‰ºˆÚ“®j           ...   ƒJ[ƒ\ƒ‹E‰º
-@RIGHT            i‰EˆÚ“®j           ...   ƒJ[ƒ\ƒ‹E‰E
-@LEFT             i¶ˆÚ“®j           ...   ƒJ[ƒ\ƒ‹E¶
-@HIGH SPEED       i‚‘¬ˆÚ“®j         ...   A
-@SHOT             i’eŠÛj             ...   Z
-@LASER BEAM       iƒŒ[ƒU[Œõüj     ...   X
-@BLIND LASER LIGHTi–Ú’×‚µƒŒ[ƒU[j   ...   S
-@GUIDED MISSILE   i—U“±ƒ~ƒTƒCƒ‹j     ...   C
-@SUICIDE          iŽ©”šj             ...   D
-@DECISION/PAUSE   iŒˆ’è/ˆêŽž’âŽ~j    ...   Enter
+ã€€ã‚¢ãƒ¼ã‚«ã‚¤ãƒ–ã®ä¸­èº«ã‚’ãƒ­ãƒ¼ã‚«ãƒ«ãƒ‡ã‚£ã‚¹ã‚¯ä¸Šã®ä»»æ„ã®å ´æ‰€ã«ã‚³ãƒ”ãƒ¼ã—ã¦ä¸‹ã•ã„ã€‚
 
 
-¡‘fÞ’ñ‹ŸiŒhÌ—ªj
+â– ã‚¢ãƒ³ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ–¹æ³•
 
-@‚a‚f‚l
-@@‚‚‚‚’D
-
-@‚r‚d
-@@¬X@•½
+ã€€ãƒ¬ã‚¸ã‚¹ãƒˆãƒªãªã©ã¯ä¸€åˆ‡ä½¿ã£ã¦ã„ã¾ã›ã‚“ã€‚
+ã€€ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ã ã‘ã§ã‚¢ãƒ³ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã§ãã¾ã™ã€‚
 
 
-¡Žæ‚èˆµ‚¢Ží•Ê
+â– èµ·å‹•æ–¹æ³•
 
-@ƒtƒŠ[ƒ\ƒtƒg
-
-
-¡»ì^’˜ì
-
-@‹S^‘g
+ã€€Eyes1500.exe ã‚’å®Ÿè¡Œã—ã¦ä¸‹ã•ã„ã€‚
 
 
-¡GitHub
+â– æ“ä½œæ–¹æ³•
 
-@https://github.com/stackprobe/Eyes1500
+ã€€UP               ï¼ˆä¸Šç§»å‹•ï¼‰           ...   ã‚«ãƒ¼ã‚½ãƒ«ãƒ»ä¸Š
+ã€€DOWN             ï¼ˆä¸‹ç§»å‹•ï¼‰           ...   ã‚«ãƒ¼ã‚½ãƒ«ãƒ»ä¸‹
+ã€€RIGHT            ï¼ˆå³ç§»å‹•ï¼‰           ...   ã‚«ãƒ¼ã‚½ãƒ«ãƒ»å³
+ã€€LEFT             ï¼ˆå·¦ç§»å‹•ï¼‰           ...   ã‚«ãƒ¼ã‚½ãƒ«ãƒ»å·¦
+ã€€HIGH SPEED       ï¼ˆé«˜é€Ÿç§»å‹•ï¼‰         ...   A
+ã€€SHOT             ï¼ˆå¼¾ä¸¸ï¼‰             ...   Z
+ã€€LASER BEAM       ï¼ˆãƒ¬ãƒ¼ã‚¶ãƒ¼å…‰ç·šï¼‰     ...   X
+ã€€BLIND LASER LIGHTï¼ˆç›®æ½°ã—ãƒ¬ãƒ¼ã‚¶ãƒ¼ï¼‰   ...   S
+ã€€GUIDED MISSILE   ï¼ˆèª˜å°ŽãƒŸã‚µã‚¤ãƒ«ï¼‰     ...   C
+ã€€SUICIDE          ï¼ˆè‡ªçˆ†ï¼‰             ...   D
+ã€€DECISION/PAUSE   ï¼ˆæ±ºå®š/ä¸€æ™‚åœæ­¢ï¼‰    ...   Enter
+
+
+â– ç´ ææä¾›ï¼ˆæ•¬ç§°ç•¥ï¼‰
+
+ã€€ï¼¢ï¼§ï¼­
+ã€€ã€€ï½ï½‚ï½’ï¼Ž
+
+ã€€ï¼³ï¼¥
+ã€€ã€€å°æ£®ã€€å¹³
+
+
+â– å–ã‚Šæ‰±ã„ç¨®åˆ¥
+
+ã€€ãƒ•ãƒªãƒ¼ã‚½ãƒ•ãƒˆ
+
+
+â– è£½ä½œï¼è‘—ä½œ
+
+ã€€é¬¼çœŸçµ„
+
+
+â– GitHub
+
+ã€€https://github.com/stackprobe/Eyes1500
 
