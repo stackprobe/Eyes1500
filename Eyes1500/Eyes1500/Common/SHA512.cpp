@@ -1,3 +1,10 @@
+/* crypto/sha/sha512.c */
+/* ====================================================================
+ * Copyright (c) 2004 The OpenSSL Project.  All rights reserved
+ * according to the OpenSSL license [found in ../../LICENSE].
+ * ====================================================================
+ */
+
 /*
  * IMPLEMENTATION NOTES.
  *
@@ -37,12 +44,6 @@
 //#include "sha512.h"
 #include "all.h"
 
-/* crypto/sha/sha512.c */
-/* ====================================================================
- * Copyright (c) 2004 The OpenSSL Project.  All rights reserved
- * according to the OpenSSL license [found in ../../LICENSE].
- * ====================================================================
- */
 // #include <openssl/opensslconf.h>
 #if !defined(OPENSSL_NO_SHA) && !defined(OPENSSL_NO_SHA512)
 /*
