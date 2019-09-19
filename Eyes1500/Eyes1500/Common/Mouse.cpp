@@ -58,4 +58,3 @@ void ApplyMousePos(void)
 
 int MouseMoveX;
 int MouseMoveY;
-

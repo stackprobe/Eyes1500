@@ -45,9 +45,3 @@ void AddCommonEffect(
 void CEE_SetBright(double r, double g, double b);
 void CEE_SetGraphicSize(i2D_t size);
 void CEE_Reset(void);
-
-// ---- tools ----
-
-int IsInCamera(double x, double y, double margin);
-
-// ----

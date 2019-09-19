@@ -28,4 +28,3 @@ LapTime_t;
 static LapTime_t TimeTable[TIMETABLE_MAX][LAPTIME_MAX];
 static int LapIndex[TIMETABLE_MAX];
 static int TimeIndex = -1;
-

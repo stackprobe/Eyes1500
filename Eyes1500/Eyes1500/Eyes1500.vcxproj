@@ -94,7 +94,6 @@
     <ClCompile Include="Common\autoList.cpp" />
     <ClCompile Include="Common\bmp.cpp" />
     <ClCompile Include="Common\CommonEffect.cpp" />
-    <ClCompile Include="Common\Compare.cpp" />
     <ClCompile Include="Common\Config.cpp" />
     <ClCompile Include="Common\Crash.cpp" />
     <ClCompile Include="Common\Data.cpp" />
@@ -115,7 +114,6 @@
     <ClCompile Include="Common\JChar.cpp" />
     <ClCompile Include="Common\Keyboard.cpp" />
     <ClCompile Include="Common\Line.cpp" />
-    <ClCompile Include="Common\Lines.cpp" />
     <ClCompile Include="Common\Main.cpp" />
     <ClCompile Include="Common\MemAlloc.cpp" />
     <ClCompile Include="Common\Mouse.cpp" />
@@ -161,10 +159,8 @@
     <ClInclude Include="Common\autoQueue.h" />
     <ClInclude Include="Common\autoTable.h" />
     <ClInclude Include="Common\bitList.h" />
-    <ClInclude Include="Common\bitTable.h" />
     <ClInclude Include="Common\bmp.h" />
     <ClInclude Include="Common\CommonEffect.h" />
-    <ClInclude Include="Common\Compare.h" />
     <ClInclude Include="Common\Config.h" />
     <ClInclude Include="Common\Crash.h" />
     <ClInclude Include="Common\Data.h" />
@@ -186,7 +182,6 @@
     <ClInclude Include="Common\JChar.h" />
     <ClInclude Include="Common\Keyboard.h" />
     <ClInclude Include="Common\Line.h" />
-    <ClInclude Include="Common\Lines.h" />
     <ClInclude Include="Common\Main.h" />
     <ClInclude Include="Common\MBStock.h" />
     <ClInclude Include="Common\MemAlloc.h" />

@@ -165,7 +165,3 @@ void CEE_Reset(void)
 	CEE.Z_F = 1.0;
 	CEE.SpeedRate = 1.0;
 }
-
-// ---- tools ----
-
-// ----

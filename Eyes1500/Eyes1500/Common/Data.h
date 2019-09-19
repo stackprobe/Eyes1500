@@ -1,4 +1,3 @@
-
 void swapBlock(void *a, void *b, int size);
 
 int d2i(double value);
