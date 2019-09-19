@@ -143,10 +143,6 @@ public:
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-// #### DELETED ==== 0000133 $$$$ //		resCluster(const resCluster &source)
-// #### DELETED ==== 0000133 $$$$ //		{
-// #### DELETED ==== 0000133 $$$$ //			error();
-// #### DELETED ==== 0000133 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/

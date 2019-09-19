@@ -181,21 +181,9 @@ void AddCommonEffect(
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-// #### DELETED ==== 0000035 $$$$ //	void CEE_SetBright(double r, double g, double b)
-// #### DELETED ==== 0000035 $$$$ //	{
-// #### DELETED ==== 0000035 $$$$ //		CEE.BrightOn = 1;
-// #### DELETED ==== 0000035 $$$$ //		CEE.Bright_R = r;
-// #### DELETED ==== 0000035 $$$$ //		CEE.Bright_G = g;
-// #### DELETED ==== 0000035 $$$$ //		CEE.Bright_B = b;
-// #### DELETED ==== 0000035 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-// #### DELETED ==== 0000036 $$$$ //	void CEE_SetGraphicSize(i2D_t size)
-// #### DELETED ==== 0000036 $$$$ //	{
-// #### DELETED ==== 0000036 $$$$ //		CEE.GrphHdlFlag = 1;
-// #### DELETED ==== 0000036 $$$$ //		CEE.GrphSize = size;
-// #### DELETED ==== 0000036 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
@@ -213,13 +201,5 @@ void CEE_Reset(void)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-// #### DELETED ==== 0000037 $$$$ //	int IsInCamera(double x, double y, double margin)
-// #### DELETED ==== 0000037 $$$$ //	{
-// #### DELETED ==== 0000037 $$$$ //		errorCase(margin < 0.0);
-// #### DELETED ==== 0000037 $$$$ //	
-// #### DELETED ==== 0000037 $$$$ //		return
-// #### DELETED ==== 0000037 $$$$ //			m_isRange(x - CameraX, -margin, SCREEN_W + margin) &&
-// #### DELETED ==== 0000037 $$$$ //			m_isRange(y - CameraY, -margin, SCREEN_H + margin);
-// #### DELETED ==== 0000037 $$$$ //	}
 
 // ----

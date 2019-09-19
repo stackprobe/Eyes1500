@@ -31,10 +31,6 @@ public:
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-// #### DELETED ==== 0000009 $$$$ //		autoQueue(const autoQueue &source)
-// #### DELETED ==== 0000009 $$$$ //		{
-// #### DELETED ==== 0000009 $$$$ //			error();
-// #### DELETED ==== 0000009 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
@@ -141,13 +137,3 @@ public:
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-// #### DELETED ==== 0000008 $$$$ //	template <class Element_t>
-// #### DELETED ==== 0000008 $$$$ //	void releaseQueue(autoQueue<Element_t> *queue, void (*func)(Element_t e))
-// #### DELETED ==== 0000008 $$$$ //	{
-// #### DELETED ==== 0000008 $$$$ //		errorCase(!queue);
-// #### DELETED ==== 0000008 $$$$ //		errorCase(!func);
-// #### DELETED ==== 0000008 $$$$ //	
-// #### DELETED ==== 0000008 $$$$ //		queue->Trim();
-// #### DELETED ==== 0000008 $$$$ //		queue->GetList_DIRECT()->CallAllElement(func);
-// #### DELETED ==== 0000008 $$$$ //		delete queue;
-// #### DELETED ==== 0000008 $$$$ //	}

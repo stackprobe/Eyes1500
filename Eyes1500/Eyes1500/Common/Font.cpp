@@ -41,29 +41,6 @@ LOGPOS(); // test
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-// #### DELETED ==== 0000079 $$$$ //	void AddFontFile(int etcId, char *localFile)
-// #### DELETED ==== 0000079 $$$$ //	{
-// #### DELETED ==== 0000079 $$$$ //		char *file = combine(GetFontDir(), localFile);
-// #### DELETED ==== 0000079 $$$$ //	
-// #### DELETED ==== 0000079 $$$$ //		{
-// #### DELETED ==== 0000079 $$$$ //			autoList<uchar> *fileData = GetEtcRes()->GetHandle(etcId);
-// #### DELETED ==== 0000079 $$$$ //			writeAllBytes(file, fileData);
-// #### DELETED ==== 0000079 $$$$ //		}
-// #### DELETED ==== 0000079 $$$$ //	
-// #### DELETED ==== 0000079 $$$$ //		GetEtcRes()->UnloadAllHandle(); // ‘e‘åƒSƒ~ŠJ•ú
-// #### DELETED ==== 0000079 $$$$ //	
-// #### DELETED ==== 0000079 $$$$ //		LOG("AddFontResourceEx ST %u\n", (uint)time(NULL));
-// #### DELETED ==== 0000079 $$$$ //		errorCase(!AddFontResourceEx(file, FR_PRIVATE, NULL)); // ? Ž¸”s
-// #### DELETED ==== 0000079 $$$$ //		LOG("AddFontResourceEx ED %u\n", (uint)time(NULL));
-// #### DELETED ==== 0000079 $$$$ //	
-// #### DELETED ==== 0000079 $$$$ //		if(!FontFileList)
-// #### DELETED ==== 0000079 $$$$ //		{
-// #### DELETED ==== 0000079 $$$$ //			FontFileList = new autoList<char *>();
-// #### DELETED ==== 0000079 $$$$ //			GetEndProcFinalizers()->AddFunc(ReleaseAllFontHandle);
-// #### DELETED ==== 0000079 $$$$ //			GetFinalizers()->AddFunc(RemoveAllFontFile);
-// #### DELETED ==== 0000079 $$$$ //		}
-// #### DELETED ==== 0000079 $$$$ //		FontFileList->AddElement(file);
-// #### DELETED ==== 0000079 $$$$ //	}
 
 // ---- FontHandle ----
 

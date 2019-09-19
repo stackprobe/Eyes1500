@@ -334,24 +334,6 @@ static void DrawPic(int picId, Layout_t *layout_bind)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-// #### DELETED ==== 0000059 $$$$ //	void DrawFree(int picId, double ltx, double lty, double rtx, double rty, double rbx, double rby, double lbx, double lby)
-// #### DELETED ==== 0000059 $$$$ //	{
-// #### DELETED ==== 0000059 $$$$ //		// layout no-check
-// #### DELETED ==== 0000059 $$$$ //	
-// #### DELETED ==== 0000059 $$$$ //		Layout_t *i = nb(Layout_t);
-// #### DELETED ==== 0000059 $$$$ //	
-// #### DELETED ==== 0000059 $$$$ //		i->Mode = 'F';
-// #### DELETED ==== 0000059 $$$$ //		i->u.Free.LTX = ltx;
-// #### DELETED ==== 0000059 $$$$ //		i->u.Free.LTY = lty;
-// #### DELETED ==== 0000059 $$$$ //		i->u.Free.RTX = rtx;
-// #### DELETED ==== 0000059 $$$$ //		i->u.Free.RTY = rty;
-// #### DELETED ==== 0000059 $$$$ //		i->u.Free.RBX = rbx;
-// #### DELETED ==== 0000059 $$$$ //		i->u.Free.RBY = rby;
-// #### DELETED ==== 0000059 $$$$ //		i->u.Free.LBX = lbx;
-// #### DELETED ==== 0000059 $$$$ //		i->u.Free.LBY = lby;
-// #### DELETED ==== 0000059 $$$$ //	
-// #### DELETED ==== 0000059 $$$$ //		DrawPic(picId, i);
-// #### DELETED ==== 0000059 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
@@ -604,14 +586,6 @@ void DPE_SetBright(double cR, double cG, double cB)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-// #### DELETED ==== 0000060 $$$$ //	void DPE_SetBright(int color)
-// #### DELETED ==== 0000060 $$$$ //	{
-// #### DELETED ==== 0000060 $$$$ //		int r = color >> 16 & 0xff;
-// #### DELETED ==== 0000060 $$$$ //		int g = color >>  8 & 0xff;
-// #### DELETED ==== 0000060 $$$$ //		int b = color >>  0 & 0xff;
-// #### DELETED ==== 0000060 $$$$ //	
-// #### DELETED ==== 0000060 $$$$ //		DPE_SetBright((double)r / 0xff, (double)g / 0xff, (double)b / 0xff);
-// #### DELETED ==== 0000060 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */

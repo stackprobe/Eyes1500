@@ -38,10 +38,6 @@ public:
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-// #### DELETED ==== 0000152 $$$$ //		taskList(const taskList &source)
-// #### DELETED ==== 0000152 $$$$ //		{
-// #### DELETED ==== 0000152 $$$$ //			error();
-// #### DELETED ==== 0000152 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
@@ -54,10 +50,6 @@ public:
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-// #### DELETED ==== 0000153 $$$$ //		int GetCount()
-// #### DELETED ==== 0000153 $$$$ //		{
-// #### DELETED ==== 0000153 $$$$ //			return this->List->GetCount();
-// #### DELETED ==== 0000153 $$$$ //		}
 
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c

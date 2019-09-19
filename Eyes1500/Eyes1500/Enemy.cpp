@@ -250,14 +250,6 @@ double GetEnemyAtari_H(int kind)
 {
 	return GetEnemy_H(kind) * 0.9;
 }
-// #### DELETED ==== 0000000 $$$$ //	double GetEnemyMoveSpeed(int kind)
-// #### DELETED ==== 0000000 $$$$ //	{
-// #### DELETED ==== 0000000 $$$$ //		return GetEnemyInfo((EnemyKind_t)kind)->MoveSpeed;
-// #### DELETED ==== 0000000 $$$$ //	}
-// #### DELETED ==== 0000001 $$$$ //	double GetEnemyTamaSpeed(int kind)
-// #### DELETED ==== 0000001 $$$$ //	{
-// #### DELETED ==== 0000001 $$$$ //		return GetEnemyInfo((EnemyKind_t)kind)->TamaSpeed;
-// #### DELETED ==== 0000001 $$$$ //	}
 
 void AllEnemy_AntiHaritsuki(void)
 {

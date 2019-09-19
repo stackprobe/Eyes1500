@@ -20,10 +20,6 @@ public:
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-// #### DELETED ==== 0000022 $$$$ //		bitList(const bitList &source)
-// #### DELETED ==== 0000022 $$$$ //		{
-// #### DELETED ==== 0000022 $$$$ //			error();
-// #### DELETED ==== 0000022 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
@@ -81,10 +77,6 @@ public:
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-// #### DELETED ==== 0000023 $$$$ //		autoList<uint> *GetList_DIRECT()
-// #### DELETED ==== 0000023 $$$$ //		{
-// #### DELETED ==== 0000023 $$$$ //			return this->List;
-// #### DELETED ==== 0000023 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
@@ -97,17 +89,7 @@ public:
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-// #### DELETED ==== 0000024 $$$$ //		void Overwrite(bitList *src)
-// #### DELETED ==== 0000024 $$$$ //		{
-// #### DELETED ==== 0000024 $$$$ //			errorCase(!src);
-// #### DELETED ==== 0000024 $$$$ //			this->List->Overwrite(src->List);
-// #### DELETED ==== 0000024 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-// #### DELETED ==== 0000025 $$$$ //		void Overwrite_DIRECT(autoList<uint> *list)
-// #### DELETED ==== 0000025 $$$$ //		{
-// #### DELETED ==== 0000025 $$$$ //			errorCase(!list);
-// #### DELETED ==== 0000025 $$$$ //			this->List->Overwrite(list);
-// #### DELETED ==== 0000025 $$$$ //		}
 };

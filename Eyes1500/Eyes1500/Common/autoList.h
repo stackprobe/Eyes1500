@@ -58,10 +58,6 @@ public:
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-// #### DELETED ==== 0000002 $$$$ //		autoList(const autoList &source)
-// #### DELETED ==== 0000002 $$$$ //		{
-// #### DELETED ==== 0000002 $$$$ //			error();
-// #### DELETED ==== 0000002 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
@@ -73,16 +69,6 @@ public:
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-// #### DELETED ==== 0000003 $$$$ //		autoList<Element_t> *GetClone()
-// #### DELETED ==== 0000003 $$$$ //		{
-// #### DELETED ==== 0000003 $$$$ //			autoList<Element_t> *list_ret = new autoList<Element_t>();
-// #### DELETED ==== 0000003 $$$$ //	
-// #### DELETED ==== 0000003 $$$$ //			list_ret->Count = this->Count;
-// #### DELETED ==== 0000003 $$$$ //			list_ret->ListSize = this->Count;
-// #### DELETED ==== 0000003 $$$$ //			list_ret->List = (Element_t *)memClone(this->List, this->Count * sizeof(Element_t));
-// #### DELETED ==== 0000003 $$$$ //	
-// #### DELETED ==== 0000003 $$$$ //			return list_ret;
-// #### DELETED ==== 0000003 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
@@ -124,11 +110,6 @@ public:
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-// #### DELETED ==== 0000004 $$$$ //		void SetCount(int count)
-// #### DELETED ==== 0000004 $$$$ //		{
-// #### DELETED ==== 0000004 $$$$ //			errorCase(count < 0 || this->Count < count);
-// #### DELETED ==== 0000004 $$$$ //			this->Count = count;
-// #### DELETED ==== 0000004 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
@@ -447,50 +428,12 @@ public:
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-// #### DELETED ==== 0000005 $$$$ //		void GnomeSort(int (*compFunc)(Element_t, Element_t), int start, int count)
-// #### DELETED ==== 0000005 $$$$ //		{
-// #### DELETED ==== 0000005 $$$$ //			for(int index = 1; index < count; index++)
-// #### DELETED ==== 0000005 $$$$ //			{
-// #### DELETED ==== 0000005 $$$$ //				for(int nearPos = index - 1; 0 <= nearPos; nearPos--)
-// #### DELETED ==== 0000005 $$$$ //				{
-// #### DELETED ==== 0000005 $$$$ //					if(compFunc(this->List[start + nearPos], this->List[start + nearPos + 1]) <= 0)
-// #### DELETED ==== 0000005 $$$$ //						break;
-// #### DELETED ==== 0000005 $$$$ //	
-// #### DELETED ==== 0000005 $$$$ //					this->Swap(start + nearPos, start + nearPos + 1);
-// #### DELETED ==== 0000005 $$$$ //				}
-// #### DELETED ==== 0000005 $$$$ //			}
-// #### DELETED ==== 0000005 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-// #### DELETED ==== 0000006 $$$$ //		void Sort(int (*compFunc)(Element_t, Element_t), int start, int count)
-// #### DELETED ==== 0000006 $$$$ //		{
-// #### DELETED ==== 0000006 $$$$ //			int span = count;
-// #### DELETED ==== 0000006 $$$$ //	
-// #### DELETED ==== 0000006 $$$$ //			for(; ; )
-// #### DELETED ==== 0000006 $$$$ //			{
-// #### DELETED ==== 0000006 $$$$ //				span *= 10;
-// #### DELETED ==== 0000006 $$$$ //				span /= 13;
-// #### DELETED ==== 0000006 $$$$ //	
-// #### DELETED ==== 0000006 $$$$ //				if(span < 2)
-// #### DELETED ==== 0000006 $$$$ //					break;
-// #### DELETED ==== 0000006 $$$$ //	
-// #### DELETED ==== 0000006 $$$$ //				if(span == 9 || span == 10)
-// #### DELETED ==== 0000006 $$$$ //					span = 11;
-// #### DELETED ==== 0000006 $$$$ //	
-// #### DELETED ==== 0000006 $$$$ //				for(int index = 0; index + span < count; index++)
-// #### DELETED ==== 0000006 $$$$ //					if(0 < compFunc(this->List[start + index], this->List[start + index + span]))
-// #### DELETED ==== 0000006 $$$$ //						this->Swap(start + index, start + index + span);
-// #### DELETED ==== 0000006 $$$$ //			}
-// #### DELETED ==== 0000006 $$$$ //			this->GnomeSort(compFunc, start, count);
-// #### DELETED ==== 0000006 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-// #### DELETED ==== 0000007 $$$$ //		void Sort(int (*compFunc)(Element_t, Element_t))
-// #### DELETED ==== 0000007 $$$$ //		{
-// #### DELETED ==== 0000007 $$$$ //			this->Sort(compFunc, 0, this->Count);
-// #### DELETED ==== 0000007 $$$$ //		}
 };
 
 /*

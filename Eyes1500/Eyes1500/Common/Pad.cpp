@@ -92,7 +92,3 @@ int GetPadInput(int padId, int btnId)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-// #### DELETED ==== 0000116 $$$$ //	int GetPadPound(int padId, int btnId)
-// #### DELETED ==== 0000116 $$$$ //	{
-// #### DELETED ==== 0000116 $$$$ //		return isPound(GetPadInput(padId, btnId));
-// #### DELETED ==== 0000116 $$$$ //	}

@@ -40,10 +40,6 @@ char *strrm(char *line, size_t extend)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-// #### DELETED ==== 0000097 $$$$ //	char *strr(char *line)
-// #### DELETED ==== 0000097 $$$$ //	{
-// #### DELETED ==== 0000097 $$$$ //		return strrm(line, 0);
-// #### DELETED ==== 0000097 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
@@ -54,19 +50,9 @@ char *strx(char *line)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-// #### DELETED ==== 0000098 $$$$ //	void strz(char *&buffer, char *line)
-// #### DELETED ==== 0000098 $$$$ //	{
-// #### DELETED ==== 0000098 $$$$ //		memFree(buffer);
-// #### DELETED ==== 0000098 $$$$ //		buffer = strx(line);
-// #### DELETED ==== 0000098 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-// #### DELETED ==== 0000099 $$$$ //	void strz_x(char *&buffer, char *line)
-// #### DELETED ==== 0000099 $$$$ //	{
-// #### DELETED ==== 0000099 $$$$ //		memFree(buffer);
-// #### DELETED ==== 0000099 $$$$ //		buffer = line;
-// #### DELETED ==== 0000099 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
@@ -79,12 +65,6 @@ int atoi_x(char *line)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-// #### DELETED ==== 0000100 $$$$ //	__int64 atoi64_x(char *line)
-// #### DELETED ==== 0000100 $$$$ //	{
-// #### DELETED ==== 0000100 $$$$ //		__int64 value = _atoi64(line);
-// #### DELETED ==== 0000100 $$$$ //		memFree(line);
-// #### DELETED ==== 0000100 $$$$ //		return value;
-// #### DELETED ==== 0000100 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -318,20 +298,9 @@ void trimSequ(char *line, int delimChr)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-// #### DELETED ==== 0000101 $$$$ //	void trim(char *line, int delimChr)
-// #### DELETED ==== 0000101 $$$$ //	{
-// #### DELETED ==== 0000101 $$$$ //		trimTrail(line, delimChr);
-// #### DELETED ==== 0000101 $$$$ //		trimLead(line, delimChr);
-// #### DELETED ==== 0000101 $$$$ //		trimSequ(line, delimChr);
-// #### DELETED ==== 0000101 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-// #### DELETED ==== 0000102 $$$$ //	void trimEdge(char *line, int delimChr)
-// #### DELETED ==== 0000102 $$$$ //	{
-// #### DELETED ==== 0000102 $$$$ //		trimTrail(line, delimChr);
-// #### DELETED ==== 0000102 $$$$ //		trimLead(line, delimChr);
-// #### DELETED ==== 0000102 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c

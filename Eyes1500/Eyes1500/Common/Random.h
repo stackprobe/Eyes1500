@@ -77,20 +77,9 @@ public:
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-// #### DELETED ==== 0000131 $$$$ //		Random(int seed)
-// #### DELETED ==== 0000131 $$$$ //		{
-// #### DELETED ==== 0000131 $$$$ //			this->mt = (unsigned long *)memAlloc_NC(MT19937_N * sizeof(unsigned long));
-// #### DELETED ==== 0000131 $$$$ //			this->Enter();
-// #### DELETED ==== 0000131 $$$$ //			initRnd(seed);
-// #### DELETED ==== 0000131 $$$$ //			this->Leave();
-// #### DELETED ==== 0000131 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-// #### DELETED ==== 0000132 $$$$ //		Random(const Random &source)
-// #### DELETED ==== 0000132 $$$$ //		{
-// #### DELETED ==== 0000132 $$$$ //			error();
-// #### DELETED ==== 0000132 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
