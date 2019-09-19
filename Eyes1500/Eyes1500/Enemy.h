@@ -45,7 +45,4 @@ double GetEnemyAtari_H(int kind);
 #define GetEnemyAtari_T(enemy) ((enemy)->Y - GetEnemyAtari_H((enemy)->Kind) / 2.0)
 #define GetEnemyAtari_B(enemy) ((enemy)->Y + GetEnemyAtari_H((enemy)->Kind) / 2.0)
 
-double GetEnemyMoveSpeed(int kind);
-double GetEnemyTamaSpeed(int kind);
-
 void AllEnemy_AntiHaritsuki(void);
