@@ -1,11 +1,5 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #include "all.h"
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static FILE *Game_rfopen(char *file, char *mode)
 {
 	FILE *fp;
@@ -22,9 +16,6 @@ static FILE *Game_rfopen(char *file, char *mode)
 	}
 	return fp;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 FILE *fileOpen(char *file, char *mode)
 {
 	FILE *fp = Game_rfopen(file, mode);
@@ -45,17 +36,11 @@ FILE *fileOpen(char *file, char *mode)
 	}
 	return fp;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void fileClose(FILE *fp)
 {
 	errorCase(fclose(fp)); // ? 失敗
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int readChar(FILE *fp) // バイナリ・テキスト問わずストリームから１バイト(１文字)読み込む。
 {
 	int chr = fgetc(fp);
@@ -66,9 +51,6 @@ int readChar(FILE *fp) // バイナリ・テキスト問わずストリームから１バイト(１文字)
 	}
 	return chr;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *readLine(FILE *fp, int lenmax)
 {
 	autoList<char> *lineBuff = new autoList<char>(128);
@@ -110,15 +92,6 @@ char *readLine(FILE *fp, int lenmax)
 	}
 	return line;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 autoList<char *> *readLines(char *file)
 {
 	FILE *fp = fileOpen(file, "rt");
@@ -136,40 +109,22 @@ autoList<char *> *readLines(char *file)
 	fileClose(fp);
 	return lines;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void writeChar(FILE *fp, int chr) // バイナリ・テキスト問わずストリームに１バイト(１文字)書き出す。
 {
 	errorCase(fputc(chr, fp) == EOF);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void writeToken(FILE *fp, char *line)
 {
 	for(char *p = line; *p; p++)
 		writeChar(fp, *p);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void writeLine(FILE *fp, char *line)
 {
 	writeToken(fp, line);
 	writeChar(fp, '\n');
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 uint64 readUI64(FILE *fp, int width)
 {
 	uint64 value = 0;
@@ -180,12 +135,6 @@ uint64 readUI64(FILE *fp, int width)
 	}
 	return value;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void writeUI64(FILE *fp, uint64 value, int width)
 {
 	for(int c = 0; c < width; c++)
@@ -193,6 +142,3 @@ void writeUI64(FILE *fp, uint64 value, int width)
 		writeChar(fp, (uchar)(value >> c * 8 & 0xff));
 	}
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/

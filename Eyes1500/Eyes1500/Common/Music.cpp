@@ -1,11 +1,5 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #include "all.h"
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 typedef struct PlayInfo_st
 {
 	int Command; // "PVS"
@@ -16,9 +10,6 @@ typedef struct PlayInfo_st
 }
 PlayInfo_t;
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static PlayInfo_t *CreatePI(int command, MusicInfo_t *music, int once_mode, int resume_mode, double volume_rate)
 {
 	PlayInfo_t *i = nb(PlayInfo_t);
@@ -31,27 +22,15 @@ static PlayInfo_t *CreatePI(int command, MusicInfo_t *music, int once_mode, int 
 
 	return i;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void ReleasePI(PlayInfo_t *i)
 {
 	memFree(i);
 }
 static oneObject(autoQueue<PlayInfo_t *>, new autoQueue<PlayInfo_t *>(), GetPlayList);
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 MusicInfo_t *CurrDestMusic;
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 double CurrDestMusicVolumeRate;
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static MusicInfo_t *LoadMusic(autoList<uchar> *fileData)
 {
 	MusicInfo_t *i = nb(MusicInfo_t);
@@ -78,9 +57,6 @@ static MusicInfo_t *LoadMusic(autoList<uchar> *fileData)
 	SetVolume(i->Handle, 0.0); // ミュートしておく。
 	return i;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void UnloadMusic(MusicInfo_t *i)
 {
 	// reset {
@@ -93,18 +69,12 @@ static void UnloadMusic(MusicInfo_t *i)
 	UnloadSound(i->Handle);
 	memFree(i);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static oneObject(
 	resCluster<MusicInfo_t *>,
 	new resCluster<MusicInfo_t *>("Music.dat", "..\\..\\Music.txt", MUS_MAX, 120000000, LoadMusic, UnloadMusic),
 	GetMusRes
 	);
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void MusicEachFrame(void)
 {
 	PlayInfo_t *i = GetPlayList()->Dequeue(NULL);
@@ -131,9 +101,6 @@ void MusicEachFrame(void)
 		memFree(i);
 	}
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void MusicPlay(int musId, int once_mode, int resume_mode, double volumeRate, int fadeFrameMax)
 {
 	errorCase(musId < 0 || MUS_MAX <= musId);
@@ -158,9 +125,6 @@ void MusicPlay(int musId, int once_mode, int resume_mode, double volumeRate, int
 	CurrDestMusic = i;
 	CurrDestMusicVolumeRate = volumeRate;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void MusicFade(int frameMax, double destVRate, double startVRate)
 {
 	if(!CurrDestMusic)
@@ -190,9 +154,6 @@ void MusicFade(int frameMax, double destVRate, double startVRate)
 		MusicStop();
 	}
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void MusicStop(void)
 {
 	if(!CurrDestMusic)
@@ -206,9 +167,3 @@ void MusicStop(void)
 	CurrDestMusic = NULL;
 	CurrDestMusicVolumeRate = 0.0;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/

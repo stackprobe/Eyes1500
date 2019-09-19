@@ -1,55 +1,28 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define DEAD_COUNT_MAX 1024
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 template <class Element_t>
 class autoQueue
 {
 private:
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	autoList<Element_t> *List;
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	int TopIndex;
 
 public:
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	autoQueue()
 	{
 		this->List = new autoList<Element_t>();
 		this->TopIndex = 0;
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	~autoQueue()
 	{
 		delete this->List;
 	}
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void Clear()
 	{
 		this->List->Clear();
 		this->TopIndex = 0;
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void Trim()
 	{
 		if(1 <= this->TopIndex)
@@ -58,9 +31,6 @@ public:
 			this->TopIndex = 0;
 		}
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void Clear(void (*func)(Element_t))
 	{
 		this->Trim();
@@ -68,16 +38,10 @@ public:
 		this->TopIndex = 0;
 	}
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void Enqueue(Element_t e)
 	{
 		this->List->AddElement(e);
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void Enqueue(Element_t e, int repeat_num)
 	{
 		for(int c = 0; c < repeat_num; c++)
@@ -85,9 +49,6 @@ public:
 			this->Enqueue(e);
 		}
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	Element_t Dequeue()
 	{
 		Element_t e = this->List->GetElement(this->TopIndex);
@@ -106,9 +67,6 @@ public:
 		}
 		return e;
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	Element_t Dequeue(Element_t default_e)
 	{
 		if(this->TopIndex < this->List->GetCount())
@@ -118,22 +76,13 @@ public:
 		return default_e;
 	}
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	autoList<Element_t> *GetList_DIRECT()
 	{
 		return this->List;
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	int GetTopIndex_DIRECT()
 	{
 		return this->TopIndex;
 	}
 };
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/

@@ -1,29 +1,13 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #include "all.h"
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int d2i(double value)
 {
 	return (int)(value + (value < 0.0 ? -0.5 : 0.5));
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 __int64 d2i64(double value)
 {
 	return (__int64)(value + (value < 0.0 ? -0.5 : 0.5));
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int s2i(char *line, int minval, int maxval, int defval)
 {
 	if(m_isEmpty(line) || !strchr("-0123456789", *line))
@@ -34,45 +18,7 @@ int s2i(char *line, int minval, int maxval, int defval)
 	m_range(value, minval, maxval);
 	return value;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void my_memset(void *block, int fillValue, int size)
 {
 	for(int index = 0; index < size; index++)
@@ -83,9 +29,6 @@ void my_memset(void *block, int fillValue, int size)
 
 // 角度から方向 ... MakeXYSpeed, angleToXY
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 /*
 	ret: 0.0 ～ PI * 2.0
 		右真横(0,0 -> 1,0方向)を0.0として、時計回り。(但し、X軸プラス方向を右、Y軸プラス方向を下)
@@ -120,16 +63,10 @@ double getAngle(double x, double y)
 	}
 	return rm;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 double getAngle(double x, double y, double originX, double originY)
 {
 	return getAngle(x - originX, y - originY);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void rotatePos(double angle, double &x, double &y)
 {
 	double w;
@@ -138,20 +75,11 @@ void rotatePos(double angle, double &x, double &y)
 	y = x * sin(angle) + y * cos(angle);
 	x = w;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void angleToXY(double angle, double distance, double &x, double &y)
 {
 	x = distance * cos(angle);
 	y = distance * sin(angle);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void angleToXY(double angle, double distance, double &x, double &y, double originX, double originY)
 {
 	angleToXY(angle, distance, x, y);
@@ -159,9 +87,6 @@ void angleToXY(double angle, double distance, double &x, double &y, double origi
 	x += originX;
 	y += originY;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void angleMoveXY(double angle, double distance, double &x, double &y)
 {
 	angleToXY(angle, distance, x, y, x, y);

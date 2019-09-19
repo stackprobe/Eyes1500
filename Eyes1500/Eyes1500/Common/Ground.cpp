@@ -1,16 +1,7 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #include "all.h"
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 Gnd_t Gnd;
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void Gnd_INIT(void)
 {
 	memset(&Gnd, 0x00, sizeof(Gnd_t));
@@ -81,14 +72,8 @@ void Gnd_INIT(void)
 
 	// < app
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void Gnd_FNLZ(void)
 {
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 LOGPOS(); // test
 	delete Gnd.EL;
 
@@ -105,27 +90,12 @@ LOGPOS(); // test
 
 // ---- SaveData ----
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define SAVE_FILE "SaveData.dat"
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define SAVEDATA_SIGNATURE "__Codevil__SaveData " __DATE__ " " __TIME__
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static autoList<uchar> *SaveData;
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static int SDIndex;
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static char *SD_ReadLine(void) // ret: bind
 {
 	static char *line;
@@ -138,34 +108,22 @@ static char *SD_ReadLine(void) // ret: bind
 
 	return line;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static int SD_ReadBoolean(void)
 {
 	return atoi(SD_ReadLine()) ? 1 : 0;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static int SD_ReadInt(int minval = -IMAX, int maxval = IMAX)
 {
 	int value = atoi(SD_ReadLine());
 	m_range(value, minval, maxval);
 	return value;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static __int64 SD_ReadInt64(__int64 minval = -IMAX_64, __int64 maxval = IMAX_64)
 {
 	__int64 value = _atoi64(SD_ReadLine());
 	m_range(value, minval, maxval);
 	return value;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static double SD_ReadDouble(double minval, double maxval, int denom)
 {
 	errorCase(denom < 1);
@@ -174,55 +132,28 @@ static double SD_ReadDouble(double minval, double maxval, int denom)
 	m_range(value, minval, maxval);
 	return value;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void SD_WriteLine(char *line)
 {
 	writeLine(SaveData, line);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void SD_WriteLine_x(char *line)
 {
 	SD_WriteLine(line);
 	memFree(line);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void SD_WriteInt(int value)
 {
 	SD_WriteLine_x(xcout("%d", value));
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void SD_WriteInt64(__int64 value)
 {
 	SD_WriteLine_x(xcout("%I64d", value));
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void SD_WriteDouble(double value, int denom)
 {
 	SD_WriteInt(d2i(value * denom));
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void SD_WriteLines(autoList<char *> *lines)
 {
 	SD_WriteInt(lines->GetCount());
@@ -232,14 +163,8 @@ static void SD_WriteLines(autoList<char *> *lines)
 		SD_WriteLine(lines->GetElement(index));
 	}
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 
 // パッド
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static int *PPadBtns[] =
 {
 	&Gnd.PadBtnId.Dir_8,
@@ -257,17 +182,8 @@ static int *PPadBtns[] =
 	&Gnd.PadBtnId.Pause,
 	&Gnd.PadBtnId.Start,
 };
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 
 // キーボード
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static int *PKbdKeys[] =
 {
 	&Gnd.KbdKeyId.Dir_8,
@@ -285,16 +201,7 @@ static int *PKbdKeys[] =
 	&Gnd.KbdKeyId.Pause,
 	&Gnd.KbdKeyId.Start,
 };
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void LoadFromDatFile(void)
 {
 	if(!accessible(SAVE_FILE))
@@ -381,9 +288,6 @@ void LoadFromDatFile(void)
 
 	// < app
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void SaveToDatFile(void)
 {
 	SaveData = new autoList<uchar>();

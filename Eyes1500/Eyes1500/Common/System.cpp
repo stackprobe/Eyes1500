@@ -1,19 +1,10 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #include "all.h"
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void termination(int errorLevel)
 {
 	GetFinalizers()->Flush();
 	exit(errorLevel);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void error2(char *file, int lineno, char *function)
 {
 	{
@@ -48,18 +39,9 @@ void error2(char *file, int lineno, char *function)
 	termination(1);
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define LOG_DIR "C:\\tmp"
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define LOG_FILE LOG_DIR "\\Game.log"
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 FILE *GetLogFp(void)
 {
 	static FILE *fp;
@@ -76,17 +58,8 @@ FILE *GetLogFp(void)
 
 // arg >
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static int ArgIndex = 1;
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int argIs(char *spell)
 {
 	if(ArgIndex < __argc)
@@ -99,39 +72,21 @@ int argIs(char *spell)
 	}
 	return 0;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *getArg(int index)
 {
 	errorCase(index < 0 || __argc - ArgIndex <= index);
 	return __argv[ArgIndex + index];
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 
 // < arg
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int IsWindowActive(void) // ret: ? このウィンドウはアクティブ
 {
 	return GetActiveFlag() ? 1 : 0;
 }
 #if 0 // test
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define GetNowCount() GetNowCount_TEST()
 #endif
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 __int64 GetCurrTime(void)
 {
 #if 0 // 精度がいまいち
@@ -158,16 +113,10 @@ __int64 GetCurrTime(void)
 #endif
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void execute(char *command)
 {
 	system(command);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void execute_x(char *command)
 {
 	execute(command);

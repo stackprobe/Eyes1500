@@ -1,6 +1,3 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 enum // as ResMode
 {
 	RC_RESMD_NONE, // 未定義 as 0
@@ -8,67 +5,25 @@ enum // as ResMode
 	RC_RESMD_FILELIST,
 };
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 extern int RC_ResId;
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 autoList<uchar> *LoadFileDataFromCluster(char *clusterFile, int resId, int tweek);
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 template <class Handle_t>
 class resCluster
 {
 private:
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	char *ClusterFile;
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	char *FileListFile;
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	int ResCount;
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	int FirstTweek;
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	Handle_t (*ResLoader)(autoList<uchar> *);
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void (*ResUnloader)(Handle_t);
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	Handle_t *HandleList;
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	bitList *LoadedList;
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	int ResMode;
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	autoList<char *> *FileList;
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	autoList<uchar> *LoadFileData(int resId)
 	{
 		if(!this->ResMode)
@@ -109,16 +64,10 @@ private:
 		return fileData;
 	}
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	autoList<int> *DerHandleList; // for Derivation.cpp
 
 public:
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	resCluster(char *clusterFile, char *fileListFile, int resCount, int firstTweek, Handle_t (*resLoader)(autoList<uchar> *), void (*resUnloader)(Handle_t))
 	{
 		errorCase(m_isEmpty(clusterFile));
@@ -140,20 +89,11 @@ public:
 		this->FileList = NULL;
 		this->DerHandleList = NULL;
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	~resCluster()
 	{
 		1; // このクラスはプロセス寿命、プロセス終了時以外の破棄を想定しない。
 	}
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	Handle_t GetHandle(int resId)
 	{
 		errorCase(resId < 0 || this->ResCount <= resId);
@@ -170,9 +110,6 @@ public:
 		}
 		return this->HandleList[resId];
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void UnloadAllHandle()
 	{
 		UnloadAllDer(this->GetDerHandleList()); // for Derivation.cpp
@@ -187,9 +124,6 @@ public:
 		}
 		this->LoadedList->Clear();
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void CallAllLoadedHandle(void (*func)(Handle_t))
 	{
 		for(int resId = 0; resId < this->ResCount; resId++)
@@ -202,9 +136,6 @@ public:
 		}
 	}
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	autoList<int> *GetDerHandleList() // for Derivation.cpp
 	{
 		if(!this->DerHandleList)

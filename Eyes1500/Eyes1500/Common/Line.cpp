@@ -1,11 +1,5 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #include "all.h"
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *xcout(char *format, ...)
 {
 	char *buffer;
@@ -30,45 +24,21 @@ char *xcout(char *format, ...)
 
 	return buffer;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *strrm(char *line, size_t extend)
 {
 	return (char *)memRealloc(line, strlen(line) + 1 + extend);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *strx(char *line)
 {
 	return (char *)memClone(line, strlen(line) + 1);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int atoi_x(char *line)
 {
 	int value = atoi(line);
 	memFree(line);
 	return value;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *mbs_strrchr(char *str, int chr)
 {
 	char *ret = NULL;
@@ -80,23 +50,14 @@ char *mbs_strrchr(char *str, int chr)
 	return ret;
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static int ReplacedFlag;
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void replaceChar(char *str, int srcChr, int destChr) // mbs_
 {
 	for(char *p = str; *p; p = mbsNext(p))
 		if(*p == srcChr)
 			*p = destChr;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *replacePtn(char *str, char *srcPtn, char *destPtn, int ignoreCase) // ret: strr()
 {
 	autoList<char> *buff = new autoList<char>();
@@ -123,9 +84,6 @@ char *replacePtn(char *str, char *srcPtn, char *destPtn, int ignoreCase) // ret:
 	memFree(str);
 	return unbindBlock2Line(buff);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *replacePtnLoop(char *str, char *srcPtn, char *destPtn, int ignoreCase, int loopMax) // ret: strr()
 {
 	for(int c = 0; c < loopMax; c++)
@@ -138,18 +96,12 @@ char *replacePtnLoop(char *str, char *srcPtn, char *destPtn, int ignoreCase, int
 	return str;
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *addLine(char *line, char *addPtn)
 {
 	line = strrm(line, strlen(addPtn));
 	strcat(line, addPtn);
 	return line;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *addChar(char *line, int chr)
 {
 	char chrLine[2];
@@ -159,9 +111,6 @@ char *addChar(char *line, int chr)
 
 	return addLine(line, chrLine);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *insertLine(char *line, int index, char *insPtn)
 {
 	char *trailer;
@@ -177,9 +126,6 @@ char *insertLine(char *line, int index, char *insPtn)
 	memFree(trailer);
 	return line;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *insertChar(char *line, int index, int chr)
 {
 	char insPtn[2];
@@ -189,9 +135,6 @@ char *insertChar(char *line, int index, int chr)
 
 	return insertLine(line, index, insPtn);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void reverseLine(char *line)
 {
 	char *l = line;
@@ -213,9 +156,6 @@ void reverseLine(char *line)
 		}
 	}
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *thousandComma(char *line) // ret: strr(line)
 {
 	uint index;
@@ -230,9 +170,6 @@ char *thousandComma(char *line) // ret: strr(line)
 	return line;
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void trimLead(char *line, int delimChr)
 {
 	if(delimChr == '\0') return; // Factory‚Å‚ÍƒGƒ‰[‚É‚µ‚Ä‚¢‚È‚¢B
@@ -246,9 +183,6 @@ void trimLead(char *line, int delimChr)
 		for(char *w = line; *w = *p; w++, p++);
 	}
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void trimTrail(char *line, int delimChr)
 {
 	char *p;
@@ -259,9 +193,6 @@ void trimTrail(char *line, int delimChr)
 
 	*p = '\0';
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void trimSequ(char *line, int delimChr)
 {
 	char *n = line;
@@ -295,25 +226,10 @@ void trimSequ(char *line, int delimChr)
 		}
 	}
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static char *TokPtr;
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static uchar *TokDelims;
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void tokinit(char *str, char *delims)
 {
 	if(str)
@@ -350,9 +266,6 @@ void tokinit(char *str, char *delims)
 		}
 	}
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *toknext(char *str, char *delims)
 {
 	char *ret;
@@ -391,9 +304,6 @@ char *toknext(char *str, char *delims)
 
 	return ret;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *ne_toknext(char *str, char *delims)
 {
 	char *ret = toknext(str, delims);

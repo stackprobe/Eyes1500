@@ -1,13 +1,7 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #include "all.h"
 
 // ---- getFileList ----
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 /*
 	unsigned attrib;
 		_A_ARCH
@@ -25,9 +19,6 @@
 */
 struct _finddata_t lastFindData;
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 /*
 	dir 直下のサブディレクトリ・ファイルのリストを返す。
 	返すサブディレクトリ・ファイルは「ローカル名」なので注意！
@@ -71,15 +62,9 @@ void getFileList(char *dir, autoList<char *> *subDirs, autoList<char *> *files)
 		_findclose(h);
 	}
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 
 // ----
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *combine(char *path1, char *path2)
 {
 	char *path;
@@ -96,9 +81,6 @@ char *combine(char *path1, char *path2)
 	return path;
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static int Game_mkdir(char *dir) // ret: ? 失敗
 {
 	if(CreateDirectory(dir, NULL) == 0) // ? 失敗
@@ -114,16 +96,10 @@ static int Game_mkdir(char *dir) // ret: ? 失敗
 	return 0;
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int accessible(char *path)
 {
 	return !_access(path, 0);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *refLocalPath(char *path)
 {
 	char *p = mbs_strrchr(path, '\\');
@@ -133,31 +109,19 @@ char *refLocalPath(char *path)
 
 	return path;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void createFile(char *file)
 {
 	fileClose(fileOpen(file, "wb"));
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void createDir(char *dir)
 {
 	errorCase(m_isEmpty(dir));
 	errorCase(Game_mkdir(dir)); // ? 失敗
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void deleteFile(char *file)
 {
 	remove(file);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void deleteDir(char *dir)
 {
 	errorCase(m_isEmpty(dir));
@@ -181,14 +145,8 @@ void deleteDir(char *dir)
 	releaseList(files, (void (*)(char *))memFree);
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static oneObject(autoList<char *>, new autoList<char *>(), GetCwdStack);
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *getCwd(void)
 {
 	char *tmp = _getcwd(NULL, 0);
@@ -199,25 +157,16 @@ char *getCwd(void)
 	free(tmp);
 	return dir;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void changeCwd(char *dir)
 {
 	errorCase(m_isEmpty(dir));
 	errorCase(_chdir(dir)); // ? 失敗
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void addCwd(char *dir)
 {
 	GetCwdStack()->AddElement(getCwd());
 	changeCwd(dir);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void unaddCwd(void)
 {
 	char *dir = GetCwdStack()->UnaddElement();
@@ -226,14 +175,8 @@ void unaddCwd(void)
 	memFree(dir);
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define APP_TEMP_DIR_UUID "{8f8ce7a6-fea3-455c-8d7a-a6ebfd9b9944}" // shared_uuid@g -- このソースを使い回すので、global指定
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static char *GetSystemTempDir(void)
 {
 	static char *dir;
@@ -250,20 +193,11 @@ static char *GetSystemTempDir(void)
 	}
 	return dir;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void DeleteAppTempDir(void)
 {
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 LOGPOS(); // test
 	deleteDir(getAppTempDir());
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *getAppTempDir(void)
 {
 	static char *dir;
@@ -280,9 +214,6 @@ char *getAppTempDir(void)
 	}
 	return dir;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static char *NextTempLocalName(void)
 {
 	static char name[32] = "zzz"; // 長さ適当、ここまで長くなることは無いだろう。また "prn" など使用出来ないので４文字から開始する。
@@ -304,9 +235,6 @@ static char *NextTempLocalName(void)
 	}
 	return name;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *makeTempPath(char *ext) // ext: NULL ok
 {
 	char *path = combine(getAppTempDir(), NextTempLocalName());
@@ -318,12 +246,6 @@ char *makeTempPath(char *ext) // ext: NULL ok
 	}
 	return path;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *makeTempDir(char *ext) // ext: NULL ok
 {
 	char *dir = makeTempPath(ext);
@@ -331,9 +253,6 @@ char *makeTempDir(char *ext) // ext: NULL ok
 	return dir;
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 __int64 getFileSizeFP(FILE *fp)
 {
 	errorCase(_fseeki64(fp, 0I64, SEEK_END) != 0); // ? 失敗
@@ -343,9 +262,6 @@ __int64 getFileSizeFP(FILE *fp)
 	errorCase(size < 0I64);
 	return size;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 __int64 getFileSizeFPSS(FILE *fp)
 {
 	__int64 size = getFileSizeFP(fp);
@@ -353,6 +269,3 @@ __int64 getFileSizeFPSS(FILE *fp)
 	errorCase(_fseeki64(fp, 0I64, SEEK_SET) != 0); // ? 失敗
 	return size;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/

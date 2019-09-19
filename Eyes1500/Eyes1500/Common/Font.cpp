@@ -1,18 +1,9 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #include "all.h"
 
 // ---- FontFile ----
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static autoList<char *> *FontFileList;
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static char *GetFontDir(void)
 {
 	static char *dir;
@@ -24,29 +15,17 @@ static char *GetFontDir(void)
 	}
 	return dir;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void RemoveAllFontFile(void)
 {
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 LOGPOS(); // test
 	while(FontFileList->GetCount())
 	{
 		errorCase(!RemoveFontResourceEx(FontFileList->UnaddElement(), FR_PRIVATE, NULL)); // ? 失敗
 	}
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 
 // ---- FontHandle ----
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 /*
 	fontThick: 1 - 9, def == 6   -- 多分 DxLib のソースの SetFontThickness() を見てデフォが 6 だったんだと思う。
 */
@@ -80,9 +59,6 @@ FontHandle_t *CreateFontHandle(char *fontName, int fontSize, int fontThick, int 
 	fh->ItalicFlag = italicFlag;
 	return fh;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void ReleaseFontHandle(FontHandle_t *fh)
 {
 	if(!fh)
@@ -95,14 +71,8 @@ void ReleaseFontHandle(FontHandle_t *fh)
 
 // <-- cdtor
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static oneObject(autoList<FontHandle_t *>, new autoList<FontHandle_t *>(), GetFontHandleList);
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 FontHandle_t *GetFontHandle(char *fontName, int fontSize, int fontThick, int antiAliasing, int edgeSize, int italicFlag)
 {
 	errorCase(!fontName);
@@ -130,14 +100,8 @@ FontHandle_t *GetFontHandle(char *fontName, int fontSize, int fontThick, int ant
 found:
 	return fh;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void ReleaseAllFontHandle(void)
 {
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 LOGPOS(); // test
 	while(GetFontHandleList()->GetCount())
 	{
@@ -147,9 +111,6 @@ LOGPOS(); // test
 
 // ----
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void DrawStringByFont(int x, int y, char *str, FontHandle_t *fh, int tategakiFlag, int color, int edgeColor)
 {
 	errorCase(!str);
@@ -157,9 +118,6 @@ void DrawStringByFont(int x, int y, char *str, FontHandle_t *fh, int tategakiFla
 
 	DrawStringToHandle(x, y, str, color, fh->Handle, edgeColor, tategakiFlag);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int GetDrawStringByFontWidth(char *str, FontHandle_t *fh, int tategakiFlag)
 {
 	errorCase(!str);
@@ -167,9 +125,6 @@ int GetDrawStringByFontWidth(char *str, FontHandle_t *fh, int tategakiFlag)
 
 	return GetDrawStringWidthToHandle(str, strlen(str), fh->Handle, tategakiFlag);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void DrawStringByFont_XCenter(int x, int y, char *str, FontHandle_t *fh, int tategakiFlag, int color, int edgeColor)
 {
 	x -= GetDrawStringByFontWidth(str, fh, tategakiFlag) / 2;

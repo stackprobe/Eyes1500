@@ -1,11 +1,5 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #include "all.h"
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void Kaisa(autoList<uchar> *block, int downFlag)
 {
 	uchar *buffer = block->ElementAt(0);
@@ -25,9 +19,6 @@ static void Kaisa(autoList<uchar> *block, int downFlag)
 		}
 	}
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void KRK(autoList<uchar> *block, int downFlag)
 {
 	Kaisa(block, downFlag);
@@ -35,32 +26,17 @@ static void KRK(autoList<uchar> *block, int downFlag)
 	Kaisa(block, downFlag);
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define MULTIVAL 157
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define POWERVAL 31
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void AddTrailZero(autoList<uchar> *block, int tznum)
 {
 	block->AddRepeat(0x00, tznum);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static int UnaddTrailZero(autoList<uchar> *block)
 {
 	return block->UnaddRepeat(0x00);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static int SingleJammer(autoList<uchar> *block, int encodeFlag)
 {
 	int tznum = UnaddTrailZero(block);
@@ -109,9 +85,6 @@ static int SingleJammer(autoList<uchar> *block, int encodeFlag)
 	AddTrailZero(block, tznum);
 	return 1;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static int MultiJammer(autoList<uchar> *block, int encodeFlag)
 {
 	for(int count = 0; count < POWERVAL; count++)
@@ -120,6 +93,3 @@ static int MultiJammer(autoList<uchar> *block, int encodeFlag)
 
 	return 1;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/

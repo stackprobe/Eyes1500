@@ -1,16 +1,7 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #include "all.h"
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int RC_ResId;
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static int Res_ReadInt(FILE *fp)
 {
 	int c1 = fgetc(fp);
@@ -35,25 +26,16 @@ static int Res_ReadInt(FILE *fp)
 	errorCase(!m_isRange(value, 0, IMAX));
 	return value;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void Res_FSeek(FILE *fp, __int64 pos)
 {
 	errorCase(_fseeki64(fp, pos, SEEK_SET) != 0); // ? Ž¸”s
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void *Res_FRead(FILE *fp, int size)
 {
 	void *buff = memAlloc(size);
 	errorCase(fread(buff, 1, size, fp) != size); // ? Ž¸”s
 	return buff;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 autoList<uchar> *LoadFileDataFromCluster(char *clusterFile, int resId, int tweek)
 {
 	errorCase(m_isEmpty(clusterFile));

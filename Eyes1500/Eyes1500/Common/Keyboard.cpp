@@ -1,16 +1,7 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #include "all.h"
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static int KeyStatus[KEY_MAX];
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void KeyEachFrame(void)
 {
 	if(WindowIsActive)
@@ -32,9 +23,6 @@ void KeyEachFrame(void)
 		}
 	}
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int GetKeyInput(int keyId)
 {
 	KEY_INPUT_BACK; // keyId, 他のキーは F12 で飛んでって確認してね。
@@ -43,6 +31,3 @@ int GetKeyInput(int keyId)
 
 	return FreezeInputFrame ? 0 : KeyStatus[keyId];
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/

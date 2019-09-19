@@ -1,6 +1,3 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 //#include "sha512.h"
 #include "all.h"
 
@@ -12,9 +9,6 @@
  */
 // #include <openssl/opensslconf.h>
 #if !defined(OPENSSL_NO_SHA) && !defined(OPENSSL_NO_SHA512)
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 /*
  * IMPLEMENTATION NOTES.
  *
@@ -51,9 +45,6 @@
  *					<appro@fy.chalmers.se>
  */
 /*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
 #include <stdlib.h>
 #include <string.h>
 
@@ -70,15 +61,9 @@ const char SHA512_version[]="SHA-512" OPENSSL_VERSION_PTEXT;
     defined(__x86_64) || defined(_M_AMD64) || defined(_M_X64) || \
     defined(__s390__) || defined(__s390x__) || \
     defined(SHA512_ASM)
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define SHA512_BLOCK_CAN_MANAGE_UNALIGNED_DATA
 #endif
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int SHA384_Init (SHA512_CTX *c)
 	{
 #if defined(SHA512_ASM) && (defined(__arm__) || defined(__arm))
@@ -108,9 +93,6 @@ int SHA384_Init (SHA512_CTX *c)
         return 1;
 	}
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int SHA512_Init (SHA512_CTX *c)
 	{
 #if defined(SHA512_ASM) && (defined(__arm__) || defined(__arm))
@@ -141,19 +123,10 @@ int SHA512_Init (SHA512_CTX *c)
 	}
 
 #ifndef SHA512_ASM
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static
 #endif
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void sha512_block_data_order (SHA512_CTX *ctx, const void *in, size_t num);
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int SHA512_Final (unsigned char *md, SHA512_CTX *c)
 	{
 	unsigned char *p=(unsigned char *)c->u.p;
@@ -250,15 +223,9 @@ int SHA512_Final (unsigned char *md, SHA512_CTX *c)
 	return 1;
 	}
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int SHA384_Final (unsigned char *md,SHA512_CTX *c)
 {   return SHA512_Final (md,c);   }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int SHA512_Update (SHA512_CTX *c, const void *_data, size_t len)
 	{
 	SHA_LONG64	l;
@@ -310,26 +277,14 @@ int SHA512_Update (SHA512_CTX *c, const void *_data, size_t len)
 	return 1;
 	}
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int SHA384_Update (SHA512_CTX *c, const void *data, size_t len)
 {   return SHA512_Update (c,data,len);   }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void SHA512_Transform (SHA512_CTX *c, const unsigned char *data)
 {   sha512_block_data_order (c,data,1);  }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define OPENSSL_cleanse(c, s) 1 // noop
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 unsigned char *SHA384(const unsigned char *d, size_t n, unsigned char *md)
 	{
 	SHA512_CTX c;
@@ -343,9 +298,6 @@ unsigned char *SHA384(const unsigned char *d, size_t n, unsigned char *md)
 	return(md);
 	}
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 unsigned char *SHA512(const unsigned char *d, size_t n, unsigned char *md)
 	{
 	SHA512_CTX c;
@@ -360,9 +312,6 @@ unsigned char *SHA512(const unsigned char *d, size_t n, unsigned char *md)
 	}
 
 #ifndef SHA512_ASM
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static const SHA_LONG64 K512[80] = {
         SHA_U64(0x428a2f98d728ae22),SHA_U64(0x7137449123ef65cd),
         SHA_U64(0xb5c0fbcfec4d3b2f),SHA_U64(0xe9b5dba58189dbbc),
@@ -477,61 +426,27 @@ static const SHA_LONG64 K512[80] = {
 #endif
 
 #ifndef PULL64
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define B(x,j)    (((SHA_LONG64)(*(((const unsigned char *)(&x))+j)))<<((7-j)*8))
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define PULL64(x) (B(x,0)|B(x,1)|B(x,2)|B(x,3)|B(x,4)|B(x,5)|B(x,6)|B(x,7))
 #endif
 
 #ifndef ROTR
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define ROTR(x,s)	(((x)>>s) | (x)<<(64-s))
 #endif
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define Sigma0(x)	(ROTR((x),28) ^ ROTR((x),34) ^ ROTR((x),39))
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define Sigma1(x)	(ROTR((x),14) ^ ROTR((x),18) ^ ROTR((x),41))
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define sigma0(x)	(ROTR((x),1)  ^ ROTR((x),8)  ^ ((x)>>7))
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define sigma1(x)	(ROTR((x),19) ^ ROTR((x),61) ^ ((x)>>6))
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define Ch(x,y,z)	(((x) & (y)) ^ ((~(x)) & (z)))
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define Maj(x,y,z)	(((x) & (y)) ^ ((x) & (z)) ^ ((y) & (z)))
 
-
 #if defined(__i386) || defined(__i386__) || defined(_M_IX86)
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 /*
  * This code should give better results on 32-bit CPU with less than
  * ~24 registers, both size and performance wise...
  */
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void sha512_block_data_order (SHA512_CTX *ctx, const void *in, size_t num)
 	{
 	const SHA_LONG64 *W=(const SHA_LONG64 *)in;
@@ -587,9 +502,6 @@ static void sha512_block_data_order (SHA512_CTX *ctx, const void *in, size_t num
 
 #elif defined(OPENSSL_SMALL_FOOTPRINT)
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void sha512_block_data_order (SHA512_CTX *ctx, const void *in, size_t num)
 	{
 	const SHA_LONG64 *W=in;
@@ -647,9 +559,6 @@ static void sha512_block_data_order (SHA512_CTX *ctx, const void *in, size_t num
 	T1 = X[(j)&0x0f] += s0 + s1 + X[(j+9)&0x0f];	\
 	ROUND_00_15(i+j,a,b,c,d,e,f,g,h);		} while (0)
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void sha512_block_data_order (SHA512_CTX *ctx, const void *in, size_t num)
 	{
 	const SHA_LONG64 *W=in;
@@ -732,9 +641,6 @@ static void sha512_block_data_order (SHA512_CTX *ctx, const void *in, size_t num
 #else /* !OPENSSL_NO_SHA512 */
 
 #if defined(PEDANTIC) || defined(__DECC) || defined(OPENSSL_SYS_MACOSX)
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void *dummy=&dummy;
 #endif
 
@@ -742,9 +648,6 @@ static void *dummy=&dummy;
 
 // <-- original code
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 autoList<uchar> *sha512_block(uchar *block, int size)
 {
 	uchar *hash = (uchar *)memAlloc(64);
@@ -756,12 +659,6 @@ autoList<uchar> *sha512_block(uchar *block, int size)
 
 	return new autoList<uchar>(hash, 64);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 /*
 	block:
 		in:
@@ -800,12 +697,6 @@ void sha512_expand(autoList<uchar> *block, int exnum) // exnum: 0- (0 as noop)
 	}
 	memFree(hash);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 autoList<uchar> *sha512_expand(int value, int exnum)
 {
 	autoList<uchar> *block = new autoList<uchar>(4);

@@ -1,6 +1,3 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 enum
 {
 	ETC_DATSTRINGS,
@@ -17,7 +14,4 @@ enum
 	ETC_MAX, // num of member
 };
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 oneObjectProto(resCluster<autoList<uchar> *>, GetEtcRes);

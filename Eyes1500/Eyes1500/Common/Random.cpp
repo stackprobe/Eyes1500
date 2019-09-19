@@ -1,7 +1,4 @@
 /*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
    A C-program for MT19937, with initialization improved 2002/1/26.
    Coded by Takuji Nishimura and Makoto Matsumoto.
 
@@ -38,7 +35,6 @@
    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
    Any feedback is very welcome.
    http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html
    email: m-mat @ math.sci.hiroshima-u.ac.jp (remove space)
@@ -48,44 +44,17 @@
 //#include <stdio.h>
 
 /* Period parameters */
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define N MT19937_N // 624
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define M 397
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define MATRIX_A 0x9908b0dfUL   /* constant vector a */
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define UPPER_MASK 0x80000000UL /* most significant w-r bits */
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #define LOWER_MASK 0x7fffffffUL /* least significant r bits */
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static unsigned long mt2[N];
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static unsigned long *mt = mt2; // mt[N]; /* the array for the state vector  */
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static int mti=N+1; /* mti==N+1 means mt[N] is not initialized */
 
 /* initializes mt[N] with a seed */
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static __inline void MT19937_init_genrand(unsigned long s)
 {
     mt[0]= s & 0xffffffffUL;
@@ -105,9 +74,6 @@ static __inline void MT19937_init_genrand(unsigned long s)
 /* init_key is the array for initializing keys */
 /* key_length is its length */
 /* slight change for C++, 2004/2/26 */
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static __inline void MT19937_init_by_array(unsigned long init_key[], int key_length)
 {
     int i, j, k;
@@ -134,9 +100,6 @@ static __inline void MT19937_init_by_array(unsigned long init_key[], int key_len
 }
 
 /* generates a random number on [0,0xffffffff]-interval */
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static __inline unsigned long MT19937_genrand_int32(void)
 {
     unsigned long y;
@@ -176,41 +139,20 @@ static __inline unsigned long MT19937_genrand_int32(void)
 
 #if 0
 /* generates a random number on [0,0x7fffffff]-interval */
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 
 /* generates a random number on [0,1]-real-interval */
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 
 /* generates a random number on [0,1)-real-interval */
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 
 /* generates a random number on (0,1)-real-interval */
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 
 /* generates a random number on [0,1) with 53-bit resolution*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 /* These real versions are due to Isaku Wada, 2002/01/09 added */
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #endif
 
 // <-- original code
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void initRnd(int seed)
 {
 	autoList<uchar> *initKey = sha512_expand(seed, 39); // (SEED_SIZE + (SHA512_SIZE * 39)) / ULONG_SIZE == (4 + (64 * 39)) / 4 == 625 == N + 1
@@ -219,21 +161,8 @@ void initRnd(int seed)
 	delete initKey;
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static int Back_mti;
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int rnd(int modulo) // ret: 0 - (modulo - 1)
 {
 	errorCase(modulo < 1 || IMAX < modulo);
@@ -260,25 +189,7 @@ int rnd(int modulo) // ret: 0 - (modulo - 1)
 
 	return r;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 double dRnd(void) // ret: 0.0 - 1.0
 {
 	return rnd(IMAX) / (double)(IMAX - 1);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/

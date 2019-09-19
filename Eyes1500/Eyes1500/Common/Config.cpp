@@ -1,13 +1,7 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #include "all.h"
 
 // 設定項目 >
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 /*
 	-1 == デフォルト
 	0  == 最初のモニタ
@@ -19,9 +13,6 @@ int Conf_DisplayIndex = 1;
 
 // < 設定項目
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void LoadConfig(void)
 {
 	char *confFile = "Config.conf";
@@ -45,9 +36,6 @@ void LoadConfig(void)
 		}
 	}
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *neReadCfgLine(autoList<uchar> *fileData, int &rIndex)
 {
 	for(; ; )

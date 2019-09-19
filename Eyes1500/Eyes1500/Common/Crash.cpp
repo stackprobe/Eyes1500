@@ -1,18 +1,9 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #include "all.h"
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 double GetDistance(double x, double y)
 {
 	return sqrt(x * x + y * y);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 double GetDistance(double x1, double y1, double x2, double y2)
 {
 	return GetDistance(x1 - x2, y1 - y2);
@@ -20,9 +11,6 @@ double GetDistance(double x1, double y1, double x2, double y2)
 
 // ‚à‚µ‚©‚µ‚Ä... getAngle, angleToXY, angleMoveXY, rotatePos
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void MakeXYSpeed(double x, double y, double destX, double destY, double speed, double &speedX, double &speedY, double distanceMin)
 {
 	speedX = destX - x;
@@ -44,9 +32,6 @@ void MakeXYSpeed(double x, double y, double destX, double destY, double speed, d
 	}
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int IsCrashed_Circle_Circle(
 	double x1, double y1, double rCir1,
 	double x2, double y2, double rCir2
@@ -55,9 +40,6 @@ int IsCrashed_Circle_Circle(
 	return GetDistance(x1, y1, x2, y2) < rCir1 + rCir2;
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int IsCrashed_Circle_Point(
 	double x1, double y1, double rCir,
 	double x2, double y2
@@ -66,9 +48,6 @@ int IsCrashed_Circle_Point(
 	return GetDistance(x1, y1, x2, y2) < rCir;
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int IsCrashed_Circle_Rect(
 	double x, double y, double rCir,
 	double l, double t, double r, double b
@@ -110,13 +89,6 @@ int IsCrashed_Circle_Rect(
 	}
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 int IsCrashed_Rect_Rect(
 	double l1, double t1, double r1, double b1,
 	double l2, double t2, double r2, double b2

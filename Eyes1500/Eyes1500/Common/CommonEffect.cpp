@@ -1,11 +1,5 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #include "all.h"
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 typedef struct CommonEffect_st
 {
 	/*
@@ -34,18 +28,9 @@ typedef struct CommonEffect_st
 }
 CommonEffect_t;
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 double CameraX; // px
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 double CameraY; // px
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static int CommonEffectFunc(CommonEffect_t *i)
 {
 	int picId = i->PicId;
@@ -128,18 +113,12 @@ static int CommonEffectFunc(CommonEffect_t *i)
 	}
 	return 0.0 < i->A;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void CommonEffectReleaseParam(CommonEffect_t *i)
 {
 	memFree(i);
 }
 CommonEffectExtra_t CEE;
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void AddCommonEffect(
 	taskList *tl,
 	int topMode,
@@ -178,15 +157,6 @@ void AddCommonEffect(
 	AddTask(tl, topMode, CommonEffectFunc, i, CommonEffectReleaseParam);
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void CEE_Reset(void)
 {
 	memset(&CEE, 0x00, sizeof(CommonEffectExtra_t));
@@ -197,9 +167,5 @@ void CEE_Reset(void)
 }
 
 // ---- tools ----
-
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 
 // ----

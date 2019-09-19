@@ -1,27 +1,15 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #include "all.h"
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static PicInfo_t *LoadPic(autoList<uchar> *fileData)
 {
 	return Pic_GraphicHandle2PicInfo(Pic_SoftImage2GraphicHandle(Pic_FileData2SoftImage(fileData)));
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static void UnloadPic(PicInfo_t *i)
 {
 	Pic_ReleasePicInfo(i);
 }
 oneObject(resCluster<PicInfo_t *>, CreatePicRes(LoadPic, UnloadPic), GetStdPicRes);
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static PicInfo_t *LoadInvPic(autoList<uchar> *fileData)
 {
 	int si_h = Pic_FileData2SoftImage(fileData);
@@ -45,9 +33,6 @@ static PicInfo_t *LoadInvPic(autoList<uchar> *fileData)
 }
 oneObject(resCluster<PicInfo_t *>, CreatePicRes(LoadInvPic, UnloadPic), GetInvPicRes);
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static PicInfo_t *LoadMirrorPic(autoList<uchar> *fileData)
 {
 	int si_h = Pic_FileData2SoftImage(fileData);

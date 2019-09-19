@@ -1,11 +1,5 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #include "all.h"
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 static autoList<char *> *GetDatStrings(void)
 {
 	static autoList<char *> *datStrings;
@@ -30,9 +24,6 @@ static autoList<char *> *GetDatStrings(void)
 	}
 	return datStrings;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *GetDatString(int datStrId)
 {
 	errorCase(datStrId < 0 || DATSTR_MAX <= datStrId);

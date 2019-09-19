@@ -1,11 +1,5 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 #include "all.h"
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 autoList<uchar> *readAllBytes(char *file)
 {
 	FILE *fp = fileOpen(file, "rb");
@@ -25,16 +19,7 @@ autoList<uchar> *readAllBytes(char *file)
 	fileClose(fp);
 	return new autoList<uchar>(fileData, size);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *readLine(autoList<uchar> *fileData, int &rIndex)
 {
 	autoList<char> *line = new autoList<char>();
@@ -63,21 +48,12 @@ char *readLine(autoList<uchar> *fileData, int &rIndex)
 	}
 	return unbindBlock2Line(line);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *neReadLine(autoList<uchar> *fileData, int &rIndex)
 {
 	char *line = readLine(fileData, rIndex);
 	errorCase(!line);
 	return line;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 autoList<char *> *readLines(autoList<uchar> *fileData)
 {
 	autoList<char *> *lines = new autoList<char *>();
@@ -94,9 +70,6 @@ autoList<char *> *readLines(autoList<uchar> *fileData)
 	}
 	return lines;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 autoList<char *> *readLines_x(autoList<uchar> *fileData)
 {
 	autoList<char *> *lines = readLines(fileData);
@@ -104,9 +77,6 @@ autoList<char *> *readLines_x(autoList<uchar> *fileData)
 	return lines;
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void writeAllBytes(char *file, autoList<uchar> *fileData)
 {
 	FILE *fp = fileOpen(file, "wb");
@@ -115,21 +85,12 @@ void writeAllBytes(char *file, autoList<uchar> *fileData)
 
 	fileClose(fp);
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void writeAllBytes_cx(char *file, autoList<uchar> *fileData)
 {
 	writeAllBytes(file, fileData);
 	delete fileData;
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void writeToken(autoList<uchar> *fileData, char *token)
 {
 	for(char *p = token; *p; p++)
@@ -137,21 +98,12 @@ void writeToken(autoList<uchar> *fileData, char *token)
 		fileData->AddElement(*p);
 	}
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void writeLine(autoList<uchar> *fileData, char *line)
 {
 	writeToken(fileData, line);
 	fileData->AddElement('\n');
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 uint64 readUI64(autoList<uchar> *fileData, int &rIndex, int width)
 {
 	uint64 value = 0;
@@ -162,12 +114,6 @@ uint64 readUI64(autoList<uchar> *fileData, int &rIndex, int width)
 	}
 	return value;
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void writeUI64(autoList<uchar> *fileData, uint64 value, int width)
 {
 	for(int c = 0; c < width; c++)
@@ -175,17 +121,8 @@ void writeUI64(autoList<uchar> *fileData, uint64 value, int width)
 		fileData->AddElement((uchar)(value >> c * 8 & 0xff));
 	}
 }
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 void writeUI32(autoList<uchar> *fileData, uint value, int width)
 {
 	writeUI64(fileData, (uint64)value, width);
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/

@@ -1,26 +1,11 @@
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 template <class Element_t>
 class autoList
 {
 private:
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	int Count;
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	int ListSize;
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	Element_t *List;
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void Init(Element_t *list, int listSize, int count)
 	{
 		this->Count = count;
@@ -29,25 +14,16 @@ private:
 	}
 
 public:
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	autoList()
 	{
 		this->Init((Element_t *)memAlloc(0), 0, 0);
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	autoList(int buffer_size)
 	{
 		errorCase(buffer_size < 0 || IMAX / sizeof(Element_t) < buffer_size);
 
 		this->Init((Element_t *)memAlloc(buffer_size * sizeof(Element_t)), buffer_size, 0);
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	autoList(Element_t *list_bind, int count)
 	{
 		errorCase(!list_bind);
@@ -55,23 +31,11 @@ public:
 
 		this->Init(list_bind, count, count);
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	~autoList()
 	{
 		memFree(this->List);
 	}
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	autoList<Element_t> *Eject()
 	{
 		autoList<Element_t> *list_ret = new autoList<Element_t>();
@@ -86,9 +50,6 @@ public:
 
 		return list_ret;
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	Element_t *UnbindBuffer()
 	{
 		Element_t *list_ret = this->List;
@@ -100,27 +61,15 @@ public:
 		return list_ret;
 	}
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void Clear()
 	{
 		this->Count = 0;
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	int GetCount()
 	{
 		return this->Count;
 	}
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	Element_t *ElementAt(int index)
 	{
 		if(index == 0) // this->List をダイレクトに参照するための特例
@@ -130,18 +79,12 @@ public:
 
 		return this->List + index;
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void SetElement(int index, Element_t element)
 	{
 		errorCase(index < 0 || this->Count <= index);
 
 		this->List[index] = element;
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	Element_t GetElement(int index)
 	{
 		errorCase(index < 0 || this->Count <= index);
@@ -149,9 +92,6 @@ public:
 		return this->List[index];
 	}
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	/*
 		今から count 回 AddElement() してもバッファの拡張が起こらないようにバッファを拡張する。
 	*/
@@ -170,9 +110,6 @@ public:
 		}
 	}
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void AddElement(Element_t element)
 	{
 		if(this->ListSize <= this->Count)
@@ -192,9 +129,6 @@ public:
 		this->List[this->Count] = element;
 		this->Count++;
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	Element_t UnaddElement()
 	{
 		errorCase(this->Count < 1);
@@ -202,9 +136,6 @@ public:
 		this->Count--;
 		return this->List[this->Count];
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void InsertElement(int index, Element_t element)
 	{
 		errorCase(index < 0 || this->Count < index);
@@ -217,9 +148,6 @@ public:
 		}
 		this->List[index] = element;
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	Element_t DesertElement(int index)
 	{
 		errorCase(index < 0 || this->Count <= index);
@@ -234,9 +162,6 @@ public:
 		}
 		return element;
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	Element_t FastDesertElement(int index)
 	{
 		errorCase(index < 0 || this->Count <= index);
@@ -248,9 +173,6 @@ public:
 
 		return element;
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void RemoveElements(int start, int count)
 	{
 		errorCase(start < 0 || this->Count < start);
@@ -265,9 +187,6 @@ public:
 		this->Count = index;
 	}
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void CallAllElement(void (*func)(Element_t e))
 	{
 		for(int index = 0; index < this->Count; index++)
@@ -275,18 +194,12 @@ public:
 			func(this->GetElement(index));
 		}
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void Clear(void (*func)(Element_t e))
 	{
 		this->CallAllElement(func);
 		this->Clear();
 	}
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void AddElements(Element_t *list, int count)
 	{
 		this->BufferExtend(count);
@@ -296,25 +209,16 @@ public:
 			this->AddElement(list[index]);
 		}
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void AddElements(autoList<Element_t> *list)
 	{
 		this->AddElements(list->ElementAt(0), list->GetCount());
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void Overwrite(autoList<Element_t> *list)
 	{
 		this->Clear();
 		this->AddElements(list);
 	}
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void Swap(int index1, int index2)
 	{
 		errorCase(index1 < 0 || this->Count <= index1);
@@ -325,9 +229,6 @@ public:
 		this->List[index1] = this->List[index2];
 		this->List[index2] = tmp;
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void Reverse()
 	{
 		int i = 0;
@@ -341,9 +242,6 @@ public:
 		}
 	}
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void PutElement(int index, Element_t element, Element_t defaultElement)
 	{
 		errorCase(index < 0 || IMAX < index);
@@ -359,9 +257,6 @@ public:
 		else
 			this->SetElement(index, element);
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	Element_t RefElement(int index, Element_t defaultElement)
 	{
 		if(m_isRange(index, 0, this->Count - 1))
@@ -371,9 +266,6 @@ public:
 		return defaultElement;
 	}
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	int UnaddRepeat(Element_t e)
 	{
 		int num = 0;
@@ -385,9 +277,6 @@ public:
 		}
 		return num;
 	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void AddRepeat(Element_t e, int num)
 	{
 		for(int c = 0; c < num; c++)
@@ -396,9 +285,6 @@ public:
 		}
 	}
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 	void MultiDiscard(int (*isDiscardPosFunc)(Element_t *ePos))
 	{
 		int start;
@@ -425,20 +311,8 @@ public:
 		this->Count = wPos;
 	}
 
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
 };
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 template <class Element_t>
 void releaseList(autoList<Element_t> *list, void (*func)(Element_t e))
 {
@@ -451,9 +325,6 @@ void releaseList(autoList<Element_t> *list, void (*func)(Element_t e))
 	delete list;
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 template <class Element_t>
 Element_t *unbindBlock(autoList<Element_t> *list)
 {
@@ -462,11 +333,5 @@ Element_t *unbindBlock(autoList<Element_t> *list)
 	return block;
 }
 
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *unbindBlock2Line(autoList<char> *list);
-/*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
 char *unbindBlock2Line_NR(autoList<char> *list);
