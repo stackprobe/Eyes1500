@@ -179,72 +179,72 @@ static __inline unsigned long MT19937_genrand_int32(void)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-static __inline long MT19937_genrand_int31(void)
-{
-    return (long)(MT19937_genrand_int32()>>1);
-}
+// #### DELETED ==== 0000118 $$$$ //	static __inline long MT19937_genrand_int31(void)
+// #### DELETED ==== 0000118 $$$$ //	{
+// #### DELETED ==== 0000118 $$$$ //	    return (long)(MT19937_genrand_int32()>>1);
+// #### DELETED ==== 0000118 $$$$ //	}
 
 /* generates a random number on [0,1]-real-interval */
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-static __inline double MT19937_genrand_real1(void)
-{
-    return MT19937_genrand_int32()*(1.0/4294967295.0);
-    /* divided by 2^32-1 */
-}
+// #### DELETED ==== 0000119 $$$$ //	static __inline double MT19937_genrand_real1(void)
+// #### DELETED ==== 0000119 $$$$ //	{
+// #### DELETED ==== 0000119 $$$$ //	    return MT19937_genrand_int32()*(1.0/4294967295.0);
+// #### DELETED ==== 0000119 $$$$ //	    /* divided by 2^32-1 –/
+// #### DELETED ==== 0000119 $$$$ //	}
 
 /* generates a random number on [0,1)-real-interval */
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-static __inline double MT19937_genrand_real2(void)
-{
-    return MT19937_genrand_int32()*(1.0/4294967296.0);
-    /* divided by 2^32 */
-}
+// #### DELETED ==== 0000120 $$$$ //	static __inline double MT19937_genrand_real2(void)
+// #### DELETED ==== 0000120 $$$$ //	{
+// #### DELETED ==== 0000120 $$$$ //	    return MT19937_genrand_int32()*(1.0/4294967296.0);
+// #### DELETED ==== 0000120 $$$$ //	    /* divided by 2^32 –/
+// #### DELETED ==== 0000120 $$$$ //	}
 
 /* generates a random number on (0,1)-real-interval */
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-static __inline double MT19937_genrand_real3(void)
-{
-    return (((double)MT19937_genrand_int32()) + 0.5)*(1.0/4294967296.0);
-    /* divided by 2^32 */
-}
+// #### DELETED ==== 0000121 $$$$ //	static __inline double MT19937_genrand_real3(void)
+// #### DELETED ==== 0000121 $$$$ //	{
+// #### DELETED ==== 0000121 $$$$ //	    return (((double)MT19937_genrand_int32()) + 0.5)*(1.0/4294967296.0);
+// #### DELETED ==== 0000121 $$$$ //	    /* divided by 2^32 –/
+// #### DELETED ==== 0000121 $$$$ //	}
 
 /* generates a random number on [0,1) with 53-bit resolution*/
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-static __inline double MT19937_genrand_res53(void)
-{
-    unsigned long a=MT19937_genrand_int32()>>5, b=MT19937_genrand_int32()>>6;
-    return(a*67108864.0+b)*(1.0/9007199254740992.0);
-}
+// #### DELETED ==== 0000122 $$$$ //	static __inline double MT19937_genrand_res53(void)
+// #### DELETED ==== 0000122 $$$$ //	{
+// #### DELETED ==== 0000122 $$$$ //	    unsigned long a=MT19937_genrand_int32()>>5, b=MT19937_genrand_int32()>>6;
+// #### DELETED ==== 0000122 $$$$ //	    return(a*67108864.0+b)*(1.0/9007199254740992.0);
+// #### DELETED ==== 0000122 $$$$ //	}
 /* These real versions are due to Isaku Wada, 2002/01/09 added */
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-static __inline int MT19937_main(void)
-{
-    int i;
-    unsigned long init[4]={0x123, 0x234, 0x345, 0x456}, length=4;
-    MT19937_init_by_array(init, length);
-    printf("1000 outputs of genrand_int32()\n");
-    for (i=0; i<1000; i++) {
-      printf("%10lu ", MT19937_genrand_int32());
-      if (i%5==4) printf("\n");
-    }
-    printf("\n1000 outputs of genrand_real2()\n");
-    for (i=0; i<1000; i++) {
-      printf("%10.8f ", MT19937_genrand_real2());
-      if (i%5==4) printf("\n");
-    }
-    return 0;
-}
+// #### DELETED ==== 0000123 $$$$ //	static __inline int MT19937_main(void)
+// #### DELETED ==== 0000123 $$$$ //	{
+// #### DELETED ==== 0000123 $$$$ //	    int i;
+// #### DELETED ==== 0000123 $$$$ //	    unsigned long init[4]={0x123, 0x234, 0x345, 0x456}, length=4;
+// #### DELETED ==== 0000123 $$$$ //	    MT19937_init_by_array(init, length);
+// #### DELETED ==== 0000123 $$$$ //	    printf("1000 outputs of genrand_int32()\n");
+// #### DELETED ==== 0000123 $$$$ //	    for (i=0; i<1000; i++) {
+// #### DELETED ==== 0000123 $$$$ //	      printf("%10lu ", MT19937_genrand_int32());
+// #### DELETED ==== 0000123 $$$$ //	      if (i%5==4) printf("\n");
+// #### DELETED ==== 0000123 $$$$ //	    }
+// #### DELETED ==== 0000123 $$$$ //	    printf("\n1000 outputs of genrand_real2()\n");
+// #### DELETED ==== 0000123 $$$$ //	    for (i=0; i<1000; i++) {
+// #### DELETED ==== 0000123 $$$$ //	      printf("%10.8f ", MT19937_genrand_real2());
+// #### DELETED ==== 0000123 $$$$ //	      if (i%5==4) printf("\n");
+// #### DELETED ==== 0000123 $$$$ //	    }
+// #### DELETED ==== 0000123 $$$$ //	    return 0;
+// #### DELETED ==== 0000123 $$$$ //	}
 #endif
 
 // <-- original code
@@ -268,23 +268,23 @@ static int Back_mti;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void enterRnd(unsigned long *lmt, int lmti)
-{
-	Back_mti = mti;
-
-	mt = lmt;
-	mti = lmti;
-}
+// #### DELETED ==== 0000124 $$$$ //	void enterRnd(unsigned long *lmt, int lmti)
+// #### DELETED ==== 0000124 $$$$ //	{
+// #### DELETED ==== 0000124 $$$$ //		Back_mti = mti;
+// #### DELETED ==== 0000124 $$$$ //	
+// #### DELETED ==== 0000124 $$$$ //		mt = lmt;
+// #### DELETED ==== 0000124 $$$$ //		mti = lmti;
+// #### DELETED ==== 0000124 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void leaveRnd(int *p_lmti)
-{
-	*p_lmti = mti;
-
-	mt = mt2;
-	mti = Back_mti;
-}
+// #### DELETED ==== 0000125 $$$$ //	void leaveRnd(int *p_lmti)
+// #### DELETED ==== 0000125 $$$$ //	{
+// #### DELETED ==== 0000125 $$$$ //		*p_lmti = mti;
+// #### DELETED ==== 0000125 $$$$ //	
+// #### DELETED ==== 0000125 $$$$ //		mt = mt2;
+// #### DELETED ==== 0000125 $$$$ //		mti = Back_mti;
+// #### DELETED ==== 0000125 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -318,21 +318,21 @@ int rnd(int modulo) // ret: 0 - (modulo - 1)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int bRnd(int minval, int maxval) // ret: minval - maxval
-{
-	errorCase(minval < -IMAX);
-	errorCase(maxval < minval);
-	errorCase(IMAX < maxval);
-
-	return rnd(maxval - minval + 1) + minval;
-}
+// #### DELETED ==== 0000126 $$$$ //	int bRnd(int minval, int maxval) // ret: minval - maxval
+// #### DELETED ==== 0000126 $$$$ //	{
+// #### DELETED ==== 0000126 $$$$ //		errorCase(minval < -IMAX);
+// #### DELETED ==== 0000126 $$$$ //		errorCase(maxval < minval);
+// #### DELETED ==== 0000126 $$$$ //		errorCase(IMAX < maxval);
+// #### DELETED ==== 0000126 $$$$ //	
+// #### DELETED ==== 0000126 $$$$ //		return rnd(maxval - minval + 1) + minval;
+// #### DELETED ==== 0000126 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int sRnd(void) // ret: -1 or 1
-{
-	return rnd(2) ? -1 : 1;
-}
+// #### DELETED ==== 0000127 $$$$ //	int sRnd(void) // ret: -1 or 1
+// #### DELETED ==== 0000127 $$$$ //	{
+// #### DELETED ==== 0000127 $$$$ //		return rnd(2) ? -1 : 1;
+// #### DELETED ==== 0000127 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
@@ -343,21 +343,21 @@ double dRnd(void) // ret: 0.0 - 1.0
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-double eRnd(void) // ret: -1.0 - 1.0
-{
-	return dRnd() * 2.0 - 1.0;
-}
+// #### DELETED ==== 0000128 $$$$ //	double eRnd(void) // ret: -1.0 - 1.0
+// #### DELETED ==== 0000128 $$$$ //	{
+// #### DELETED ==== 0000128 $$$$ //		return dRnd() * 2.0 - 1.0;
+// #### DELETED ==== 0000128 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int rndPct(int pct) // pct: 0 - 100
-{
-	return rnd(IMAX) < pct * (IMAX / 100);
-}
+// #### DELETED ==== 0000129 $$$$ //	int rndPct(int pct) // pct: 0 - 100
+// #### DELETED ==== 0000129 $$$$ //	{
+// #### DELETED ==== 0000129 $$$$ //		return rnd(IMAX) < pct * (IMAX / 100);
+// #### DELETED ==== 0000129 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int rndPermil(int permil) // permil: 0 - 1000
-{
-	return rnd(IMAX) < permil * (IMAX / 1000);
-}
+// #### DELETED ==== 0000130 $$$$ //	int rndPermil(int permil) // permil: 0 - 1000
+// #### DELETED ==== 0000130 $$$$ //	{
+// #### DELETED ==== 0000130 $$$$ //		return rnd(IMAX) < permil * (IMAX / 1000);
+// #### DELETED ==== 0000130 $$$$ //	}

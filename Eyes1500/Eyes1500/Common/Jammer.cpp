@@ -123,20 +123,20 @@ static int MultiJammer(autoList<uchar> *block, int encodeFlag)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int Jammer(autoList<uchar> *block, int encodeFlag) // ret: ? ê¨å˜
-{
-	int retval;
-
-	if(encodeFlag)
-	{
-		errorCase(!MultiJammer(block, 1));
-		KRK(block, 0);
-		retval = 1;
-	}
-	else
-	{
-		KRK(block, 1);
-		retval = MultiJammer(block, 0);
-	}
-	return retval;
-}
+// #### DELETED ==== 0000094 $$$$ //	int Jammer(autoList<uchar> *block, int encodeFlag) // ret: ? ê¨å˜
+// #### DELETED ==== 0000094 $$$$ //	{
+// #### DELETED ==== 0000094 $$$$ //		int retval;
+// #### DELETED ==== 0000094 $$$$ //	
+// #### DELETED ==== 0000094 $$$$ //		if(encodeFlag)
+// #### DELETED ==== 0000094 $$$$ //		{
+// #### DELETED ==== 0000094 $$$$ //			errorCase(!MultiJammer(block, 1));
+// #### DELETED ==== 0000094 $$$$ //			KRK(block, 0);
+// #### DELETED ==== 0000094 $$$$ //			retval = 1;
+// #### DELETED ==== 0000094 $$$$ //		}
+// #### DELETED ==== 0000094 $$$$ //		else
+// #### DELETED ==== 0000094 $$$$ //		{
+// #### DELETED ==== 0000094 $$$$ //			KRK(block, 1);
+// #### DELETED ==== 0000094 $$$$ //			retval = MultiJammer(block, 0);
+// #### DELETED ==== 0000094 $$$$ //		}
+// #### DELETED ==== 0000094 $$$$ //		return retval;
+// #### DELETED ==== 0000094 $$$$ //	}

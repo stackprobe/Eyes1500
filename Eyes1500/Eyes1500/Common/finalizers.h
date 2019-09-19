@@ -20,10 +20,10 @@ public:
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-	finalizers(const finalizers &source)
-	{
-		error();
-	}
+// #### DELETED ==== 0000078 $$$$ //		finalizers(const finalizers &source)
+// #### DELETED ==== 0000078 $$$$ //		{
+// #### DELETED ==== 0000078 $$$$ //			error();
+// #### DELETED ==== 0000078 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/

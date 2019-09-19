@@ -177,45 +177,45 @@ static double SD_ReadDouble(double minval, double maxval, int denom)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-static void SD_ReadBitList(bitList *dest)
-{
-	dest->Clear();
-
-	char *line = SD_ReadLine();
-
-	for(int index = 0; line[index]; index++)
-	{
-		switch(line[index])
-		{
-		case '0':
-//			dest->PutBit(index, 0); // 不要
-			break;
-
-		case '1':
-			dest->PutBit(index, 1);
-			break;
-
-		default:
-			error();
-		}
-	}
-}
+// #### DELETED ==== 0000086 $$$$ //	static void SD_ReadBitList(bitList *dest)
+// #### DELETED ==== 0000086 $$$$ //	{
+// #### DELETED ==== 0000086 $$$$ //		dest->Clear();
+// #### DELETED ==== 0000086 $$$$ //	
+// #### DELETED ==== 0000086 $$$$ //		char *line = SD_ReadLine();
+// #### DELETED ==== 0000086 $$$$ //	
+// #### DELETED ==== 0000086 $$$$ //		for(int index = 0; line[index]; index++)
+// #### DELETED ==== 0000086 $$$$ //		{
+// #### DELETED ==== 0000086 $$$$ //			switch(line[index])
+// #### DELETED ==== 0000086 $$$$ //			{
+// #### DELETED ==== 0000086 $$$$ //			case '0':
+// #### DELETED ==== 0000086 $$$$ //	//			dest->PutBit(index, 0); // 不要
+// #### DELETED ==== 0000086 $$$$ //				break;
+// #### DELETED ==== 0000086 $$$$ //	
+// #### DELETED ==== 0000086 $$$$ //			case '1':
+// #### DELETED ==== 0000086 $$$$ //				dest->PutBit(index, 1);
+// #### DELETED ==== 0000086 $$$$ //				break;
+// #### DELETED ==== 0000086 $$$$ //	
+// #### DELETED ==== 0000086 $$$$ //			default:
+// #### DELETED ==== 0000086 $$$$ //				error();
+// #### DELETED ==== 0000086 $$$$ //			}
+// #### DELETED ==== 0000086 $$$$ //		}
+// #### DELETED ==== 0000086 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-static void SD_ReadLines(autoList<char *> *lines)
-{
-	errorCase(!lines);
-
-	int count = SD_ReadInt(0, IMAX);
-
-	lines->BufferExtend(count);
-
-	for(int index = 0; index < count; index++)
-	{
-		lines->AddElement(strx(SD_ReadLine()));
-	}
-}
+// #### DELETED ==== 0000087 $$$$ //	static void SD_ReadLines(autoList<char *> *lines)
+// #### DELETED ==== 0000087 $$$$ //	{
+// #### DELETED ==== 0000087 $$$$ //		errorCase(!lines);
+// #### DELETED ==== 0000087 $$$$ //	
+// #### DELETED ==== 0000087 $$$$ //		int count = SD_ReadInt(0, IMAX);
+// #### DELETED ==== 0000087 $$$$ //	
+// #### DELETED ==== 0000087 $$$$ //		lines->BufferExtend(count);
+// #### DELETED ==== 0000087 $$$$ //	
+// #### DELETED ==== 0000087 $$$$ //		for(int index = 0; index < count; index++)
+// #### DELETED ==== 0000087 $$$$ //		{
+// #### DELETED ==== 0000087 $$$$ //			lines->AddElement(strx(SD_ReadLine()));
+// #### DELETED ==== 0000087 $$$$ //		}
+// #### DELETED ==== 0000087 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -256,17 +256,17 @@ static void SD_WriteDouble(double value, int denom)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-static void SD_WriteBitList(bitList *src)
-{
-	autoList<char> *buff = new autoList<char>();
-	int finalBitPos = src->GetFinalBitPos();
-
-	for(int index = 0; index <= finalBitPos; index++)
-	{
-		buff->AddElement(src->RefBit(index) ? '1' : '0');
-	}
-	SD_WriteLine_x(unbindBlock2Line(buff));
-}
+// #### DELETED ==== 0000088 $$$$ //	static void SD_WriteBitList(bitList *src)
+// #### DELETED ==== 0000088 $$$$ //	{
+// #### DELETED ==== 0000088 $$$$ //		autoList<char> *buff = new autoList<char>();
+// #### DELETED ==== 0000088 $$$$ //		int finalBitPos = src->GetFinalBitPos();
+// #### DELETED ==== 0000088 $$$$ //	
+// #### DELETED ==== 0000088 $$$$ //		for(int index = 0; index <= finalBitPos; index++)
+// #### DELETED ==== 0000088 $$$$ //		{
+// #### DELETED ==== 0000088 $$$$ //			buff->AddElement(src->RefBit(index) ? '1' : '0');
+// #### DELETED ==== 0000088 $$$$ //		}
+// #### DELETED ==== 0000088 $$$$ //		SD_WriteLine_x(unbindBlock2Line(buff));
+// #### DELETED ==== 0000088 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
@@ -282,11 +282,11 @@ static void SD_WriteLines(autoList<char *> *lines)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-static void SD_WriteLines_x(autoList<char *> *lines)
-{
-	SD_WriteLines(lines);
-	releaseList(lines, (void (*)(char *))memFree);
-}
+// #### DELETED ==== 0000089 $$$$ //	static void SD_WriteLines_x(autoList<char *> *lines)
+// #### DELETED ==== 0000089 $$$$ //	{
+// #### DELETED ==== 0000089 $$$$ //		SD_WriteLines(lines);
+// #### DELETED ==== 0000089 $$$$ //		releaseList(lines, (void (*)(char *))memFree);
+// #### DELETED ==== 0000089 $$$$ //	}
 
 // パッド
 /*
@@ -312,37 +312,37 @@ static int *PPadBtns[] =
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-static void AntiPadBtnIdConflict(void)
-{
-	/*
-		重複して割り当てられていた場合、両方 -1 にする。
-	*/
-	for(int index = 1; index < lengthof(PPadBtns); index++)
-	{
-		for(int ndx = 0; ndx < index; ndx++)
-		{
-			if(*PPadBtns[index] == *PPadBtns[ndx])
-			{
-				*PPadBtns[index] = -1;
-				*PPadBtns[ndx] = -1;
-				break;
-			}
-		}
-	}
-}
+// #### DELETED ==== 0000090 $$$$ //	static void AntiPadBtnIdConflict(void)
+// #### DELETED ==== 0000090 $$$$ //	{
+// #### DELETED ==== 0000090 $$$$ //		/*
+// #### DELETED ==== 0000090 $$$$ //			重複して割り当てられていた場合、両方 -1 にする。
+// #### DELETED ==== 0000090 $$$$ //		＊/
+// #### DELETED ==== 0000090 $$$$ //		for(int index = 1; index < lengthof(PPadBtns); index++)
+// #### DELETED ==== 0000090 $$$$ //		{
+// #### DELETED ==== 0000090 $$$$ //			for(int ndx = 0; ndx < index; ndx++)
+// #### DELETED ==== 0000090 $$$$ //			{
+// #### DELETED ==== 0000090 $$$$ //				if(*PPadBtns[index] == *PPadBtns[ndx])
+// #### DELETED ==== 0000090 $$$$ //				{
+// #### DELETED ==== 0000090 $$$$ //					*PPadBtns[index] = -1;
+// #### DELETED ==== 0000090 $$$$ //					*PPadBtns[ndx] = -1;
+// #### DELETED ==== 0000090 $$$$ //					break;
+// #### DELETED ==== 0000090 $$$$ //				}
+// #### DELETED ==== 0000090 $$$$ //			}
+// #### DELETED ==== 0000090 $$$$ //		}
+// #### DELETED ==== 0000090 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void UnassignAllPadBtnId(void)
-{
-	/*
-		全て割り当てナシにする。
-	*/
-	for(int index = 0; index < lengthof(PPadBtns); index++)
-	{
-		*PPadBtns[index] = -1;
-	}
-}
+// #### DELETED ==== 0000091 $$$$ //	void UnassignAllPadBtnId(void)
+// #### DELETED ==== 0000091 $$$$ //	{
+// #### DELETED ==== 0000091 $$$$ //		/*
+// #### DELETED ==== 0000091 $$$$ //			全て割り当てナシにする。
+// #### DELETED ==== 0000091 $$$$ //		＊/
+// #### DELETED ==== 0000091 $$$$ //		for(int index = 0; index < lengthof(PPadBtns); index++)
+// #### DELETED ==== 0000091 $$$$ //		{
+// #### DELETED ==== 0000091 $$$$ //			*PPadBtns[index] = -1;
+// #### DELETED ==== 0000091 $$$$ //		}
+// #### DELETED ==== 0000091 $$$$ //	}
 
 // キーボード
 /*
@@ -368,37 +368,37 @@ static int *PKbdKeys[] =
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-static void AntiKbdKeyIdConflict(void)
-{
-	/*
-		重複して割り当てられていた場合、両方 -1 にする。
-	*/
-	for(int index = 1; index < lengthof(PKbdKeys); index++)
-	{
-		for(int ndx = 0; ndx < index; ndx++)
-		{
-			if(*PKbdKeys[index] == *PKbdKeys[ndx])
-			{
-				*PKbdKeys[index] = -1;
-				*PKbdKeys[ndx] = -1;
-				break;
-			}
-		}
-	}
-}
+// #### DELETED ==== 0000092 $$$$ //	static void AntiKbdKeyIdConflict(void)
+// #### DELETED ==== 0000092 $$$$ //	{
+// #### DELETED ==== 0000092 $$$$ //		/*
+// #### DELETED ==== 0000092 $$$$ //			重複して割り当てられていた場合、両方 -1 にする。
+// #### DELETED ==== 0000092 $$$$ //		＊/
+// #### DELETED ==== 0000092 $$$$ //		for(int index = 1; index < lengthof(PKbdKeys); index++)
+// #### DELETED ==== 0000092 $$$$ //		{
+// #### DELETED ==== 0000092 $$$$ //			for(int ndx = 0; ndx < index; ndx++)
+// #### DELETED ==== 0000092 $$$$ //			{
+// #### DELETED ==== 0000092 $$$$ //				if(*PKbdKeys[index] == *PKbdKeys[ndx])
+// #### DELETED ==== 0000092 $$$$ //				{
+// #### DELETED ==== 0000092 $$$$ //					*PKbdKeys[index] = -1;
+// #### DELETED ==== 0000092 $$$$ //					*PKbdKeys[ndx] = -1;
+// #### DELETED ==== 0000092 $$$$ //					break;
+// #### DELETED ==== 0000092 $$$$ //				}
+// #### DELETED ==== 0000092 $$$$ //			}
+// #### DELETED ==== 0000092 $$$$ //		}
+// #### DELETED ==== 0000092 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void UnassignAllKbdKeyId(void)
-{
-	/*
-		全て割り当てナシにする。
-	*/
-	for(int index = 0; index < lengthof(PKbdKeys); index++)
-	{
-		*PKbdKeys[index] = -1;
-	}
-}
+// #### DELETED ==== 0000093 $$$$ //	void UnassignAllKbdKeyId(void)
+// #### DELETED ==== 0000093 $$$$ //	{
+// #### DELETED ==== 0000093 $$$$ //		/*
+// #### DELETED ==== 0000093 $$$$ //			全て割り当てナシにする。
+// #### DELETED ==== 0000093 $$$$ //		＊/
+// #### DELETED ==== 0000093 $$$$ //		for(int index = 0; index < lengthof(PKbdKeys); index++)
+// #### DELETED ==== 0000093 $$$$ //		{
+// #### DELETED ==== 0000093 $$$$ //			*PKbdKeys[index] = -1;
+// #### DELETED ==== 0000093 $$$$ //		}
+// #### DELETED ==== 0000093 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c

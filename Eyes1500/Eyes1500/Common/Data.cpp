@@ -6,10 +6,10 @@
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void swapBlock(void *a, void *b, int size)
-{
-	swap((uchar *)a, (uchar *)b, size);
-}
+// #### DELETED ==== 0000041 $$$$ //	void swapBlock(void *a, void *b, int size)
+// #### DELETED ==== 0000041 $$$$ //	{
+// #### DELETED ==== 0000041 $$$$ //		swap((uchar *)a, (uchar *)b, size);
+// #### DELETED ==== 0000041 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -41,101 +41,101 @@ int s2i(char *line, int minval, int maxval, int defval)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int s2i_x(char *line, int minval, int maxval, int defval)
-{
-	int value = s2i(line, minval, maxval, defval);
-	memFree(line);
-	return value;
-}
+// #### DELETED ==== 0000042 $$$$ //	int s2i_x(char *line, int minval, int maxval, int defval)
+// #### DELETED ==== 0000042 $$$$ //	{
+// #### DELETED ==== 0000042 $$$$ //		int value = s2i(line, minval, maxval, defval);
+// #### DELETED ==== 0000042 $$$$ //		memFree(line);
+// #### DELETED ==== 0000042 $$$$ //		return value;
+// #### DELETED ==== 0000042 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int getZero(void)
-{
-	return 0;
-}
+// #### DELETED ==== 0000043 $$$$ //	int getZero(void)
+// #### DELETED ==== 0000043 $$$$ //	{
+// #### DELETED ==== 0000043 $$$$ //		return 0;
+// #### DELETED ==== 0000043 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-uint getUIZero(void)
-{
-	return 0;
-}
+// #### DELETED ==== 0000044 $$$$ //	uint getUIZero(void)
+// #### DELETED ==== 0000044 $$$$ //	{
+// #### DELETED ==== 0000044 $$$$ //		return 0;
+// #### DELETED ==== 0000044 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-__int64 getI64Zero(void)
-{
-	return 0;
-}
+// #### DELETED ==== 0000045 $$$$ //	__int64 getI64Zero(void)
+// #### DELETED ==== 0000045 $$$$ //	{
+// #### DELETED ==== 0000045 $$$$ //		return 0;
+// #### DELETED ==== 0000045 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void noop(void)
-{
-	1; // noop
-}
+// #### DELETED ==== 0000046 $$$$ //	void noop(void)
+// #### DELETED ==== 0000046 $$$$ //	{
+// #### DELETED ==== 0000046 $$$$ //		1; // noop
+// #### DELETED ==== 0000046 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void noop_i(int dummy)
-{
-	1; // noop
-}
+// #### DELETED ==== 0000047 $$$$ //	void noop_i(int dummy)
+// #### DELETED ==== 0000047 $$$$ //	{
+// #### DELETED ==== 0000047 $$$$ //		1; // noop
+// #### DELETED ==== 0000047 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void noop_ui(uint dummy)
-{
-	1; // noop
-}
+// #### DELETED ==== 0000048 $$$$ //	void noop_ui(uint dummy)
+// #### DELETED ==== 0000048 $$$$ //	{
+// #### DELETED ==== 0000048 $$$$ //		1; // noop
+// #### DELETED ==== 0000048 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void noop_i64(__int64 dummy)
-{
-	1; // noop
-}
+// #### DELETED ==== 0000049 $$$$ //	void noop_i64(__int64 dummy)
+// #### DELETED ==== 0000049 $$$$ //	{
+// #### DELETED ==== 0000049 $$$$ //		1; // noop
+// #### DELETED ==== 0000049 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-i2D_t makeI2D(int x, int y)
-{
-	i2D_t pos;
-
-	pos.X = x;
-	pos.Y = y;
-
-	return pos;
-}
+// #### DELETED ==== 0000050 $$$$ //	i2D_t makeI2D(int x, int y)
+// #### DELETED ==== 0000050 $$$$ //	{
+// #### DELETED ==== 0000050 $$$$ //		i2D_t pos;
+// #### DELETED ==== 0000050 $$$$ //	
+// #### DELETED ==== 0000050 $$$$ //		pos.X = x;
+// #### DELETED ==== 0000050 $$$$ //		pos.Y = y;
+// #### DELETED ==== 0000050 $$$$ //	
+// #### DELETED ==== 0000050 $$$$ //		return pos;
+// #### DELETED ==== 0000050 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-iRect_t makeIRect(int l, int t, int w, int h)
-{
-	iRect_t rect;
-
-	rect.L = l;
-	rect.T = t;
-	rect.W = w;
-	rect.H = h;
-
-	return rect;
-}
+// #### DELETED ==== 0000051 $$$$ //	iRect_t makeIRect(int l, int t, int w, int h)
+// #### DELETED ==== 0000051 $$$$ //	{
+// #### DELETED ==== 0000051 $$$$ //		iRect_t rect;
+// #### DELETED ==== 0000051 $$$$ //	
+// #### DELETED ==== 0000051 $$$$ //		rect.L = l;
+// #### DELETED ==== 0000051 $$$$ //		rect.T = t;
+// #### DELETED ==== 0000051 $$$$ //		rect.W = w;
+// #### DELETED ==== 0000051 $$$$ //		rect.H = h;
+// #### DELETED ==== 0000051 $$$$ //	
+// #### DELETED ==== 0000051 $$$$ //		return rect;
+// #### DELETED ==== 0000051 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-d2D_t makeD2D(double x, double y)
-{
-	d2D_t pos;
-
-	pos.X = x;
-	pos.Y = y;
-
-	return pos;
-}
+// #### DELETED ==== 0000052 $$$$ //	d2D_t makeD2D(double x, double y)
+// #### DELETED ==== 0000052 $$$$ //	{
+// #### DELETED ==== 0000052 $$$$ //		d2D_t pos;
+// #### DELETED ==== 0000052 $$$$ //	
+// #### DELETED ==== 0000052 $$$$ //		pos.X = x;
+// #### DELETED ==== 0000052 $$$$ //		pos.Y = y;
+// #### DELETED ==== 0000052 $$$$ //	
+// #### DELETED ==== 0000052 $$$$ //		return pos;
+// #### DELETED ==== 0000052 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -208,16 +208,16 @@ void rotatePos(double angle, double &x, double &y)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void rotatePos(double angle, double &x, double &y, double originX, double originY)
-{
-	x -= originX;
-	y -= originY;
-
-	rotatePos(angle, x, y);
-
-	x += originX;
-	y += originY;
-}
+// #### DELETED ==== 0000053 $$$$ //	void rotatePos(double angle, double &x, double &y, double originX, double originY)
+// #### DELETED ==== 0000053 $$$$ //	{
+// #### DELETED ==== 0000053 $$$$ //		x -= originX;
+// #### DELETED ==== 0000053 $$$$ //		y -= originY;
+// #### DELETED ==== 0000053 $$$$ //	
+// #### DELETED ==== 0000053 $$$$ //		rotatePos(angle, x, y);
+// #### DELETED ==== 0000053 $$$$ //	
+// #### DELETED ==== 0000053 $$$$ //		x += originX;
+// #### DELETED ==== 0000053 $$$$ //		y += originY;
+// #### DELETED ==== 0000053 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */

@@ -94,10 +94,10 @@ LOG("[MBS.ctor] %d\n", blockSize);
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-	MBStock(const MBStock &source)
-	{
-		error();
-	}
+// #### DELETED ==== 0000105 $$$$ //		MBStock(const MBStock &source)
+// #### DELETED ==== 0000105 $$$$ //		{
+// #### DELETED ==== 0000105 $$$$ //			error();
+// #### DELETED ==== 0000105 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/

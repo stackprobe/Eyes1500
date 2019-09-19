@@ -160,7 +160,7 @@ void SEPlayLoop(int seId)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void UpdateSEVolume(void)
-{
-	GetSERes()->CallAllLoadedHandle(UpdateSEVolumeFunc);
-}
+// #### DELETED ==== 0000139 $$$$ //	void UpdateSEVolume(void)
+// #### DELETED ==== 0000139 $$$$ //	{
+// #### DELETED ==== 0000139 $$$$ //		GetSERes()->CallAllLoadedHandle(UpdateSEVolumeFunc);
+// #### DELETED ==== 0000139 $$$$ //	}

@@ -51,13 +51,13 @@ int isJChar(int chr)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int isJChar(char *pChr) // ret: 0 == not JChar, 1-2 == バイト数
-{
-	if(isJChar(*pChr))
-		return 1;
-
-	if(*pChr && isJChar(*pChr << 8 | pChr[1]))
-		return 2;
-
-	return 0;
-}
+// #### DELETED ==== 0000095 $$$$ //	int isJChar(char *pChr) // ret: 0 == not JChar, 1-2 == バイト数
+// #### DELETED ==== 0000095 $$$$ //	{
+// #### DELETED ==== 0000095 $$$$ //		if(isJChar(*pChr))
+// #### DELETED ==== 0000095 $$$$ //			return 1;
+// #### DELETED ==== 0000095 $$$$ //	
+// #### DELETED ==== 0000095 $$$$ //		if(*pChr && isJChar(*pChr << 8 | pChr[1]))
+// #### DELETED ==== 0000095 $$$$ //			return 2;
+// #### DELETED ==== 0000095 $$$$ //	
+// #### DELETED ==== 0000095 $$$$ //		return 0;
+// #### DELETED ==== 0000095 $$$$ //	}

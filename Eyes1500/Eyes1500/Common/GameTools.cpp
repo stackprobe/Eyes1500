@@ -288,28 +288,28 @@ void DrawCurtain(double whiteLevel)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int RotDir(int dir, int rot) // dir: 2468-1379-5, rot: -n == 反時計周りに n*45°, n == 時計周りに n*45°
-{
-	errorCase(dir < 1 || 9 < dir);
-
-	if(dir == 5)
-		return 5;
-
-	int rotL[] = { -1, 2, 3, 6, 1, -1, 9, 4, 7, 8 };
-	int rotR[] = { -1, 4, 1, 2, 7, -1, 3, 8, 9, 6 };
-
-	while(rot < 0)
-	{
-		dir = rotL[dir];
-		rot++;
-	}
-	while(0 < rot)
-	{
-		dir = rotR[dir];
-		rot--;
-	}
-	return dir;
-}
+// #### DELETED ==== 0000080 $$$$ //	int RotDir(int dir, int rot) // dir: 2468-1379-5, rot: -n == 反時計周りに n*45°, n == 時計周りに n*45°
+// #### DELETED ==== 0000080 $$$$ //	{
+// #### DELETED ==== 0000080 $$$$ //		errorCase(dir < 1 || 9 < dir);
+// #### DELETED ==== 0000080 $$$$ //	
+// #### DELETED ==== 0000080 $$$$ //		if(dir == 5)
+// #### DELETED ==== 0000080 $$$$ //			return 5;
+// #### DELETED ==== 0000080 $$$$ //	
+// #### DELETED ==== 0000080 $$$$ //		int rotL[] = { -1, 2, 3, 6, 1, -1, 9, 4, 7, 8 };
+// #### DELETED ==== 0000080 $$$$ //		int rotR[] = { -1, 4, 1, 2, 7, -1, 3, 8, 9, 6 };
+// #### DELETED ==== 0000080 $$$$ //	
+// #### DELETED ==== 0000080 $$$$ //		while(rot < 0)
+// #### DELETED ==== 0000080 $$$$ //		{
+// #### DELETED ==== 0000080 $$$$ //			dir = rotL[dir];
+// #### DELETED ==== 0000080 $$$$ //			rot++;
+// #### DELETED ==== 0000080 $$$$ //		}
+// #### DELETED ==== 0000080 $$$$ //		while(0 < rot)
+// #### DELETED ==== 0000080 $$$$ //		{
+// #### DELETED ==== 0000080 $$$$ //			dir = rotR[dir];
+// #### DELETED ==== 0000080 $$$$ //			rot--;
+// #### DELETED ==== 0000080 $$$$ //		}
+// #### DELETED ==== 0000080 $$$$ //		return dir;
+// #### DELETED ==== 0000080 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */

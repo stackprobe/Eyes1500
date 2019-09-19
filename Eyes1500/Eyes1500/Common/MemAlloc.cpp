@@ -142,24 +142,24 @@ void memAlloc_INIT(void)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void *memAlloc(int size)
-{
-	return REAL_memAlloc(size);
-}
+// #### DELETED ==== 0000106 $$$$ //	void *memAlloc(int size)
+// #### DELETED ==== 0000106 $$$$ //	{
+// #### DELETED ==== 0000106 $$$$ //		return REAL_memAlloc(size);
+// #### DELETED ==== 0000106 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void *memRealloc(void *block, int size)
-{
-	return REAL_memRealloc(block, size);
-}
+// #### DELETED ==== 0000107 $$$$ //	void *memRealloc(void *block, int size)
+// #### DELETED ==== 0000107 $$$$ //	{
+// #### DELETED ==== 0000107 $$$$ //		return REAL_memRealloc(block, size);
+// #### DELETED ==== 0000107 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void memFree(void *block)
-{
-	return REAL_memFree(block);
-}
+// #### DELETED ==== 0000108 $$$$ //	void memFree(void *block)
+// #### DELETED ==== 0000108 $$$$ //	{
+// #### DELETED ==== 0000108 $$$$ //		return REAL_memFree(block);
+// #### DELETED ==== 0000108 $$$$ //	}
 #else
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c

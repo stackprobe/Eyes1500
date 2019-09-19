@@ -759,10 +759,10 @@ autoList<uchar> *sha512_block(uchar *block, int size)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-autoList<uchar> *sha512_block(autoList<uchar> *block)
-{
-	return sha512_block(block->ElementAt(0), block->GetCount());
-}
+// #### DELETED ==== 0000134 $$$$ //	autoList<uchar> *sha512_block(autoList<uchar> *block)
+// #### DELETED ==== 0000134 $$$$ //	{
+// #### DELETED ==== 0000134 $$$$ //		return sha512_block(block->ElementAt(0), block->GetCount());
+// #### DELETED ==== 0000134 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
@@ -807,17 +807,17 @@ void sha512_expand(autoList<uchar> *block, int exnum) // exnum: 0- (0 as noop)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-autoList<uchar> *sha512_expand(char *line, int exnum)
-{
-	autoList<uchar> *block = new autoList<uchar>(strlen(line));
-
-	for(char *p = line; *p; p++)
-	{
-		block->AddElement(*p);
-	}
-	sha512_expand(block, exnum);
-	return block;
-}
+// #### DELETED ==== 0000135 $$$$ //	autoList<uchar> *sha512_expand(char *line, int exnum)
+// #### DELETED ==== 0000135 $$$$ //	{
+// #### DELETED ==== 0000135 $$$$ //		autoList<uchar> *block = new autoList<uchar>(strlen(line));
+// #### DELETED ==== 0000135 $$$$ //	
+// #### DELETED ==== 0000135 $$$$ //		for(char *p = line; *p; p++)
+// #### DELETED ==== 0000135 $$$$ //		{
+// #### DELETED ==== 0000135 $$$$ //			block->AddElement(*p);
+// #### DELETED ==== 0000135 $$$$ //		}
+// #### DELETED ==== 0000135 $$$$ //		sha512_expand(block, exnum);
+// #### DELETED ==== 0000135 $$$$ //		return block;
+// #### DELETED ==== 0000135 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */

@@ -113,24 +113,24 @@ char *readLine(FILE *fp, int lenmax)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-char *neReadLine(FILE *fp)
-{
-	char *line = readLine(fp);
-	errorCase(!line);
-	return line;
-}
+// #### DELETED ==== 0000064 $$$$ //	char *neReadLine(FILE *fp)
+// #### DELETED ==== 0000064 $$$$ //	{
+// #### DELETED ==== 0000064 $$$$ //		char *line = readLine(fp);
+// #### DELETED ==== 0000064 $$$$ //		errorCase(!line);
+// #### DELETED ==== 0000064 $$$$ //		return line;
+// #### DELETED ==== 0000064 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-char *nnReadLine(FILE *fp, char *defaultLine)
-{
-	char *line = readLine(fp);
-
-	if(!line)
-		line = strx(defaultLine);
-
-	return line;
-}
+// #### DELETED ==== 0000065 $$$$ //	char *nnReadLine(FILE *fp, char *defaultLine)
+// #### DELETED ==== 0000065 $$$$ //	{
+// #### DELETED ==== 0000065 $$$$ //		char *line = readLine(fp);
+// #### DELETED ==== 0000065 $$$$ //	
+// #### DELETED ==== 0000065 $$$$ //		if(!line)
+// #### DELETED ==== 0000065 $$$$ //			line = strx(defaultLine);
+// #### DELETED ==== 0000065 $$$$ //	
+// #### DELETED ==== 0000065 $$$$ //		return line;
+// #### DELETED ==== 0000065 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
@@ -154,12 +154,12 @@ autoList<char *> *readLines(char *file)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-autoList<char *> *readLines_x(char *file)
-{
-	autoList<char *> *lines = readLines(file);
-	memFree(file);
-	return lines;
-}
+// #### DELETED ==== 0000066 $$$$ //	autoList<char *> *readLines_x(char *file)
+// #### DELETED ==== 0000066 $$$$ //	{
+// #### DELETED ==== 0000066 $$$$ //		autoList<char *> *lines = readLines(file);
+// #### DELETED ==== 0000066 $$$$ //		memFree(file);
+// #### DELETED ==== 0000066 $$$$ //		return lines;
+// #### DELETED ==== 0000066 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -187,11 +187,11 @@ void writeLine(FILE *fp, char *line)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void writeLine_x(FILE *fp, char *line)
-{
-	writeLine(fp, line);
-	memFree(line);
-}
+// #### DELETED ==== 0000067 $$$$ //	void writeLine_x(FILE *fp, char *line)
+// #### DELETED ==== 0000067 $$$$ //	{
+// #### DELETED ==== 0000067 $$$$ //		writeLine(fp, line);
+// #### DELETED ==== 0000067 $$$$ //		memFree(line);
+// #### DELETED ==== 0000067 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -209,10 +209,10 @@ uint64 readUI64(FILE *fp, int width)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-uint readUI32(FILE *fp, int width)
-{
-	return (uint)readUI64(fp, width);
-}
+// #### DELETED ==== 0000068 $$$$ //	uint readUI32(FILE *fp, int width)
+// #### DELETED ==== 0000068 $$$$ //	{
+// #### DELETED ==== 0000068 $$$$ //		return (uint)readUI64(fp, width);
+// #### DELETED ==== 0000068 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
@@ -226,7 +226,7 @@ void writeUI64(FILE *fp, uint64 value, int width)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void writeUI32(FILE *fp, uint value, int width)
-{
-	writeUI64(fp, (uint64)value, width);
-}
+// #### DELETED ==== 0000069 $$$$ //	void writeUI32(FILE *fp, uint value, int width)
+// #### DELETED ==== 0000069 $$$$ //	{
+// #### DELETED ==== 0000069 $$$$ //		writeUI64(fp, (uint64)value, width);
+// #### DELETED ==== 0000069 $$$$ //	}

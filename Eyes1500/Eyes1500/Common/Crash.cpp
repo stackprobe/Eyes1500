@@ -113,15 +113,15 @@ int IsCrashed_Circle_Rect(
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int IsCrashed_Rect_Point(
-	double l, double t, double r, double b,
-	double x, double y
-	)
-{
-	return
-		l < x && x < r &&
-		t < y && y < b;
-}
+// #### DELETED ==== 0000040 $$$$ //	int IsCrashed_Rect_Point(
+// #### DELETED ==== 0000040 $$$$ //		double l, double t, double r, double b,
+// #### DELETED ==== 0000040 $$$$ //		double x, double y
+// #### DELETED ==== 0000040 $$$$ //		)
+// #### DELETED ==== 0000040 $$$$ //	{
+// #### DELETED ==== 0000040 $$$$ //		return
+// #### DELETED ==== 0000040 $$$$ //			l < x && x < r &&
+// #### DELETED ==== 0000040 $$$$ //			t < y && y < b;
+// #### DELETED ==== 0000040 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c

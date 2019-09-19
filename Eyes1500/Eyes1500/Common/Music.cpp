@@ -209,14 +209,14 @@ void MusicStop(void)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void MusicTouch(int musId)
-{
-	GetMusRes()->GetHandle(musId);
-}
+// #### DELETED ==== 0000111 $$$$ //	void MusicTouch(int musId)
+// #### DELETED ==== 0000111 $$$$ //	{
+// #### DELETED ==== 0000111 $$$$ //		GetMusRes()->GetHandle(musId);
+// #### DELETED ==== 0000111 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void UpdateMusicVolume(void)
-{
-	MusicFade(0, 1.0);
-}
+// #### DELETED ==== 0000112 $$$$ //	void UpdateMusicVolume(void)
+// #### DELETED ==== 0000112 $$$$ //	{
+// #### DELETED ==== 0000112 $$$$ //		MusicFade(0, 1.0);
+// #### DELETED ==== 0000112 $$$$ //	}

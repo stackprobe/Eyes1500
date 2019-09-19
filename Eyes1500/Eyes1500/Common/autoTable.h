@@ -35,10 +35,10 @@ public:
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-	autoTable(const autoTable &source)
-	{
-		error();
-	}
+// #### DELETED ==== 0000010 $$$$ //		autoTable(const autoTable &source)
+// #### DELETED ==== 0000010 $$$$ //		{
+// #### DELETED ==== 0000010 $$$$ //			error();
+// #### DELETED ==== 0000010 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
@@ -60,27 +60,27 @@ public:
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-	void SetCallBack(Element_t (*createCellFunc)(void), void (*releaseCellFunc)(Element_t) = NULL)
-	{
-		if(createCellFunc)
-			this->CreateCellFunc = createCellFunc;
-
-		if(releaseCellFunc)
-			this->ReleaseCellFunc = releaseCellFunc;
-	}
+// #### DELETED ==== 0000011 $$$$ //		void SetCallBack(Element_t (*createCellFunc)(void), void (*releaseCellFunc)(Element_t) = NULL)
+// #### DELETED ==== 0000011 $$$$ //		{
+// #### DELETED ==== 0000011 $$$$ //			if(createCellFunc)
+// #### DELETED ==== 0000011 $$$$ //				this->CreateCellFunc = createCellFunc;
+// #### DELETED ==== 0000011 $$$$ //	
+// #### DELETED ==== 0000011 $$$$ //			if(releaseCellFunc)
+// #### DELETED ==== 0000011 $$$$ //				this->ReleaseCellFunc = releaseCellFunc;
+// #### DELETED ==== 0000011 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-	void Change(autoTable<Element_t> *otherTable, int withCallBack = 0)
-	{
-		m_swap(this->Rows, otherTable->Rows, void *);
-
-		if(withCallBack)
-		{
-			m_swap(this->CreateCellFunc, otherTable->CreateCellFunc, void *);
-			m_swap(this->ReleaseCellFunc, otherTable->ReleaseCellFunc, void *);
-		}
-	}
+// #### DELETED ==== 0000012 $$$$ //		void Change(autoTable<Element_t> *otherTable, int withCallBack = 0)
+// #### DELETED ==== 0000012 $$$$ //		{
+// #### DELETED ==== 0000012 $$$$ //			m_swap(this->Rows, otherTable->Rows, void *);
+// #### DELETED ==== 0000012 $$$$ //	
+// #### DELETED ==== 0000012 $$$$ //			if(withCallBack)
+// #### DELETED ==== 0000012 $$$$ //			{
+// #### DELETED ==== 0000012 $$$$ //				m_swap(this->CreateCellFunc, otherTable->CreateCellFunc, void *);
+// #### DELETED ==== 0000012 $$$$ //				m_swap(this->ReleaseCellFunc, otherTable->ReleaseCellFunc, void *);
+// #### DELETED ==== 0000012 $$$$ //			}
+// #### DELETED ==== 0000012 $$$$ //		}
 
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -162,91 +162,91 @@ public:
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-	void SetSmallestSize(int w, int h)
-	{
-		m_maxim(w, this->GetWidth());
-		m_maxim(h, this->GetHeight());
+// #### DELETED ==== 0000013 $$$$ //		void SetSmallestSize(int w, int h)
+// #### DELETED ==== 0000013 $$$$ //		{
+// #### DELETED ==== 0000013 $$$$ //			m_maxim(w, this->GetWidth());
+// #### DELETED ==== 0000013 $$$$ //			m_maxim(h, this->GetHeight());
+// #### DELETED ==== 0000013 $$$$ //	
+// #### DELETED ==== 0000013 $$$$ //			this->Resize(w, h);
+// #### DELETED ==== 0000013 $$$$ //		}
+	/*
+		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+	*/
+// #### DELETED ==== 0000014 $$$$ //		Element_t *RefCellAt(int x, int y)
+// #### DELETED ==== 0000014 $$$$ //		{
+// #### DELETED ==== 0000014 $$$$ //			this->SetMinimal(x + 1, y + 1);
+// #### DELETED ==== 0000014 $$$$ //			return this->CellAt(x, y);
+// #### DELETED ==== 0000014 $$$$ //		}
+	/*
+		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+	*/
+// #### DELETED ==== 0000015 $$$$ //		Element_t RefCell(int x, int y, Element_t dummyElement)
+// #### DELETED ==== 0000015 $$$$ //		{
+// #### DELETED ==== 0000015 $$$$ //			if(
+// #### DELETED ==== 0000015 $$$$ //				x < 0 || this->GetWidth() <= x ||
+// #### DELETED ==== 0000015 $$$$ //				y < 0 || this->GetHeight() <= y
+// #### DELETED ==== 0000015 $$$$ //				)
+// #### DELETED ==== 0000015 $$$$ //			{
+// #### DELETED ==== 0000015 $$$$ //				return dummyElement;
+// #### DELETED ==== 0000015 $$$$ //			}
+// #### DELETED ==== 0000015 $$$$ //			return this->GetCell(x, y);
+// #### DELETED ==== 0000015 $$$$ //		}
+	/*
+		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+	*/
+// #### DELETED ==== 0000016 $$$$ //		Element_t RefCellEx(int x, int y)
+// #### DELETED ==== 0000016 $$$$ //		{
+// #### DELETED ==== 0000016 $$$$ //			this->SetSmallestSize(x + 1, y + 1);
+// #### DELETED ==== 0000016 $$$$ //			return this->GetCell(x, y);
+// #### DELETED ==== 0000016 $$$$ //		}
+	/*
+		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+	*/
+// #### DELETED ==== 0000017 $$$$ //		void PutCell(int x, int y, Element_t e)
+// #### DELETED ==== 0000017 $$$$ //		{
+// #### DELETED ==== 0000017 $$$$ //			this->SetSmallestSize(x + 1, y + 1);
+// #### DELETED ==== 0000017 $$$$ //			return this->SetCell(x, y, e);
+// #### DELETED ==== 0000017 $$$$ //		}
 
-		this->Resize(w, h);
-	}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-	Element_t *RefCellAt(int x, int y)
-	{
-		this->SetMinimal(x + 1, y + 1);
-		return this->CellAt(x, y);
-	}
+// #### DELETED ==== 0000018 $$$$ //		void Reset(int x, int y)
+// #### DELETED ==== 0000018 $$$$ //		{
+// #### DELETED ==== 0000018 $$$$ //			this->ReleaseCellFunc(this->GetCell(x, y));
+// #### DELETED ==== 0000018 $$$$ //			this->SetCell(x, y, this->CreateCellFunc());
+// #### DELETED ==== 0000018 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-	Element_t RefCell(int x, int y, Element_t dummyElement)
-	{
-		if(
-			x < 0 || this->GetWidth() <= x ||
-			y < 0 || this->GetHeight() <= y
-			)
-		{
-			return dummyElement;
-		}
-		return this->GetCell(x, y);
-	}
+// #### DELETED ==== 0000019 $$$$ //		void Reset(int l, int t, int w, int h)
+// #### DELETED ==== 0000019 $$$$ //		{
+// #### DELETED ==== 0000019 $$$$ //			for(int x = 0; x < w; x++)
+// #### DELETED ==== 0000019 $$$$ //			for(int y = 0; y < h; y++)
+// #### DELETED ==== 0000019 $$$$ //			{
+// #### DELETED ==== 0000019 $$$$ //				this->Reset(l + x, t + y);
+// #### DELETED ==== 0000019 $$$$ //			}
+// #### DELETED ==== 0000019 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-	Element_t RefCellEx(int x, int y)
-	{
-		this->SetSmallestSize(x + 1, y + 1);
-		return this->GetCell(x, y);
-	}
+// #### DELETED ==== 0000020 $$$$ //		void Reset()
+// #### DELETED ==== 0000020 $$$$ //		{
+// #### DELETED ==== 0000020 $$$$ //			this->Reset(0, 0, this->GetWidth(), this->GetHeight());
+// #### DELETED ==== 0000020 $$$$ //		}
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 	*/
-	void PutCell(int x, int y, Element_t e)
-	{
-		this->SetSmallestSize(x + 1, y + 1);
-		return this->SetCell(x, y, e);
-	}
-
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
-	void Reset(int x, int y)
-	{
-		this->ReleaseCellFunc(this->GetCell(x, y));
-		this->SetCell(x, y, this->CreateCellFunc());
-	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
-	void Reset(int l, int t, int w, int h)
-	{
-		for(int x = 0; x < w; x++)
-		for(int y = 0; y < h; y++)
-		{
-			this->Reset(l + x, t + y);
-		}
-	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
-	void Reset()
-	{
-		this->Reset(0, 0, this->GetWidth(), this->GetHeight());
-	}
-	/*
-		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-	*/
-	void Clear(int w, int h)
-	{
-		this->Resize(w, h);
-		this->Reset(
-			0,
-			0,
-			m_min(w, this->GetWidth()),
-			m_min(h, this->GetHeight())
-			);
-	}
+// #### DELETED ==== 0000021 $$$$ //		void Clear(int w, int h)
+// #### DELETED ==== 0000021 $$$$ //		{
+// #### DELETED ==== 0000021 $$$$ //			this->Resize(w, h);
+// #### DELETED ==== 0000021 $$$$ //			this->Reset(
+// #### DELETED ==== 0000021 $$$$ //				0,
+// #### DELETED ==== 0000021 $$$$ //				0,
+// #### DELETED ==== 0000021 $$$$ //				m_min(w, this->GetWidth()),
+// #### DELETED ==== 0000021 $$$$ //				m_min(h, this->GetHeight())
+// #### DELETED ==== 0000021 $$$$ //				);
+// #### DELETED ==== 0000021 $$$$ //		}
 
 	/*
 		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c

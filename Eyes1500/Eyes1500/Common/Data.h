@@ -1,28 +1,28 @@
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-template <class Value_t>
-void swap(Value_t *a, Value_t *b, int size)
-{
-	Value_t *tmp = na(Value_t, size);
-
-	memcpy(tmp, a, size);
-	memcpy(a, b, size);
-	memcpy(b, tmp, size);
-
-	memFree(tmp);
-}
+// #### DELETED ==== 0000054 $$$$ //	template <class Value_t>
+// #### DELETED ==== 0000054 $$$$ //	void swap(Value_t *a, Value_t *b, int size)
+// #### DELETED ==== 0000054 $$$$ //	{
+// #### DELETED ==== 0000054 $$$$ //		Value_t *tmp = na(Value_t, size);
+// #### DELETED ==== 0000054 $$$$ //	
+// #### DELETED ==== 0000054 $$$$ //		memcpy(tmp, a, size);
+// #### DELETED ==== 0000054 $$$$ //		memcpy(a, b, size);
+// #### DELETED ==== 0000054 $$$$ //		memcpy(b, tmp, size);
+// #### DELETED ==== 0000054 $$$$ //	
+// #### DELETED ==== 0000054 $$$$ //		memFree(tmp);
+// #### DELETED ==== 0000054 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-template <class Value_t>
-void swap(Value_t &a, Value_t &b)
-{
-	Value_t tmp = a;
-	a = b;
-	b = tmp;
-}
+// #### DELETED ==== 0000055 $$$$ //	template <class Value_t>
+// #### DELETED ==== 0000055 $$$$ //	void swap(Value_t &a, Value_t &b)
+// #### DELETED ==== 0000055 $$$$ //	{
+// #### DELETED ==== 0000055 $$$$ //		Value_t tmp = a;
+// #### DELETED ==== 0000055 $$$$ //		a = b;
+// #### DELETED ==== 0000055 $$$$ //		b = tmp;
+// #### DELETED ==== 0000055 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -105,11 +105,11 @@ void zeroclear(Var_t *var, int num = 1)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-template <class Var_t>
-int isallzero(Var_t *var, int num = 1)
-{
-	return isFilled(var, 0x00, num * sizeof(Var_t));
-}
+// #### DELETED ==== 0000056 $$$$ //	template <class Var_t>
+// #### DELETED ==== 0000056 $$$$ //	int isallzero(Var_t *var, int num = 1)
+// #### DELETED ==== 0000056 $$$$ //	{
+// #### DELETED ==== 0000056 $$$$ //		return isFilled(var, 0x00, num * sizeof(Var_t));
+// #### DELETED ==== 0000056 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -123,21 +123,21 @@ int isPointNull(Type_t **pp)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-template <class Deletable_t>
-void callDelete(Deletable_t *i)
-{
-	delete i;
-}
+// #### DELETED ==== 0000057 $$$$ //	template <class Deletable_t>
+// #### DELETED ==== 0000057 $$$$ //	void callDelete(Deletable_t *i)
+// #### DELETED ==== 0000057 $$$$ //	{
+// #### DELETED ==== 0000057 $$$$ //		delete i;
+// #### DELETED ==== 0000057 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-template <class Deletable_t>
-void deleteList(autoList<Deletable_t> *list)
-{
-	list->CallAllElement(callDelete);
-	delete list;
-}
+// #### DELETED ==== 0000058 $$$$ //	template <class Deletable_t>
+// #### DELETED ==== 0000058 $$$$ //	void deleteList(autoList<Deletable_t> *list)
+// #### DELETED ==== 0000058 $$$$ //	{
+// #### DELETED ==== 0000058 $$$$ //		list->CallAllElement(callDelete);
+// #### DELETED ==== 0000058 $$$$ //		delete list;
+// #### DELETED ==== 0000058 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c

@@ -28,24 +28,24 @@ autoList<uchar> *readAllBytes(char *file)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-autoList<uchar> *readAllBytes_x(char *file)
-{
-	autoList<uchar> *out = readAllBytes(file);
-	memFree(file);
-	return out;
-}
+// #### DELETED ==== 0000070 $$$$ //	autoList<uchar> *readAllBytes_x(char *file)
+// #### DELETED ==== 0000070 $$$$ //	{
+// #### DELETED ==== 0000070 $$$$ //		autoList<uchar> *out = readAllBytes(file);
+// #### DELETED ==== 0000070 $$$$ //		memFree(file);
+// #### DELETED ==== 0000070 $$$$ //		return out;
+// #### DELETED ==== 0000070 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int readChar(autoList<uchar> *fileData, int &rIndex)
-{
-	if(rIndex < fileData->GetCount())
-	{
-		return fileData->GetElement(rIndex++);
-	}
-	return EOF;
-}
+// #### DELETED ==== 0000071 $$$$ //	int readChar(autoList<uchar> *fileData, int &rIndex)
+// #### DELETED ==== 0000071 $$$$ //	{
+// #### DELETED ==== 0000071 $$$$ //		if(rIndex < fileData->GetCount())
+// #### DELETED ==== 0000071 $$$$ //		{
+// #### DELETED ==== 0000071 $$$$ //			return fileData->GetElement(rIndex++);
+// #### DELETED ==== 0000071 $$$$ //		}
+// #### DELETED ==== 0000071 $$$$ //		return EOF;
+// #### DELETED ==== 0000071 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
@@ -89,15 +89,15 @@ char *neReadLine(autoList<uchar> *fileData, int &rIndex)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-char *nnReadLine(autoList<uchar> *fileData, int &rIndex, char *defaultLine)
-{
-	char *line = readLine(fileData, rIndex);
-
-	if(!line)
-		line = strx(defaultLine);
-
-	return line;
-}
+// #### DELETED ==== 0000072 $$$$ //	char *nnReadLine(autoList<uchar> *fileData, int &rIndex, char *defaultLine)
+// #### DELETED ==== 0000072 $$$$ //	{
+// #### DELETED ==== 0000072 $$$$ //		char *line = readLine(fileData, rIndex);
+// #### DELETED ==== 0000072 $$$$ //	
+// #### DELETED ==== 0000072 $$$$ //		if(!line)
+// #### DELETED ==== 0000072 $$$$ //			line = strx(defaultLine);
+// #### DELETED ==== 0000072 $$$$ //	
+// #### DELETED ==== 0000072 $$$$ //		return line;
+// #### DELETED ==== 0000072 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
@@ -150,10 +150,10 @@ void writeAllBytes_cx(char *file, autoList<uchar> *fileData)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void writeChar(autoList<uchar> *fileData, int chr)
-{
-	fileData->AddElement(chr);
-}
+// #### DELETED ==== 0000073 $$$$ //	void writeChar(autoList<uchar> *fileData, int chr)
+// #### DELETED ==== 0000073 $$$$ //	{
+// #### DELETED ==== 0000073 $$$$ //		fileData->AddElement(chr);
+// #### DELETED ==== 0000073 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
@@ -175,11 +175,11 @@ void writeLine(autoList<uchar> *fileData, char *line)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void writeLine_x(autoList<uchar> *fileData, char *line)
-{
-	writeLine(fileData, line);
-	memFree(line);
-}
+// #### DELETED ==== 0000074 $$$$ //	void writeLine_x(autoList<uchar> *fileData, char *line)
+// #### DELETED ==== 0000074 $$$$ //	{
+// #### DELETED ==== 0000074 $$$$ //		writeLine(fileData, line);
+// #### DELETED ==== 0000074 $$$$ //		memFree(line);
+// #### DELETED ==== 0000074 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -197,10 +197,10 @@ uint64 readUI64(autoList<uchar> *fileData, int &rIndex, int width)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-uint readUI32(autoList<uchar> *fileData, int &rIndex, int width)
-{
-	return (uint)readUI64(fileData, rIndex, width);
-}
+// #### DELETED ==== 0000075 $$$$ //	uint readUI32(autoList<uchar> *fileData, int &rIndex, int width)
+// #### DELETED ==== 0000075 $$$$ //	{
+// #### DELETED ==== 0000075 $$$$ //		return (uint)readUI64(fileData, rIndex, width);
+// #### DELETED ==== 0000075 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
@@ -222,26 +222,26 @@ void writeUI32(autoList<uchar> *fileData, uint value, int width)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-autoList<uchar> *readBlock(FILE *fp, int width)
-{
-	autoList<uchar> *retBlock = new autoList<uchar>();
-
-	for(int index = 0; index < width; index++)
-	{
-		retBlock->AddElement((uchar)readChar(fp));
-	}
-	return retBlock;
-}
+// #### DELETED ==== 0000076 $$$$ //	autoList<uchar> *readBlock(FILE *fp, int width)
+// #### DELETED ==== 0000076 $$$$ //	{
+// #### DELETED ==== 0000076 $$$$ //		autoList<uchar> *retBlock = new autoList<uchar>();
+// #### DELETED ==== 0000076 $$$$ //	
+// #### DELETED ==== 0000076 $$$$ //		for(int index = 0; index < width; index++)
+// #### DELETED ==== 0000076 $$$$ //		{
+// #### DELETED ==== 0000076 $$$$ //			retBlock->AddElement((uchar)readChar(fp));
+// #### DELETED ==== 0000076 $$$$ //		}
+// #### DELETED ==== 0000076 $$$$ //		return retBlock;
+// #### DELETED ==== 0000076 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-autoList<uchar> *readBlock(autoList<uchar> *fileData, int &rIndex, int width)
-{
-	autoList<uchar> *retBlock = new autoList<uchar>();
-
-	for(int index = 0; index < width; index++)
-	{
-		retBlock->AddElement(fileData->RefElement(rIndex++, 0x00));
-	}
-	return retBlock;
-}
+// #### DELETED ==== 0000077 $$$$ //	autoList<uchar> *readBlock(autoList<uchar> *fileData, int &rIndex, int width)
+// #### DELETED ==== 0000077 $$$$ //	{
+// #### DELETED ==== 0000077 $$$$ //		autoList<uchar> *retBlock = new autoList<uchar>();
+// #### DELETED ==== 0000077 $$$$ //	
+// #### DELETED ==== 0000077 $$$$ //		for(int index = 0; index < width; index++)
+// #### DELETED ==== 0000077 $$$$ //		{
+// #### DELETED ==== 0000077 $$$$ //			retBlock->AddElement(fileData->RefElement(rIndex++, 0x00));
+// #### DELETED ==== 0000077 $$$$ //		}
+// #### DELETED ==== 0000077 $$$$ //		return retBlock;
+// #### DELETED ==== 0000077 $$$$ //	}

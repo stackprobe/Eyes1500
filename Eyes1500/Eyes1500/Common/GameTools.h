@@ -21,15 +21,15 @@ void sceneEnter(void);
 void sceneLeave(void);
 
 /*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-ex.
-	forscene(100)
-	{
-		// sc_numer == (0 - 100), 101 回処理される。
-		EachFrame();
-	}
+// #### DELETED ==== 0000081 $$$$ //		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+// #### DELETED ==== 0000081 $$$$ //	＊/
+// #### DELETED ==== 0000081 $$$$ //	/*
+// #### DELETED ==== 0000081 $$$$ //	ex.
+// #### DELETED ==== 0000081 $$$$ //		forscene(100)
+// #### DELETED ==== 0000081 $$$$ //		{
+// #### DELETED ==== 0000081 $$$$ //			// sc_numer == (0 - 100), 101 回処理される。
+// #### DELETED ==== 0000081 $$$$ //			EachFrame();
+// #### DELETED ==== 0000081 $$$$ //		}
 	sceneLeave();
 
 注意
@@ -56,30 +56,30 @@ ex.
 	for(sceneEnter(), sc_denom = (frameMax), sc_numer = 0; sc_numer <= (frameMax) && (sc_rate = (double)sc_numer / sc_denom, 1); sc_numer++)
 
 /*
-	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
-*/
-/*
-ex.
-	ifsceneBegin(60, count)
-	{
-		// count == (0 - 60), sc_numer == (0 - 60), sc_denom == 60, 61 回処理される。
-		EachFrame();
-	}
-	ifscene(90)
-	{
-		// count == (61 - 151), sc_numer == (0 - 90), sc_denom == 90, 91 回処理される。
-		EachFrame();
-	}
-	ifscene(50)
-	{
-		// count == (152 - 202), sc_numer == (0 - 50), sc_denom == 50, 51 回処理される。
-		EachFrame();
-	}
-	ifsceneEnd
-	{
-		// count == (203 - *), sc_numer == (0 - *), sc_denom == 保証しない
-		EachFrame();
-	}
+// #### DELETED ==== 0000082 $$$$ //		copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
+// #### DELETED ==== 0000082 $$$$ //	＊/
+// #### DELETED ==== 0000082 $$$$ //	/*
+// #### DELETED ==== 0000082 $$$$ //	ex.
+// #### DELETED ==== 0000082 $$$$ //		ifsceneBegin(60, count)
+// #### DELETED ==== 0000082 $$$$ //		{
+// #### DELETED ==== 0000082 $$$$ //			// count == (0 - 60), sc_numer == (0 - 60), sc_denom == 60, 61 回処理される。
+// #### DELETED ==== 0000082 $$$$ //			EachFrame();
+// #### DELETED ==== 0000082 $$$$ //		}
+// #### DELETED ==== 0000083 $$$$ //		ifscene(90)
+// #### DELETED ==== 0000083 $$$$ //		{
+// #### DELETED ==== 0000083 $$$$ //			// count == (61 - 151), sc_numer == (0 - 90), sc_denom == 90, 91 回処理される。
+// #### DELETED ==== 0000083 $$$$ //			EachFrame();
+// #### DELETED ==== 0000083 $$$$ //		}
+// #### DELETED ==== 0000084 $$$$ //		ifscene(50)
+// #### DELETED ==== 0000084 $$$$ //		{
+// #### DELETED ==== 0000084 $$$$ //			// count == (152 - 202), sc_numer == (0 - 50), sc_denom == 50, 51 回処理される。
+// #### DELETED ==== 0000084 $$$$ //			EachFrame();
+// #### DELETED ==== 0000084 $$$$ //		}
+// #### DELETED ==== 0000085 $$$$ //		ifsceneEnd
+// #### DELETED ==== 0000085 $$$$ //		{
+// #### DELETED ==== 0000085 $$$$ //			// count == (203 - *), sc_numer == (0 - *), sc_denom == 保証しない
+// #### DELETED ==== 0000085 $$$$ //			EachFrame();
+// #### DELETED ==== 0000085 $$$$ //		}
 	sceneLeave();
 
 シーケンス

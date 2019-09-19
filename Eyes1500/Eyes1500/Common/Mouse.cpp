@@ -48,10 +48,10 @@ int GetMouInput(int mouBtnId)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int GetMouPound(int mouBtnId)
-{
-	return isPound(GetMouInput(mouBtnId));
-}
+// #### DELETED ==== 0000109 $$$$ //	int GetMouPound(int mouBtnId)
+// #### DELETED ==== 0000109 $$$$ //	{
+// #### DELETED ==== 0000109 $$$$ //		return isPound(GetMouInput(mouBtnId));
+// #### DELETED ==== 0000109 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
@@ -102,28 +102,28 @@ int MouseMoveY;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void UpdateMouseMove(void)
-{
-	static int lastFrame = -IMAX;
-	static int centerX = SCREEN_CENTER_X;
-	static int centerY = SCREEN_CENTER_Y;
-
-	errorCase(ProcFrame <= lastFrame); // ? 2回以上更新した。
-
-	UpdateMousePos();
-
-	MouseMoveX = MouseX - centerX;
-	MouseMoveY = MouseY - centerY;
-
-	MouseX = centerX;
-	MouseY = centerY;
-
-	ApplyMousePos();
-
-	if(lastFrame + 1 < ProcFrame) // ? 1フレーム以上更新しなかった。
-	{
-		MouseMoveX = 0;
-		MouseMoveY = 0;
-	}
-	lastFrame = ProcFrame;
-}
+// #### DELETED ==== 0000110 $$$$ //	void UpdateMouseMove(void)
+// #### DELETED ==== 0000110 $$$$ //	{
+// #### DELETED ==== 0000110 $$$$ //		static int lastFrame = -IMAX;
+// #### DELETED ==== 0000110 $$$$ //		static int centerX = SCREEN_CENTER_X;
+// #### DELETED ==== 0000110 $$$$ //		static int centerY = SCREEN_CENTER_Y;
+// #### DELETED ==== 0000110 $$$$ //	
+// #### DELETED ==== 0000110 $$$$ //		errorCase(ProcFrame <= lastFrame); // ? 2回以上更新した。
+// #### DELETED ==== 0000110 $$$$ //	
+// #### DELETED ==== 0000110 $$$$ //		UpdateMousePos();
+// #### DELETED ==== 0000110 $$$$ //	
+// #### DELETED ==== 0000110 $$$$ //		MouseMoveX = MouseX - centerX;
+// #### DELETED ==== 0000110 $$$$ //		MouseMoveY = MouseY - centerY;
+// #### DELETED ==== 0000110 $$$$ //	
+// #### DELETED ==== 0000110 $$$$ //		MouseX = centerX;
+// #### DELETED ==== 0000110 $$$$ //		MouseY = centerY;
+// #### DELETED ==== 0000110 $$$$ //	
+// #### DELETED ==== 0000110 $$$$ //		ApplyMousePos();
+// #### DELETED ==== 0000110 $$$$ //	
+// #### DELETED ==== 0000110 $$$$ //		if(lastFrame + 1 < ProcFrame) // ? 1フレーム以上更新しなかった。
+// #### DELETED ==== 0000110 $$$$ //		{
+// #### DELETED ==== 0000110 $$$$ //			MouseMoveX = 0;
+// #### DELETED ==== 0000110 $$$$ //			MouseMoveY = 0;
+// #### DELETED ==== 0000110 $$$$ //		}
+// #### DELETED ==== 0000110 $$$$ //		lastFrame = ProcFrame;
+// #### DELETED ==== 0000110 $$$$ //	}

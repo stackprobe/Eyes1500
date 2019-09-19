@@ -46,7 +46,7 @@ int GetKeyInput(int keyId)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int GetKeyPound(int keyId)
-{
-	return isPound(GetKeyInput(keyId));
-}
+// #### DELETED ==== 0000096 $$$$ //	int GetKeyPound(int keyId)
+// #### DELETED ==== 0000096 $$$$ //	{
+// #### DELETED ==== 0000096 $$$$ //		return isPound(GetKeyInput(keyId));
+// #### DELETED ==== 0000096 $$$$ //	}

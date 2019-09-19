@@ -29,27 +29,27 @@ SubScreen_t *CreateSubScreen(int w, int h, int aFlag)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void ReleaseSubScreen(SubScreen_t *i)
-{
-	if(i == NULL)
-		return;
-
-	for(int index = 0; index < GetSubScreenList()->GetCount(); index++)
-	{
-		if(GetSubScreenList()->GetElement(index) == i)
-		{
-			GetSubScreenList()->FastDesertElement(index);
-			goto endDesert;
-		}
-	}
-	error(); // not found
-endDesert:
-
-	if(i->Handle != -1)
-		errorCase(DeleteGraph(i->Handle)); // ? 失敗
-
-	memFree(i);
-}
+// #### DELETED ==== 0000145 $$$$ //	void ReleaseSubScreen(SubScreen_t *i)
+// #### DELETED ==== 0000145 $$$$ //	{
+// #### DELETED ==== 0000145 $$$$ //		if(i == NULL)
+// #### DELETED ==== 0000145 $$$$ //			return;
+// #### DELETED ==== 0000145 $$$$ //	
+// #### DELETED ==== 0000145 $$$$ //		for(int index = 0; index < GetSubScreenList()->GetCount(); index++)
+// #### DELETED ==== 0000145 $$$$ //		{
+// #### DELETED ==== 0000145 $$$$ //			if(GetSubScreenList()->GetElement(index) == i)
+// #### DELETED ==== 0000145 $$$$ //			{
+// #### DELETED ==== 0000145 $$$$ //				GetSubScreenList()->FastDesertElement(index);
+// #### DELETED ==== 0000145 $$$$ //				goto endDesert;
+// #### DELETED ==== 0000145 $$$$ //			}
+// #### DELETED ==== 0000145 $$$$ //		}
+// #### DELETED ==== 0000145 $$$$ //		error(); // not found
+// #### DELETED ==== 0000145 $$$$ //	endDesert:
+// #### DELETED ==== 0000145 $$$$ //	
+// #### DELETED ==== 0000145 $$$$ //		if(i->Handle != -1)
+// #### DELETED ==== 0000145 $$$$ //			errorCase(DeleteGraph(i->Handle)); // ? 失敗
+// #### DELETED ==== 0000145 $$$$ //	
+// #### DELETED ==== 0000145 $$$$ //		memFree(i);
+// #### DELETED ==== 0000145 $$$$ //	}
 
 // <-- cdtor
 
@@ -93,43 +93,43 @@ void ChangeDrawScreen(SubScreen_t *screen)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void RestoreDrawScreen(void)
-{
-	ChangeDrawScreen(Gnd.MainScreen ? GetHandle(Gnd.MainScreen) : DX_SCREEN_BACK);
-}
+// #### DELETED ==== 0000146 $$$$ //	void RestoreDrawScreen(void)
+// #### DELETED ==== 0000146 $$$$ //	{
+// #### DELETED ==== 0000146 $$$$ //		ChangeDrawScreen(Gnd.MainScreen ? GetHandle(Gnd.MainScreen) : DX_SCREEN_BACK);
+// #### DELETED ==== 0000146 $$$$ //	}
 
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-i2D_t GetSubScreenSize(SubScreen_t *screen)
-{
-	i2D_t size;
-
-	size.X = screen->W;
-	size.Y = screen->H;
-
-	return size;
-}
+// #### DELETED ==== 0000147 $$$$ //	i2D_t GetSubScreenSize(SubScreen_t *screen)
+// #### DELETED ==== 0000147 $$$$ //	{
+// #### DELETED ==== 0000147 $$$$ //		i2D_t size;
+// #### DELETED ==== 0000147 $$$$ //	
+// #### DELETED ==== 0000147 $$$$ //		size.X = screen->W;
+// #### DELETED ==== 0000147 $$$$ //		size.Y = screen->H;
+// #### DELETED ==== 0000147 $$$$ //	
+// #### DELETED ==== 0000147 $$$$ //		return size;
+// #### DELETED ==== 0000147 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-i2D_t GetDrawScreenSize(void) // 描画領域のサイズ？
-{
-	int w;
-	int h;
-	int cbd;
-
-	errorCase(GetScreenState(&w, &h, &cbd));
-	errorCase(!m_isRange(w, 1, IMAX));
-	errorCase(!m_isRange(h, 1, IMAX));
-
-	i2D_t size;
-
-	size.X = w;
-	size.Y = h;
-
-	return size;
-}
+// #### DELETED ==== 0000148 $$$$ //	i2D_t GetDrawScreenSize(void) // 描画領域のサイズ？
+// #### DELETED ==== 0000148 $$$$ //	{
+// #### DELETED ==== 0000148 $$$$ //		int w;
+// #### DELETED ==== 0000148 $$$$ //		int h;
+// #### DELETED ==== 0000148 $$$$ //		int cbd;
+// #### DELETED ==== 0000148 $$$$ //	
+// #### DELETED ==== 0000148 $$$$ //		errorCase(GetScreenState(&w, &h, &cbd));
+// #### DELETED ==== 0000148 $$$$ //		errorCase(!m_isRange(w, 1, IMAX));
+// #### DELETED ==== 0000148 $$$$ //		errorCase(!m_isRange(h, 1, IMAX));
+// #### DELETED ==== 0000148 $$$$ //	
+// #### DELETED ==== 0000148 $$$$ //		i2D_t size;
+// #### DELETED ==== 0000148 $$$$ //	
+// #### DELETED ==== 0000148 $$$$ //		size.X = w;
+// #### DELETED ==== 0000148 $$$$ //		size.Y = h;
+// #### DELETED ==== 0000148 $$$$ //	
+// #### DELETED ==== 0000148 $$$$ //		return size;
+// #### DELETED ==== 0000148 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */

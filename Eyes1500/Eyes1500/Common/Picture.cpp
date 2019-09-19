@@ -158,10 +158,10 @@ void Pic_ReleaseSoftImage(int si_h)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void Pic_ReleaseGraphicHandle(int handle)
-{
-	errorCase(DeleteGraph(handle)); // ? Ž¸”s
-}
+// #### DELETED ==== 0000117 $$$$ //	void Pic_ReleaseGraphicHandle(int handle)
+// #### DELETED ==== 0000117 $$$$ //	{
+// #### DELETED ==== 0000117 $$$$ //		errorCase(DeleteGraph(handle)); // ? Ž¸”s
+// #### DELETED ==== 0000117 $$$$ //	}
 
 // < Pic_
 

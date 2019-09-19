@@ -74,14 +74,14 @@ void getFileList(char *dir, autoList<char *> *subDirs, autoList<char *> *files)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-void updateFindData(char *path)
-{
-	errorCase(m_isEmpty(path));
-
-	intptr_t h = _findfirst(path, &lastFindData);
-	errorCase(h == -1);
-	_findclose(h);
-}
+// #### DELETED ==== 0000061 $$$$ //	void updateFindData(char *path)
+// #### DELETED ==== 0000061 $$$$ //	{
+// #### DELETED ==== 0000061 $$$$ //		errorCase(m_isEmpty(path));
+// #### DELETED ==== 0000061 $$$$ //	
+// #### DELETED ==== 0000061 $$$$ //		intptr_t h = _findfirst(path, &lastFindData);
+// #### DELETED ==== 0000061 $$$$ //		errorCase(h == -1);
+// #### DELETED ==== 0000061 $$$$ //		_findclose(h);
+// #### DELETED ==== 0000061 $$$$ //	}
 
 // ----
 
@@ -329,12 +329,12 @@ char *makeTempPath(char *ext) // ext: NULL ok
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-char *makeTempFile(char *ext) // ext: NULL ok
-{
-	char *file = makeTempPath(ext);
-	createFile(file);
-	return file;
-}
+// #### DELETED ==== 0000062 $$$$ //	char *makeTempFile(char *ext) // ext: NULL ok
+// #### DELETED ==== 0000062 $$$$ //	{
+// #### DELETED ==== 0000062 $$$$ //		char *file = makeTempPath(ext);
+// #### DELETED ==== 0000062 $$$$ //		createFile(file);
+// #### DELETED ==== 0000062 $$$$ //		return file;
+// #### DELETED ==== 0000062 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
@@ -370,12 +370,12 @@ __int64 getFileSizeFPSS(FILE *fp)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-__int64 getFileSize(char *file)
-{
-	FILE *fp = fileOpen(file, "rb");
-
-	__int64 size = getFileSizeFP(fp);
-
-	fileClose(fp);
-	return size;
-}
+// #### DELETED ==== 0000063 $$$$ //	__int64 getFileSize(char *file)
+// #### DELETED ==== 0000063 $$$$ //	{
+// #### DELETED ==== 0000063 $$$$ //		FILE *fp = fileOpen(file, "rb");
+// #### DELETED ==== 0000063 $$$$ //	
+// #### DELETED ==== 0000063 $$$$ //		__int64 size = getFileSizeFP(fp);
+// #### DELETED ==== 0000063 $$$$ //	
+// #### DELETED ==== 0000063 $$$$ //		fileClose(fp);
+// #### DELETED ==== 0000063 $$$$ //		return size;
+// #### DELETED ==== 0000063 $$$$ //	}

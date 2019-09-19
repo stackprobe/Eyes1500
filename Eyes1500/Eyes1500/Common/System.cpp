@@ -84,10 +84,10 @@ static int ArgIndex = 1;
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-int hasArgs(int count)
-{
-	return count <= __argc - ArgIndex;
-}
+// #### DELETED ==== 0000149 $$$$ //	int hasArgs(int count)
+// #### DELETED ==== 0000149 $$$$ //	{
+// #### DELETED ==== 0000149 $$$$ //		return count <= __argc - ArgIndex;
+// #### DELETED ==== 0000149 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
@@ -114,12 +114,12 @@ char *getArg(int index)
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-char *nextArg(void)
-{
-	char *arg = getArg(0);
-	ArgIndex++;
-	return arg;
-}
+// #### DELETED ==== 0000150 $$$$ //	char *nextArg(void)
+// #### DELETED ==== 0000150 $$$$ //	{
+// #### DELETED ==== 0000150 $$$$ //		char *arg = getArg(0);
+// #### DELETED ==== 0000150 $$$$ //		ArgIndex++;
+// #### DELETED ==== 0000150 $$$$ //		return arg;
+// #### DELETED ==== 0000150 $$$$ //	}
 
 // < arg
 
@@ -134,21 +134,21 @@ int IsWindowActive(void) // ret: ? このウィンドウはアクティブ
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
-static int GetNowCount_TEST()
-{
-	static int inited = 0;
-	static int startCount;
-	int currCount = GetNowCount();
-
-	if(!inited)
-	{
-		startCount = GetNowCount();
-		inited = 1;
-	}
-	currCount -= startCount;
-	currCount -= 10000; // 要調整
-	return currCount;
-}
+// #### DELETED ==== 0000151 $$$$ //	static int GetNowCount_TEST()
+// #### DELETED ==== 0000151 $$$$ //	{
+// #### DELETED ==== 0000151 $$$$ //		static int inited = 0;
+// #### DELETED ==== 0000151 $$$$ //		static int startCount;
+// #### DELETED ==== 0000151 $$$$ //		int currCount = GetNowCount();
+// #### DELETED ==== 0000151 $$$$ //	
+// #### DELETED ==== 0000151 $$$$ //		if(!inited)
+// #### DELETED ==== 0000151 $$$$ //		{
+// #### DELETED ==== 0000151 $$$$ //			startCount = GetNowCount();
+// #### DELETED ==== 0000151 $$$$ //			inited = 1;
+// #### DELETED ==== 0000151 $$$$ //		}
+// #### DELETED ==== 0000151 $$$$ //		currCount -= startCount;
+// #### DELETED ==== 0000151 $$$$ //		currCount -= 10000; // 要調整
+// #### DELETED ==== 0000151 $$$$ //		return currCount;
+// #### DELETED ==== 0000151 $$$$ //	}
 /*
 	copied the source file by https://github.com/stackprobe/Factory/blob/master/SubTools/CopyLib.c
 */
