@@ -2,7 +2,7 @@
 
 EnemyTamaBlast_t *CreateEnemyTamaBlast(int x, int y)
 {
-	EnemyTamaBlast_t *i = nb(EnemyTamaBlast_t);
+	EnemyTamaBlast_t *i = nb_(EnemyTamaBlast_t);
 
 	i->X = x;
 	i->Y = y;

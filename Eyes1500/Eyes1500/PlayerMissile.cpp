@@ -2,7 +2,7 @@
 
 PlayerMissile_t *CreatePlayerMissile(double x, double y, double dir)
 {
-	PlayerMissile_t *i = nb(PlayerMissile_t);
+	PlayerMissile_t *i = nb_(PlayerMissile_t);
 
 	i->X = x;
 	i->Y = y;

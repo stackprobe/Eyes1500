@@ -2,7 +2,7 @@
 
 PlayerTama_t *CreatePlayerTama(double x, double y)
 {
-	PlayerTama_t *i = nb(PlayerTama_t);
+	PlayerTama_t *i = nb_(PlayerTama_t);
 
 	i->X = x;
 	i->Y = y;

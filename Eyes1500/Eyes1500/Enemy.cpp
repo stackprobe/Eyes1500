@@ -2,7 +2,7 @@
 
 Enemy_t *CreateEnemy(EnemyKind_t kind, double x, double y)
 {
-	Enemy_t *i = nb(Enemy_t);
+	Enemy_t *i = nb_(Enemy_t);
 
 	i->Kind = kind;
 	i->X = x;

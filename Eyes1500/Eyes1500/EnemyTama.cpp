@@ -2,7 +2,7 @@
 
 EnemyTama_t *CreateEnemyTama(double x, double y, double dir, double speed, int bombFrame, int homing)
 {
-	EnemyTama_t *i = nb(EnemyTama_t);
+	EnemyTama_t *i = nb_(EnemyTama_t);
 
 	i->BombFrame = bombFrame;
 	i->Homing = homing;
