@@ -93,3 +93,20 @@ static int MultiJammer(autoList<uchar> *block, int encodeFlag)
 
 	return 1;
 }
+int Jammer(autoList<uchar> *block, int encodeFlag) // ret: ? ê¨å˜
+{
+	int retval;
+
+	if(encodeFlag)
+	{
+		errorCase(!MultiJammer(block, 1));
+		KRK(block, 0);
+		retval = 1;
+	}
+	else
+	{
+		KRK(block, 1);
+		retval = MultiJammer(block, 0);
+	}
+	return retval;
+}

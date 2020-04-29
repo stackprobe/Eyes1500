@@ -27,7 +27,7 @@
 
 // app > @ define LOG_ENABLED
 
-/*
+//*
 #define LOG_ENABLED 0
 /*/
 #define LOG_ENABLED 1
