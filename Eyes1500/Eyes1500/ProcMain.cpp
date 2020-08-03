@@ -11,8 +11,8 @@ void ProcMain(void)
 #elif 1 // test
 	TitleMenu();
 #elif 0 // test
-	error(); // todo
+	error(); // HACK
 #else
-	error(); // todo
+	error(); // HACK
 #endif
 }
