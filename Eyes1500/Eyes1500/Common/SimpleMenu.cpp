@@ -1,15 +1,15 @@
 #include "all.h"
 
-int SmplMenu_Color = -1;
-int SmplMenu_BorderColor = -1;
-int SmplMenu_WallColor = -1;
-int SmplMenu_WallPicId = -1;
-double SmplMenu_WallCurtain = 0.0;
-int SmplMenu_X = 16;
-int SmplMenu_Y = 16;
-int SmplMenu_YStep = 32;
+int SimpleMenu_Color = -1;
+int SimpleMenu_BorderColor = -1;
+int SimpleMenu_WallColor = -1;
+int SimpleMenu_WallPicId = -1;
+double SimpleMenu_WallCurtain = 0.0;
+int SimpleMenu_X = 16;
+int SimpleMenu_Y = 16;
+int SimpleMenu_YStep = 32;
 
-int SmplMenu(char *menuTitle, char **menuItems, int selectMax, int selectIndex)
+int SimpleMenu(char *menuTitle, char **menuItems, int selectMax, int selectIndex)
 {
 	SetCurtain();
 	FreezeInput();
@@ -41,22 +41,22 @@ int SmplMenu(char *menuTitle, char **menuItems, int selectMax, int selectIndex)
 
 		DrawCurtain();
 
-		if(SmplMenu_WallColor != -1)
-			DrawBox(0, 0, SCREEN_W, SCREEN_H, SmplMenu_WallColor, 1);
+		if(SimpleMenu_WallColor != -1)
+			DrawBox(0, 0, SCREEN_W, SCREEN_H, SimpleMenu_WallColor, 1);
 
-		if(SmplMenu_WallPicId != -1)
+		if(SimpleMenu_WallPicId != -1)
 		{
-			DrawRect(SmplMenu_WallPicId, 0, 0, SCREEN_W, SCREEN_H);
-//			DrawCenter(SmplMenu_WallPicId, SCREEN_W / 2.0, SCREEN_H / 2.0); // old
-			DrawCurtain(SmplMenu_WallCurtain);
+			DrawRect(SimpleMenu_WallPicId, 0, 0, SCREEN_W, SCREEN_H);
+//			DrawCenter(SimpleMenu_WallPicId, SCREEN_W / 2.0, SCREEN_H / 2.0); // old
+			DrawCurtain(SimpleMenu_WallCurtain);
 		}
-		if(SmplMenu_Color != -1)
-			PE.Color = SmplMenu_Color;
+		if(SimpleMenu_Color != -1)
+			PE.Color = SimpleMenu_Color;
 
-		if(SmplMenu_BorderColor != -1)
-			PE_Border(SmplMenu_BorderColor);
+		if(SimpleMenu_BorderColor != -1)
+			PE_Border(SimpleMenu_BorderColor);
 
-		SetPrint(SmplMenu_X, SmplMenu_Y, SmplMenu_YStep);
+		SetPrint(SimpleMenu_X, SimpleMenu_Y, SimpleMenu_YStep);
 //		SetPrint(16, 16, 32); // old
 		Print(menuTitle);
 		PrintRet();
@@ -105,9 +105,9 @@ static void RestorePadBtnId(void)
 		SEPlay(rndPct(50) ? SE_PAUSE_IN : SE_PAUSE_OUT);
 	}
 
-	SmplVolumeConfig("‚a‚f‚l‰¹—Ê", Gnd.MusicVolume, 0, 100, 1, 10, XXX_BGMVolumeChanged);
+	SimpleVolumeConfig("‚a‚f‚l‰¹—Ê", Gnd.MusicVolume, 0, 100, 1, 10, XXX_BGMVolumeChanged);
 
-	SmplVolumeConfig("‚r‚d‰¹—Ê", Gnd.SEVolume, 0, 100, 1, 10, XXX_SEVolumeChanged, XXX_SEVolumePulse);
+	SimpleVolumeConfig("‚r‚d‰¹—Ê", Gnd.SEVolume, 0, 100, 1, 10, XXX_SEVolumeChanged, XXX_SEVolumePulse);
 */
 
 static double SVC_ValueToRate(double value, double minval, double valRange)

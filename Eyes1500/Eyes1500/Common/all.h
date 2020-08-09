@@ -46,7 +46,7 @@
 #include "Line.h"
 #include "Font.h"
 #include "Crash.h"
-#include "SmplMenu.h"
+#include "SimpleMenu.h"
 #include "finalizers.h"
 #include "System2.h"
 #include "Config.h"
