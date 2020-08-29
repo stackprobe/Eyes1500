@@ -4,7 +4,7 @@ int IgnoreEscapeKey;
 
 // 他のファイルからは read only {
 __int64 FrameStartTime;
-__int64 LangolierTime;
+__int64 HzChaserTime;
 __int64 LowHzTime;
 double EatenByLangolierEval = 0.5;
 double LowHzErrorRate = 0.0;
@@ -19,16 +19,16 @@ static void CheckHz(void)
 
 	if(!ProcFrame)
 	{
-		LangolierTime = currTime;
+		HzChaserTime = currTime;
 		LowHzTime = currTime;
 	}
 	else
 	{
-		LangolierTime += 16; // 16.666 より小さいので、60Hzならどんどん引き離されるはず。
+		HzChaserTime += 16; // 16.666 より小さいので、60Hzならどんどん引き離されるはず。
 		LowHzTime += 17;
 	}
 
-	while(currTime < LangolierTime)
+	while(currTime < HzChaserTime)
 	{
 		Sleep(1);
 
@@ -46,7 +46,7 @@ static void CheckHz(void)
 		currTime = GetCurrTime();
 		m_approach(EatenByLangolierEval, 1.0, 0.9);
 	}
-	m_maxim(LangolierTime, currTime - 30);
+	m_maxim(HzChaserTime, currTime - 30);
 	EatenByLangolierEval *= 0.99;
 
 	if(LowHzTime < currTime)
